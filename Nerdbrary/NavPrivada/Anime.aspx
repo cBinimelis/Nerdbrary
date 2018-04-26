@@ -6,7 +6,7 @@
 
 
     <div class="uk-section-default">
-        <div id="test-filter" class=" uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" uk-parallax="bgyu: -200; sepia: 100;" style="background-image: url(../img/AnimeBG.png); height: 70vh">
+        <div id="test-filter" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" uk-parallax="bgyu: -200; sepia: 100;" style="background-image: url(../img/AnimeBG.png); height: 70vh">
             <div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="target: #test-filter; blur: 0,10;">
                 <div class="uk-overlay uk-overlay-primary uk-width-medium">
                     <h1>Anime</h1>
@@ -18,7 +18,7 @@
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
             <div class="uk-container">
-                <h1 class="uk-article-title uk-align-center">Series de anime</h1>
+                <h1 class="uk-article-title uk-align-center">Mi Anime</h1>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body">
 

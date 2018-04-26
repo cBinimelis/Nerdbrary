@@ -27,15 +27,15 @@
                                         <a>Series</a>
                                         <div class="uk-navbar-dropdown">
                                             <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li><a href="Anime.aspx" uk-scroll>Anime</a></li>
-                                                <li><a href="#" uk-scroll>IRL</a></li>
+                                                <li><a href="Anime.aspx">Anime</a></li>
+                                                <li><a href="#">IRL</a></li>
                                             </ul>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <a class="uk-navbar-item uk-logo uk-heading-hero" href="#Cover" uk-scroll>Ñoñopedia</a>
+                        <a class="uk-navbar-item uk-logo uk-heading-hero" href="Inicio.aspx" uk-scroll>Ñoñopedia</a>
                         <div class="uk-navbar-center-right">
                             <div>
                                 <ul class="uk-navbar-nav">
