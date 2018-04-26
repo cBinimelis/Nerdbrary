@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ConexionLQ">
+  <DataContextMoniker Name="/ConexionLQDataContext" />
+  <nestedChildShapes>
+    <classShape Id="bc1a25ca-d8e1-4084-8fc6-b30eeb185e96" absoluteBounds="1.125, 1, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ConexionLQDataContext/Anime" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fd7d9e40-8973-4933-b57c-51fc6a44c180" absoluteBounds="1.1400000000000001, 1.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c06e177e-fe5d-4ada-9fce-2e132ba8317d" absoluteBounds="4.75, 3.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ConexionLQDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4a2d1364-755d-47f2-b699-655a146289b1" absoluteBounds="4.765, 4.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

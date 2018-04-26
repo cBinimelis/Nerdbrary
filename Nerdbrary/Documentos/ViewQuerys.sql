@@ -1,7 +1,7 @@
-CREATE PROC vAnime @User VARCHAR(50)
+ALTER PROC vAnime @User VARCHAR(50)
 AS
 BEGIN
-SELECT *
+SELECT A.id_Anime, A.Nombre, A.Sinopsis, CONVERT(varchar, A.Lanzamiento, 103) AS 'Lanzamiento' , A.Temporadas, A.CapitulosTotales 'Capitulos', GA.Descripcion 'Genero', E.Descripcion 'Estado'
 FROM Anime_Usuario AU
 INNER JOIN Anime A ON AU.id_Anime = A.id_Anime
 INNER JOIN Usuario U ON AU.id_Usuario = U.id_Usuario

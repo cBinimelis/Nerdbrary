@@ -21,7 +21,44 @@
                 <h1 class="uk-article-title uk-align-center">Mi Anime</h1>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body">
-
+                        <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False" 
+                    BorderStyle="None" GridLines="None" runat="server">
+                            <Columns>
+                        <asp:TemplateField HeaderText="Nombre">
+                            <ItemTemplate>
+                                <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Lanzamiento">
+                            <ItemTemplate>
+                                <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Temporadas">
+                            <ItemTemplate>
+                                <asp:Label ID="lbl_temporadas" runat="server" Text='<%# Eval("Temporadas") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Total Capítulos">
+                            <ItemTemplate>
+                                <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Genero">
+                            <ItemTemplate>
+                                <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Estado">
+                            <ItemTemplate>
+                                <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ButtonType="Link" ShowEditButton="true"  EditText="<span uk-icon='icon: file-edit'></span>"
+                            CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"
+                            ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />
+                    </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
             </div>
