@@ -54,9 +54,7 @@
                                 <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ButtonType="Link" ShowEditButton="true"  EditText="<span uk-icon='icon: file-edit'></span>"
-                            CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"
-                            ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />
+                        <asp:CommandField ButtonType="Link" ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" ShowSelectButton="True" SelectText="<span uk-icon='icon: info'></span>" />
                     </Columns>
                         </asp:GridView>
                     </div>
