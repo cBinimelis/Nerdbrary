@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="Anime.aspx.cs" Inherits="NavPrivada_Anime" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="MiAnime.aspx.cs" Inherits="NavPrivada_Anime" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -21,48 +21,58 @@
                 <h1 class="uk-article-title uk-align-center">Mi Anime</h1>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body">
-                        <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False" 
-                    BorderStyle="None" GridLines="None" runat="server">
+                        <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
+                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand" OnRowDataBound="GrillaAnime_RowDataBound">
                             <Columns>
-                        <asp:TemplateField HeaderText="Nombre">
-                            <ItemTemplate>
-                                <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Lanzamiento">
-                            <ItemTemplate>
-                                <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Temporadas">
-                            <ItemTemplate>
-                                <asp:Label ID="lbl_temporadas" runat="server" Text='<%# Eval("Temporadas") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Total Capítulos">
-                            <ItemTemplate>
-                                <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Genero">
-                            <ItemTemplate>
-                                <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Estado">
-                            <ItemTemplate>
-                                <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:CommandField ButtonType="Link" ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" ShowSelectButton="True" SelectText="<span uk-icon='icon: info'></span>" />
-                    </Columns>
+                                <asp:TemplateField HeaderText="ID Anime">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Anime") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Nombre">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Lanzamiento">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Temporadas">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_temporadas" runat="server" Text='<%# Eval("Temporadas") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Total Capítulos">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Genero">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Estado">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Button ID="Button1" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:CommandField ButtonType="Link" ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />
+                            </Columns>
                         </asp:GridView>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="uk-section-muted uk-padding">
         <div class="uk-container">
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" uk-grid>

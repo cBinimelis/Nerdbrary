@@ -27,7 +27,7 @@
                                         <a>Series</a>
                                         <div class="uk-navbar-dropdown">
                                             <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li><a href="Anime.aspx">Anime</a></li>
+                                                <li><a href="MiAnime.aspx">Anime</a></li>
                                                 <li><a href="#">IRL</a></li>
                                             </ul>
                                         </div>

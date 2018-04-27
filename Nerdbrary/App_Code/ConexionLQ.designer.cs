@@ -115,7 +115,7 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _Otros_Generos;
 	
-	private int _id_Estado;
+	private int _id_EstadoSerie;
 	
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -139,8 +139,8 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Onid_GeneroAnimeChanged();
     partial void OnOtros_GenerosChanging(string value);
     partial void OnOtros_GenerosChanged();
-    partial void Onid_EstadoChanging(int value);
-    partial void Onid_EstadoChanged();
+    partial void Onid_EstadoSerieChanging(int value);
+    partial void Onid_EstadoSerieChanged();
     #endregion
 	
 	public Anime()
@@ -328,22 +328,22 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Estado", DbType="Int NOT NULL")]
-	public int id_Estado
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_EstadoSerie", DbType="Int NOT NULL")]
+	public int id_EstadoSerie
 	{
 		get
 		{
-			return this._id_Estado;
+			return this._id_EstadoSerie;
 		}
 		set
 		{
-			if ((this._id_Estado != value))
+			if ((this._id_EstadoSerie != value))
 			{
-				this.Onid_EstadoChanging(value);
+				this.Onid_EstadoSerieChanging(value);
 				this.SendPropertyChanging();
-				this._id_Estado = value;
-				this.SendPropertyChanged("id_Estado");
-				this.Onid_EstadoChanged();
+				this._id_EstadoSerie = value;
+				this.SendPropertyChanged("id_EstadoSerie");
+				this.Onid_EstadoSerieChanged();
 			}
 		}
 	}

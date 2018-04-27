@@ -7,6 +7,10 @@
     })
 }
 
+function Redirect(UrlPath) {
+    window.location.hef = UrlPath;
+}
+
 function Delete(ctl, event) {
     var defaultAction = $(ctl).prop("href");
     event.preventDefault();
