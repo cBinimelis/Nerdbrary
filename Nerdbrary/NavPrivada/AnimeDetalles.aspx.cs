@@ -23,33 +23,36 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
         }
         else
         {
+            String Nick = Convert.ToString(Session["Admin"]);
             String Nombre = "";
             String Sinopsis = "";
             String Lanzamiento = "";
             int Temporadas = 0;
-            int Capitulos = 0;
+            String Capitulos = "";
             String RutaImagen = "";
-            int idGeneroAnime = 0;
+            String GeneroAnime = "";
             String OtrosGeneros = "";
-            int idEstadoSerie = 0;
+            String Estado = "";
+            String Avance = "";
 
-            SqlDataReader Anime = sql.consulta("SELECT * FROM Anime WHERE id_Anime = '" + idAnime + "'");
+            SqlDataReader Anime = sql.consulta("EXEC vDetalleAnime 'ivichan'," + idAnime);
             if (Anime.Read())
             {
                 Nombre = Anime[1].ToString();
                 Sinopsis = Anime[2].ToString();
                 Lanzamiento = Anime[3].ToString();
                 Temporadas = Convert.ToInt32(Anime[4].ToString());
-                Capitulos = Convert.ToInt32(Anime[5].ToString());
+                Capitulos = Anime[5].ToString();
                 RutaImagen = Anime[6].ToString();
-                idGeneroAnime = Convert.ToInt32(Anime[7].ToString());
+                GeneroAnime = Anime[7].ToString();
                 OtrosGeneros = Anime[8].ToString();
-                idEstadoSerie = Convert.ToInt32(Anime[9].ToString());
+                Estado = Anime[9].ToString();
+                Avance = Anime[10].ToString();
             }
 
             TituloA.Text = Nombre;
-            imagen.Src = "../img/anime/" + RutaImagen;
             DescripcionA.Text = Sinopsis;
+            LanzamientoA.Text = Lanzamiento;
             if (Temporadas == 0)
             {
                 TemporadasA.Text = "N/A";
@@ -59,6 +62,11 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
                 TemporadasA.Text = Temporadas.ToString();
             }
             CapitulosA.Text = Capitulos.ToString();
+            imagen.Src = "../img/anime/" + RutaImagen;
+            GeneroA.Text = GeneroAnime;
+            OGenerosA.Text = OtrosGeneros;
+            EstadoA.Text = Estado;
+            APersonalA.Text = Avance;
         }
     }
 

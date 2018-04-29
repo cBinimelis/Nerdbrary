@@ -20,7 +20,7 @@
             <div class="uk-container">
                 <h1 class="uk-article-title uk-align-center">Mi Anime</h1>
                 <div class="uk-card uk-card-default">
-                    <div class="uk-card-body">
+                    <div class="uk-card-body uk-overflow-auto">
                         <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
                             BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand" OnRowDataBound="GrillaAnime_RowDataBound">
                             <Columns>
@@ -37,11 +37,6 @@
                                 <asp:TemplateField HeaderText="Lanzamiento">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Temporadas">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_temporadas" runat="server" Text='<%# Eval("Temporadas") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Total Capítulos">
