@@ -13,41 +13,28 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            this.LlenarGrilla();
+            this.Llenar();
         }
     }
 
     int IdGrilla = 0;
 
-    private void LlenarGrilla()
+    private void Llenar()
     {
         String Nick = Convert.ToString(Session["Admin"]);
         cdc = new ConexionLQDataContext();
-        GrillaAnime.DataSource = cdc.vAnime("ivichan");
         //GrillaAnime.DataSource = cdc.vAnime(Nick);
-        GrillaAnime.DataBind();
+        AnimeList.DataSource = cdc.vAnimeUsuario("ivichan");
+        AnimeList.DataBind();
     }
-
-    protected void GrillaAnime_RowDataBound(object sender, GridViewRowEventArgs e)
+    
+    protected void AnimeList_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
-
-    }
-
-
-    protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
+        
         if (e.CommandName == "Select")
         {
-            //Determine the RowIndex of the Row whose Button was clicked.
-            int rowIndex = Convert.ToInt32(e.CommandArgument);
-
-            //Reference the GridView Row.
-            GridViewRow row = GrillaAnime.Rows[rowIndex];
-
-            //Fetch value of Name.
-            string ID = (row.FindControl("lbl_id") as Label).Text;
-            IdGrilla = Convert.ToInt32(ID);
-            Response.Redirect("AnimeDetalles.aspx?Id="+ID);
+            int ID = Convert.ToInt32(e.CommandArgument);
+            Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
         }
     }
 }

@@ -32,8 +32,12 @@
                                                 <a>Series</a>
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                        <li><a href="MiAnime.aspx">Anime</a></li>
-                                                        <li><a href="#">IRL</a></li>
+                                                        <li class="uk-nav-header">Header</li>
+                                                        <li><a href="Anime.aspx">Lista Anime</a></li>
+                                                        <li><a href="MiAnime.aspx">Mi Anime</a></li>
+                                                        <li class="uk-nav-header">Series IRL</li>
+                                                        <li><a href="#">Lista Series</a></li>
+                                                        <li><a href="#">Mis Series</a></li>
                                                     </ul>
                                                 </div>
                                             </li>

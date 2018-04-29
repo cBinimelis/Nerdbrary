@@ -83,11 +83,26 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vAnime")]
-	public ISingleResult<vAnimeResult> vAnime([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
+	public System.Data.Linq.Table<vAnime> vAnime
+	{
+		get
+		{
+			return this.GetTable<vAnime>();
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vAnimeUsuario")]
+	public ISingleResult<vAnimeUsuarioResult> vAnimeUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
 	{
 		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user);
-		return ((ISingleResult<vAnimeResult>)(result.ReturnValue));
+		return ((ISingleResult<vAnimeUsuarioResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vDetalleAnime")]
+	public ISingleResult<vDetalleAnimeResult> vDetalleAnime([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Anime", DbType="Int")] System.Nullable<int> anime)
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, anime);
+		return ((ISingleResult<vDetalleAnimeResult>)(result.ReturnValue));
 	}
 }
 
@@ -503,7 +518,8 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-public partial class vAnimeResult
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAnime")]
+public partial class vAnime
 {
 	
 	private int _id_Anime;
@@ -518,11 +534,15 @@ public partial class vAnimeResult
 	
 	private int _Capitulos;
 	
+	private string _Imagen;
+	
 	private string _Genero;
+	
+	private string _Otros_Generos;
 	
 	private string _Estado;
 	
-	public vAnimeResult()
+	public vAnime()
 	{
 	}
 	
@@ -622,6 +642,208 @@ public partial class vAnimeResult
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX)")]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Genero
+	{
+		get
+		{
+			return this._Genero;
+		}
+		set
+		{
+			if ((this._Genero != value))
+			{
+				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Estado
+	{
+		get
+		{
+			return this._Estado;
+		}
+		set
+		{
+			if ((this._Estado != value))
+			{
+				this._Estado = value;
+			}
+		}
+	}
+}
+
+public partial class vAnimeUsuarioResult
+{
+	
+	private int _id_Anime;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private string _Lanzamiento;
+	
+	private int _Temporadas;
+	
+	private int _Capitulos;
+	
+	private string _Imagen;
+	
+	private string _Genero;
+	
+	private string _Estado;
+	
+	public vAnimeUsuarioResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Anime", DbType="Int NOT NULL")]
+	public int id_Anime
+	{
+		get
+		{
+			return this._id_Anime;
+		}
+		set
+		{
+			if ((this._id_Anime != value))
+			{
+				this._id_Anime = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this._Sinopsis = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
+	public string Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this._Lanzamiento = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Temporadas", DbType="Int NOT NULL")]
+	public int Temporadas
+	{
+		get
+		{
+			return this._Temporadas;
+		}
+		set
+		{
+			if ((this._Temporadas != value))
+			{
+				this._Temporadas = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capitulos", DbType="Int NOT NULL")]
+	public int Capitulos
+	{
+		get
+		{
+			return this._Capitulos;
+		}
+		set
+		{
+			if ((this._Capitulos != value))
+			{
+				this._Capitulos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX)")]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string Genero
 	{
@@ -650,6 +872,212 @@ public partial class vAnimeResult
 			if ((this._Estado != value))
 			{
 				this._Estado = value;
+			}
+		}
+	}
+}
+
+public partial class vDetalleAnimeResult
+{
+	
+	private int _id_Anime;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private string _Lanzamiento;
+	
+	private int _Temporadas;
+	
+	private int _Capitulos;
+	
+	private string _Imagen;
+	
+	private string _Genero;
+	
+	private string _Otros_Generos;
+	
+	private string _Estado;
+	
+	private string _Avance;
+	
+	public vDetalleAnimeResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Anime", DbType="Int NOT NULL")]
+	public int id_Anime
+	{
+		get
+		{
+			return this._id_Anime;
+		}
+		set
+		{
+			if ((this._id_Anime != value))
+			{
+				this._id_Anime = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this._Sinopsis = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
+	public string Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this._Lanzamiento = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Temporadas", DbType="Int NOT NULL")]
+	public int Temporadas
+	{
+		get
+		{
+			return this._Temporadas;
+		}
+		set
+		{
+			if ((this._Temporadas != value))
+			{
+				this._Temporadas = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capitulos", DbType="Int NOT NULL")]
+	public int Capitulos
+	{
+		get
+		{
+			return this._Capitulos;
+		}
+		set
+		{
+			if ((this._Capitulos != value))
+			{
+				this._Capitulos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX)")]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Genero
+	{
+		get
+		{
+			return this._Genero;
+		}
+		set
+		{
+			if ((this._Genero != value))
+			{
+				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Estado
+	{
+		get
+		{
+			return this._Estado;
+		}
+		set
+		{
+			if ((this._Estado != value))
+			{
+				this._Estado = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Avance", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Avance
+	{
+		get
+		{
+			return this._Avance;
+		}
+		set
+		{
+			if ((this._Avance != value))
+			{
+				this._Avance = value;
 			}
 		}
 	}

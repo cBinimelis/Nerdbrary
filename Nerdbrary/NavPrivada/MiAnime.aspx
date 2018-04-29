@@ -6,7 +6,7 @@
 
 
     <div class="uk-section-default">
-        <div id="test-filter" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" uk-parallax="bgyu: -200; sepia: 100;" style="background-image: url(../img/AnimeBG.png); height: 70vh">
+        <div id="test-filter" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" uk-parallax="bgyu: -200; sepia: 100;" style="background-image: url(../img/MyAnimeBG.jpg); height: 70vh">
             <div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="target: #test-filter; blur: 0,10;">
                 <div class="uk-overlay uk-overlay-primary uk-width-medium">
                     <h1>Anime</h1>
@@ -19,118 +19,32 @@
         <div class="uk-section">
             <div class="uk-container">
                 <h1 class="uk-article-title uk-align-center">Mi Anime</h1>
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-body uk-overflow-auto">
-                        <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand" OnRowDataBound="GrillaAnime_RowDataBound">
-                            <Columns>
-                                <asp:TemplateField HeaderText="ID Anime">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Anime") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Nombre">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Lanzamiento">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Total Capítulos">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Genero">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Estado">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:Button ID="Button1" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:CommandField ButtonType="Link" ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />
-                            </Columns>
-                        </asp:GridView>
-                    </div>
+                <div uk-grid>
+                    <asp:ListView ID="AnimeList" DataKeyNames="id_Anime" runat="server" OnItemCommand="AnimeList_ItemCommand">
+                        <GroupTemplate>
+                            <div id="itemPlaceholderContainer" class="uk-child-width-1-4@m" runat="server">
+                                <div id="itemPlaceholder" runat="server">
+                                </div>
+                            </div>
+                        </GroupTemplate>
+                        <ItemTemplate>
+                            <div class="uk-card uk-card-default uk-width-medium uk-height-medium">
+                                <div class="uk-card-media-top uk-width-medium">
+                                    <img src="../img/anime/<%# Eval("Imagen") %>" alt="">
+                                </div>
+                                <div class="uk-card-body">
+                                    <h3 class="uk-card-title">
+                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label></h3>
+                                    <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument='<%# Eval("id_Anime") %>' />
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="uk-section-muted uk-padding">
-        <div class="uk-container">
-            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" uk-grid>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </asp:Content>
 

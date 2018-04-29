@@ -103,7 +103,21 @@ public class Conexion
         catch { }
     }
 
-    
+    private void LlenaListas( ListView lv, String sentencia)
+    {
+        try
+        {
+            con.Close();
+            con.Open();
+            SqlDataAdapter adapt = new SqlDataAdapter(sentencia, con);
+            DataSet ds = new DataSet();
+            adapt.Fill(ds);
+            lv.DataSource = ds;
+            lv.DataBind();
+        }
+        catch { }
+    }
+
     public void llenacombo(DropDownList cb, String sentencia, String display, String value)
     {
         try

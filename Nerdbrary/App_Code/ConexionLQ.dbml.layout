@@ -14,5 +14,11 @@
         <elementListCompartment Id="00d4d1d1-fb42-4699-add9-7fd88b1d0c8b" absoluteBounds="4.515, 4.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="6a5ec017-15fa-419f-907c-63a5c94c54cf" absoluteBounds="6, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ConexionLQDataContext/vAnime" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80d479e8-0bfa-43ed-ac20-42deaf11ec6e" absoluteBounds="6.015, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -35,19 +35,38 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
             String Estado = "";
             String Avance = "";
 
-            SqlDataReader Anime = sql.consulta("EXEC vDetalleAnime 'ivichan'," + idAnime);
-            if (Anime.Read())
+            if (Nick == "" || Nick == null)
             {
-                Nombre = Anime[1].ToString();
-                Sinopsis = Anime[2].ToString();
-                Lanzamiento = Anime[3].ToString();
-                Temporadas = Convert.ToInt32(Anime[4].ToString());
-                Capitulos = Anime[5].ToString();
-                RutaImagen = Anime[6].ToString();
-                GeneroAnime = Anime[7].ToString();
-                OtrosGeneros = Anime[8].ToString();
-                Estado = Anime[9].ToString();
-                Avance = Anime[10].ToString();
+                SqlDataReader Anime = sql.consulta("SELECT* FROM vAnime WHERE id_Anime =" + idAnime);
+                if (Anime.Read())
+                {
+                    Nombre = Anime[1].ToString();
+                    Sinopsis = Anime[2].ToString();
+                    Lanzamiento = Anime[3].ToString();
+                    Temporadas = Convert.ToInt32(Anime[4].ToString());
+                    Capitulos = Anime[5].ToString();
+                    RutaImagen = Anime[6].ToString();
+                    GeneroAnime = Anime[7].ToString();
+                    OtrosGeneros = Anime[8].ToString();
+                    Estado = Anime[9].ToString();
+                }
+            }
+            else
+            {
+                SqlDataReader Anime = sql.consulta("EXEC vDetalleAnime 'ivichan'," + idAnime);
+                if (Anime.Read())
+                {
+                    Nombre = Anime[1].ToString();
+                    Sinopsis = Anime[2].ToString();
+                    Lanzamiento = Anime[3].ToString();
+                    Temporadas = Convert.ToInt32(Anime[4].ToString());
+                    Capitulos = Anime[5].ToString();
+                    RutaImagen = Anime[6].ToString();
+                    GeneroAnime = Anime[7].ToString();
+                    OtrosGeneros = Anime[8].ToString();
+                    Estado = Anime[9].ToString();
+                    Avance = Anime[10].ToString();
+                }
             }
 
             TituloA.Text = Nombre;
