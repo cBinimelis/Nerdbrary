@@ -17,36 +17,54 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
     private void LlenaDetalles()
     {
         String idAnime = Request.QueryString["Id"];
-        String Nombre = "";
-        String Sinopsis = "";
-        String Lanzamiento = "";
-        int Temporadas = 0;
-        int Capitulos = 0;
-        String RutaImagen = "";
-        int idGeneroAnime = 0;
-        String OtrosGeneros = "";
-        int idEstadoSerie = 0;
-
-        SqlDataReader Anime = sql.consulta("SELECT * FROM Anime WHERE id_Anime = '" + idAnime + "'");
-        if (Anime.Read())
+        if (idAnime == null || idAnime.Equals(0))
         {
-            Nombre = Anime[1].ToString();
-            Sinopsis = Anime[2].ToString();
-            Lanzamiento = Anime[3].ToString();
-            Temporadas = Convert.ToInt32(Anime[4].ToString());
-            Capitulos = Convert.ToInt32(Anime[5].ToString());
-            RutaImagen = Anime[6].ToString();
-            idGeneroAnime = Convert.ToInt32(Anime[7].ToString());
-            OtrosGeneros = Anime[8].ToString();
-            idEstadoSerie = Convert.ToInt32(Anime[9].ToString());
+            Mensaje("Aviso", "Hubo un error al cargar la pagina", "info");
         }
+        else
+        {
+            String Nombre = "";
+            String Sinopsis = "";
+            String Lanzamiento = "";
+            int Temporadas = 0;
+            int Capitulos = 0;
+            String RutaImagen = "";
+            int idGeneroAnime = 0;
+            String OtrosGeneros = "";
+            int idEstadoSerie = 0;
 
-        TituloA.Text = Nombre;
-        imagen.Src = "../img/anime/" + RutaImagen;
-        DescripcionA.Text = Sinopsis;
-        TemporadasA.Text = Temporadas.ToString();
-        CapitulosA.Text = Capitulos.ToString();
+            SqlDataReader Anime = sql.consulta("SELECT * FROM Anime WHERE id_Anime = '" + idAnime + "'");
+            if (Anime.Read())
+            {
+                Nombre = Anime[1].ToString();
+                Sinopsis = Anime[2].ToString();
+                Lanzamiento = Anime[3].ToString();
+                Temporadas = Convert.ToInt32(Anime[4].ToString());
+                Capitulos = Convert.ToInt32(Anime[5].ToString());
+                RutaImagen = Anime[6].ToString();
+                idGeneroAnime = Convert.ToInt32(Anime[7].ToString());
+                OtrosGeneros = Anime[8].ToString();
+                idEstadoSerie = Convert.ToInt32(Anime[9].ToString());
+            }
 
+            TituloA.Text = Nombre;
+            imagen.Src = "../img/anime/" + RutaImagen;
+            DescripcionA.Text = Sinopsis;
+            if (Temporadas == 0)
+            {
+                TemporadasA.Text = "N/A";
+            }
+            else
+            {
+                TemporadasA.Text = Temporadas.ToString();
+            }
+            CapitulosA.Text = Capitulos.ToString();
+        }
     }
-    
+
+    private void Mensaje(String Tit, String Msg, String Stat)
+    {
+        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
+    }
+
 }

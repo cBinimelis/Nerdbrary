@@ -3,29 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-            <div>
-                <h1>
-                    <asp:Label ID="TituloA" runat="server" Text="Titulo"></asp:Label></h1>
+
+    <div class="uk-section-default">
+        <div class="uk-section uk-dark uk-height-viewport uk-background-cover" style="background-image: url(../img/anime/defaultbg.jpg)">
+            <div class="uk-position-large uk-position-center uk-overlay uk-overlay-default">
+                <div class="uk-container uk-width-xxlarge">
+                    <div class="uk-panel">
+                        <h1 class="uk-title">
+                            <asp:Label ID="TituloA" runat="server" Text="Titulo"></asp:Label></h1>
+                        <img id="imagen" class="uk-align-left uk-margin-remove-adjacent" runat="server" src="../img/anime/default.jpg" style="height: 300px" alt="Imagen del anime" />
+                        <b>Temporadas: </b><asp:Label ID="TemporadasA" runat="server" Text="Temporadas del Anime"></asp:Label><br />
+                        <b>Capitulos: </b><asp:Label ID="CapitulosA" runat="server" Text="Label"></asp:Label><br />
+                        <b>Descripcion: </b><asp:Label ID="DescripcionA" CssClass="uk-text-justify" runat="server" Text="Descripcion del Anime"></asp:Label>
+                    </div>
+                </div>
             </div>
-            <br />
-            <table>
-                <tr>
-                    <td>
-                        <img id="imagen" runat="server" src="../img/anime/" style="border: solid; height: 300px" alt="Imagen del anime" />
-                    </td>
-                    <td>&nbsp;</td>
-                    <td style="vertical-align: top; text-align: left;">
-                        <b>Descripcion:</b><br />
-                        <asp:Label ID="DescripcionA" runat="server" Text="Descripcion del Anime"></asp:Label>
-                        <br />
-                        <span><b>Temporadas:</b><asp:Label ID="TemporadasA" runat="server" Text="Temporadas del Anime"></asp:Label>
-                        </span>
-                        <br />
-                        <span><b>Capitulos:</b>
-                            <asp:Label ID="CapitulosA" runat="server" Text="Label"></asp:Label></span><br />
-                    </td>
-                </tr>
-            </table>
+        </div>
+    </div>
+
 
 
 

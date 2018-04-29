@@ -3,7 +3,7 @@
         title: tit,
         text: mens,
         icon: stat,
-        dangerMode: true,
+        dangerMode: true
     })
 }
 
