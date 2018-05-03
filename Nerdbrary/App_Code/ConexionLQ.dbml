@@ -12,6 +12,8 @@
       <Column Name="id_GeneroAnime" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="id_EstadoSerie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_Serie_Anime" Member="Estado_Serie" ThisKey="id_EstadoSerie" OtherKey="id_EstadoSerie" Type="Estado_Serie" IsForeignKey="true" />
+      <Association Name="Genero_Anime_Anime" Member="Genero_Anime" ThisKey="id_GeneroAnime" OtherKey="id_GeneroAnime" Type="Genero_Anime" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Usuario" Member="Usuario">
@@ -34,6 +36,20 @@
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estado_Serie" Member="Estado_Serie">
+    <Type Name="Estado_Serie">
+      <Column Name="id_EstadoSerie" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_Serie_Anime" Member="Anime" ThisKey="id_EstadoSerie" OtherKey="id_EstadoSerie" Type="Anime" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Genero_Anime" Member="Genero_Anime">
+    <Type Name="Genero_Anime">
+      <Column Name="id_GeneroAnime" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Genero_Anime_Anime" Member="Anime" ThisKey="id_GeneroAnime" OtherKey="id_GeneroAnime" Type="Anime" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">

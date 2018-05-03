@@ -9,11 +9,11 @@
     <link type="text/css" rel="stylesheet" href="../css/uikit.min.css" />
     <link href="../css/Personal.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/PersonalScript.js"></script>
     <script src="../js/sweetalert.min.js"></script>
+    <script src="../js/PersonalScript.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -32,9 +32,10 @@
                                                 <a>Series</a>
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                        <li class="uk-nav-header">Header</li>
+                                                        <li class="uk-nav-header">Anime</li>
                                                         <li><a href="Anime.aspx">Lista Anime</a></li>
                                                         <li><a href="MiAnime.aspx">Mi Anime</a></li>
+                                                        <li><a href="AnimeCRUD.aspx">Mantenedor</a></li>
                                                         <li class="uk-nav-header">Series IRL</li>
                                                         <li><a href="#">Lista Series</a></li>
                                                         <li><a href="#">Mis Series</a></li>

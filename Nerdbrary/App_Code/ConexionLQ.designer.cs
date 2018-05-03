@@ -35,6 +35,12 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
   partial void InsertUsuario(Usuario instance);
   partial void UpdateUsuario(Usuario instance);
   partial void DeleteUsuario(Usuario instance);
+  partial void InsertEstado_Serie(Estado_Serie instance);
+  partial void UpdateEstado_Serie(Estado_Serie instance);
+  partial void DeleteEstado_Serie(Estado_Serie instance);
+  partial void InsertGenero_Anime(Genero_Anime instance);
+  partial void UpdateGenero_Anime(Genero_Anime instance);
+  partial void DeleteGenero_Anime(Genero_Anime instance);
   #endregion
 	
 	public ConexionLQDataContext() : 
@@ -91,6 +97,22 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<Estado_Serie> Estado_Serie
+	{
+		get
+		{
+			return this.GetTable<Estado_Serie>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Genero_Anime> Genero_Anime
+	{
+		get
+		{
+			return this.GetTable<Genero_Anime>();
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vAnimeUsuario")]
 	public ISingleResult<vAnimeUsuarioResult> vAnimeUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
 	{
@@ -132,6 +154,10 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private int _id_EstadoSerie;
 	
+	private EntityRef<Estado_Serie> _Estado_Serie;
+	
+	private EntityRef<Genero_Anime> _Genero_Anime;
+	
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -160,6 +186,8 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public Anime()
 	{
+		this._Estado_Serie = default(EntityRef<Estado_Serie>);
+		this._Genero_Anime = default(EntityRef<Genero_Anime>);
 		OnCreated();
 	}
 	
@@ -314,6 +342,10 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			if ((this._id_GeneroAnime != value))
 			{
+				if (this._Genero_Anime.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
 				this.Onid_GeneroAnimeChanging(value);
 				this.SendPropertyChanging();
 				this._id_GeneroAnime = value;
@@ -354,11 +386,83 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			if ((this._id_EstadoSerie != value))
 			{
+				if (this._Estado_Serie.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
 				this.Onid_EstadoSerieChanging(value);
 				this.SendPropertyChanging();
 				this._id_EstadoSerie = value;
 				this.SendPropertyChanged("id_EstadoSerie");
 				this.Onid_EstadoSerieChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Serie_Anime", Storage="_Estado_Serie", ThisKey="id_EstadoSerie", OtherKey="id_EstadoSerie", IsForeignKey=true)]
+	public Estado_Serie Estado_Serie
+	{
+		get
+		{
+			return this._Estado_Serie.Entity;
+		}
+		set
+		{
+			Estado_Serie previousValue = this._Estado_Serie.Entity;
+			if (((previousValue != value) 
+						|| (this._Estado_Serie.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Estado_Serie.Entity = null;
+					previousValue.Anime.Remove(this);
+				}
+				this._Estado_Serie.Entity = value;
+				if ((value != null))
+				{
+					value.Anime.Add(this);
+					this._id_EstadoSerie = value.id_EstadoSerie;
+				}
+				else
+				{
+					this._id_EstadoSerie = default(int);
+				}
+				this.SendPropertyChanged("Estado_Serie");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genero_Anime_Anime", Storage="_Genero_Anime", ThisKey="id_GeneroAnime", OtherKey="id_GeneroAnime", IsForeignKey=true)]
+	public Genero_Anime Genero_Anime
+	{
+		get
+		{
+			return this._Genero_Anime.Entity;
+		}
+		set
+		{
+			Genero_Anime previousValue = this._Genero_Anime.Entity;
+			if (((previousValue != value) 
+						|| (this._Genero_Anime.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Genero_Anime.Entity = null;
+					previousValue.Anime.Remove(this);
+				}
+				this._Genero_Anime.Entity = value;
+				if ((value != null))
+				{
+					value.Anime.Add(this);
+					this._id_GeneroAnime = value.id_GeneroAnime;
+				}
+				else
+				{
+					this._id_GeneroAnime = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("Genero_Anime");
 			}
 		}
 	}
@@ -704,6 +808,234 @@ public partial class vAnime
 				this._Estado = value;
 			}
 		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Estado_Serie")]
+public partial class Estado_Serie : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_EstadoSerie;
+	
+	private string _Descripcion;
+	
+	private EntitySet<Anime> _Anime;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_EstadoSerieChanging(int value);
+    partial void Onid_EstadoSerieChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    #endregion
+	
+	public Estado_Serie()
+	{
+		this._Anime = new EntitySet<Anime>(new Action<Anime>(this.attach_Anime), new Action<Anime>(this.detach_Anime));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_EstadoSerie", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int id_EstadoSerie
+	{
+		get
+		{
+			return this._id_EstadoSerie;
+		}
+		set
+		{
+			if ((this._id_EstadoSerie != value))
+			{
+				this.Onid_EstadoSerieChanging(value);
+				this.SendPropertyChanging();
+				this._id_EstadoSerie = value;
+				this.SendPropertyChanged("id_EstadoSerie");
+				this.Onid_EstadoSerieChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Descripcion
+	{
+		get
+		{
+			return this._Descripcion;
+		}
+		set
+		{
+			if ((this._Descripcion != value))
+			{
+				this.OnDescripcionChanging(value);
+				this.SendPropertyChanging();
+				this._Descripcion = value;
+				this.SendPropertyChanged("Descripcion");
+				this.OnDescripcionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Serie_Anime", Storage="_Anime", ThisKey="id_EstadoSerie", OtherKey="id_EstadoSerie")]
+	public EntitySet<Anime> Anime
+	{
+		get
+		{
+			return this._Anime;
+		}
+		set
+		{
+			this._Anime.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Anime(Anime entity)
+	{
+		this.SendPropertyChanging();
+		entity.Estado_Serie = this;
+	}
+	
+	private void detach_Anime(Anime entity)
+	{
+		this.SendPropertyChanging();
+		entity.Estado_Serie = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Genero_Anime")]
+public partial class Genero_Anime : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_GeneroAnime;
+	
+	private string _Descripcion;
+	
+	private EntitySet<Anime> _Anime;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_GeneroAnimeChanging(int value);
+    partial void Onid_GeneroAnimeChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    #endregion
+	
+	public Genero_Anime()
+	{
+		this._Anime = new EntitySet<Anime>(new Action<Anime>(this.attach_Anime), new Action<Anime>(this.detach_Anime));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_GeneroAnime", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id_GeneroAnime
+	{
+		get
+		{
+			return this._id_GeneroAnime;
+		}
+		set
+		{
+			if ((this._id_GeneroAnime != value))
+			{
+				this.Onid_GeneroAnimeChanging(value);
+				this.SendPropertyChanging();
+				this._id_GeneroAnime = value;
+				this.SendPropertyChanged("id_GeneroAnime");
+				this.Onid_GeneroAnimeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Descripcion
+	{
+		get
+		{
+			return this._Descripcion;
+		}
+		set
+		{
+			if ((this._Descripcion != value))
+			{
+				this.OnDescripcionChanging(value);
+				this.SendPropertyChanging();
+				this._Descripcion = value;
+				this.SendPropertyChanged("Descripcion");
+				this.OnDescripcionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genero_Anime_Anime", Storage="_Anime", ThisKey="id_GeneroAnime", OtherKey="id_GeneroAnime")]
+	public EntitySet<Anime> Anime
+	{
+		get
+		{
+			return this._Anime;
+		}
+		set
+		{
+			this._Anime.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Anime(Anime entity)
+	{
+		this.SendPropertyChanging();
+		entity.Genero_Anime = this;
+	}
+	
+	private void detach_Anime(Anime entity)
+	{
+		this.SendPropertyChanging();
+		entity.Genero_Anime = null;
 	}
 }
 

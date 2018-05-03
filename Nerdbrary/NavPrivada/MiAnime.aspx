@@ -34,7 +34,8 @@
                                 </div>
                                 <div class="uk-card-body">
                                     <h3 class="uk-card-title">
-                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label></h3>
+                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                    </h3>
                                     <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument='<%# Eval("id_Anime") %>' />
                                 </div>
                             </div>
