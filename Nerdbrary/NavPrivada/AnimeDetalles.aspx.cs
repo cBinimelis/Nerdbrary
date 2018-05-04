@@ -86,6 +86,9 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
             OGenerosA.Text = OtrosGeneros;
             EstadoA.Text = Estado;
             APersonalA.Text = Avance;
+
+
+            Cover.Attributes["Style"] = "background-image: url(../img/anime/" + RutaImagen + ")";
         }
     }
 

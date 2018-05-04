@@ -14,21 +14,28 @@
                             <p>Nombre</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: bookmark"></span>
-                                <asp:TextBox ID="txt_nombre" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_nombreN" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="uk-width-1-4@m">
+                        <div class="uk-width-1-6@m">
+                            <p>Temporadas</p>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                                <asp:TextBox ID="txt_lanzamientoN" TextMode="Date" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-6@m">
                             <p>Capitulos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tv"></span>
-                                <asp:TextBox ID="txt_Precio" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_capitulosN" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="uk-width-1-4@m">
+                        <div class="uk-width-1-6@m">
                             <p>Temporadas</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: world"></span>
-                                <asp:TextBox ID="txt_temporadas" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_temporadasN" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
@@ -60,12 +67,15 @@
                         <div class="uk-width-1-2@m">
                             <p>Imagen</p>
                             <img id="imagen_vprevia" runat="server" src="~/img/Sharky.jpg">
-                            <asp:FileUpload CssClass="uk-input uk-width-auto" placeholder="Seleccionar Archivo" ID="subir_imagen" runat="server" onchange="VPrevia(this)" />
+                            <asp:FileUpload ID="subir_imagen" CssClass="uk-input uk-width-auto" placeholder="Seleccionar Archivo" runat="server" onchange="VPrevia(this)" />
                         </div>
                         <div class="uk-width-1-1">
                             <div class="uk-inline uk-position-bottom-center uk-position-relative">
                                 <span class="uk-form-icon" uk-icon="icon: plus"></span>
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <Triggers>
+                                        <asp:PostBackTrigger ControlID="btn_crear" />
+                                    </Triggers>
                                     <ContentTemplate>
                                         <asp:Button ID="btn_crear" CssClass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" Text="Crear Anime" OnClick="btn_crear_Click" />
                                     </ContentTemplate>
