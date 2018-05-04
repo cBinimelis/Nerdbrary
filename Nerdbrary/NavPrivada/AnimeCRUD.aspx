@@ -102,28 +102,44 @@
                                         <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txt_nombre" CssClass="uk-input" Text='<%# Eval("Nombre") %>' runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txt_nombre" CssClass="uk-input uk-form-width-small" Text='<%# Eval("Nombre") %>' runat="server"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Sinopsis">
+                                <asp:TemplateField HeaderText="Sinopsis" ItemStyle-CssClass="uk-text-truncate">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_sinopsis" CssClass=" uk-width-small" runat="server" Text='<%# Eval("Sinopsis")%>'></asp:Label>
+                                        <asp:Label ID="lbl_sinopsis" runat="server" Text='<%# Eval("Sinopsis")%>'></asp:Label>
                                     </ItemTemplate>
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="txt_sinopsis" CssClass="uk-input" Text='<%# Eval("Sinopsis")%>' runat="server" TextMode="MultiLine"></asp:TextBox>
-                                    </EditItemTemplate>
+                                   <%-- <EditItemTemplate>
+                                        <asp:TextBox ID="txt_sinopsis" CssClass="uk-textarea uk-form-width-medium uk-height-medium" Text='<%# Eval("Sinopsis")%>' runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    </EditItemTemplate>--%>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Lanzamiento">
+                                <asp:TemplateField HeaderText="Lanzamiento" >
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Total Capítulos">
+                                <asp:TemplateField HeaderText="Capítulos">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txt_capitulos" CssClass="uk-input" Text='<%# Eval("Capitulos") %>' runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txt_capitulos" CssClass="uk-input uk-form-width-auto" Text='<%# Eval("Capitulos") %>' runat="server"></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Temporadas">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_temporadas" runat="server" Text='<%# Eval("Temporadas") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="txt_temporadas" CssClass="uk-input uk-form-width-auto" Text='<%# Eval("Temporadas") %>' runat="server"></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Estado">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:DropDownList ID="dd_estado" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Estado" DataTextField="Descripcion" DataValueField="id_EstadoSerie"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Genero">
@@ -131,19 +147,17 @@
                                         <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:DropDownList ID="dd_genero" runat="server" DataSourceID="LinqDataSource1" DataTextField="Descripcion" DataValueField="id_EstadoSerie"></asp:DropDownList>
+                                        <asp:DropDownList ID="dd_genero" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Genero" DataTextField="Descripcion" DataValueField="id_GeneroAnime"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Estado">
+                                 <asp:TemplateField HeaderText="Otros Generos">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
+                                        <asp:Label ID="lbl_OGenero" runat="server" Text='<%# Eval("Otros_Generos") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="txt_OGeneros" CssClass="uk-input" Text='<%# Eval("Otros_Generos") %>' runat="server"></asp:TextBox>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
-                                <%-- <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:Button ID="Button1" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
                                 <asp:CommandField ButtonType="Link" ShowEditButton="true" EditText="<span uk-icon='icon: pencil'></span>"
                                     CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"
                                     ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />
@@ -155,8 +169,7 @@
         </div>
     </div>
 
-    
-    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Estado_Serie">
-    </asp:LinqDataSource>
+    <asp:LinqDataSource ID="DS_Genero" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Genero_Anime"></asp:LinqDataSource>
+    <asp:LinqDataSource ID="DS_Estado" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Estado_Serie"></asp:LinqDataSource>
 </asp:Content>
 

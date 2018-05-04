@@ -44,11 +44,23 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
         dd_generoN.DataBind();
     }
 
+    protected void btn_crear_Click(object sender, EventArgs e)
+    {
+        try
+        {
+
+        }
+        catch
+        {
+
+        }
+    }
+
     protected void GrillaAnime_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaAnime.EditIndex)
         {
-            //(e.Row.Cells[5].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+            (e.Row.Cells[9].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
         }
     }
 
@@ -78,10 +90,5 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
     private void Mensaje(String Tit, String Msg, String Stat)
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
-    }
-
-    protected void btn_crear_Click(object sender, EventArgs e)
-    {
-
     }
 }
