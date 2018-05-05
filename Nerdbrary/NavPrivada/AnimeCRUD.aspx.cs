@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
 {
@@ -60,7 +61,7 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
                 if (IsPostBack)
                 {
                     Boolean fileOK = false;
-                    String NewFileName = txt_nombreN.Text.ToLower();
+                    String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"\s", "");
                     String path = Server.MapPath("~/img/anime/");
                     String fileExtension = System.IO.Path.GetExtension(subir_imagen.FileName).ToLower();
                     String[] allowedExtensions = { ".jpeg", ".jpg" };

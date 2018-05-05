@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="uk-section-default">
-        <div id="Cover" runat="server" class="uk-section uk-dark uk-height-viewport uk-background-fixed uk-background-cover" style="background-image: url(../img/anime/defaultbg.jpg); filter: blur(10px)">
-            <div id="Contenido" class="uk-container uk-card uk-card-default uk-animation-slide-left">
+        <div id="Cover" runat="server" class="background uk-position-absolute uk-background-fixed"></div>
+            <div class="uk-container uk-card uk-card-default uk-align-center uk-animation-slide-left">
                 <div class="uk-card-body uk-card-medium">
                     <h1 class="uk-text-center uk-heading-line ">
                         <asp:Label ID="TituloA" runat="server" Text="Waifu para rellenar"></asp:Label></h1>
@@ -37,8 +37,8 @@
                                 <asp:Label ID="EstadoA" runat="server" Text="En Emisión"></asp:Label>
                             </p>
                         </div>
-                        
-                                <asp:Label ID="APersonalA" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Detalles"></asp:Label>
+
+                        <asp:Label ID="APersonalA" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Detalles"></asp:Label>
                         <div>
                             <asp:Label ID="DescripcionA" CssClass="uk-text-justify uk-align-center" runat="server" Text="Descripcion del Anime"></asp:Label>
                         </div>
@@ -47,11 +47,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
 </asp:Content>
 
