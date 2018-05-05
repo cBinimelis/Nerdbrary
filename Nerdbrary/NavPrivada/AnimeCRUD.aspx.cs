@@ -94,6 +94,7 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
                             a.id_GeneroAnime = (dd_generoN.SelectedIndex + 1);
                             a.Otros_Generos = txt_OGenerosN.Text;
                             a.id_EstadoSerie = (dd_estadoN.SelectedIndex + 1);
+                            a.Activo = true;
                             cdc.Anime.InsertOnSubmit(a);
                             cdc.SubmitChanges();
                             subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
@@ -147,7 +148,15 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
 
     protected void GrillaAnime_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-
+        GridViewRow row = GrillaAnime.Rows[e.RowIndex];
+        int idAnime = Convert.ToInt32(GrillaAnime.DataKeys[e.RowIndex].Values);
+        String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
+        String Caps = (row.FindControl("txt_capitulos") as TextBox).Text.Trim();
+        String Temps = (row.FindControl("txt_temporadas") as TextBox).Text.Trim();
+        String Lanzamiento = (row.FindControl("txt_lanzamiento") as TextBox).Text.Trim();
+        int Estado = (row.FindControl("dd_estado") as DropDownList).SelectedIndex;
+        int Genero = (row.FindControl("dd_genero") as DropDownList).SelectedIndex;
+        String OG = (row.FindControl("txt_OGeneros") as TextBox).Text.Trim();
     }
 
     private void Clean()

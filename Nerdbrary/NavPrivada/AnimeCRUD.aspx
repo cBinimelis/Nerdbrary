@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <asp:scriptmanager runat="server"></asp:scriptmanager>
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
             <div class="uk-container">
@@ -14,72 +14,72 @@
                             <p>Nombre</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: bookmark"></span>
-                                <asp:TextBox ID="txt_nombreN" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
+                                <asp:textbox id="txt_nombreN" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-6@m">
-                            <p>Temporadas</p>
+                            <p>Lanzamiento</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-                                <asp:TextBox ID="txt_lanzamientoN" TextMode="Date" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                                <asp:textbox id="txt_lanzamientoN" textmode="Date" cssclass="uk-input uk-form-width-large" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-6@m">
                             <p>Capitulos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tv"></span>
-                                <asp:TextBox ID="txt_capitulosN" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                                <asp:textbox id="txt_capitulosN" cssclass="uk-input uk-form-width-large" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-6@m">
                             <p>Temporadas</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: world"></span>
-                                <asp:TextBox ID="txt_temporadasN" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                                <asp:textbox id="txt_temporadasN" cssclass="uk-input uk-form-width-large" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
                             <p>Estado</p>
                             <div class="uk-inline">
-                                <asp:DropDownList ID="dd_estadoN" CssClass="uk-select uk-form-width-large" runat="server" ForeColor="#999999"></asp:DropDownList>
+                                <asp:dropdownlist id="dd_estadoN" cssclass="uk-select uk-form-width-large" runat="server" forecolor="#999999"></asp:dropdownlist>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
                             <p>Genero</p>
                             <div class="uk-inline">
-                                <asp:DropDownList ID="dd_generoN" CssClass="uk-select uk-form-width-large" runat="server" ForeColor="#999999"></asp:DropDownList>
+                                <asp:dropdownlist id="dd_generoN" cssclass="uk-select uk-form-width-large" runat="server" forecolor="#999999"></asp:dropdownlist>
                             </div>
                         </div>
                         <div class="uk-width-1-2@m">
                             <p>Otros Generos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                                <asp:TextBox ID="txt_OGenerosN" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
+                                <asp:textbox id="txt_OGenerosN" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-2@m">
                             <p>Sinopsis</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                <asp:TextBox ID="txt_sinopsisN" CssClass="uk-textarea uk-height-medium uk-width-xlarge" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                <asp:textbox id="txt_sinopsisN" cssclass="uk-textarea uk-height-medium uk-width-xlarge" runat="server" textmode="MultiLine"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-2@m">
                             <p>Imagen</p>
                             <img id="imagen_vprevia" runat="server" src="~/img/Sharky.jpg">
-                            <asp:FileUpload ID="subir_imagen" CssClass="uk-input uk-width-auto" placeholder="Seleccionar Archivo" runat="server" onchange="VPrevia(this)" />
+                            <asp:fileupload id="subir_imagen" cssclass="uk-input uk-width-auto" placeholder="Seleccionar Archivo" runat="server" onchange="VPrevia(this)" />
                         </div>
                         <div class="uk-width-1-1">
                             <div class="uk-inline uk-position-bottom-center uk-position-relative">
                                 <span class="uk-form-icon" uk-icon="icon: plus"></span>
-                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <asp:updatepanel id="UpdatePanel1" runat="server">
                                     <Triggers>
                                         <asp:PostBackTrigger ControlID="btn_crear" />
                                     </Triggers>
                                     <ContentTemplate>
                                         <asp:Button ID="btn_crear" CssClass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" Text="Crear Anime" OnClick="btn_crear_Click" />
                                     </ContentTemplate>
-                                </asp:UpdatePanel>
+                                </asp:updatepanel>
                             </div>
                         </div>
                     </div>
@@ -97,10 +97,10 @@
                 <h1 class=" uk-heading-primary uk-text-center">Lista de Anime</h1>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
-                        <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                            OnRowDataBound="GrillaAnime_RowDataBound" OnRowCancelingEdit="GrillaAnime_RowCancelingEdit" OnRowEditing="GrillaAnime_RowEditing"
-                            OnRowDeleting="GrillaAnime_RowDeleting" OnRowUpdating="GrillaAnime_RowUpdating"
-                            BorderStyle="None" GridLines="None" runat="server">
+                        <asp:gridview id="GrillaAnime" datakeynames="id_Anime" cssclass="uk-table uk-table-divider uk-table-small" autogeneratecolumns="False"
+                            onrowdatabound="GrillaAnime_RowDataBound" onrowcancelingedit="GrillaAnime_RowCancelingEdit" onrowediting="GrillaAnime_RowEditing"
+                            onrowdeleting="GrillaAnime_RowDeleting" onrowupdating="GrillaAnime_RowUpdating"
+                            borderstyle="None" gridlines="None" runat="server">
                             <Columns>
                                 <asp:TemplateField HeaderText="ID Anime" Visible="false">
                                     <ItemTemplate>
@@ -127,6 +127,9 @@
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="txt_lanzamiento" CssClass="uk-input" Text='<%# Eval("Lanzamiento")%>' runat="server" TextMode="Date"></asp:TextBox>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Capítulos">
                                     <ItemTemplate>
@@ -172,14 +175,14 @@
                                     CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"
                                     ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />
                             </Columns>
-                        </asp:GridView>
+                        </asp:gridview>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <asp:LinqDataSource ID="DS_Genero" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Genero_Anime"></asp:LinqDataSource>
-    <asp:LinqDataSource ID="DS_Estado" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Estado_Serie"></asp:LinqDataSource>
+    <asp:linqdatasource id="DS_Genero" runat="server" contexttypename="ConexionLQDataContext" entitytypename="" tablename="Genero_Anime"></asp:linqdatasource>
+    <asp:linqdatasource id="DS_Estado" runat="server" contexttypename="ConexionLQDataContext" entitytypename="" tablename="Estado_Serie"></asp:linqdatasource>
 </asp:Content>
 
