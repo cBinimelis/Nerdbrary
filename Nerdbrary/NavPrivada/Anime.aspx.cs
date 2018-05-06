@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 public partial class NavPrivada_Anime : System.Web.UI.Page
 {
     ConexionLQDataContext cdc;
+    Conexion sql = new Conexion();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Admin"] == null)
@@ -31,17 +33,45 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
 
     protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        if (e.CommandName == "Select")
+        try
         {
+            String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GrillaAnime.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
-            Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+            if (e.CommandName == "Select")
+            {
+                Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+            }
+            else if (e.CommandName == "Add")
+            {
+                SqlDataReader AnimeUser = sql.consulta("EXEC vDetalleAnime '" + Nick + "'," + ID);
+                if (AnimeUser.Read())
+                {
+                    Mensaje("Sin duplicados", "Este anime ya está en tu lista", "info");
+                }
+                else
+                {
+                    cdc = new ConexionLQDataContext();
+                    Anime_Usuario au = new Anime_Usuario();
+                    au.id_Anime = Convert.ToInt32(ID);
+                    au.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
+                    au.id_AvanceAnime = 1;
+                    cdc.Anime_Usuario.InsertOnSubmit(au);
+                    cdc.SubmitChanges();
+                    Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
+                }
+            }
         }
-        else if (e.CommandName == "Add")
+        catch
         {
-
+            Mensaje("Surgió un problema", "No se ha podido agregar el anime a tu lista", "error");
         }
+    }
+
+    private void Mensaje(String Tit, String Msg, String Stat)
+    {
+        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
 }

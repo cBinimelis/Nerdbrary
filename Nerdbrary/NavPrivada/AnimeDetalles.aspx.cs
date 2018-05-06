@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
 {
     Conexion sql = new Conexion();
+    ConexionLQDataContext cdc;
     protected void Page_Load(object sender, EventArgs e)
     {
         LlenaDetalles();
@@ -73,6 +74,12 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
                     Estado = AnimeUser[9].ToString();
                     Avance = AnimeUser[10].ToString();
                     DatosOK = true;
+
+                    //Llenar grilla adicional
+                    cdc = new ConexionLQDataContext();
+                    GrillaAnimeUsuario.DataSource = cdc.vDetalleAnime(Nick, Convert.ToInt32(idAnime));
+                    GrillaAnimeUsuario.DataBind();
+                    GrillaAnimeUsuario.Visible = true;
                 }
                 else
                 {
@@ -125,7 +132,6 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
         }
     }
     
-
     private void Mensaje(String Tit, String Msg, String Stat)
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);

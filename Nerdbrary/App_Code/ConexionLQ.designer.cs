@@ -41,6 +41,12 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
   partial void InsertAnime(Anime instance);
   partial void UpdateAnime(Anime instance);
   partial void DeleteAnime(Anime instance);
+  partial void InsertAnime_Usuario(Anime_Usuario instance);
+  partial void UpdateAnime_Usuario(Anime_Usuario instance);
+  partial void DeleteAnime_Usuario(Anime_Usuario instance);
+  partial void InsertAvance_Anime(Avance_Anime instance);
+  partial void UpdateAvance_Anime(Avance_Anime instance);
+  partial void DeleteAvance_Anime(Avance_Anime instance);
   #endregion
 	
 	public ConexionLQDataContext() : 
@@ -113,6 +119,22 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<Anime_Usuario> Anime_Usuario
+	{
+		get
+		{
+			return this.GetTable<Anime_Usuario>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Avance_Anime> Avance_Anime
+	{
+		get
+		{
+			return this.GetTable<Avance_Anime>();
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vAnimeUsuario")]
 	public ISingleResult<vAnimeUsuarioResult> vAnimeUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
 	{
@@ -142,6 +164,8 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<int> _id_EstadoUsuario;
 	
+	private EntitySet<Anime_Usuario> _Anime_Usuario;
+	
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -158,6 +182,7 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public Usuario()
 	{
+		this._Anime_Usuario = new EntitySet<Anime_Usuario>(new Action<Anime_Usuario>(this.attach_Anime_Usuario), new Action<Anime_Usuario>(this.detach_Anime_Usuario));
 		OnCreated();
 	}
 	
@@ -241,6 +266,19 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Anime_Usuario", Storage="_Anime_Usuario", ThisKey="id_Usuario", OtherKey="id_Usuario")]
+	public EntitySet<Anime_Usuario> Anime_Usuario
+	{
+		get
+		{
+			return this._Anime_Usuario;
+		}
+		set
+		{
+			this._Anime_Usuario.Assign(value);
+		}
+	}
+	
 	public event PropertyChangingEventHandler PropertyChanging;
 	
 	public event PropertyChangedEventHandler PropertyChanged;
@@ -259,6 +297,18 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_Anime_Usuario(Anime_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Usuario = this;
+	}
+	
+	private void detach_Anime_Usuario(Anime_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Usuario = null;
 	}
 }
 
@@ -518,6 +568,8 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<bool> _Activo;
 	
+	private EntitySet<Anime_Usuario> _Anime_Usuario;
+	
 	private EntityRef<Estado_Serie> _Estado_Serie;
 	
 	private EntityRef<Genero_Anime> _Genero_Anime;
@@ -552,6 +604,7 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public Anime()
 	{
+		this._Anime_Usuario = new EntitySet<Anime_Usuario>(new Action<Anime_Usuario>(this.attach_Anime_Usuario), new Action<Anime_Usuario>(this.detach_Anime_Usuario));
 		this._Estado_Serie = default(EntityRef<Estado_Serie>);
 		this._Genero_Anime = default(EntityRef<Genero_Anime>);
 		OnCreated();
@@ -785,6 +838,19 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Anime_Anime_Usuario", Storage="_Anime_Usuario", ThisKey="id_Anime", OtherKey="id_Anime")]
+	public EntitySet<Anime_Usuario> Anime_Usuario
+	{
+		get
+		{
+			return this._Anime_Usuario;
+		}
+		set
+		{
+			this._Anime_Usuario.Assign(value);
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Serie_Anime", Storage="_Estado_Serie", ThisKey="id_EstadoSerie", OtherKey="id_EstadoSerie", IsForeignKey=true)]
 	public Estado_Serie Estado_Serie
 	{
@@ -871,6 +937,18 @@ public partial class Anime : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_Anime_Usuario(Anime_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Anime = this;
+	}
+	
+	private void detach_Anime_Usuario(Anime_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Anime = null;
 	}
 }
 
@@ -1060,6 +1138,377 @@ public partial class vAnime
 				this._Estado = value;
 			}
 		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Anime_Usuario")]
+public partial class Anime_Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_Usuario;
+	
+	private int _id_Anime;
+	
+	private int _id_AvanceAnime;
+	
+	private string _Nota;
+	
+	private EntityRef<Anime> _Anime;
+	
+	private EntityRef<Usuario> _Usuario;
+	
+	private EntityRef<Avance_Anime> _Avance_Anime;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_UsuarioChanging(int value);
+    partial void Onid_UsuarioChanged();
+    partial void Onid_AnimeChanging(int value);
+    partial void Onid_AnimeChanged();
+    partial void Onid_AvanceAnimeChanging(int value);
+    partial void Onid_AvanceAnimeChanged();
+    partial void OnNotaChanging(string value);
+    partial void OnNotaChanged();
+    #endregion
+	
+	public Anime_Usuario()
+	{
+		this._Anime = default(EntityRef<Anime>);
+		this._Usuario = default(EntityRef<Usuario>);
+		this._Avance_Anime = default(EntityRef<Avance_Anime>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Usuario", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int id_Usuario
+	{
+		get
+		{
+			return this._id_Usuario;
+		}
+		set
+		{
+			if ((this._id_Usuario != value))
+			{
+				if (this._Usuario.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onid_UsuarioChanging(value);
+				this.SendPropertyChanging();
+				this._id_Usuario = value;
+				this.SendPropertyChanged("id_Usuario");
+				this.Onid_UsuarioChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Anime", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int id_Anime
+	{
+		get
+		{
+			return this._id_Anime;
+		}
+		set
+		{
+			if ((this._id_Anime != value))
+			{
+				if (this._Anime.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onid_AnimeChanging(value);
+				this.SendPropertyChanging();
+				this._id_Anime = value;
+				this.SendPropertyChanged("id_Anime");
+				this.Onid_AnimeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_AvanceAnime", DbType="Int NOT NULL")]
+	public int id_AvanceAnime
+	{
+		get
+		{
+			return this._id_AvanceAnime;
+		}
+		set
+		{
+			if ((this._id_AvanceAnime != value))
+			{
+				if (this._Avance_Anime.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onid_AvanceAnimeChanging(value);
+				this.SendPropertyChanging();
+				this._id_AvanceAnime = value;
+				this.SendPropertyChanged("id_AvanceAnime");
+				this.Onid_AvanceAnimeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="VarChar(MAX)")]
+	public string Nota
+	{
+		get
+		{
+			return this._Nota;
+		}
+		set
+		{
+			if ((this._Nota != value))
+			{
+				this.OnNotaChanging(value);
+				this.SendPropertyChanging();
+				this._Nota = value;
+				this.SendPropertyChanged("Nota");
+				this.OnNotaChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Anime_Anime_Usuario", Storage="_Anime", ThisKey="id_Anime", OtherKey="id_Anime", IsForeignKey=true)]
+	public Anime Anime
+	{
+		get
+		{
+			return this._Anime.Entity;
+		}
+		set
+		{
+			Anime previousValue = this._Anime.Entity;
+			if (((previousValue != value) 
+						|| (this._Anime.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Anime.Entity = null;
+					previousValue.Anime_Usuario.Remove(this);
+				}
+				this._Anime.Entity = value;
+				if ((value != null))
+				{
+					value.Anime_Usuario.Add(this);
+					this._id_Anime = value.id_Anime;
+				}
+				else
+				{
+					this._id_Anime = default(int);
+				}
+				this.SendPropertyChanged("Anime");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Anime_Usuario", Storage="_Usuario", ThisKey="id_Usuario", OtherKey="id_Usuario", IsForeignKey=true)]
+	public Usuario Usuario
+	{
+		get
+		{
+			return this._Usuario.Entity;
+		}
+		set
+		{
+			Usuario previousValue = this._Usuario.Entity;
+			if (((previousValue != value) 
+						|| (this._Usuario.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Usuario.Entity = null;
+					previousValue.Anime_Usuario.Remove(this);
+				}
+				this._Usuario.Entity = value;
+				if ((value != null))
+				{
+					value.Anime_Usuario.Add(this);
+					this._id_Usuario = value.id_Usuario;
+				}
+				else
+				{
+					this._id_Usuario = default(int);
+				}
+				this.SendPropertyChanged("Usuario");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Avance_Anime_Anime_Usuario", Storage="_Avance_Anime", ThisKey="id_AvanceAnime", OtherKey="id_AvanceAnime", IsForeignKey=true)]
+	public Avance_Anime Avance_Anime
+	{
+		get
+		{
+			return this._Avance_Anime.Entity;
+		}
+		set
+		{
+			Avance_Anime previousValue = this._Avance_Anime.Entity;
+			if (((previousValue != value) 
+						|| (this._Avance_Anime.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Avance_Anime.Entity = null;
+					previousValue.Anime_Usuario.Remove(this);
+				}
+				this._Avance_Anime.Entity = value;
+				if ((value != null))
+				{
+					value.Anime_Usuario.Add(this);
+					this._id_AvanceAnime = value.id_AvanceAnime;
+				}
+				else
+				{
+					this._id_AvanceAnime = default(int);
+				}
+				this.SendPropertyChanged("Avance_Anime");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Avance_Anime")]
+public partial class Avance_Anime : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_AvanceAnime;
+	
+	private string _Descripcion;
+	
+	private EntitySet<Anime_Usuario> _Anime_Usuario;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_AvanceAnimeChanging(int value);
+    partial void Onid_AvanceAnimeChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    #endregion
+	
+	public Avance_Anime()
+	{
+		this._Anime_Usuario = new EntitySet<Anime_Usuario>(new Action<Anime_Usuario>(this.attach_Anime_Usuario), new Action<Anime_Usuario>(this.detach_Anime_Usuario));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_AvanceAnime", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id_AvanceAnime
+	{
+		get
+		{
+			return this._id_AvanceAnime;
+		}
+		set
+		{
+			if ((this._id_AvanceAnime != value))
+			{
+				this.Onid_AvanceAnimeChanging(value);
+				this.SendPropertyChanging();
+				this._id_AvanceAnime = value;
+				this.SendPropertyChanged("id_AvanceAnime");
+				this.Onid_AvanceAnimeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Descripcion
+	{
+		get
+		{
+			return this._Descripcion;
+		}
+		set
+		{
+			if ((this._Descripcion != value))
+			{
+				this.OnDescripcionChanging(value);
+				this.SendPropertyChanging();
+				this._Descripcion = value;
+				this.SendPropertyChanged("Descripcion");
+				this.OnDescripcionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Avance_Anime_Anime_Usuario", Storage="_Anime_Usuario", ThisKey="id_AvanceAnime", OtherKey="id_AvanceAnime")]
+	public EntitySet<Anime_Usuario> Anime_Usuario
+	{
+		get
+		{
+			return this._Anime_Usuario;
+		}
+		set
+		{
+			this._Anime_Usuario.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Anime_Usuario(Anime_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Avance_Anime = this;
+	}
+	
+	private void detach_Anime_Usuario(Anime_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Avance_Anime = null;
 	}
 }
 
@@ -1258,6 +1707,10 @@ public partial class vDetalleAnimeResult
 	
 	private string _Avance;
 	
+	private int _id_Usuario;
+	
+	private string _Nota;
+	
 	public vDetalleAnimeResult()
 	{
 	}
@@ -1434,6 +1887,38 @@ public partial class vDetalleAnimeResult
 			if ((this._Avance != value))
 			{
 				this._Avance = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Usuario", DbType="Int NOT NULL")]
+	public int id_Usuario
+	{
+		get
+		{
+			return this._id_Usuario;
+		}
+		set
+		{
+			if ((this._id_Usuario != value))
+			{
+				this._id_Usuario = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="VarChar(MAX)")]
+	public string Nota
+	{
+		get
+		{
+			return this._Nota;
+		}
+		set
+		{
+			if ((this._Nota != value))
+			{
+				this._Nota = value;
 			}
 		}
 	}
