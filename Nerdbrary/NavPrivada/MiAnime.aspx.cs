@@ -23,8 +23,7 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
     {
         String Nick = Convert.ToString(Session["Admin"]);
         cdc = new ConexionLQDataContext();
-        //GrillaAnime.DataSource = cdc.vAnime(Nick);
-        AnimeList.DataSource = cdc.vAnimeUsuario("ivichan");
+        AnimeList.DataSource = cdc.vAnimeUsuario(Nick);
         AnimeList.DataBind();
     }
     

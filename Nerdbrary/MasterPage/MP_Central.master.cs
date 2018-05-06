@@ -11,7 +11,7 @@ public partial class MasterPage_MP_Central : System.Web.UI.MasterPage
     {
         if (Session["Admin"] == null)
         {
-            //Response.Redirect("../Default.aspx");
+            Response.Redirect("../Default.aspx");
         }
     }
 }

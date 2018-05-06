@@ -31,15 +31,17 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
 
     protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        //Determine the RowIndex of the Row whose Button was clicked.
-        int rowIndex = Convert.ToInt32(e.CommandArgument);
+        if (e.CommandName == "Select")
+        {
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = GrillaAnime.Rows[rowIndex];
+            string ID = (row.FindControl("lbl_id") as Label).Text;
+            IdGrilla = Convert.ToInt32(ID);
+            Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+        }
+        else if (e.CommandName == "Add")
+        {
 
-        //Reference the GridView Row.
-        GridViewRow row = GrillaAnime.Rows[rowIndex];
-
-        //Fetch value of Name.
-        string ID = (row.FindControl("lbl_id") as Label).Text;
-        IdGrilla = Convert.ToInt32(ID);
-        Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+        }
     }
 }

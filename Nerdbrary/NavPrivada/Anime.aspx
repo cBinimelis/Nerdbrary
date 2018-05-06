@@ -54,7 +54,8 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:Button ID="Button1" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                        <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                        <asp:Button ID="btn_agregar" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Agregar" CommandName="Add" CommandArgument="<%# Container.DataItemIndex %>" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <%--<asp:CommandField ButtonType="Link" ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />--%>
