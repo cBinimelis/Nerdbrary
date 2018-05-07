@@ -10,21 +10,28 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
 {
     Conexion sql = new Conexion();
     ConexionLQDataContext cdc;
+    String Nick = "";
+    String idAnime = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-        LlenaDetalles();
+        Nick = Convert.ToString(Session["Admin"]);
+        idAnime = Request.QueryString["Id"];
+        if (!IsPostBack)
+        {
+            LlenaDetalles();
+            llenarGrilla();
+        }
     }
+
 
     private void LlenaDetalles()
     {
-        String idAnime = Request.QueryString["Id"];
         if (idAnime == null || idAnime.Equals(0))
         {
             Mensaje("Aviso", "Hubo un error al cargar la pagina", "info");
         }
         else
         {
-            String Nick = Convert.ToString(Session["Admin"]);
             String Nombre = "";
             String Sinopsis = "";
             String Lanzamiento = "";
@@ -35,7 +42,7 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
             String OtrosGeneros = "";
             String Estado = "";
             String Avance = "";
-            bool DatosOK=true;
+            bool DatosOK = true;
 
             if (Nick == "" || Nick == null)
             {
@@ -74,12 +81,7 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
                     Estado = AnimeUser[9].ToString();
                     Avance = AnimeUser[10].ToString();
                     DatosOK = true;
-
-                    //Llenar grilla adicional
-                    cdc = new ConexionLQDataContext();
-                    GrillaAnimeUsuario.DataSource = cdc.vDetalleAnime(Nick, Convert.ToInt32(idAnime));
-                    GrillaAnimeUsuario.DataBind();
-                    GrillaAnimeUsuario.Visible = true;
+                    llenarGrilla();
                 }
                 else
                 {
@@ -131,10 +133,68 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
             }
         }
     }
-    
+
+    private void llenarGrilla()
+    {
+        cdc = new ConexionLQDataContext();
+        GrillaAnimeUsuario.DataSource = cdc.vDetalleAnime(Nick, Convert.ToInt32(idAnime));
+        GrillaAnimeUsuario.DataBind();
+    }
+
+
+    protected void GrillaAnimeUsuario_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaAnimeUsuario.EditIndex)
+        {
+            (e.Row.Cells[3].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+        }
+    }
+
+    protected void GrillaAnimeUsuario_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        GrillaAnimeUsuario.EditIndex = e.NewEditIndex;
+        this.llenarGrilla();
+    }
+
+    protected void GrillaAnimeUsuario_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        GrillaAnimeUsuario.EditIndex = -1;
+        this.llenarGrilla();
+    }
+
+    protected void GrillaAnimeUsuario_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        try
+        {
+            GridViewRow row = GrillaAnimeUsuario.Rows[e.RowIndex];
+            int idAnimeUsuario = Convert.ToInt32(GrillaAnimeUsuario.DataKeys[e.RowIndex].Values[0]);
+            int Avance = (row.FindControl("dd_AAnime") as DropDownList).SelectedIndex;
+            String Nota = (row.FindControl("txt_nota")as TextBox).Text.Trim();
+
+            cdc = new ConexionLQDataContext();
+            Anime_Usuario au = (from a in cdc.Anime_Usuario where a.id_AnimeUsuario == idAnimeUsuario select a).FirstOrDefault();
+            au.id_AvanceAnime = Avance + 1;
+            au.Nota = Nota;
+            cdc.SubmitChanges();
+            GrillaAnimeUsuario.EditIndex = -1;
+            Mensaje("Completado con exito", "Se han actualizado los datos", "success");
+            this.llenarGrilla();
+            this.LlenaDetalles();
+
+        }
+        catch
+        {
+            Mensaje("Sin juegos", "Debes ingresar datos validos", "error");
+        }
+    }
+
+    protected void GrillaAnimeUsuario_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        this.llenarGrilla();
+    }
+
     private void Mensaje(String Tit, String Msg, String Stat)
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
-
 }

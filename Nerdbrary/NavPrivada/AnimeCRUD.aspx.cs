@@ -156,35 +156,36 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
 
     protected void GrillaAnime_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        try { 
-        GridViewRow row = GrillaAnime.Rows[e.RowIndex];
-        int idAnime = Convert.ToInt32(GrillaAnime.DataKeys[e.RowIndex].Values[0]);
-        String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
-        String Caps = (row.FindControl("txt_capitulos") as TextBox).Text.Trim();
-        String Temps = (row.FindControl("txt_temporadas") as TextBox).Text.Trim();
-        String Lanzamiento = (row.FindControl("txt_lanzamiento") as TextBox).Text.Trim();
-        int Estado = (row.FindControl("dd_estado") as DropDownList).SelectedIndex;
-        int Genero = (row.FindControl("dd_genero") as DropDownList).SelectedIndex;
-        String OG = (row.FindControl("txt_OGeneros") as TextBox).Text.Trim();
-        if (Nombre.Equals("") || Caps.Equals("") || Temps.Equals("") || Lanzamiento.Equals("") || OG.Equals("") || Lanzamiento == null)
+        try
         {
-            Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
-        }
-        else
-        {
-            cdc = new ConexionLQDataContext();
-            Anime aup = (from a in cdc.Anime where a.id_Anime == idAnime select a).FirstOrDefault();
-            aup.Nombre = Nombre;
-            aup.CapitulosTotales = Convert.ToInt32(Caps);
-            aup.Temporadas = Convert.ToInt32(Temps);
-            aup.Lanzamiento = Convert.ToDateTime(Lanzamiento);
-            aup.id_EstadoSerie = Estado + 1;
-            aup.id_GeneroAnime = Genero + 1;
-            aup.Otros_Generos = OG;
-            cdc.SubmitChanges();
-            GrillaAnime.EditIndex = -1;
-            Mensaje("Completado con exito", "Se han actualizado los datos", "success");
-            this.llenar();
+            GridViewRow row = GrillaAnime.Rows[e.RowIndex];
+            int idAnime = Convert.ToInt32(GrillaAnime.DataKeys[e.RowIndex].Values[0]);
+            String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
+            String Caps = (row.FindControl("txt_capitulos") as TextBox).Text.Trim();
+            String Temps = (row.FindControl("txt_temporadas") as TextBox).Text.Trim();
+            String Lanzamiento = (row.FindControl("txt_lanzamiento") as TextBox).Text.Trim();
+            int Estado = (row.FindControl("dd_estado") as DropDownList).SelectedIndex;
+            int Genero = (row.FindControl("dd_genero") as DropDownList).SelectedIndex;
+            String OG = (row.FindControl("txt_OGeneros") as TextBox).Text.Trim();
+            if (Nombre.Equals("") || Caps.Equals("") || Temps.Equals("") || Lanzamiento.Equals("") || OG.Equals("") || Lanzamiento == null)
+            {
+                Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
+            }
+            else
+            {
+                cdc = new ConexionLQDataContext();
+                Anime aup = (from a in cdc.Anime where a.id_Anime == idAnime select a).FirstOrDefault();
+                aup.Nombre = Nombre;
+                aup.CapitulosTotales = Convert.ToInt32(Caps);
+                aup.Temporadas = Convert.ToInt32(Temps);
+                aup.Lanzamiento = Convert.ToDateTime(Lanzamiento);
+                aup.id_EstadoSerie = Estado + 1;
+                aup.id_GeneroAnime = Genero + 1;
+                aup.Otros_Generos = OG;
+                cdc.SubmitChanges();
+                GrillaAnime.EditIndex = -1;
+                Mensaje("Completado con exito", "Se han actualizado los datos", "success");
+                this.llenar();
             }
         }
         catch

@@ -43,27 +43,32 @@
                     </div>
                 </div>
                 <div class="uk-section-small">
-                    <asp:GridView ID="GrillaAnimeUsuario" DataKeyNames="id_Anime, id_Usuario" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="false"
-                        GridLines="None" runat="server" Visible="false">
+                    <asp:GridView ID="GrillaAnimeUsuario" DataKeyNames="id_AnimeUsuario" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="false"
+                        GridLines="None" runat="server" OnRowDataBound="GrillaAnimeUsuario_RowDataBound" OnRowEditing="GrillaAnimeUsuario_RowEditing" OnRowCancelingEdit="GrillaAnimeUsuario_RowCancelingEdit"
+                        OnRowUpdating="GrillaAnimeUsuario_RowUpdating" OnRowDeleting="GrillaAnimeUsuario_RowDeleting">
                         <Columns>
+                                <asp:TemplateField HeaderText="ID Anime" Visible="false">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_AnimeUsuario") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             <asp:TemplateField ControlStyle-CssClass="uk-form-width-small">
                                 <EditItemTemplate>
-                                    <asp:DropDownList ID="dd_AAnime" runat="server" DataSourceID="AAnime_DS" DataTextField="Descripcion" DataValueField="id_AvanceAnime"></asp:DropDownList>
+                                    <asp:DropDownList ID="dd_AAnime" CssClass="uk-select  uk-form-width-large" runat="server" DataSourceID="AAnime_DS" DataTextField="Descripcion" DataValueField="id_AvanceAnime"></asp:DropDownList>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Nota">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_Nota" CssClass="uk-form-width-large" runat="server" Text='<%# Eval("Nota") %>'></asp:Label>
+                                    <asp:Label ID="lbl_Nota" CssClass="uk-form-width-large" Text='<%# Eval("Nota") %>' runat="server"></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txt_nota" Text='<%# Eval("Nota") %>' CssClass="uk-input" runat="server"></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:CommandField ButtonType="Link" ShowEditButton="true" EditText="<span uk-icon='icon: pencil' uk-tooltip='title: Editar'></span>"
                                     CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"
                                     ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash' uk-tooltip='title: Eliminar de mi lista'></span>" />
                         </Columns>
-                        
                     </asp:GridView>
                 </div>
             </div>

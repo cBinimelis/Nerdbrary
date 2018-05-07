@@ -55,22 +55,23 @@
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Anime_Usuario" Member="Anime_Usuario">
-    <Type Name="Anime_Usuario">
-      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_Anime" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_AvanceAnime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Anime_Anime_Usuario" Member="Anime" ThisKey="id_Anime" OtherKey="id_Anime" Type="Anime" IsForeignKey="true" />
-      <Association Name="Usuario_Anime_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
-      <Association Name="Avance_Anime_Anime_Usuario" Member="Avance_Anime" ThisKey="id_AvanceAnime" OtherKey="id_AvanceAnime" Type="Avance_Anime" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Avance_Anime" Member="Avance_Anime">
     <Type Name="Avance_Anime">
       <Column Name="id_AvanceAnime" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Avance_Anime_Anime_Usuario" Member="Anime_Usuario" ThisKey="id_AvanceAnime" OtherKey="id_AvanceAnime" Type="Anime_Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Anime_Usuario" Member="Anime_Usuario">
+    <Type Name="Anime_Usuario">
+      <Column Name="id_AnimeUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Anime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_AvanceAnime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Anime_Anime_Usuario" Member="Anime" ThisKey="id_Anime" OtherKey="id_Anime" Type="Anime" IsForeignKey="true" />
+      <Association Name="Avance_Anime_Anime_Usuario" Member="Avance_Anime" ThisKey="id_AvanceAnime" OtherKey="id_AvanceAnime" Type="Avance_Anime" IsForeignKey="true" />
+      <Association Name="Usuario_Anime_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">
@@ -91,7 +92,7 @@
     <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="Anime" Parameter="anime" Type="System.Int32" DbType="Int" />
     <ElementType Name="vDetalleAnimeResult">
-      <Column Name="id_Anime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_AnimeUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
@@ -102,7 +103,6 @@
       <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Avance" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Nota" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>

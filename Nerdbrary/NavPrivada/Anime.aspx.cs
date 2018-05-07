@@ -58,6 +58,7 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
                     au.id_Anime = Convert.ToInt32(ID);
                     au.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
                     au.id_AvanceAnime = 1;
+                    au.Nota = "Sin notas adjuntas";
                     cdc.Anime_Usuario.InsertOnSubmit(au);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
