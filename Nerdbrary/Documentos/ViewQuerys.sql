@@ -11,8 +11,8 @@
 ALTER PROC vDetalleAnime @User VARCHAR(50), @Anime INT = 0
 AS
 BEGIN
-SELECT A.id_Anime, A.Nombre, A.Sinopsis, CONVERT(varchar, A.Lanzamiento, 103) AS 'Lanzamiento' , A.Temporadas, A.CapitulosTotales 'Capitulos',
- A.Imagen, GA.Descripcion 'Genero', A.Otros_Generos 'Otros Generos', ES.Descripcion 'Estado', AA.Descripcion 'Avance', U.id_Usuario, AU.Nota
+SELECT AU.id_AnimeUsuario , A.Nombre, A.Sinopsis, CONVERT(varchar, A.Lanzamiento, 103) AS 'Lanzamiento' , A.Temporadas, A.CapitulosTotales 'Capitulos',
+ A.Imagen, GA.Descripcion 'Genero', A.Otros_Generos 'Otros Generos', ES.Descripcion 'Estado', AA.Descripcion 'Avance', AU.Nota
 FROM Anime_Usuario AU
 INNER JOIN Anime A ON AU.id_Anime = A.id_Anime
 INNER JOIN Usuario U ON AU.id_Usuario = U.id_Usuario
@@ -22,7 +22,7 @@ INNER JOIN Avance_Anime AA ON AA.id_AvanceAnime = AU.id_AvanceAnime
 WHERE AU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND AU.id_Anime = @Anime AND A.Activo =  1
 END
 
-EXEC vDetalleAnime 'ivichan', 1
+EXEC vDetalleAnime 'ivichan', 4
 
 
 

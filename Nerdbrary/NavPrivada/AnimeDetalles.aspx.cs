@@ -108,6 +108,7 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
 
             if (DatosOK)
             {
+                Page.Title = "Detalles: " + Nombre;
                 TituloA.Text = Nombre;
                 DescripcionA.Text = Sinopsis;
                 LanzamientoA.Text = Lanzamiento;
