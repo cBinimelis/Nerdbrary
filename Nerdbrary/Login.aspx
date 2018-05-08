@@ -4,11 +4,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-
-    <div class="">
         <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-            <div class="uk-background-cover" style="background-image: url('img/LoginCover.jpg');" uk-height-viewport></div>
+            <div class="uk-position-relative uk-background-cover uk-height-viewport uk-visible-toggle uk-light" uk-slideshow="animation: push">
+                <ul class="uk-slideshow-items" uk-height-viewport="min-height: 300">
+                    <li>
+                        <img src="../img/LoginCover.jpg" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="../img/AnimeBG.png" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="../img/MyAnimeBG.jpg" alt="" uk-cover>
+                    </li>
+                </ul>
+
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+            </div>
+
             <div class="uk-padding-large">
                 <h1>Inicio de Sesion</h1>
                 <div class="uk-section">
@@ -33,7 +46,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
 

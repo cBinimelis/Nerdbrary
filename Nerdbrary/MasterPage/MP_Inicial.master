@@ -8,44 +8,46 @@
     <title>Bienvenidos</title>
     <link id="favicon1" runat="server" rel="shortcut icon" href="~/img/pantsu.ico" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="../css/uikit.min.css" />
+    <link href="../css/Personal.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
+    <script src="../js/PersonalScript.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="uk-position-relative">
-            <img src="../docs/images/light.jpg" alt="">
-            <div class="uk-position-top">
-                <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-                    <div class="uk-navbar-left">
-                        <ul class="uk-navbar-nav">
-                            <li class="uk-active"><a href="#">Active</a></li>
-                            <li><a href="#">Item</a></li>
-                            <li>
-                                <a href="#">Parent</a>
-                                <div class="uk-navbar-dropdown">
-                                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li class="uk-active"><a href="#">Active</a></li>
-                                        <li><a href="#">Item</a></li>
-                                        <li class="uk-nav-header">Header</li>
-                                        <li><a href="#">Item</a></li>
-                                        <li><a href="#">Item</a></li>
-                                        <li class="uk-nav-divider"></li>
-                                        <li><a href="#">Item</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a href="Login.aspx">Sesion</a></li>
-                        </ul>
-                    </div>
-                    <div class="uk-navbar-right">
-                        <a href="Default.aspx" class="uk-navbar-item uk-logo">LOGO</a>
-                    </div>
-                </nav>
-            </div>
+        <div class="uk-light" uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+            <nav class="uk-navbar-container" uk-navbar style="position: relative; background: repeating-linear-gradient(90deg, #f19bff, #ba55d3, #87cefa);  z-index: 980;">
+
+
+                <div class="uk-navbar-left">
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a class="uk-text-bold">Series</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="../NavInvitado/AnimeInvitado.aspx">Anime</a></li>
+                                    <li class="uk-nav-header">Series IRL</li>
+                                    <li><a href="#">Lista Series</a></li>
+                                    <li><a href="#">Mis Series</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="Login.aspx">Sesion</a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    <a href="../Default.aspx" class="uk-navbar-item uk-logo">
+                        <img src="../img/pantsu.ico" style="height: 100%" alt="Logo" />
+                    </a>
+                </div>
+
+
+            </nav>
         </div>
 
 
