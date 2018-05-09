@@ -29,7 +29,15 @@
                                 <div class="uk-navbar-center-left">
                                     <div>
                                         <ul class="uk-navbar-nav">
-                                            <li><a class="uk-text-bold">Juegos</a></li>
+                                            <li><a href="../NavPrivada/Juegos.aspx" class="uk-text-bold">Juegos</a>
+                                                <div class="uk-navbar-dropdown">
+                                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                        <li><a href="#">Mi Anime</a></li>
+                                                        <li><a href="#">Mantenedor</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
                                             <li>
                                                 <a class="uk-text-bold">Series</a>
                                                 <div class="uk-navbar-dropdown">
