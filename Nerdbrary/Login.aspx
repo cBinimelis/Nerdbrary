@@ -5,16 +5,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-            <div class="uk-position-relative uk-background-cover uk-height-viewport uk-visible-toggle uk-light" uk-slideshow="animation: push">
+            <div class="uk-position-relative uk-background-cover uk-height-viewport uk-visible-toggle uk-light" 
+                uk-slideshow="animation: push; autoplay: true; autoplay-interval: 2000; pause-on-hover: true">
                 <ul class="uk-slideshow-items" uk-height-viewport="min-height: 300">
                     <li>
-                        <img src="../img/LoginCover.jpg" alt="" uk-cover>
+                        <img src="../img/LoginCover1.jpg" alt="" uk-cover>
                     </li>
                     <li>
-                        <img src="../img/AnimeBG.png" alt="" uk-cover>
+                        <img src="../img/LoginCover2.png" alt="" uk-cover>
                     </li>
                     <li>
-                        <img src="../img/MyAnimeBG.jpg" alt="" uk-cover>
+                        <img src="../img/LoginCover3.jpg" alt="" uk-cover>
                     </li>
                 </ul>
 
