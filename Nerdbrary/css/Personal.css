@@ -46,7 +46,7 @@
     -moz-filter: blur(13px);
     -o-filter: blur(13px);
     -ms-filter: blur(13px);
-    filter: blur(13px);
+    filter: blur(10px);
     position: absolute;
     left: 0;
     top: 0;

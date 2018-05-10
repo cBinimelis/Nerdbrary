@@ -32,7 +32,7 @@
                                             <li><a href="../NavPrivada/Juegos.aspx" class="uk-text-bold">Juegos</a>
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                        <li><a href="#">Mi Anime</a></li>
+                                                        <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
                                                         <li><a href="#">Mantenedor</a></li>
                                                     </ul>
                                                 </div>
@@ -43,7 +43,7 @@
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                                         <li class="uk-nav-header uk-active"><a href="Anime.aspx">Anime</a></li>
-                                                        <li><a href="MiAnime.aspx">Mi Anime</a></li>
+                                                        <li><a href="MiAnime.aspx">Mis Anime</a></li>
                                                         <li><a href="AnimeCRUD.aspx">Mantenedor</a></li>
                                                         <li class="uk-nav-header">Series IRL</li>
                                                         <li><a href="#">Lista Series</a></li>
