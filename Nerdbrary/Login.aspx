@@ -17,6 +17,15 @@
                     <li>
                         <img src="../img/LoginCover3.jpg" alt="" uk-cover>
                     </li>
+                    <li>
+                        <img src="../img/LoginCover4.jpg" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="../img/LoginCover5.jpg" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="../img/LoginCover6.jpg" alt="" uk-cover>
+                    </li>
                 </ul>
 
                 <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
