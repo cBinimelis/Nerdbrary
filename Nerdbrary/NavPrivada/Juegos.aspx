@@ -19,10 +19,40 @@
                 <h1 class=" uk-heading-primary uk-text-center">Lista de Juegos</h1>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
-                        <asp:GridView ID="GrillaJuegos"  DataKeyNames="id_Juego" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
+                        <asp:GridView ID="GrillaJuegos" DataKeyNames="id_Juego" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
                             BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaJuegos_RowCommand">
                             <Columns>
-
+                                <asp:TemplateField Visible="false">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Juego") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Nombre">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Lanzamiento">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Genero">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Estado">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                        <asp:Button ID="btn_agregar" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Agregar" CommandName="Add" CommandArgument="<%# Container.DataItemIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </div>

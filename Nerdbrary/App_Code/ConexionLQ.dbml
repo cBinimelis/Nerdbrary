@@ -7,6 +7,7 @@
       <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="id_EstadoUsuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Usuario_Anime_Usuario" Member="Anime_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Anime_Usuario" />
+      <Association Name="Usuario_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Juegos_Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Estado_Serie" Member="Estado_Serie">
@@ -74,6 +75,119 @@
       <Association Name="Usuario_Anime_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.vJuegos" Member="vJuegos">
+    <Type Name="vJuegos">
+      <Column Name="id_Juego" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Juegos" Member="Juegos">
+    <Type Name="Juegos">
+      <Column Name="id_Juego" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id_Desarrollador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_GeneroJuego" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_EstadoJuego" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Juegos_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_Juego" OtherKey="id_Juego" Type="Juegos_Usuario" />
+      <Association Name="Genero_Juegos_Juegos" Member="Genero_Juegos" ThisKey="id_GeneroJuego" OtherKey="id_GeneroJuego" Type="Genero_Juegos" IsForeignKey="true" />
+      <Association Name="Estado_Juegos_Juegos" Member="Estado_Juegos" ThisKey="id_EstadoJuego" OtherKey="id_EstadoJuegos" Type="Estado_Juegos" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Juegos_Usuario" Member="Juegos_Usuario">
+    <Type Name="Juegos_Usuario">
+      <Column Name="id_JuegoUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Juego" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_AvanceJuego" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Juegos_Juegos_Usuario" Member="Juegos" ThisKey="id_Juego" OtherKey="id_Juego" Type="Juegos" IsForeignKey="true" />
+      <Association Name="Usuario_Juegos_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Avance_Juego_Juegos_Usuario" Member="Avance_Juego" ThisKey="id_AvanceJuego" OtherKey="id_AvanceJuego" Type="Avance_Juego" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Avance_Juego" Member="Avance_Juego">
+    <Type Name="Avance_Juego">
+      <Column Name="id_AvanceJuego" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripción" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Avance_Juego_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_AvanceJuego" OtherKey="id_AvanceJuego" Type="Juegos_Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Genero_Juegos" Member="Genero_Juegos">
+    <Type Name="Genero_Juegos">
+      <Column Name="id_GeneroJuego" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Genero_Juegos_Juegos" Member="Juegos" ThisKey="id_GeneroJuego" OtherKey="id_GeneroJuego" Type="Juegos" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estado_Juegos" Member="Estado_Juegos">
+    <Type Name="Estado_Juegos">
+      <Column Name="id_EstadoJuegos" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_Juegos_Juegos" Member="Juegos" ThisKey="id_EstadoJuegos" OtherKey="id_EstadoJuego" Type="Juegos" />
+    </Type>
+  </Table>
+  <Function Name="dbo.vDetalleAnime" Method="vDetalleAnime">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Anime" Parameter="anime" Type="System.Int32" DbType="Int" />
+    <ElementType Name="vDetalleAnimeResult">
+      <Column Name="id_AnimeUsuario" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Temporadas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Capitulos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Avance" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vDetalleJuego" Method="vDetalleJuego">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Juego" Parameter="juego" Type="System.Int32" DbType="Int" />
+    <ElementType Name="vDetalleJuegoResult">
+      <Column Name="id_JuegoUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id_Desarrollador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Desarrollador" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Avance" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vJuegoUsuario" Method="vJuegoUsuario">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="vJuegoUsuarioResult">
+      <Column Name="id_JuegoUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id_Desarrollador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Desarrollador" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">
     <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="vAnimeUsuarioResult">
@@ -86,24 +200,6 @@
       <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.vDetalleAnime" Method="vDetalleAnime">
-    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="Anime" Parameter="anime" Type="System.Int32" DbType="Int" />
-    <ElementType Name="vDetalleAnimeResult">
-      <Column Name="id_AnimeUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Temporadas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Capitulos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Avance" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

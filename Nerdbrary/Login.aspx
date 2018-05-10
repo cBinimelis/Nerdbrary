@@ -12,7 +12,7 @@
                         <img src="../img/LoginCover1.jpg" alt="" uk-cover>
                     </li>
                     <li>
-                        <img src="../img/LoginCover2.png" alt="" uk-cover>
+                        <img src="../img/LoginCover2.jpg" alt="" uk-cover>
                     </li>
                     <li>
                         <img src="../img/LoginCover3.jpg" alt="" uk-cover>

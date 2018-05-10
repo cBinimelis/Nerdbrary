@@ -17,9 +17,9 @@
 
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
-            <div class="uk-container">
-                <h1 class="uk-article-title uk-align-center">Mi Anime</h1>
-                <div uk-grid>
+            <div class=" uk-container-expand">
+                <h1 class="uk-article-title uk-text-center uk-heading-bullet">Mi Anime</h1>
+                <div class="uk-flex uk-flex-center" uk-grid>
                     <asp:ListView ID="AnimeList" DataKeyNames="id_Anime" runat="server" OnItemCommand="AnimeList_ItemCommand">
                         <GroupTemplate>
                             <div id="itemPlaceholderContainer" class="uk-child-width-1-4@m" runat="server">
@@ -32,7 +32,7 @@
                                 <div class="uk-card-media-top uk-width-medium">
                                     <img src="../img/anime/<%# Eval("Imagen") %>" alt="">
                                 </div>
-                                <div class="uk-card-body">
+                                <div class="uk-card-body uk-padding-small">
                                     <h3 class="uk-card-title">
                                         <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
                                     </h3>
