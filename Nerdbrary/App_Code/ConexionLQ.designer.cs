@@ -62,6 +62,9 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
   partial void InsertEstado_Juegos(Estado_Juegos instance);
   partial void UpdateEstado_Juegos(Estado_Juegos instance);
   partial void DeleteEstado_Juegos(Estado_Juegos instance);
+  partial void InsertDesarrollador(Desarrollador instance);
+  partial void UpdateDesarrollador(Desarrollador instance);
+  partial void DeleteDesarrollador(Desarrollador instance);
   #endregion
 	
 	public ConexionLQDataContext() : 
@@ -195,6 +198,14 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<Estado_Juegos>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Desarrollador> Desarrollador
+	{
+		get
+		{
+			return this.GetTable<Desarrollador>();
 		}
 	}
 	
@@ -1826,6 +1837,8 @@ public partial class Juegos : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private EntityRef<Estado_Juegos> _Estado_Juegos;
 	
+	private EntityRef<Desarrollador> _Desarrollador;
+	
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1857,6 +1870,7 @@ public partial class Juegos : INotifyPropertyChanging, INotifyPropertyChanged
 		this._Juegos_Usuario = new EntitySet<Juegos_Usuario>(new Action<Juegos_Usuario>(this.attach_Juegos_Usuario), new Action<Juegos_Usuario>(this.detach_Juegos_Usuario));
 		this._Genero_Juegos = default(EntityRef<Genero_Juegos>);
 		this._Estado_Juegos = default(EntityRef<Estado_Juegos>);
+		this._Desarrollador = default(EntityRef<Desarrollador>);
 		OnCreated();
 	}
 	
@@ -1931,6 +1945,10 @@ public partial class Juegos : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			if ((this._id_Desarrollador != value))
 			{
+				if (this._Desarrollador.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
 				this.Onid_DesarrolladorChanging(value);
 				this.SendPropertyChanging();
 				this._id_Desarrollador = value;
@@ -2145,6 +2163,40 @@ public partial class Juegos : INotifyPropertyChanging, INotifyPropertyChanged
 					this._id_EstadoJuego = default(int);
 				}
 				this.SendPropertyChanged("Estado_Juegos");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desarrollador_Juegos", Storage="_Desarrollador", ThisKey="id_Desarrollador", OtherKey="id_Desarrollador", IsForeignKey=true)]
+	public Desarrollador Desarrollador
+	{
+		get
+		{
+			return this._Desarrollador.Entity;
+		}
+		set
+		{
+			Desarrollador previousValue = this._Desarrollador.Entity;
+			if (((previousValue != value) 
+						|| (this._Desarrollador.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Desarrollador.Entity = null;
+					previousValue.Juegos.Remove(this);
+				}
+				this._Desarrollador.Entity = value;
+				if ((value != null))
+				{
+					value.Juegos.Add(this);
+					this._id_Desarrollador = value.id_Desarrollador;
+				}
+				else
+				{
+					this._id_Desarrollador = default(int);
+				}
+				this.SendPropertyChanged("Desarrollador");
 			}
 		}
 	}
@@ -2802,6 +2854,168 @@ public partial class Estado_Juegos : INotifyPropertyChanging, INotifyPropertyCha
 	{
 		this.SendPropertyChanging();
 		entity.Estado_Juegos = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Desarrollador")]
+public partial class Desarrollador : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_Desarrollador;
+	
+	private string _Nombre;
+	
+	private string _Descripcion;
+	
+	private string _Imagen;
+	
+	private EntitySet<Juegos> _Juegos;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_DesarrolladorChanging(int value);
+    partial void Onid_DesarrolladorChanged();
+    partial void OnNombreChanging(string value);
+    partial void OnNombreChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    partial void OnImagenChanging(string value);
+    partial void OnImagenChanged();
+    #endregion
+	
+	public Desarrollador()
+	{
+		this._Juegos = new EntitySet<Juegos>(new Action<Juegos>(this.attach_Juegos), new Action<Juegos>(this.detach_Juegos));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Desarrollador", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id_Desarrollador
+	{
+		get
+		{
+			return this._id_Desarrollador;
+		}
+		set
+		{
+			if ((this._id_Desarrollador != value))
+			{
+				this.Onid_DesarrolladorChanging(value);
+				this.SendPropertyChanging();
+				this._id_Desarrollador = value;
+				this.SendPropertyChanged("id_Desarrollador");
+				this.Onid_DesarrolladorChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this.OnNombreChanging(value);
+				this.SendPropertyChanging();
+				this._Nombre = value;
+				this.SendPropertyChanged("Nombre");
+				this.OnNombreChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Descripcion
+	{
+		get
+		{
+			return this._Descripcion;
+		}
+		set
+		{
+			if ((this._Descripcion != value))
+			{
+				this.OnDescripcionChanging(value);
+				this.SendPropertyChanging();
+				this._Descripcion = value;
+				this.SendPropertyChanged("Descripcion");
+				this.OnDescripcionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this.OnImagenChanging(value);
+				this.SendPropertyChanging();
+				this._Imagen = value;
+				this.SendPropertyChanged("Imagen");
+				this.OnImagenChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Desarrollador_Juegos", Storage="_Juegos", ThisKey="id_Desarrollador", OtherKey="id_Desarrollador")]
+	public EntitySet<Juegos> Juegos
+	{
+		get
+		{
+			return this._Juegos;
+		}
+		set
+		{
+			this._Juegos.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Juegos(Juegos entity)
+	{
+		this.SendPropertyChanging();
+		entity.Desarrollador = this;
+	}
+	
+	private void detach_Juegos(Juegos entity)
+	{
+		this.SendPropertyChanging();
+		entity.Desarrollador = null;
 	}
 }
 

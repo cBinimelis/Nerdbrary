@@ -22,7 +22,7 @@ public partial class NavVisitas_AnimeVisitas : System.Web.UI.Page
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
-        GrillaAnime.DataSource = cdc.vAnime;
+        GrillaAnime.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);
         GrillaAnime.DataBind();
     }
 

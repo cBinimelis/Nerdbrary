@@ -102,6 +102,7 @@
       <Association Name="Juegos_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_Juego" OtherKey="id_Juego" Type="Juegos_Usuario" />
       <Association Name="Genero_Juegos_Juegos" Member="Genero_Juegos" ThisKey="id_GeneroJuego" OtherKey="id_GeneroJuego" Type="Genero_Juegos" IsForeignKey="true" />
       <Association Name="Estado_Juegos_Juegos" Member="Estado_Juegos" ThisKey="id_EstadoJuego" OtherKey="id_EstadoJuegos" Type="Estado_Juegos" IsForeignKey="true" />
+      <Association Name="Desarrollador_Juegos" Member="Desarrollador" ThisKey="id_Desarrollador" OtherKey="id_Desarrollador" Type="Desarrollador" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Juegos_Usuario" Member="Juegos_Usuario">
@@ -135,6 +136,15 @@
       <Column Name="id_EstadoJuegos" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Estado_Juegos_Juegos" Member="Juegos" ThisKey="id_EstadoJuegos" OtherKey="id_EstadoJuego" Type="Juegos" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Desarrollador" Member="Desarrollador">
+    <Type Name="Desarrollador">
+      <Column Name="id_Desarrollador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Desarrollador_Juegos" Member="Juegos" ThisKey="id_Desarrollador" OtherKey="id_Desarrollador" Type="Juegos" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">
