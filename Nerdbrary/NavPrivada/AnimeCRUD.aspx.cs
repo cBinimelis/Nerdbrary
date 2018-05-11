@@ -24,7 +24,7 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
     private void llenar()
     {
         cdc = new ConexionLQDataContext();
-        GrillaAnime.DataSource = cdc.vAnime;
+        GrillaAnime.DataSource = cdc.vAnime.OrderBy(X => X.Nombre);
         GrillaAnime.DataBind();
 
     }
@@ -51,7 +51,7 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
     {
         try
         {
-            if (txt_nombreN.Text.Trim().Equals("") || txt_sinopsisN.Text.Trim().Equals("") ||
+            if (txt_nombreN.Text.Trim().Equals("") || txt_sinopsisN.Text.Trim().Equals("") || txt_lanzamientoN.Text == null ||
                 txt_capitulosN.Text.Trim().Equals("") || txt_temporadasN.Text.Trim().Equals("") || txt_OGenerosN.Text.Trim().Equals(""))
             {
                 Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");

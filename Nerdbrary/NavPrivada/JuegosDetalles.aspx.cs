@@ -44,18 +44,18 @@ public partial class NavPrivada_JuegosDetalles : System.Web.UI.Page
 
             if (Nick == "" || Nick == null)
             {
-                SqlDataReader Juego = sql.consulta("SELECT* FROM vJuego WHERE id_Juego =" + idJuego);
+                SqlDataReader Juego = sql.consulta("SELECT * FROM vJuegos WHERE id_Juego = " + idJuego);
                 if (Juego.Read())
                 {
                     Nombre = Juego[1].ToString();
                     Sinopsis = Juego[2].ToString();
-                    Desarrollador = Juego[3].ToString();
-                    lnk_Desarrollador.Visible = false;
-                    Lanzamiento = Juego[4].ToString();
-                    RutaImagen = Juego[5].ToString();
-                    GeneroAnime = Juego[6].ToString();
-                    OtrosGeneros = Juego[7].ToString();
-                    Estado = Juego[8].ToString();
+                    lnk_Desarrollador.Attributes["href"] = "Desarrollador.aspx?Id=" + Juego[3].ToString();
+                    Desarrollador = Juego[4].ToString();
+                    Lanzamiento = Juego[5].ToString();
+                    RutaImagen = Juego[6].ToString();
+                    GeneroAnime = Juego[7].ToString();
+                    OtrosGeneros = Juego[8].ToString();
+                    Estado = Juego[9].ToString();
                     DatosOK = true;
                 }
                 else
@@ -83,18 +83,18 @@ public partial class NavPrivada_JuegosDetalles : System.Web.UI.Page
                 }
                 else
                 {
-                    SqlDataReader Juego = sql.consulta("SELECT* FROM vJuego WHERE id_Juego =" + idJuego);
+                    SqlDataReader Juego = sql.consulta("SELECT * FROM vJuegos WHERE id_Juego = " + idJuego);
                     if (Juego.Read())
                     {
                         Nombre = Juego[1].ToString();
                         Sinopsis = Juego[2].ToString();
-                        Desarrollador = Juego[3].ToString();
-                        lnk_Desarrollador.Visible = false;
-                        Lanzamiento = Juego[4].ToString();
-                        RutaImagen = Juego[5].ToString();
-                        GeneroAnime = Juego[6].ToString();
-                        OtrosGeneros = Juego[7].ToString();
-                        Estado = Juego[8].ToString();
+                        lnk_Desarrollador.Attributes["href"] = "Desarrollador.aspx?Id=" + Juego[3].ToString();
+                        Desarrollador = Juego[4].ToString();
+                        Lanzamiento = Juego[5].ToString();
+                        RutaImagen = Juego[6].ToString();
+                        GeneroAnime = Juego[7].ToString();
+                        OtrosGeneros = Juego[8].ToString();
+                        Estado = Juego[9].ToString();
                         DatosOK = true;
                     }
                     else

@@ -8,7 +8,7 @@
         <div class="uk-section">
             <div class="uk-container">
                 <div class="uk-card uk-card-secondary">
-                    <h1 class="uk-heading-line uk-text-center uk-padding">Mantenedor de Anime</h1>
+                    <h1 class="uk-heading-line uk-text-center uk-padding">Mantenedor de Juegos</h1>
                     <div class="uk-card-body" uk-grid>
                         <div class="uk-width-1-2@m">
                             <p>Nombre</p>
@@ -25,10 +25,9 @@
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
-                            <p>Capitulos</p>
+                            <p>Desarrollador</p>
                             <div class="uk-inline">
-                                <span class="uk-form-icon" uk-icon="icon: tv"></span>
-                                <asp:DropDownList ID="dd_desarrolladorN" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="dd_desarrolladorN" CssClass="uk-select uk-form-width-large" runat="server" forecolor="#999999"></asp:DropDownList>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
@@ -126,8 +125,7 @@
                                         <asp:Label ID="lbl_dev" runat="server" Text='<%# Eval("Desarrollador") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txt_capitulos" CssClass="uk-input uk-form-width-auto" Text='<%# Bind("Desarrollador") %>' runat="server"></asp:TextBox>
-
+                                        <asp:DropDownList ID="dd_dev" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Desarrollador" DataTextField="Nombre" DataValueField="id_Desarrollador"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Estado">
@@ -135,7 +133,7 @@
                                         <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:DropDownList ID="dd_estado" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Estado" DataTextField="Descripcion" DataValueField="id_EstadoSerie"></asp:DropDownList>
+                                        <asp:DropDownList ID="dd_estado" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Estado" DataTextField="Descripcion" DataValueField="id_EstadoJuegos"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Genero">
@@ -143,7 +141,7 @@
                                         <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:DropDownList ID="dd_genero" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Genero" DataTextField="Descripcion" DataValueField="id_GeneroAnime"></asp:DropDownList>
+                                        <asp:DropDownList ID="dd_genero" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Genero" DataTextField="Descripcion" DataValueField="id_GeneroJuego"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                  <asp:TemplateField HeaderText="Otros Generos">
@@ -165,7 +163,8 @@
         </div>
     </div>
 
-    <asp:linqdatasource id="DS_Genero" runat="server" contexttypename="ConexionLQDataContext" entitytypename="" tablename="Genero_Anime"></asp:linqdatasource>
-    <asp:linqdatasource id="DS_Estado" runat="server" contexttypename="ConexionLQDataContext" entitytypename="" tablename="Estado_Serie"></asp:linqdatasource>
+    <asp:LinqDataSource id="DS_Genero" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Genero_Juegos"></asp:LinqDataSource>
+    <asp:LinqDataSource id="DS_Estado" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Estado_Juegos"></asp:LinqDataSource>
+    <asp:LinqDataSource ID="DS_Desarrollador" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Desarrollador"></asp:LinqDataSource>
 </asp:Content>
 

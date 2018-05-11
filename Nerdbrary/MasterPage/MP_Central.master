@@ -33,7 +33,7 @@
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                                         <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
-                                                        <li><a href="#">Mantenedor</a></li>
+                                                        <li><a href="../NavPrivada/JuegosCRUD.aspx">Mantenedor</a></li>
                                                     </ul>
                                                 </div>
 

@@ -51,7 +51,7 @@
 -------------------------------JUEGOS----------------------------------------
 
 --ALTER VIEW vJuegos AS
---SELECT J.id_Juego, J.Nombre, J.Sinopsis, D.Nombre 'Desarrollador',  CONVERT(varchar, J.Lanzamiento, 103) AS 'Lanzamiento',
+--SELECT J.id_Juego, J.Nombre, J.Sinopsis, D.id_Desarrollador, D.Nombre 'Desarrollador',  CONVERT(varchar, J.Lanzamiento, 103) AS 'Lanzamiento',
 --J.Imagen, GJ.Descripcion 'Genero', J.Otros_Generos, EJ.Descripcion 'Estado'
 --FROM Juegos J
 --INNER JOIN Genero_Juegos GJ ON J.id_GeneroJuego = GJ.id_GeneroJuego

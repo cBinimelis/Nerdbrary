@@ -153,14 +153,6 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<vJuegos> vJuegos
-	{
-		get
-		{
-			return this.GetTable<vJuegos>();
-		}
-	}
-	
 	public System.Data.Linq.Table<Juegos> Juegos
 	{
 		get
@@ -206,6 +198,14 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<Desarrollador>();
+		}
+	}
+	
+	public System.Data.Linq.Table<vJuegos> vJuegos
+	{
+		get
+		{
+			return this.GetTable<vJuegos>();
 		}
 	}
 	
@@ -1652,159 +1652,6 @@ public partial class Anime_Usuario : INotifyPropertyChanging, INotifyPropertyCha
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vJuegos")]
-public partial class vJuegos
-{
-	
-	private int _id_Juego;
-	
-	private string _Nombre;
-	
-	private string _Sinopsis;
-	
-	private string _Lanzamiento;
-	
-	private string _Imagen;
-	
-	private string _Genero;
-	
-	private string _Otros_Generos;
-	
-	private string _Estado;
-	
-	public vJuegos()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Juego", DbType="Int NOT NULL")]
-	public int id_Juego
-	{
-		get
-		{
-			return this._id_Juego;
-		}
-		set
-		{
-			if ((this._id_Juego != value))
-			{
-				this._id_Juego = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Nombre
-	{
-		get
-		{
-			return this._Nombre;
-		}
-		set
-		{
-			if ((this._Nombre != value))
-			{
-				this._Nombre = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-	public string Sinopsis
-	{
-		get
-		{
-			return this._Sinopsis;
-		}
-		set
-		{
-			if ((this._Sinopsis != value))
-			{
-				this._Sinopsis = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
-	public string Lanzamiento
-	{
-		get
-		{
-			return this._Lanzamiento;
-		}
-		set
-		{
-			if ((this._Lanzamiento != value))
-			{
-				this._Lanzamiento = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string Imagen
-	{
-		get
-		{
-			return this._Imagen;
-		}
-		set
-		{
-			if ((this._Imagen != value))
-			{
-				this._Imagen = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Genero
-	{
-		get
-		{
-			return this._Genero;
-		}
-		set
-		{
-			if ((this._Genero != value))
-			{
-				this._Genero = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Otros_Generos", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string Otros_Generos
-	{
-		get
-		{
-			return this._Otros_Generos;
-		}
-		set
-		{
-			if ((this._Otros_Generos != value))
-			{
-				this._Otros_Generos = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Estado
-	{
-		get
-		{
-			return this._Estado;
-		}
-		set
-		{
-			if ((this._Estado != value))
-			{
-				this._Estado = value;
-			}
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Juegos")]
 public partial class Juegos : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -2867,7 +2714,7 @@ public partial class Desarrollador : INotifyPropertyChanging, INotifyPropertyCha
 	
 	private string _Nombre;
 	
-	private string _Descripcion;
+	private string _Detalles;
 	
 	private string _Imagen;
 	
@@ -2881,8 +2728,8 @@ public partial class Desarrollador : INotifyPropertyChanging, INotifyPropertyCha
     partial void Onid_DesarrolladorChanged();
     partial void OnNombreChanging(string value);
     partial void OnNombreChanged();
-    partial void OnDescripcionChanging(string value);
-    partial void OnDescripcionChanged();
+    partial void OnDetallesChanging(string value);
+    partial void OnDetallesChanged();
     partial void OnImagenChanging(string value);
     partial void OnImagenChanged();
     #endregion
@@ -2933,22 +2780,22 @@ public partial class Desarrollador : INotifyPropertyChanging, INotifyPropertyCha
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string Descripcion
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Detalles", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Detalles
 	{
 		get
 		{
-			return this._Descripcion;
+			return this._Detalles;
 		}
 		set
 		{
-			if ((this._Descripcion != value))
+			if ((this._Detalles != value))
 			{
-				this.OnDescripcionChanging(value);
+				this.OnDetallesChanging(value);
 				this.SendPropertyChanging();
-				this._Descripcion = value;
-				this.SendPropertyChanged("Descripcion");
-				this.OnDescripcionChanged();
+				this._Detalles = value;
+				this.SendPropertyChanged("Detalles");
+				this.OnDetallesChanged();
 			}
 		}
 	}
@@ -3016,6 +2863,195 @@ public partial class Desarrollador : INotifyPropertyChanging, INotifyPropertyCha
 	{
 		this.SendPropertyChanging();
 		entity.Desarrollador = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vJuegos")]
+public partial class vJuegos
+{
+	
+	private int _id_Juego;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private int _id_Desarrollador;
+	
+	private string _Desarrollador;
+	
+	private string _Lanzamiento;
+	
+	private string _Imagen;
+	
+	private string _Genero;
+	
+	private string _Otros_Generos;
+	
+	private string _Estado;
+	
+	public vJuegos()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Juego", DbType="Int NOT NULL")]
+	public int id_Juego
+	{
+		get
+		{
+			return this._id_Juego;
+		}
+		set
+		{
+			if ((this._id_Juego != value))
+			{
+				this._id_Juego = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this._Sinopsis = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Desarrollador", DbType="Int NOT NULL")]
+	public int id_Desarrollador
+	{
+		get
+		{
+			return this._id_Desarrollador;
+		}
+		set
+		{
+			if ((this._id_Desarrollador != value))
+			{
+				this._id_Desarrollador = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Desarrollador", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+	public string Desarrollador
+	{
+		get
+		{
+			return this._Desarrollador;
+		}
+		set
+		{
+			if ((this._Desarrollador != value))
+			{
+				this._Desarrollador = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
+	public string Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this._Lanzamiento = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Genero
+	{
+		get
+		{
+			return this._Genero;
+		}
+		set
+		{
+			if ((this._Genero != value))
+			{
+				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Otros_Generos", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Estado
+	{
+		get
+		{
+			return this._Estado;
+		}
+		set
+		{
+			if ((this._Estado != value))
+			{
+				this._Estado = value;
+			}
+		}
 	}
 }
 
