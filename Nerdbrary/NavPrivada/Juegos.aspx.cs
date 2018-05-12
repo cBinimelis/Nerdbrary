@@ -41,7 +41,7 @@ public partial class NavPrivada_Juegos : System.Web.UI.Page
             }
             else if (e.CommandName == "Add")
             {
-                SqlDataReader JuegoUser = sql.consulta("EXEC vDetalleJuegos '" + Nick + "'," + ID);
+                SqlDataReader JuegoUser = sql.consulta("EXEC vDetalleJuego '" + Nick + "'," + ID);
                 if (JuegoUser.Read())
                 {
                     Mensaje("Sin duplicados", "Este juego ya está en tu lista", "info");
