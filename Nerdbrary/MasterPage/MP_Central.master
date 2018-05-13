@@ -23,10 +23,70 @@
     <form id="form1" runat="server">
         <div class="uk-position-top uk-light">
             <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-light; top: 200">
-                <nav class="uk-navbar-container" style="position: relative; background: repeating-linear-gradient(90deg, #f19bff, #ba55d3, #87cefa);">
+                <nav class="uk-navbar-container" uk-navbar style="position: relative; background: repeating-linear-gradient(90deg, #f19bff, #ba55d3, #87cefa);">
+
+                    <%--Menu Para dispositivos Moviles--%>
+                    <div class="uk-navbar-left uk-hidden@m">
+                        <a class="uk-navbar-toggle" href="#Menu" uk-navbar-toggle-icon uk-toggle></a>
+                        <div id="Menu" uk-offcanvas="overlay: true; mode: reveal">
+                            <div class="uk-offcanvas-bar uk-flex uk-flex-column" style="background: #ba55d3; opacity: 5">
+                                <button class="uk-offcanvas-close" type="button" uk-close></button>
+                                <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                                    <li class="uk-active"><a href="../Default.aspx">
+                                        <img src="../img/cat.ico" style="height: 100%" alt="Logo" />
+                                    </a></li>
+                                    <li class="uk-parent">
+                                        <a href="#">Juegos</a>
+                                        <ul class="uk-nav-sub">
+                                            <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
+                                            <li><a href="../NavPrivada/JuegosCRUD.aspx">Mantenedor</a></li>
+                                            <li><a href="#">Sub item</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
+                                    <li class="uk-parent">
+                                        <a href="#">Anime</a>
+                                        <ul class="uk-nav-sub">
+                                            <li><a href="#">Sub item</a></li>
+                                            <li><a href="#">Sub item</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
+                                    <li class="uk-parent">
+                                        <a href="#">Series IRL</a>
+                                        <ul class="uk-nav-sub">
+                                            <li><a href="#">Sub item</a></li>
+                                            <li><a href="#">Sub item</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
+                                    <li class="uk-parent">
+                                        <a href="#">Manga</a>
+                                        <ul class="uk-nav-sub">
+                                            <li><a href="#">Sub item</a></li>
+                                            <li><a href="#">Sub item</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
+                                    <li class="uk-parent">
+                                        <a href="#">Parent</a>
+                                        <ul class="uk-nav-sub">
+                                            <li><a href="#">Sub item</a></li>
+                                            <li><a href="#">Sub item</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
+                                    <li><a href="../Login.aspx"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Salir</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <%--Menu para navegadores--%>
                     <div class="uk-container uk-container-expand">
-                        <div uk-navbar>
-                            <div class="uk-navbar-center">
+                        <div>
+                            <div class="uk-navbar-center uk-visible@m">
                                 <div class="uk-navbar-center-left">
                                     <div>
                                         <ul class="uk-navbar-nav">
@@ -77,10 +137,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="uk-navbar-right uk-hidden@m">
+                        <a href="" class="uk-navbar-item uk-logo">
+                            <img src="../img/pantsu.ico" style="height: 100%" alt="Logo" />
+                        </a>
+                    </div>
                 </nav>
             </div>
         </div>
-        <div>
+        <div class="uk-offcanvas-content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

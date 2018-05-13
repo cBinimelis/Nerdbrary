@@ -191,6 +191,11 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
 
     protected void GrillaAnimeUsuario_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
+        int IdAnimeU = Convert.ToInt32(GrillaAnimeUsuario.DataKeys[e.RowIndex].Values[0]);
+        cdc = new ConexionLQDataContext();
+        Anime_Usuario au = (from a in cdc.Anime_Usuario where a.id_AnimeUsuario == IdAnimeU select a).FirstOrDefault();
+        cdc.Anime_Usuario.DeleteOnSubmit(au);
+        cdc.SubmitChanges();
         this.llenarGrilla();
     }
 

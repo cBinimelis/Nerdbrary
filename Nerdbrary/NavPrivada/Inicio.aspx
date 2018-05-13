@@ -7,8 +7,8 @@
 
 
     <div class="uk-section-default">
-        <div class="uk-section uk-light uk-background-cover" style="background-image: url('../img/ProfileBG.png')">
-            <div class="uk-container uk-padding">
+        <div class="uk-section uk-light uk-background-cover" style="background-image: url('../img/ProfileBG.png'); height:50vh">
+<%--            <div class="uk-container uk-padding ">
                 <div class="uk-card uk-card-secondary uk-width-large">
                     <div class="uk-card-body">
                         <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
 
         </div>
     </div>
