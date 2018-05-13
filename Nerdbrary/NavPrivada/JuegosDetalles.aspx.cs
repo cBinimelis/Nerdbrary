@@ -134,27 +134,59 @@ public partial class NavPrivada_JuegosDetalles : System.Web.UI.Page
 
     protected void GrillaJuegosUsuario_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-
+        if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaJuegosUsuario.EditIndex)
+        {
+            (e.Row.Cells[3].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+        }
     }
 
     protected void GrillaJuegosUsuario_RowEditing(object sender, GridViewEditEventArgs e)
     {
-
+        GrillaJuegosUsuario.EditIndex = e.NewEditIndex;
+        this.llenarGrilla();
     }
 
     protected void GrillaJuegosUsuario_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
-
+        GrillaJuegosUsuario.EditIndex = -1;
+        this.llenarGrilla();
     }
 
     protected void GrillaJuegosUsuario_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
+        try
+        {
+            GridViewRow row = GrillaJuegosUsuario.Rows[e.RowIndex];
+            int idJuegoUsuario = Convert.ToInt32(GrillaJuegosUsuario.DataKeys[e.RowIndex].Values[0]);
+            int Avance = (row.FindControl("dd_AJuego") as DropDownList).SelectedIndex;
+            String Nota = (row.FindControl("txt_nota") as TextBox).Text.Trim();
 
+            cdc = new ConexionLQDataContext();
+            Juegos_Usuario ju = (from a in cdc.Juegos_Usuario where a.id_JuegoUsuario == idJuegoUsuario select a).FirstOrDefault();
+            ju.id_AvanceJuego = Avance + 1;
+            ju.Nota = Nota;
+            cdc.SubmitChanges();
+            GrillaJuegosUsuario.EditIndex = -1;
+            Mensaje("Completado con exito", "Se han actualizado los datos", "success");
+            this.llenarGrilla();
+            this.LlenaDetalles();
+
+        }
+        catch
+        {
+            Mensaje("Sin juegos", "Debes ingresar datos validos", "error");
+        }
     }
 
     protected void GrillaJuegosUsuario_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-
+        int idJuegoUsuario = Convert.ToInt32(GrillaJuegosUsuario.DataKeys[e.RowIndex].Values[0]);
+        cdc = new ConexionLQDataContext();
+        Juegos_Usuario ju = (from a in cdc.Juegos_Usuario where a.id_JuegoUsuario == idJuegoUsuario select a).FirstOrDefault();
+        cdc.Juegos_Usuario.DeleteOnSubmit(ju);
+        cdc.SubmitChanges();
+        Mensaje("Bye bye!", "Se ha eliminado el juego de tu lista", "success");
+        this.LlenaDetalles();
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)
