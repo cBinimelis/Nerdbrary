@@ -10,6 +10,7 @@
     <link type="text/css" rel="stylesheet" href="../css/uikit.min.css" />
     <link href="../css/Personal.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f19bff">
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
