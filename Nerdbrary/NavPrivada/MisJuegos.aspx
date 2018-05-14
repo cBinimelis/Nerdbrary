@@ -41,9 +41,7 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
-
             </div>
-
         </div>
     </div>
 </asp:Content>

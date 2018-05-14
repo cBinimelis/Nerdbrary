@@ -1,30 +1,29 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="Anime.aspx.cs" Inherits="NavPrivada_Anime" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="Manga.aspx.cs" Inherits="NavPrivada_Manga" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="uk-section-default">
-        <div id="test-filter" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" uk-parallax="bgyu: -200; sepia: 100;" style="background-image: url(../img/AnimeBG.jpg); height: 70vh">
+        <div id="test-filter" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" uk-parallax="bgyu: -200; sepia: 100;" style="background-image: url(../img/MangaBG.jpg); height: 70vh">
             <div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="target: #test-filter; blur: 0,10;">
                 <div class="uk-overlay uk-overlay-primary uk-width-medium">
-                    <h1>Anime</h1>
+                    <h1>Manga</h1>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
             <div class="uk-container">
-                <h1 class=" uk-heading-primary uk-text-center">Lista de Anime</h1>
+                <h1 class=" uk-heading-primary uk-text-center">Lista de Manga</h1>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
-                        <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand">
+                        <asp:GridView ID="GrillaManga" DataKeyNames="id_Manga" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
+                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaManga_RowCommand">
                             <Columns>
-                                <asp:TemplateField HeaderText="ID Anime" Visible="false">
+                                <asp:TemplateField HeaderText="ID Manga" Visible="false">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Anime") %>'></asp:Label>
+                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Manga") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Nombre">
@@ -37,9 +36,9 @@
                                         <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Total Capítulos">
+                                <asp:TemplateField HeaderText="Tomos">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
+                                        <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Tomos") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Genero">
