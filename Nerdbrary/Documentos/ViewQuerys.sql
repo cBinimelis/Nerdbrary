@@ -110,8 +110,8 @@
 --------------------------------------------------------Manga--------------------------------------------------------
 
 --ALTER VIEW vManga AS
---SELECT M.id_Manga, M.Nombre, M.Sinopsis,  CONVERT(varchar, M.Lanzamiento, 103) AS 'Lanzamiento', 
---M.Imagen, m.Tomos, GM.Descripcion 'Genero', M.Otros_Generos, EL.Descripcion 'Estado'
+--SELECT M.id_Manga, M.Nombre, M.Sinopsis, M.Tomos, CONVERT(varchar, M.Lanzamiento, 103) AS 'Lanzamiento', 
+--M.Imagen, GM.Descripcion 'Genero', M.Otros_Generos, EL.Descripcion 'Estado'
 --FROM Manga M
 --INNER JOIN Genero_Mangas GM ON M.id_GeneroManga = GM.id_GeneroManga
 --INNER JOIN Estado_Libro EL ON M.id_EstadoLibro = EL.id_EstadoLibro
@@ -136,7 +136,7 @@
 --ORDER BY M.Nombre ASC
 --END
 
---EXEC vDetalleManga'geekriszx', 1
+--EXEC vDetalleManga'geekriszx', 2
 
 
 

@@ -205,9 +205,9 @@
       <Column Name="id_Manga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Tomos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Tomos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -275,6 +275,37 @@
       <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vDetalleManga" Method="vDetalleManga">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Manga" Parameter="manga" Type="System.Int32" DbType="Int" />
+    <ElementType Name="vDetalleMangaResult">
+      <Column Name="id_MangaUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Tomos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Avance" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vMangaUsuario" Method="vMangaUsuario">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="vMangaUsuarioResult">
+      <Column Name="id_Manga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Tomos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>

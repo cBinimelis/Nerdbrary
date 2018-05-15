@@ -34,7 +34,7 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
         {
             String Nombre = "";
             String Sinopsis = "";
-            int Tomos = 0;
+            String Tomos = "";
             String Lanzamiento = "";
             String RutaImagen = "";
             String GeneroManga = "";
@@ -50,7 +50,7 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
                 {
                     Nombre = Manga[1].ToString();
                     Sinopsis = Manga[2].ToString();
-                    Tomos = Convert.ToInt32(Manga[3].ToString());
+                    Tomos = Manga[3].ToString();
                     Lanzamiento = Manga[4].ToString();
                     RutaImagen = Manga[5].ToString();
                     GeneroManga = Manga[6].ToString();
@@ -65,12 +65,12 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
             }
             else
             {
-                SqlDataReader MangaUser = sql.consulta("EXEC vDetalleAnime '" + Nick + "'," + idManga);
+                SqlDataReader MangaUser = sql.consulta("EXEC vDetalleManga '" + Nick + "'," + idManga);
                 if (MangaUser.Read())
                 {
                     Nombre = MangaUser[1].ToString();
                     Sinopsis = MangaUser[2].ToString();
-                    Tomos = Convert.ToInt32(MangaUser[3].ToString());
+                    Tomos = MangaUser[3].ToString();
                     Lanzamiento = MangaUser[4].ToString();
                     RutaImagen = MangaUser[5].ToString();
                     GeneroManga = MangaUser[6].ToString();
@@ -87,7 +87,7 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
                     {
                         Nombre = Manga[1].ToString();
                         Sinopsis = Manga[2].ToString();
-                        Tomos = Convert.ToInt32(Manga[3].ToString());
+                        Tomos = Manga[3].ToString();
                         Lanzamiento = Manga[4].ToString();
                         RutaImagen = Manga[5].ToString();
                         GeneroManga = Manga[6].ToString();
@@ -126,7 +126,7 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
     private void llenarGrilla()
     {
         cdc = new ConexionLQDataContext();
-        GrillaMangaUsuario.DataSource = cdc.vDetalleAnime(Nick, Convert.ToInt32(idManga));
+        GrillaMangaUsuario.DataSource = cdc.vDetalleManga(Nick, Convert.ToInt32(idManga));
         GrillaMangaUsuario.DataBind();
     }
 
@@ -157,7 +157,7 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
         {
             GridViewRow row = GrillaMangaUsuario.Rows[e.RowIndex];
             int idMangaUsuario = Convert.ToInt32(GrillaMangaUsuario.DataKeys[e.RowIndex].Values[0]);
-            int Avance = (row.FindControl("dd_AAnime") as DropDownList).SelectedIndex;
+            int Avance = (row.FindControl("dd_AManga") as DropDownList).SelectedIndex;
             String Nota = (row.FindControl("txt_nota") as TextBox).Text.Trim();
 
             cdc = new ConexionLQDataContext();

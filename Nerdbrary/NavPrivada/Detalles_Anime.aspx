@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="AnimeDetalles.aspx.cs" Inherits="NavPrivada_AnimeDetalles" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="Detalles_Anime.aspx.cs" Inherits="NavPrivada_AnimeDetalles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -7,7 +7,7 @@
         <div id="Cover" runat="server" class="background uk-position-absolute uk-background-fixed"></div>
         <div class="uk-container uk-card uk-card-default uk-align-center uk-animation-slide-left">
             <div class="uk-card-body uk-card-medium">
-                <h1 class="uk-text-center uk-heading-line ">
+                <h1 class="uk-text-center uk-heading-line uk-padding-small">
                     <asp:Label ID="TituloA" runat="server" Text="Waifu para rellenar"></asp:Label></h1>
                 <img id="imagen" class="uk-align-center uk-height-medium@m uk-margin-remove-adjacent" runat="server" src="../img/anime/default.jpg" alt="Imagen del anime" />
                 <div class="uk-child-width-1-2@m" uk-grid>

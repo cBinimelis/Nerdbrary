@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="MangaDetalles.aspx.cs" Inherits="NavPrivada_MangaDetalles" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="Detalles_Manga.aspx.cs" Inherits="NavPrivada_MangaDetalles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -7,7 +7,7 @@
         <div id="Cover" runat="server" class="background uk-position-absolute uk-background-fixed"></div>
         <div class="uk-container uk-card uk-card-default uk-align-center uk-animation-slide-left">
             <div class="uk-card-body uk-card-medium">
-                <h1 class="uk-text-center uk-heading-line ">
+                <h1 class="uk-text-center uk-heading-line uk-padding-small">
                     <asp:Label ID="TituloA" runat="server" Text="Waifu para rellenar"></asp:Label></h1>
                 <img id="imagen" class="uk-align-center uk-height-medium@m uk-margin-remove-adjacent" runat="server" src="../img/anime/default.jpg" alt="Imagen del anime" />
                 <div class="uk-child-width-1-2@m" uk-grid>
@@ -50,7 +50,7 @@
                                 </asp:TemplateField>
                             <asp:TemplateField ControlStyle-CssClass="uk-form-width-small">
                                 <EditItemTemplate>
-                                    <asp:DropDownList ID="dd_AManga" CssClass="uk-select  uk-form-width-large" runat="server" DataSourceID="AAnime_DS" DataTextField="Descripcion" DataValueField="id_AvanceAnime"></asp:DropDownList>
+                                    <asp:DropDownList ID="dd_AManga" CssClass="uk-select  uk-form-width-large" runat="server" DataSourceID="AMManga_DS" DataTextField="Descripcion" DataValueField="id_AvanceManga"></asp:DropDownList>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Nota">
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <asp:LinqDataSource ID="AAnime_DS" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Avance_Manga">
+    <asp:LinqDataSource ID="AMManga_DS" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Avance_Manga">
     </asp:LinqDataSource>
 </asp:Content>
 
