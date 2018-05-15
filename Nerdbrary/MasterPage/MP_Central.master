@@ -36,19 +36,18 @@
                                         <img src="../img/cat.ico" style="height: 100%" alt="Logo" />
                                     </a></li>
                                     <li class="uk-parent">
-                                        <a href="#">Juegos</a>
+                                        <a href="../NavPrivada/Juegos.aspx">Juegos</a>
                                         <ul class="uk-nav-sub">
                                             <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
                                             <li><a href="../NavPrivada/JuegosCRUD.aspx">Mantenedor</a></li>
-                                            <li><a href="#">Sub item</a></li>
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
                                     <li class="uk-parent">
-                                        <a href="#">Anime</a>
+                                        <a href="../NavPrivada/Anime.aspx">Anime</a>
                                         <ul class="uk-nav-sub">
-                                            <li><a href="#">Sub item</a></li>
-                                            <li><a href="#">Sub item</a></li>
+                                            <li><a href="../NavPrivada/MiAnime.aspx">Mi Anime</a></li>
+                                            <li><a href="../NavPrivada/AnimeCRUD.aspx">Sub item</a></li>
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
@@ -61,10 +60,10 @@
                                     </li>
                                     <li class="uk-divider-icon"></li>
                                     <li class="uk-parent">
-                                        <a href="#">Manga</a>
+                                        <a href="../NavPrivada/Manga.aspx">Manga</a>
                                         <ul class="uk-nav-sub">
-                                            <li><a href="#">Sub item</a></li>
-                                            <li><a href="#">Sub item</a></li>
+                                            <li><a href="../NavPrivada/MisMangas.aspx">Mis Mangas</a></li>
+                                            <li><a href="../NavPrivada/MangaCRUD.aspx">Mantenedor</a></li>
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
@@ -126,7 +125,7 @@
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                                         <li><a href="#">Literatura</a></li>
-                                                        <li><a href="#">Manga / Comics</a></li>
+                                                        <li><a href="../NavPrivada/Manga.aspx">Manga</a></li>
                                                     </ul>
                                                 </div>
                                             </li>

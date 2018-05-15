@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.5, 13.25" name="ConexionLQ">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17, 19.25" name="ConexionLQ">
   <DataContextMoniker Name="/ConexionLQDataContext" />
   <nestedChildShapes>
     <classShape Id="71308278-fd5e-4294-bbc5-edd9e474ba27" absoluteBounds="4.5, 4.625, 2, 1.5785953776041666">
@@ -109,14 +109,14 @@
         <elementListCompartment Id="846ea22d-e00e-46fa-b7c6-2f9d5d4748d3" absoluteBounds="1.7650000000000001, 12.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.5 : 10.53125); (9.21875 : 10.53125); (9.21875 : 8.27089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.5 : 10.53125); (9.21875 : 10.53125); (9.21875 : 8.27089680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Juegos/Juegos_Juegos_Usuario" />
       <nodes>
         <classShapeMoniker Id="1777f7b5-80dc-4d88-89cd-b1a13fe40df8" />
         <classShapeMoniker Id="f54c6ebe-85bb-45f9-86cd-78045cf8b228" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.5 : 5.9175439453125); (7.34375 : 5.9175439453125); (7.34375 : 6.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6.5 : 5.58779531705729); (7.34375 : 5.58779531705729); (7.34375 : 6.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Usuario/Usuario_Juegos_Usuario" />
       <nodes>
         <classShapeMoniker Id="71308278-fd5e-4294-bbc5-edd9e474ba27" />
@@ -130,7 +130,7 @@
         <classShapeMoniker Id="f54c6ebe-85bb-45f9-86cd-78045cf8b228" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.75 : 10.5344962565104); (4.5 : 10.5344962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.75 : 10.5344962565104); (4.5 : 10.5344962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Genero_Juegos/Genero_Juegos_Juegos" />
       <nodes>
         <classShapeMoniker Id="a708144f-29c9-4161-9080-76c07899ca1a" />
@@ -150,17 +150,88 @@
         <elementListCompartment Id="291cdae6-ea51-4134-85df-2bf0665b17ad" absoluteBounds="7.1400000000000006, 11.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.125 : 11.9142976888021); (6.5 : 11.9142976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.125 : 11.9142976888021); (6.5 : 11.9142976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Desarrollador/Desarrollador_Juegos" />
       <nodes>
         <classShapeMoniker Id="0decfa5d-52f3-4a98-b008-93caa8804bbe" />
         <classShapeMoniker Id="1777f7b5-80dc-4d88-89cd-b1a13fe40df8" />
       </nodes>
     </associationConnector>
-    <classShape Id="343962a0-c711-402c-8ab7-cb1067651ae0" absoluteBounds="10.25, 3.625, 2, 2.7324039713541666">
+    <classShape Id="343962a0-c711-402c-8ab7-cb1067651ae0" absoluteBounds="14.75, 0.5, 2, 2.7324039713541666">
       <DataClassMoniker Name="/ConexionLQDataContext/vJuegos" />
       <nestedChildShapes>
-        <elementListCompartment Id="5d34c678-4b1a-48a4-bd93-a87610d0d86c" absoluteBounds="10.265, 4.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5d34c678-4b1a-48a4-bd93-a87610d0d86c" absoluteBounds="14.765, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="622722b2-11eb-483a-b040-3e0499544b02" absoluteBounds="4.75, 15.875, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/ConexionLQDataContext/Estado_Libro" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b215095e-3edc-4118-a4a4-eec4fd49ec6f" absoluteBounds="4.765, 16.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7e5386d9-f96e-481a-a0db-e8c8f465c69a" absoluteBounds="4.75, 17.75, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/ConexionLQDataContext/Genero_Mangas" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f53a7874-5049-49d5-aab7-2088054dc54a" absoluteBounds="4.765, 18.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ce5583c1-b143-4db9-82df-0c0f994abf30" absoluteBounds="7.5, 16, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ConexionLQDataContext/Manga" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8577615e-5542-4fea-9f1f-c16b0a1b521c" absoluteBounds="7.515, 16.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b008ba9b-dfd8-48ab-ad9b-5154b4048dbe" absoluteBounds="10.25, 7.5, 2, 1.7708968098958335">
+      <DataClassMoniker Name="/ConexionLQDataContext/Manga_Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2dbaff87-5ce9-451d-8317-4e2dff43aca2" absoluteBounds="10.265, 7.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fe27cb89-eb99-45b0-8b60-f09f855aa630" absoluteBounds="7.5, 13.875, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/ConexionLQDataContext/Avance_Manga" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f1d5a9f-c18f-427a-8299-df2c7dd67f17" absoluteBounds="7.515, 14.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 16.5344962565104); (7.5 : 16.5344962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionLQDataContext/Estado_Libro/Estado_Libro_Manga" />
+      <nodes>
+        <classShapeMoniker Id="622722b2-11eb-483a-b040-3e0499544b02" />
+        <classShapeMoniker Id="ce5583c1-b143-4db9-82df-0c0f994abf30" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.75 : 18.2412019856771); (7.5 : 18.2412019856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionLQDataContext/Genero_Mangas/Genero_Mangas_Manga" />
+      <nodes>
+        <classShapeMoniker Id="7e5386d9-f96e-481a-a0db-e8c8f465c69a" />
+        <classShapeMoniker Id="ce5583c1-b143-4db9-82df-0c0f994abf30" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.5 : 17.3662019856771); (11.25 : 17.3662019856771); (11.25 : 9.27089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionLQDataContext/Manga/Manga_Manga_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="ce5583c1-b143-4db9-82df-0c0f994abf30" />
+        <classShapeMoniker Id="b008ba9b-dfd8-48ab-ad9b-5154b4048dbe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.5 : 5.9175439453125); (7.26041666666667 : 5.9175439453125 : JumpStart); (7.42708333333333 : 5.9175439453125 : JumpEnd); (11.25 : 5.9175439453125); (11.25 : 7.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionLQDataContext/Usuario/Usuario_Manga_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="71308278-fd5e-4294-bbc5-edd9e474ba27" />
+        <classShapeMoniker Id="b008ba9b-dfd8-48ab-ad9b-5154b4048dbe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.40625 : 13.875); (9.40625 : 8.80214680989583); (10.25 : 8.80214680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionLQDataContext/Avance_Manga/Avance_Manga_Manga_Usuario" />
+      <nodes>
+        <classShapeMoniker Id="fe27cb89-eb99-45b0-8b60-f09f855aa630" />
+        <classShapeMoniker Id="b008ba9b-dfd8-48ab-ad9b-5154b4048dbe" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ccabd31f-b20d-4eb5-b604-c6cda9fb2f24" absoluteBounds="12.375, 0.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ConexionLQDataContext/vManga" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bd54ad1a-d1f7-411f-8379-47147e9d39c1" absoluteBounds="12.39, 1.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
