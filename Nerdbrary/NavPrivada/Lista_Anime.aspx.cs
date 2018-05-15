@@ -42,7 +42,7 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
             {
-                Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+                Response.Redirect("Detalles_Anime.aspx?Id=" + ID);
             }
             else if (e.CommandName == "Add")
             {

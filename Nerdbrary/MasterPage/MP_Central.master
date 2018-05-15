@@ -83,6 +83,9 @@
                     </div>
 
                     <%--Menu para navegadores--%>
+                    <div class="uk-navbar-left uk-visible@m">
+                        <a href="../Default.aspx" uk-tooltip="title: Salir"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span></a>
+                    </div>
                     <div class="uk-container uk-container-expand">
                         <div>
                             <div class="uk-navbar-center uk-visible@m">

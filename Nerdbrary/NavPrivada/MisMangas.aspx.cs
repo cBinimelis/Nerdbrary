@@ -31,7 +31,7 @@ public partial class NavPrivada_MisMangas : System.Web.UI.Page
         if (e.CommandName == "Select")
         {
             int ID = Convert.ToInt32(e.CommandArgument);
-            Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+            Response.Redirect("Detalles_Manga.aspx?Id=" + ID);
         }
     }
 }

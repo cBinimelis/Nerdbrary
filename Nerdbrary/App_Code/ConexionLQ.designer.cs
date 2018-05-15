@@ -71,15 +71,15 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
   partial void InsertGenero_Mangas(Genero_Mangas instance);
   partial void UpdateGenero_Mangas(Genero_Mangas instance);
   partial void DeleteGenero_Mangas(Genero_Mangas instance);
-  partial void InsertManga(Manga instance);
-  partial void UpdateManga(Manga instance);
-  partial void DeleteManga(Manga instance);
   partial void InsertManga_Usuario(Manga_Usuario instance);
   partial void UpdateManga_Usuario(Manga_Usuario instance);
   partial void DeleteManga_Usuario(Manga_Usuario instance);
   partial void InsertAvance_Manga(Avance_Manga instance);
   partial void UpdateAvance_Manga(Avance_Manga instance);
   partial void DeleteAvance_Manga(Avance_Manga instance);
+  partial void InsertManga(Manga instance);
+  partial void UpdateManga(Manga instance);
+  partial void DeleteManga(Manga instance);
   #endregion
 	
 	public ConexionLQDataContext() : 
@@ -240,14 +240,6 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<Manga> Manga
-	{
-		get
-		{
-			return this.GetTable<Manga>();
-		}
-	}
-	
 	public System.Data.Linq.Table<Manga_Usuario> Manga_Usuario
 	{
 		get
@@ -269,6 +261,14 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<vManga>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Manga> Manga
+	{
+		get
+		{
+			return this.GetTable<Manga>();
 		}
 	}
 	
@@ -3388,394 +3388,6 @@ public partial class Genero_Mangas : INotifyPropertyChanging, INotifyPropertyCha
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Manga")]
-public partial class Manga : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _id_Manga;
-	
-	private string _Nombre;
-	
-	private string _Sinopsis;
-	
-	private string _Lanzamiento;
-	
-	private int _Tomos;
-	
-	private string _Imagen;
-	
-	private int _id_GeneroManga;
-	
-	private string _Otros_Generos;
-	
-	private int _id_EstadoLibro;
-	
-	private System.Nullable<bool> _Activo;
-	
-	private EntitySet<Manga_Usuario> _Manga_Usuario;
-	
-	private EntityRef<Estado_Libro> _Estado_Libro;
-	
-	private EntityRef<Genero_Mangas> _Genero_Mangas;
-	
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_MangaChanging(int value);
-    partial void Onid_MangaChanged();
-    partial void OnNombreChanging(string value);
-    partial void OnNombreChanged();
-    partial void OnSinopsisChanging(string value);
-    partial void OnSinopsisChanged();
-    partial void OnLanzamientoChanging(string value);
-    partial void OnLanzamientoChanged();
-    partial void OnTomosChanging(int value);
-    partial void OnTomosChanged();
-    partial void OnImagenChanging(string value);
-    partial void OnImagenChanged();
-    partial void Onid_GeneroMangaChanging(int value);
-    partial void Onid_GeneroMangaChanged();
-    partial void OnOtros_GenerosChanging(string value);
-    partial void OnOtros_GenerosChanged();
-    partial void Onid_EstadoLibroChanging(int value);
-    partial void Onid_EstadoLibroChanged();
-    partial void OnActivoChanging(System.Nullable<bool> value);
-    partial void OnActivoChanged();
-    #endregion
-	
-	public Manga()
-	{
-		this._Manga_Usuario = new EntitySet<Manga_Usuario>(new Action<Manga_Usuario>(this.attach_Manga_Usuario), new Action<Manga_Usuario>(this.detach_Manga_Usuario));
-		this._Estado_Libro = default(EntityRef<Estado_Libro>);
-		this._Genero_Mangas = default(EntityRef<Genero_Mangas>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Manga", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int id_Manga
-	{
-		get
-		{
-			return this._id_Manga;
-		}
-		set
-		{
-			if ((this._id_Manga != value))
-			{
-				this.Onid_MangaChanging(value);
-				this.SendPropertyChanging();
-				this._id_Manga = value;
-				this.SendPropertyChanged("id_Manga");
-				this.Onid_MangaChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string Nombre
-	{
-		get
-		{
-			return this._Nombre;
-		}
-		set
-		{
-			if ((this._Nombre != value))
-			{
-				this.OnNombreChanging(value);
-				this.SendPropertyChanging();
-				this._Nombre = value;
-				this.SendPropertyChanged("Nombre");
-				this.OnNombreChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-	public string Sinopsis
-	{
-		get
-		{
-			return this._Sinopsis;
-		}
-		set
-		{
-			if ((this._Sinopsis != value))
-			{
-				this.OnSinopsisChanging(value);
-				this.SendPropertyChanging();
-				this._Sinopsis = value;
-				this.SendPropertyChanged("Sinopsis");
-				this.OnSinopsisChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Lanzamiento
-	{
-		get
-		{
-			return this._Lanzamiento;
-		}
-		set
-		{
-			if ((this._Lanzamiento != value))
-			{
-				this.OnLanzamientoChanging(value);
-				this.SendPropertyChanging();
-				this._Lanzamiento = value;
-				this.SendPropertyChanged("Lanzamiento");
-				this.OnLanzamientoChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tomos", DbType="Int NOT NULL")]
-	public int Tomos
-	{
-		get
-		{
-			return this._Tomos;
-		}
-		set
-		{
-			if ((this._Tomos != value))
-			{
-				this.OnTomosChanging(value);
-				this.SendPropertyChanging();
-				this._Tomos = value;
-				this.SendPropertyChanged("Tomos");
-				this.OnTomosChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX)")]
-	public string Imagen
-	{
-		get
-		{
-			return this._Imagen;
-		}
-		set
-		{
-			if ((this._Imagen != value))
-			{
-				this.OnImagenChanging(value);
-				this.SendPropertyChanging();
-				this._Imagen = value;
-				this.SendPropertyChanged("Imagen");
-				this.OnImagenChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_GeneroManga", DbType="Int NOT NULL")]
-	public int id_GeneroManga
-	{
-		get
-		{
-			return this._id_GeneroManga;
-		}
-		set
-		{
-			if ((this._id_GeneroManga != value))
-			{
-				if (this._Genero_Mangas.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onid_GeneroMangaChanging(value);
-				this.SendPropertyChanging();
-				this._id_GeneroManga = value;
-				this.SendPropertyChanged("id_GeneroManga");
-				this.Onid_GeneroMangaChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Otros_Generos", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-	public string Otros_Generos
-	{
-		get
-		{
-			return this._Otros_Generos;
-		}
-		set
-		{
-			if ((this._Otros_Generos != value))
-			{
-				this.OnOtros_GenerosChanging(value);
-				this.SendPropertyChanging();
-				this._Otros_Generos = value;
-				this.SendPropertyChanged("Otros_Generos");
-				this.OnOtros_GenerosChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_EstadoLibro", DbType="Int NOT NULL")]
-	public int id_EstadoLibro
-	{
-		get
-		{
-			return this._id_EstadoLibro;
-		}
-		set
-		{
-			if ((this._id_EstadoLibro != value))
-			{
-				if (this._Estado_Libro.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onid_EstadoLibroChanging(value);
-				this.SendPropertyChanging();
-				this._id_EstadoLibro = value;
-				this.SendPropertyChanged("id_EstadoLibro");
-				this.Onid_EstadoLibroChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activo", DbType="Bit")]
-	public System.Nullable<bool> Activo
-	{
-		get
-		{
-			return this._Activo;
-		}
-		set
-		{
-			if ((this._Activo != value))
-			{
-				this.OnActivoChanging(value);
-				this.SendPropertyChanging();
-				this._Activo = value;
-				this.SendPropertyChanged("Activo");
-				this.OnActivoChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Manga_Manga_Usuario", Storage="_Manga_Usuario", ThisKey="id_Manga", OtherKey="id_Manga")]
-	public EntitySet<Manga_Usuario> Manga_Usuario
-	{
-		get
-		{
-			return this._Manga_Usuario;
-		}
-		set
-		{
-			this._Manga_Usuario.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Libro_Manga", Storage="_Estado_Libro", ThisKey="id_EstadoLibro", OtherKey="id_EstadoLibro", IsForeignKey=true)]
-	public Estado_Libro Estado_Libro
-	{
-		get
-		{
-			return this._Estado_Libro.Entity;
-		}
-		set
-		{
-			Estado_Libro previousValue = this._Estado_Libro.Entity;
-			if (((previousValue != value) 
-						|| (this._Estado_Libro.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._Estado_Libro.Entity = null;
-					previousValue.Manga.Remove(this);
-				}
-				this._Estado_Libro.Entity = value;
-				if ((value != null))
-				{
-					value.Manga.Add(this);
-					this._id_EstadoLibro = value.id_EstadoLibro;
-				}
-				else
-				{
-					this._id_EstadoLibro = default(int);
-				}
-				this.SendPropertyChanged("Estado_Libro");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genero_Mangas_Manga", Storage="_Genero_Mangas", ThisKey="id_GeneroManga", OtherKey="id_GeneroManga", IsForeignKey=true)]
-	public Genero_Mangas Genero_Mangas
-	{
-		get
-		{
-			return this._Genero_Mangas.Entity;
-		}
-		set
-		{
-			Genero_Mangas previousValue = this._Genero_Mangas.Entity;
-			if (((previousValue != value) 
-						|| (this._Genero_Mangas.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._Genero_Mangas.Entity = null;
-					previousValue.Manga.Remove(this);
-				}
-				this._Genero_Mangas.Entity = value;
-				if ((value != null))
-				{
-					value.Manga.Add(this);
-					this._id_GeneroManga = value.id_GeneroManga;
-				}
-				else
-				{
-					this._id_GeneroManga = default(int);
-				}
-				this.SendPropertyChanged("Genero_Mangas");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_Manga_Usuario(Manga_Usuario entity)
-	{
-		this.SendPropertyChanging();
-		entity.Manga = this;
-	}
-	
-	private void detach_Manga_Usuario(Manga_Usuario entity)
-	{
-		this.SendPropertyChanging();
-		entity.Manga = null;
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Manga_Usuario")]
 public partial class Manga_Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -3792,11 +3404,11 @@ public partial class Manga_Usuario : INotifyPropertyChanging, INotifyPropertyCha
 	
 	private string _Nota;
 	
-	private EntityRef<Manga> _Manga;
-	
 	private EntityRef<Usuario> _Usuario;
 	
 	private EntityRef<Avance_Manga> _Avance_Manga;
+	
+	private EntityRef<Manga> _Manga;
 	
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -3816,9 +3428,9 @@ public partial class Manga_Usuario : INotifyPropertyChanging, INotifyPropertyCha
 	
 	public Manga_Usuario()
 	{
-		this._Manga = default(EntityRef<Manga>);
 		this._Usuario = default(EntityRef<Usuario>);
 		this._Avance_Manga = default(EntityRef<Avance_Manga>);
+		this._Manga = default(EntityRef<Manga>);
 		OnCreated();
 	}
 	
@@ -3934,40 +3546,6 @@ public partial class Manga_Usuario : INotifyPropertyChanging, INotifyPropertyCha
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Manga_Manga_Usuario", Storage="_Manga", ThisKey="id_Manga", OtherKey="id_Manga", IsForeignKey=true)]
-	public Manga Manga
-	{
-		get
-		{
-			return this._Manga.Entity;
-		}
-		set
-		{
-			Manga previousValue = this._Manga.Entity;
-			if (((previousValue != value) 
-						|| (this._Manga.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._Manga.Entity = null;
-					previousValue.Manga_Usuario.Remove(this);
-				}
-				this._Manga.Entity = value;
-				if ((value != null))
-				{
-					value.Manga_Usuario.Add(this);
-					this._id_Manga = value.id_Manga;
-				}
-				else
-				{
-					this._id_Manga = default(int);
-				}
-				this.SendPropertyChanged("Manga");
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Manga_Usuario", Storage="_Usuario", ThisKey="id_Usuario", OtherKey="id_Usuario", IsForeignKey=true)]
 	public Usuario Usuario
 	{
@@ -4032,6 +3610,40 @@ public partial class Manga_Usuario : INotifyPropertyChanging, INotifyPropertyCha
 					this._id_AvanceManga = default(int);
 				}
 				this.SendPropertyChanged("Avance_Manga");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Manga_Manga_Usuario", Storage="_Manga", ThisKey="id_Manga", OtherKey="id_Manga", IsForeignKey=true)]
+	public Manga Manga
+	{
+		get
+		{
+			return this._Manga.Entity;
+		}
+		set
+		{
+			Manga previousValue = this._Manga.Entity;
+			if (((previousValue != value) 
+						|| (this._Manga.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Manga.Entity = null;
+					previousValue.Manga_Usuario.Remove(this);
+				}
+				this._Manga.Entity = value;
+				if ((value != null))
+				{
+					value.Manga_Usuario.Add(this);
+					this._id_Manga = value.id_Manga;
+				}
+				else
+				{
+					this._id_Manga = default(int);
+				}
+				this.SendPropertyChanged("Manga");
 			}
 		}
 	}
@@ -4339,6 +3951,394 @@ public partial class vManga
 				this._Estado = value;
 			}
 		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Manga")]
+public partial class Manga : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_Manga;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private System.DateTime _Lanzamiento;
+	
+	private int _Tomos;
+	
+	private string _Imagen;
+	
+	private int _id_GeneroManga;
+	
+	private string _Otros_Generos;
+	
+	private int _id_EstadoLibro;
+	
+	private System.Nullable<bool> _Activo;
+	
+	private EntitySet<Manga_Usuario> _Manga_Usuario;
+	
+	private EntityRef<Estado_Libro> _Estado_Libro;
+	
+	private EntityRef<Genero_Mangas> _Genero_Mangas;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_MangaChanging(int value);
+    partial void Onid_MangaChanged();
+    partial void OnNombreChanging(string value);
+    partial void OnNombreChanged();
+    partial void OnSinopsisChanging(string value);
+    partial void OnSinopsisChanged();
+    partial void OnLanzamientoChanging(System.DateTime value);
+    partial void OnLanzamientoChanged();
+    partial void OnTomosChanging(int value);
+    partial void OnTomosChanged();
+    partial void OnImagenChanging(string value);
+    partial void OnImagenChanged();
+    partial void Onid_GeneroMangaChanging(int value);
+    partial void Onid_GeneroMangaChanged();
+    partial void OnOtros_GenerosChanging(string value);
+    partial void OnOtros_GenerosChanged();
+    partial void Onid_EstadoLibroChanging(int value);
+    partial void Onid_EstadoLibroChanged();
+    partial void OnActivoChanging(System.Nullable<bool> value);
+    partial void OnActivoChanged();
+    #endregion
+	
+	public Manga()
+	{
+		this._Manga_Usuario = new EntitySet<Manga_Usuario>(new Action<Manga_Usuario>(this.attach_Manga_Usuario), new Action<Manga_Usuario>(this.detach_Manga_Usuario));
+		this._Estado_Libro = default(EntityRef<Estado_Libro>);
+		this._Genero_Mangas = default(EntityRef<Genero_Mangas>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Manga", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id_Manga
+	{
+		get
+		{
+			return this._id_Manga;
+		}
+		set
+		{
+			if ((this._id_Manga != value))
+			{
+				this.Onid_MangaChanging(value);
+				this.SendPropertyChanging();
+				this._id_Manga = value;
+				this.SendPropertyChanged("id_Manga");
+				this.Onid_MangaChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this.OnNombreChanging(value);
+				this.SendPropertyChanging();
+				this._Nombre = value;
+				this.SendPropertyChanged("Nombre");
+				this.OnNombreChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this.OnSinopsisChanging(value);
+				this.SendPropertyChanging();
+				this._Sinopsis = value;
+				this.SendPropertyChanged("Sinopsis");
+				this.OnSinopsisChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="Date NOT NULL")]
+	public System.DateTime Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this.OnLanzamientoChanging(value);
+				this.SendPropertyChanging();
+				this._Lanzamiento = value;
+				this.SendPropertyChanged("Lanzamiento");
+				this.OnLanzamientoChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tomos", DbType="Int NOT NULL")]
+	public int Tomos
+	{
+		get
+		{
+			return this._Tomos;
+		}
+		set
+		{
+			if ((this._Tomos != value))
+			{
+				this.OnTomosChanging(value);
+				this.SendPropertyChanging();
+				this._Tomos = value;
+				this.SendPropertyChanged("Tomos");
+				this.OnTomosChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this.OnImagenChanging(value);
+				this.SendPropertyChanging();
+				this._Imagen = value;
+				this.SendPropertyChanged("Imagen");
+				this.OnImagenChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_GeneroManga", DbType="Int NOT NULL")]
+	public int id_GeneroManga
+	{
+		get
+		{
+			return this._id_GeneroManga;
+		}
+		set
+		{
+			if ((this._id_GeneroManga != value))
+			{
+				if (this._Genero_Mangas.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onid_GeneroMangaChanging(value);
+				this.SendPropertyChanging();
+				this._id_GeneroManga = value;
+				this.SendPropertyChanged("id_GeneroManga");
+				this.Onid_GeneroMangaChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Otros_Generos", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this.OnOtros_GenerosChanging(value);
+				this.SendPropertyChanging();
+				this._Otros_Generos = value;
+				this.SendPropertyChanged("Otros_Generos");
+				this.OnOtros_GenerosChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_EstadoLibro", DbType="Int NOT NULL")]
+	public int id_EstadoLibro
+	{
+		get
+		{
+			return this._id_EstadoLibro;
+		}
+		set
+		{
+			if ((this._id_EstadoLibro != value))
+			{
+				if (this._Estado_Libro.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onid_EstadoLibroChanging(value);
+				this.SendPropertyChanging();
+				this._id_EstadoLibro = value;
+				this.SendPropertyChanged("id_EstadoLibro");
+				this.Onid_EstadoLibroChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activo", DbType="Bit")]
+	public System.Nullable<bool> Activo
+	{
+		get
+		{
+			return this._Activo;
+		}
+		set
+		{
+			if ((this._Activo != value))
+			{
+				this.OnActivoChanging(value);
+				this.SendPropertyChanging();
+				this._Activo = value;
+				this.SendPropertyChanged("Activo");
+				this.OnActivoChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Manga_Manga_Usuario", Storage="_Manga_Usuario", ThisKey="id_Manga", OtherKey="id_Manga")]
+	public EntitySet<Manga_Usuario> Manga_Usuario
+	{
+		get
+		{
+			return this._Manga_Usuario;
+		}
+		set
+		{
+			this._Manga_Usuario.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Libro_Manga", Storage="_Estado_Libro", ThisKey="id_EstadoLibro", OtherKey="id_EstadoLibro", IsForeignKey=true)]
+	public Estado_Libro Estado_Libro
+	{
+		get
+		{
+			return this._Estado_Libro.Entity;
+		}
+		set
+		{
+			Estado_Libro previousValue = this._Estado_Libro.Entity;
+			if (((previousValue != value) 
+						|| (this._Estado_Libro.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Estado_Libro.Entity = null;
+					previousValue.Manga.Remove(this);
+				}
+				this._Estado_Libro.Entity = value;
+				if ((value != null))
+				{
+					value.Manga.Add(this);
+					this._id_EstadoLibro = value.id_EstadoLibro;
+				}
+				else
+				{
+					this._id_EstadoLibro = default(int);
+				}
+				this.SendPropertyChanged("Estado_Libro");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genero_Mangas_Manga", Storage="_Genero_Mangas", ThisKey="id_GeneroManga", OtherKey="id_GeneroManga", IsForeignKey=true)]
+	public Genero_Mangas Genero_Mangas
+	{
+		get
+		{
+			return this._Genero_Mangas.Entity;
+		}
+		set
+		{
+			Genero_Mangas previousValue = this._Genero_Mangas.Entity;
+			if (((previousValue != value) 
+						|| (this._Genero_Mangas.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Genero_Mangas.Entity = null;
+					previousValue.Manga.Remove(this);
+				}
+				this._Genero_Mangas.Entity = value;
+				if ((value != null))
+				{
+					value.Manga.Add(this);
+					this._id_GeneroManga = value.id_GeneroManga;
+				}
+				else
+				{
+					this._id_GeneroManga = default(int);
+				}
+				this.SendPropertyChanged("Genero_Mangas");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Manga_Usuario(Manga_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Manga = this;
+	}
+	
+	private void detach_Manga_Usuario(Manga_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Manga = null;
 	}
 }
 

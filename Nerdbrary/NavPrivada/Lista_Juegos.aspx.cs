@@ -37,7 +37,7 @@ public partial class NavPrivada_Juegos : System.Web.UI.Page
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
             {
-                Response.Redirect("JuegosDetalles.aspx?Id=" + ID);
+                Response.Redirect("Detalles_Juegos.aspx?Id=" + ID);
             }
             else if (e.CommandName == "Add")
             {

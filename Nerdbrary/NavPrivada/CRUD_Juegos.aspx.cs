@@ -124,7 +124,7 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
         }
         catch
         {
-
+            Mensaje("Ups", "Algo ha salido mal", "error");
         }
     }
 

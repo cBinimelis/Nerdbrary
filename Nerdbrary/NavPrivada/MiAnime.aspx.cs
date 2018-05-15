@@ -32,7 +32,7 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
         if (e.CommandName == "Select")
         {
             int ID = Convert.ToInt32(e.CommandArgument);
-            Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+            Response.Redirect("Detalles_Anime.aspx?Id=" + ID);
         }
     }
 }

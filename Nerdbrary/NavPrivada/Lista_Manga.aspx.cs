@@ -48,7 +48,7 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
             {
-                Response.Redirect("MangaDetalles.aspx?Id=" + ID);
+                Response.Redirect("Detalles_Manga.aspx?Id=" + ID);
             }
             else if (e.CommandName == "Add")
             {

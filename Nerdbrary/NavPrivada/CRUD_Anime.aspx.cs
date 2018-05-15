@@ -116,7 +116,7 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
         }
         catch
         {
-
+            Mensaje("Ups", "Algo ha salido mal", "warning");
         }
     }
 

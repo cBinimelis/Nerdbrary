@@ -164,23 +164,6 @@
       <Association Name="Genero_Mangas_Manga" Member="Manga" ThisKey="id_GeneroManga" OtherKey="id_GeneroManga" Type="Manga" />
     </Type>
   </Table>
-  <Table Name="dbo.Manga" Member="Manga">
-    <Type Name="Manga">
-      <Column Name="id_Manga" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Tomos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="id_GeneroManga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Manga_Manga_Usuario" Member="Manga_Usuario" ThisKey="id_Manga" OtherKey="id_Manga" Type="Manga_Usuario" />
-      <Association Name="Estado_Libro_Manga" Member="Estado_Libro" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro" IsForeignKey="true" />
-      <Association Name="Genero_Mangas_Manga" Member="Genero_Mangas" ThisKey="id_GeneroManga" OtherKey="id_GeneroManga" Type="Genero_Mangas" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Manga_Usuario" Member="Manga_Usuario">
     <Type Name="Manga_Usuario">
       <Column Name="id_MangaUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -188,9 +171,9 @@
       <Column Name="id_Manga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_AvanceManga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="Manga_Manga_Usuario" Member="Manga" ThisKey="id_Manga" OtherKey="id_Manga" Type="Manga" IsForeignKey="true" />
       <Association Name="Usuario_Manga_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
       <Association Name="Avance_Manga_Manga_Usuario" Member="Avance_Manga" ThisKey="id_AvanceManga" OtherKey="id_AvanceManga" Type="Avance_Manga" IsForeignKey="true" />
+      <Association Name="Manga_Manga_Usuario" Member="Manga" ThisKey="id_Manga" OtherKey="id_Manga" Type="Manga" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Avance_Manga" Member="Avance_Manga">
@@ -211,6 +194,23 @@
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Manga" Member="Manga">
+    <Type Name="Manga">
+      <Column Name="id_Manga" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Lanzamiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Tomos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_GeneroManga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Manga_Manga_Usuario" Member="Manga_Usuario" ThisKey="id_Manga" OtherKey="id_Manga" Type="Manga_Usuario" />
+      <Association Name="Estado_Libro_Manga" Member="Estado_Libro" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro" IsForeignKey="true" />
+      <Association Name="Genero_Mangas_Manga" Member="Genero_Mangas" ThisKey="id_GeneroManga" OtherKey="id_GeneroManga" Type="Genero_Mangas" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">

@@ -28,7 +28,7 @@ public partial class NavPrivada_MiJuego : System.Web.UI.Page
         if (e.CommandName == "Select")
         {
             int ID = Convert.ToInt32(e.CommandArgument);
-            Response.Redirect("JuegosDetalles.aspx?Id=" + ID);
+            Response.Redirect("Detalles_Juegos.aspx?Id=" + ID);
         }
     }
 }
