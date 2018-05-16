@@ -31,9 +31,9 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
     private void llenaEstado()
     {
         cdc = new ConexionLQDataContext();
-        dd_estadoN.DataSource = cdc.Estado_Libro;
+        dd_estadoN.DataSource = cdc.Estado_Manga;
         dd_estadoN.DataTextField = "Descripcion";
-        dd_estadoN.DataValueField = "id_EstadoLibro";
+        dd_estadoN.DataValueField = "id_EstadoManga";
         dd_estadoN.DataBind();
     }
     
@@ -91,7 +91,7 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
                             m.Imagen = NewFileName + fileExtension;
                             m.id_GeneroManga = (dd_generoN.SelectedIndex + 1);
                             m.Otros_Generos = txt_OGenerosN.Text;
-                            m.id_EstadoLibro = (dd_estadoN.SelectedIndex + 1);
+                            m.id_EstadoManga = (dd_estadoN.SelectedIndex + 1);
                             m.Activo = true;
                             cdc.Manga.InsertOnSubmit(m);
                             cdc.SubmitChanges();
@@ -122,7 +122,7 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
     {
         if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaMangas.EditIndex)
         {
-            //(e.Row.Cells[8].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+            (e.Row.Cells[8].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
         }
     }
 
@@ -174,7 +174,7 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
                 m.Nombre = Nombre;
                 m.Lanzamiento = Convert.ToDateTime(Lanzamiento);
                 m.Tomos = Convert.ToInt32(Tomos);
-                m.id_EstadoLibro = Estado + 1;
+                m.id_EstadoManga = Estado + 1;
                 m.id_GeneroManga = Genero + 1;
                 m.Otros_Generos = OG;
                 cdc.SubmitChanges();

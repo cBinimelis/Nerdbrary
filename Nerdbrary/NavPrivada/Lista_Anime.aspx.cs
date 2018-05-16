@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 public partial class NavPrivada_Anime : System.Web.UI.Page
 {
@@ -12,14 +13,9 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
     Conexion sql = new Conexion();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["Admin"] == null)
+        if (!this.IsPostBack)
         {
-
-        }
-
-        if (!IsPostBack)
-        {
-            llenado();
+            this.llenado();
         }
     }
     int IdGrilla = 0;
@@ -29,6 +25,36 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
         cdc = new ConexionLQDataContext();
         GrillaAnime.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);
         GrillaAnime.DataBind();
+    }
+
+    protected void btn_buscar_Click(object sender, EventArgs e)
+    {
+        cdc = new ConexionLQDataContext();
+        GrillaAnime.DataSource = cdc.vAnime.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
+        GrillaAnime.DataBind();
+    }
+
+    protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            e.Row.Cells[0].Text = Regex.Replace(e.Row.Cells[0].Text, txt_buscar.Text.Trim(), delegate (Match match)
+            {
+                return string.Format("<span style = 'background-color:#D9EDF7'>{0}</span>", match.Value);
+            }, RegexOptions.IgnoreCase);
+        }
+    }
+
+
+    protected void GrillaAnime_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            e.Row.Cells[0].Text = Regex.Replace(e.Row.Cells[0].Text, txt_buscar.Text.Trim(), delegate (Match match)
+            {
+                return string.Format("<span style = 'background-color:#D9EDF7'>{0}</span>", match.Value);
+            }, RegexOptions.IgnoreCase);
+        }
     }
 
     protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)

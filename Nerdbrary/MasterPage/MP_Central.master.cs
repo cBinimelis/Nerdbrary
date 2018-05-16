@@ -13,5 +13,9 @@ public partial class MasterPage_MP_Central : System.Web.UI.MasterPage
         {
             Response.Redirect("../Default.aspx");
         }
+        else
+        {
+            Session.Timeout = 35;
+        }
     }
 }

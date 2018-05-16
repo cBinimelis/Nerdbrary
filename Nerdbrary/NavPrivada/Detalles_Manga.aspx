@@ -13,7 +13,7 @@
                 <div class="uk-child-width-1-2@m" uk-grid>
                     <div>
                         <p>
-                            <b>Temporadas: </b>
+                            <b>Tomos: </b>
                             <asp:Label ID="TomosM" runat="server" Text="Más temporadas que Conan"></asp:Label>
                         </p>
                         <p>

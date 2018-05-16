@@ -111,10 +111,10 @@
 
 --ALTER VIEW vManga AS
 --SELECT M.id_Manga, M.Nombre, M.Sinopsis, M.Tomos, CONVERT(varchar, M.Lanzamiento, 103) AS 'Lanzamiento', 
---M.Imagen, GM.Descripcion 'Genero', M.Otros_Generos, EL.Descripcion 'Estado'
+--M.Imagen, GM.Descripcion 'Genero', M.Otros_Generos, EM.Descripcion 'Estado'
 --FROM Manga M
 --INNER JOIN Genero_Mangas GM ON M.id_GeneroManga = GM.id_GeneroManga
---INNER JOIN Estado_Libro EL ON M.id_EstadoLibro = EL.id_EstadoLibro
+--INNER JOIN Estado_Manga EM ON M.id_EstadoManga = EM.id_EstadoManga
 --WHERE M.Activo = 1
 
 --SELECT * FROM vManga WHERE id_Manga = 1
@@ -125,12 +125,12 @@
 --AS
 --BEGIN
 --SELECT MU.id_MangaUsuario, M.Nombre, M.Sinopsis, M.Tomos, CONVERT(varchar, M.Lanzamiento, 103) AS 'Lanzamiento', M.Imagen,
--- GM.Descripcion 'Genero', M.Otros_Generos 'Otros Generos', EL.Descripcion 'Estado', AM.Descripcion 'Avance', MU.Nota
+-- GM.Descripcion 'Genero', M.Otros_Generos 'Otros Generos', EM.Descripcion 'Estado', AM.Descripcion 'Avance', MU.Nota
 --FROM Manga_Usuario MU
 --INNER JOIN Manga M ON MU.id_Manga = M.id_Manga
 --INNER JOIN Usuario U ON MU.id_Usuario = U.id_Usuario
 --INNER JOIN Genero_Mangas GM ON M.id_GeneroManga = GM.id_GeneroManga
---INNER JOIN Estado_Libro EL ON M.id_EstadoLibro = EL.id_EstadoLibro
+--INNER JOIN Estado_Manga EM ON M.id_EstadoManga = EM.id_EstadoManga
 --INNER JOIN Avance_Manga AM ON MU.id_AvanceManga = AM.id_AvanceManga
 --WHERE MU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND MU.id_Manga = @Manga AND M.Activo =  1
 --ORDER BY M.Nombre ASC
@@ -140,16 +140,16 @@
 
 
 
---CREATE PROC vMangaUsuario @User VARCHAR(50)
+--ALTER PROC vMangaUsuario @User VARCHAR(50)
 --AS
 --BEGIN
 --SELECT M.id_Manga, M.Nombre, M.Sinopsis, M.Tomos , CONVERT(varchar, M.Lanzamiento, 103) AS 'Lanzamiento',
---M.Imagen, GM.Descripcion 'Genero', M.Otros_Generos 'Otros Generos', EL.Descripcion 'Estado'
+--M.Imagen, GM.Descripcion 'Genero', M.Otros_Generos 'Otros Generos', EM.Descripcion 'Estado'
 --FROM Manga_Usuario MU
 --INNER JOIN Manga M ON MU.id_Manga = M.id_Manga
 --INNER JOIN Usuario U ON MU.id_Usuario = U.id_Usuario
 --INNER JOIN Genero_Mangas GM ON M.id_GeneroManga = GM.id_GeneroManga
---INNER JOIN Estado_Libro EL ON M.id_EstadoLibro = EL.id_EstadoLibro
+--INNER JOIN Estado_Manga EM ON M.id_EstadoManga = EM.id_EstadoManga
 --WHERE MU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND M.Activo =  1
 --ORDER BY M.Nombre ASC
 --END
