@@ -12,11 +12,6 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
     Conexion sql = new Conexion();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["Admin"] == null)
-        {
-
-        }
-
         if (!IsPostBack)
         {
             llenado();
@@ -29,12 +24,6 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
         cdc = new ConexionLQDataContext();
         GrillaManga.DataSource = cdc.vManga.OrderBy(x => x.Nombre);
         GrillaManga.DataBind();
-    }
-    
-
-    private void Mensaje(String Tit, String Msg, String Stat)
-    {
-        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
 
     protected void GrillaManga_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -75,5 +64,17 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
         {
             Mensaje("Surgió un problema", "No se ha podido agregar el manga a tu lista", "error");
         }
+    }
+
+    protected void btn_buscar_Click(object sender, EventArgs e)
+    {
+        cdc = new ConexionLQDataContext();
+        GrillaManga.DataSource = cdc.vManga.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
+        GrillaManga.DataBind();
+    }
+
+    private void Mensaje(String Tit, String Msg, String Stat)
+    {
+        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
 }

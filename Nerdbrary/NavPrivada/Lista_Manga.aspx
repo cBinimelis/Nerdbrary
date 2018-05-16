@@ -16,6 +16,12 @@
         <div class="uk-section">
             <div class="uk-container">
                 <h1 class=" uk-heading-primary uk-text-center">Lista de Manga</h1>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <asp:TextBox ID="txt_buscar" CssClass="uk-input uk-width-large" runat="server"></asp:TextBox>
+                        <asp:Button ID="btn_buscar" CssClass="uk-button uk-position-right uk-button-default" runat="server" Text="Buscar" OnClick="btn_buscar_Click" />
+                    </div>
+                </div>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
                         <asp:GridView ID="GrillaManga" DataKeyNames="id_Manga" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"

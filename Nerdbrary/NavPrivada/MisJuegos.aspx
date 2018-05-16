@@ -27,15 +27,15 @@
                             </div>
                         </GroupTemplate>
                         <ItemTemplate>
-                            <div class="uk-card uk-card-default uk-width-medium uk-height-medium">
+                            <div class="uk-card uk-card-default uk-width-medium uk-height-medium uk-box-shadow-xlarge uk-box-shadow-hover-small">
                                 <div class="uk-card-media-top uk-width-medium">
                                     <img src="../img/games/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
                                     <h3 class="uk-card-title">
-                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                        <asp:Label ID="lbl_nombre" runat="server"  CssClass="uk-card-title uk-align-center uk-text-truncate" Text='<%# Eval("Nombre") %>'></asp:Label>
                                     </h3>
-                                    <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-text-truncate uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument='<%# Eval("id_Juego") %>' />
+                                    <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary boton-ver uk-light uk-position-bottom uk-width-1-1 uk-margin-medium" runat="server" Text="Ver" CommandName="Select" CommandArgument='<%# Eval("id_Juego") %>' />
                                 </div>
                             </div>
                         </ItemTemplate>

@@ -70,4 +70,11 @@ public partial class NavPrivada_Juegos : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
+
+    protected void btn_buscar_Click(object sender, EventArgs e)
+    {
+        cdc = new ConexionLQDataContext();
+        GrillaJuegos.DataSource = cdc.vJuegos.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
+        GrillaJuegos.DataBind();
+    }
 }

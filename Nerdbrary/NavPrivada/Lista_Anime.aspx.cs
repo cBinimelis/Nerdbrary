@@ -34,29 +34,6 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
         GrillaAnime.DataBind();
     }
 
-    protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            e.Row.Cells[0].Text = Regex.Replace(e.Row.Cells[0].Text, txt_buscar.Text.Trim(), delegate (Match match)
-            {
-                return string.Format("<span style = 'background-color:#D9EDF7'>{0}</span>", match.Value);
-            }, RegexOptions.IgnoreCase);
-        }
-    }
-
-
-    protected void GrillaAnime_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            e.Row.Cells[0].Text = Regex.Replace(e.Row.Cells[0].Text, txt_buscar.Text.Trim(), delegate (Match match)
-            {
-                return string.Format("<span style = 'background-color:#D9EDF7'>{0}</span>", match.Value);
-            }, RegexOptions.IgnoreCase);
-        }
-    }
-
     protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         try
