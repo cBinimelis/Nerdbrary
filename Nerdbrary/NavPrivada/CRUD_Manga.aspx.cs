@@ -93,9 +93,9 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
                             m.Otros_Generos = txt_OGenerosN.Text;
                             m.id_EstadoManga = (dd_estadoN.SelectedIndex + 1);
                             m.Activo = true;
+                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
                             cdc.Manga.InsertOnSubmit(m);
                             cdc.SubmitChanges();
-                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
                             Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
                             Clean();
                             llenar();

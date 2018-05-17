@@ -103,9 +103,9 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
                             j.Otros_Generos = txt_OGenerosN.Text;
                             j.id_EstadoJuego = (dd_estadoN.SelectedIndex + 1);
                             j.Activo = true;
+                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
                             cdc.Juegos.InsertOnSubmit(j);
                             cdc.SubmitChanges();
-                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
                             Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
                             Clean();
                             llenar();

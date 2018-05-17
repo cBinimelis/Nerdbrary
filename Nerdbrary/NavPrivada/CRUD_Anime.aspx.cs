@@ -95,9 +95,9 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
                             a.Otros_Generos = txt_OGenerosN.Text;
                             a.id_EstadoSerie = (dd_estadoN.SelectedIndex + 1);
                             a.Activo = true;
+                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
                             cdc.Anime.InsertOnSubmit(a);
                             cdc.SubmitChanges();
-                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
                             Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
                             Clean();
                             llenar();
