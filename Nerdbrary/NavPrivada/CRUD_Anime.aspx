@@ -72,14 +72,7 @@
                         <div class="uk-width-1-1">
                             <div class="uk-inline uk-position-bottom-center uk-position-relative">
                                 <span class="uk-form-icon" uk-icon="icon: plus"></span>
-                                <asp:updatepanel id="UpdatePanel1" runat="server">
-                                    <Triggers>
-                                        <asp:PostBackTrigger ControlID="btn_crear" />
-                                    </Triggers>
-                                    <ContentTemplate>
-                                        <asp:Button ID="btn_crear" CssClass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" Text="Crear Anime" OnClick="btn_crear_Click" />
-                                    </ContentTemplate>
-                                </asp:updatepanel>
+                                <asp:button id="btn_crear" cssclass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" text="Crear Anime" onclick="btn_crear_Click" />
                             </div>
                         </div>
                     </div>

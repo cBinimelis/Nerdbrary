@@ -9,6 +9,7 @@
       <Association Name="Usuario_Anime_Usuario" Member="Anime_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Anime_Usuario" />
       <Association Name="Usuario_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Juegos_Usuario" />
       <Association Name="Usuario_Manga_Usuario" Member="Manga_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Manga_Usuario" />
+      <Association Name="Usuario_Pendientes" Member="Pendientes" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Pendientes" />
     </Type>
   </Table>
   <Table Name="dbo.Estado_Serie" Member="Estado_Serie">
@@ -217,6 +218,23 @@
       <Association Name="Manga_Manga_Usuario" Member="Manga_Usuario" ThisKey="id_Manga" OtherKey="id_Manga" Type="Manga_Usuario" />
       <Association Name="Estado_Manga_Manga" Member="Estado_Manga" ThisKey="id_EstadoManga" OtherKey="id_EstadoManga" Type="Estado_Manga" IsForeignKey="true" />
       <Association Name="Genero_Mangas_Manga" Member="Genero_Mangas" ThisKey="id_GeneroManga" OtherKey="id_GeneroManga" Type="Genero_Mangas" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pendientes" Member="Pendientes">
+    <Type Name="Pendientes">
+      <Column Name="id_Pendiente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_TipoPendiente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Pendientes" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Tipo_Pendiente_Pendientes" Member="Tipo_Pendiente" ThisKey="id_TipoPendiente" OtherKey="id_TipoPendiente" Type="Tipo_Pendiente" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipo_Pendiente" Member="Tipo_Pendiente">
+    <Type Name="Tipo_Pendiente">
+      <Column Name="id_TipoPendiente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Tipo_Pendiente_Pendientes" Member="Pendientes" ThisKey="id_TipoPendiente" OtherKey="id_TipoPendiente" Type="Pendientes" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">

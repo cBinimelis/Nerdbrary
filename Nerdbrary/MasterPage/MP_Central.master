@@ -67,13 +67,7 @@
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
-                                    <li class="uk-parent">
-                                        <a href="#">Parent</a>
-                                        <ul class="uk-nav-sub">
-                                            <li><a href="#">Sub item</a></li>
-                                            <li><a href="#">Sub item</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="https://www.cuantafauna.com/gatos"><span class="uk-margin-small-right" uk-icon="icon: question"></span>Sorpresa</a></li>
                                     <li class="uk-divider-icon"></li>
                                     <li><a href="../Default.aspx"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Salir</a></li>
                                 </ul>
@@ -84,7 +78,18 @@
 
                     <%--Menu para navegadores--%>
                     <div class="uk-navbar-left uk-visible@m">
-                        <a href="../Default.aspx" uk-tooltip="title: Salir"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span></a>
+
+                        <ul class="uk-navbar-nav">
+                            <li>
+                                <a href="#"><span class="uk-margin-small-right" uk-icon="icon: more"></span></a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="https://www.cuantafauna.com/gatos"><span class="uk-margin-small-right" uk-icon="icon: question"></span>Sorpresa</a></li>
+                                        <li><a href="../Default.aspx"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Salir</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <div class="uk-container uk-container-expand">
                         <div>

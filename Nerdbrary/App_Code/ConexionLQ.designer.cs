@@ -83,6 +83,12 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
   partial void InsertManga(Manga instance);
   partial void UpdateManga(Manga instance);
   partial void DeleteManga(Manga instance);
+  partial void InsertPendientes(Pendientes instance);
+  partial void UpdatePendientes(Pendientes instance);
+  partial void DeletePendientes(Pendientes instance);
+  partial void InsertTipo_Pendiente(Tipo_Pendiente instance);
+  partial void UpdateTipo_Pendiente(Tipo_Pendiente instance);
+  partial void DeleteTipo_Pendiente(Tipo_Pendiente instance);
   #endregion
 	
 	public ConexionLQDataContext() : 
@@ -283,6 +289,22 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<Pendientes> Pendientes
+	{
+		get
+		{
+			return this.GetTable<Pendientes>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Tipo_Pendiente> Tipo_Pendiente
+	{
+		get
+		{
+			return this.GetTable<Tipo_Pendiente>();
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vAnimeUsuario")]
 	public ISingleResult<vAnimeUsuarioResult> vAnimeUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
 	{
@@ -346,6 +368,8 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private EntitySet<Manga_Usuario> _Manga_Usuario;
 	
+	private EntitySet<Pendientes> _Pendientes;
+	
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -365,6 +389,7 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 		this._Anime_Usuario = new EntitySet<Anime_Usuario>(new Action<Anime_Usuario>(this.attach_Anime_Usuario), new Action<Anime_Usuario>(this.detach_Anime_Usuario));
 		this._Juegos_Usuario = new EntitySet<Juegos_Usuario>(new Action<Juegos_Usuario>(this.attach_Juegos_Usuario), new Action<Juegos_Usuario>(this.detach_Juegos_Usuario));
 		this._Manga_Usuario = new EntitySet<Manga_Usuario>(new Action<Manga_Usuario>(this.attach_Manga_Usuario), new Action<Manga_Usuario>(this.detach_Manga_Usuario));
+		this._Pendientes = new EntitySet<Pendientes>(new Action<Pendientes>(this.attach_Pendientes), new Action<Pendientes>(this.detach_Pendientes));
 		OnCreated();
 	}
 	
@@ -487,6 +512,19 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Pendientes", Storage="_Pendientes", ThisKey="id_Usuario", OtherKey="id_Usuario")]
+	public EntitySet<Pendientes> Pendientes
+	{
+		get
+		{
+			return this._Pendientes;
+		}
+		set
+		{
+			this._Pendientes.Assign(value);
+		}
+	}
+	
 	public event PropertyChangingEventHandler PropertyChanging;
 	
 	public event PropertyChangedEventHandler PropertyChanged;
@@ -538,6 +576,18 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 	
 	private void detach_Manga_Usuario(Manga_Usuario entity)
+	{
+		this.SendPropertyChanging();
+		entity.Usuario = null;
+	}
+	
+	private void attach_Pendientes(Pendientes entity)
+	{
+		this.SendPropertyChanging();
+		entity.Usuario = this;
+	}
+	
+	private void detach_Pendientes(Pendientes entity)
 	{
 		this.SendPropertyChanging();
 		entity.Usuario = null;
@@ -4436,6 +4486,336 @@ public partial class Manga : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.Manga = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pendientes")]
+public partial class Pendientes : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_Pendiente;
+	
+	private string _Nombre;
+	
+	private int _id_Usuario;
+	
+	private int _id_TipoPendiente;
+	
+	private EntityRef<Usuario> _Usuario;
+	
+	private EntityRef<Tipo_Pendiente> _Tipo_Pendiente;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_PendienteChanging(int value);
+    partial void Onid_PendienteChanged();
+    partial void OnNombreChanging(string value);
+    partial void OnNombreChanged();
+    partial void Onid_UsuarioChanging(int value);
+    partial void Onid_UsuarioChanged();
+    partial void Onid_TipoPendienteChanging(int value);
+    partial void Onid_TipoPendienteChanged();
+    #endregion
+	
+	public Pendientes()
+	{
+		this._Usuario = default(EntityRef<Usuario>);
+		this._Tipo_Pendiente = default(EntityRef<Tipo_Pendiente>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Pendiente", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id_Pendiente
+	{
+		get
+		{
+			return this._id_Pendiente;
+		}
+		set
+		{
+			if ((this._id_Pendiente != value))
+			{
+				this.Onid_PendienteChanging(value);
+				this.SendPropertyChanging();
+				this._id_Pendiente = value;
+				this.SendPropertyChanged("id_Pendiente");
+				this.Onid_PendienteChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this.OnNombreChanging(value);
+				this.SendPropertyChanging();
+				this._Nombre = value;
+				this.SendPropertyChanged("Nombre");
+				this.OnNombreChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Usuario", DbType="Int NOT NULL")]
+	public int id_Usuario
+	{
+		get
+		{
+			return this._id_Usuario;
+		}
+		set
+		{
+			if ((this._id_Usuario != value))
+			{
+				if (this._Usuario.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onid_UsuarioChanging(value);
+				this.SendPropertyChanging();
+				this._id_Usuario = value;
+				this.SendPropertyChanged("id_Usuario");
+				this.Onid_UsuarioChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_TipoPendiente", DbType="Int NOT NULL")]
+	public int id_TipoPendiente
+	{
+		get
+		{
+			return this._id_TipoPendiente;
+		}
+		set
+		{
+			if ((this._id_TipoPendiente != value))
+			{
+				if (this._Tipo_Pendiente.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onid_TipoPendienteChanging(value);
+				this.SendPropertyChanging();
+				this._id_TipoPendiente = value;
+				this.SendPropertyChanged("id_TipoPendiente");
+				this.Onid_TipoPendienteChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Pendientes", Storage="_Usuario", ThisKey="id_Usuario", OtherKey="id_Usuario", IsForeignKey=true)]
+	public Usuario Usuario
+	{
+		get
+		{
+			return this._Usuario.Entity;
+		}
+		set
+		{
+			Usuario previousValue = this._Usuario.Entity;
+			if (((previousValue != value) 
+						|| (this._Usuario.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Usuario.Entity = null;
+					previousValue.Pendientes.Remove(this);
+				}
+				this._Usuario.Entity = value;
+				if ((value != null))
+				{
+					value.Pendientes.Add(this);
+					this._id_Usuario = value.id_Usuario;
+				}
+				else
+				{
+					this._id_Usuario = default(int);
+				}
+				this.SendPropertyChanged("Usuario");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tipo_Pendiente_Pendientes", Storage="_Tipo_Pendiente", ThisKey="id_TipoPendiente", OtherKey="id_TipoPendiente", IsForeignKey=true)]
+	public Tipo_Pendiente Tipo_Pendiente
+	{
+		get
+		{
+			return this._Tipo_Pendiente.Entity;
+		}
+		set
+		{
+			Tipo_Pendiente previousValue = this._Tipo_Pendiente.Entity;
+			if (((previousValue != value) 
+						|| (this._Tipo_Pendiente.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Tipo_Pendiente.Entity = null;
+					previousValue.Pendientes.Remove(this);
+				}
+				this._Tipo_Pendiente.Entity = value;
+				if ((value != null))
+				{
+					value.Pendientes.Add(this);
+					this._id_TipoPendiente = value.id_TipoPendiente;
+				}
+				else
+				{
+					this._id_TipoPendiente = default(int);
+				}
+				this.SendPropertyChanged("Tipo_Pendiente");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tipo_Pendiente")]
+public partial class Tipo_Pendiente : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_TipoPendiente;
+	
+	private string _Descripcion;
+	
+	private EntitySet<Pendientes> _Pendientes;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_TipoPendienteChanging(int value);
+    partial void Onid_TipoPendienteChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    #endregion
+	
+	public Tipo_Pendiente()
+	{
+		this._Pendientes = new EntitySet<Pendientes>(new Action<Pendientes>(this.attach_Pendientes), new Action<Pendientes>(this.detach_Pendientes));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_TipoPendiente", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id_TipoPendiente
+	{
+		get
+		{
+			return this._id_TipoPendiente;
+		}
+		set
+		{
+			if ((this._id_TipoPendiente != value))
+			{
+				this.Onid_TipoPendienteChanging(value);
+				this.SendPropertyChanging();
+				this._id_TipoPendiente = value;
+				this.SendPropertyChanged("id_TipoPendiente");
+				this.Onid_TipoPendienteChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Descripcion
+	{
+		get
+		{
+			return this._Descripcion;
+		}
+		set
+		{
+			if ((this._Descripcion != value))
+			{
+				this.OnDescripcionChanging(value);
+				this.SendPropertyChanging();
+				this._Descripcion = value;
+				this.SendPropertyChanged("Descripcion");
+				this.OnDescripcionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tipo_Pendiente_Pendientes", Storage="_Pendientes", ThisKey="id_TipoPendiente", OtherKey="id_TipoPendiente")]
+	public EntitySet<Pendientes> Pendientes
+	{
+		get
+		{
+			return this._Pendientes;
+		}
+		set
+		{
+			this._Pendientes.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Pendientes(Pendientes entity)
+	{
+		this.SendPropertyChanging();
+		entity.Tipo_Pendiente = this;
+	}
+	
+	private void detach_Pendientes(Pendientes entity)
+	{
+		this.SendPropertyChanging();
+		entity.Tipo_Pendiente = null;
 	}
 }
 
