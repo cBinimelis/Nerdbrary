@@ -25,6 +25,35 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
         dd_tipopendiente.DataBind();
     }
 
+
+    protected void btn_crear_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (txt_pendiente.Text.Trim().Equals(""))
+            {
+                Mensaje("Así no se puede trabajar", "No puedes dejar el campo vacío", "warning");
+            }
+            else
+            {
+                String UserNick = Session["Admin"].ToString();
+                cdc = new ConexionLQDataContext();
+                Pendientes p = new Pendientes();
+                p.id_Usuario = (from a in cdc.Usuario where a.Nick == UserNick select a.id_Usuario).FirstOrDefault();
+                p.Nombre = txt_pendiente.Text;
+                p.id_TipoPendiente = dd_tipopendiente.SelectedIndex + 1;
+                cdc.Pendientes.InsertOnSubmit(p);
+                cdc.SubmitChanges();
+                Mensaje("Felicidades", "Se ha creado el regristro", "success");
+                Clean();
+            }
+        }
+        catch
+        {
+
+        }
+    }
+
     private void LlenarSlides()
     {
         SqlDataReader Anime = sql.consulta("SELECT TOP 5 id_Anime, Nombre, Imagen FROM Anime ORDER BY NEWID()");
@@ -102,5 +131,14 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
             img_manga5.Attributes["src"] = "../img/manga/" + Manga[2].ToString();
             Manga.Read();
         }
+    }
+
+    private void Clean()
+    {
+        txt_pendiente.Text = "";
+    }
+    private void Mensaje(String Tit, String Msg, String Stat)
+    {
+        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
 }

@@ -35,10 +35,10 @@
                         </div>
                     </div>
                     <asp:DropDownList ID="dd_tipopendiente" CssClass="uk-width-1-4 uk-select" runat="server" ForeColor="#999999"></asp:DropDownList>
-                    <div class="uk-width-expand ">
+                    <div class="uk-width-auto@m ">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: plus"></span>
-                            <asp:Button ID="btn_crear" CssClass="uk-button uk-button-primary uk-form-width-medium" runat="server" Text="Crear Pendiente" />
+                            <asp:Button ID="btn_crear" CssClass="uk-button uk-button-primary" runat="server" Text="Crear Pendiente" OnClick="btn_crear_Click"/>
                         </div>
                     </div>
                 </div>
