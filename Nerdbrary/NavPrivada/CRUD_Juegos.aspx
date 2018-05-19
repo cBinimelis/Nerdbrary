@@ -9,6 +9,8 @@
             <div class="uk-container">
                 <div class="uk-card uk-card-secondary">
                     <h1 class="uk-heading-line uk-text-center uk-padding">Mantenedor de Juegos</h1>
+                    <asp:Label ID="lbl_idPendiente" runat="server" Text="Label" Visible="false"></asp:Label>
+                    <asp:Label ID="lbl_hayPendientes" runat="server" Text="Label" Visible="false"></asp:Label>
                     <div class="uk-card-body" uk-grid>
                         <div class="uk-width-1-2@m">
                             <p>Nombre</p>

@@ -12,7 +12,6 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
     Conexion sql = new Conexion();
     ConexionLQDataContext cdc;
     int idPendiente = 0;
-    bool HayPendientes;
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Page.Form.Enctype = "multipart/form-data";
@@ -30,9 +29,9 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
 
     private void ConfirmarPendiente()
     {
-        if (idPendiente.Equals("") || idPendiente.Equals(null))
+        if (idPendiente.Equals("") || idPendiente.Equals(null) || idPendiente == 0)
         {
-            HayPendientes = false;
+            lbl_hayPendientes.Text = "false";
         }
         else
         {
@@ -43,7 +42,8 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
                 txt_nombreN.Text = Pendiente[1].ToString();
                 txt_nombreN.Enabled = false;
                 txt_nombreN.Attributes["uk-tooltip"] = "title: No puedes editar este campo";
-                HayPendientes = true;
+                lbl_hayPendientes.Text = "true";
+                lbl_idPendiente.Text = idPendiente.ToString();
             }
         }
     }
@@ -135,6 +135,7 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
                             Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
                             Clean();
                             llenar();
+                            EliminarPendiente();
                         }
                         catch (Exception ex)
                         {
@@ -151,6 +152,18 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
         catch
         {
             Mensaje("Ups", "Algo ha salido mal", "error");
+        }
+    }
+
+    private void EliminarPendiente()
+    {
+        if (lbl_hayPendientes.Text.Equals("true"))
+        {
+            int ID = Convert.ToInt32(lbl_idPendiente.Text);
+            cdc = new ConexionLQDataContext();
+            Pendientes p = (from a in cdc.Pendientes where a.id_Pendiente == ID select a).FirstOrDefault();
+            cdc.Pendientes.DeleteOnSubmit(p);
+            cdc.SubmitChanges();
         }
     }
 
