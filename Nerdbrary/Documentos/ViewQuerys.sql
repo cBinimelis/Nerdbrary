@@ -1,3 +1,13 @@
+--------------------------------------------------------PENDIENTES--------------------------------------------------------
+
+CREATE VIEW vPendientes AS 
+SELECT P.id_Pendiente, P.Nombre, U.Nick 'Usuario', TP.Descripcion 'Tipo', TP.id_TipoPendiente
+FROM Pendientes P
+INNER JOIN Usuario U ON U.id_Usuario = P.id_Usuario
+INNER JOIN Tipo_Pendiente TP ON TP.id_TipoPendiente = P.id_TipoPendiente
+
+SELECT * FROM vPendientes
+
 --------------------------------------------------------ANIME--------------------------------------------------------
 
 --ALTER VIEW vAnime as

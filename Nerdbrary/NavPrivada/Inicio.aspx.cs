@@ -12,17 +12,20 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
     Conexion sql = new Conexion();
     protected void Page_Load(object sender, EventArgs e)
     {
-        LlenarDD();
-        LlenarSlides();
+        if (!this.IsPostBack)
+        {
+            LlenarSlides();
+            LlenarDD();
+        }
     }
 
     private void LlenarDD()
     {
         cdc = new ConexionLQDataContext();
-        dd_tipopendiente.DataSource = cdc.Tipo_Pendiente;
-        dd_tipopendiente.DataValueField = "id_TipoPendiente";
-        dd_tipopendiente.DataTextField = "Descripcion";
-        dd_tipopendiente.DataBind();
+        dd_tipoP.DataSource = cdc.Tipo_Pendiente;
+        dd_tipoP.DataTextField = "Descripcion";
+        dd_tipoP.DataValueField = "id_TipoPendiente";
+        dd_tipoP.DataBind();
     }
 
 
@@ -41,7 +44,7 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
                 Pendientes p = new Pendientes();
                 p.id_Usuario = (from a in cdc.Usuario where a.Nick == UserNick select a.id_Usuario).FirstOrDefault();
                 p.Nombre = txt_pendiente.Text;
-                p.id_TipoPendiente = dd_tipopendiente.SelectedIndex + 1;
+                p.id_TipoPendiente = (dd_tipoP.SelectedIndex + 1);
                 cdc.Pendientes.InsertOnSubmit(p);
                 cdc.SubmitChanges();
                 Mensaje("Felicidades", "Se ha creado el regristro", "success");

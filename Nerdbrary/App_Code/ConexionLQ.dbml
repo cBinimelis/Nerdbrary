@@ -237,6 +237,15 @@
       <Association Name="Tipo_Pendiente_Pendientes" Member="Pendientes" ThisKey="id_TipoPendiente" OtherKey="id_TipoPendiente" Type="Pendientes" />
     </Type>
   </Table>
+  <Table Name="dbo.vPendientes" Member="vPendientes">
+    <Type Name="vPendientes">
+      <Column Name="id_Pendiente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_TipoPendiente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">
     <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="vAnimeUsuarioResult">

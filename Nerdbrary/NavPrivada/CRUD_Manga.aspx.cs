@@ -5,18 +5,44 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
 {
+    Conexion sql = new Conexion();
     ConexionLQDataContext cdc;
+    int idPendiente = 0;
+    bool HayPendientes;
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Page.Form.Enctype = "multipart/form-data";
         if (!IsPostBack)
         {
+            idPendiente = Convert.ToInt32(Request.QueryString["Id"]);
+            ConfirmarPendiente();
             this.llenar();
             llenaEstado();
             llenaGenero();
+        }
+    }
+
+    private void ConfirmarPendiente()
+    {
+        if (idPendiente.Equals("") || idPendiente.Equals(null))
+        {
+            HayPendientes = false;
+        }
+        else
+        {
+            cdc = new ConexionLQDataContext();
+            SqlDataReader Pendiente = sql.consulta("SELECT * FROM Pendientes WHERE id_Pendiente = " + idPendiente);
+            if (Pendiente.Read())
+            {
+                txt_nombreN.Text = Pendiente[1].ToString();
+                txt_nombreN.Enabled = false;
+                txt_nombreN.Attributes["uk-tooltip"] = "title: No puedes editar este campo";
+                HayPendientes = true;
+            }
         }
     }
 

@@ -27,18 +27,18 @@
         <div class="uk-section-secondary">
             <div class="uk-container">
                 <h2 class="uk-text-center uk-margin-top">Agregar un pendiente</h2>
-                <div class="uk-padding" uk-grid>
+                <div class="uk-padding uk-flex-center" uk-grid>
                     <div class="uk-width-1-2">
                         <div class="uk-inline">
-                            <a class="uk-form-icon" href="#" uk-icon="icon: search" uk-tooltip="title: Ver pendientes"></a>
-                            <asp:TextBox ID="txt_pendiente" CssClass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:TextBox>
+                            <a class="uk-form-icon" href="Pendientes.aspx" uk-icon="icon: search" uk-tooltip="title: Ver pendientes"></a>
+                            <asp:textbox id="txt_pendiente" cssclass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:textbox>
                         </div>
                     </div>
-                    <asp:DropDownList ID="dd_tipopendiente" CssClass="uk-width-1-4 uk-select" runat="server" ForeColor="#999999"></asp:DropDownList>
+                    <asp:dropdownlist id="dd_tipoP" cssclass="uk-form-width-medium uk-select" runat="server" forecolor="#999999"></asp:dropdownlist>
                     <div class="uk-width-auto@m ">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: plus"></span>
-                            <asp:Button ID="btn_crear" CssClass="uk-button uk-button-primary" runat="server" Text="Crear Pendiente" OnClick="btn_crear_Click"/>
+                            <asp:button id="btn_crear" cssclass="uk-button uk-button-primary" runat="server" text="Crear Pendiente" onclick="btn_crear_Click" />
                         </div>
                     </div>
                 </div>
@@ -46,13 +46,13 @@
         </div>
     </div>
 
-    <div class="uk-section-muted uk-padding">
+    <div class="uk-section-muted uk-padding" style="background-color: #ba55d3;">
         <div class="uk-container">
-            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-flex-center" uk-grid>
+            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-light uk-flex-center" uk-grid>
 
                 <%--SLIDE SHOW PARA ANIME--%>
                 <div>
-                    <h4 class="uk-heading-line">Anime</h4>
+                    <h2 class="uk-heading-divider uk-text-bold">Anime</h2>
                     <div class="uk-position-relative uk-visible-toggle uk-light uk-box-shadow-small uk-box-shadow-hover-xlarge"
                         uk-slideshow="animation: push; autoplay: true; autoplay-interval: 3000; pause-on-hover: true">
 
@@ -101,7 +101,7 @@
 
                 <%--SLIDESHOW PARA JUEGOS--%>
                 <div>
-                    <h4 class="uk-heading-line">Juegos</h4>
+                    <h2 class="uk-heading-divider uk-text-bold">Juegos</h2>
                     <div class="uk-position-relative uk-visible-toggle uk-light uk-box-shadow-small uk-box-shadow-hover-xlarge"
                         uk-slideshow="animation: push; autoplay: true; autoplay-interval: 3000; pause-on-hover: true">
 
@@ -147,9 +147,10 @@
                     </div>
                 </div>
 
+
                 <%--SLIDESHOW PARA MANGAS--%>
                 <div>
-                    <h4 class="uk-heading-line">Mangas</h4>
+                    <h2 class="uk-heading-divider uk-text-bold">Manga</h2>
                     <div class="uk-position-relative uk-visible-toggle uk-light uk-box-shadow-small uk-box-shadow-hover-xlarge"
                         uk-slideshow="animation: push; autoplay: true; autoplay-interval: 3000; pause-on-hover: true">
 
@@ -194,6 +195,14 @@
                         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
                     </div>
                 </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="uk-section-muted uk-padding">
+        <div class="uk-container">
+
+            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-flex-center" uk-grid>
                 <div>
                     <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
                 </div>
@@ -250,7 +259,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </asp:Content>
 

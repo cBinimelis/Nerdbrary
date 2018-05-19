@@ -305,6 +305,14 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<vPendientes> vPendientes
+	{
+		get
+		{
+			return this.GetTable<vPendientes>();
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vAnimeUsuario")]
 	public ISingleResult<vAnimeUsuarioResult> vAnimeUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
 	{
@@ -4816,6 +4824,105 @@ public partial class Tipo_Pendiente : INotifyPropertyChanging, INotifyPropertyCh
 	{
 		this.SendPropertyChanging();
 		entity.Tipo_Pendiente = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vPendientes")]
+public partial class vPendientes
+{
+	
+	private int _id_Pendiente;
+	
+	private string _Nombre;
+	
+	private string _Usuario;
+	
+	private string _Tipo;
+	
+	private int _id_TipoPendiente;
+	
+	public vPendientes()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Pendiente", DbType="Int NOT NULL")]
+	public int id_Pendiente
+	{
+		get
+		{
+			return this._id_Pendiente;
+		}
+		set
+		{
+			if ((this._id_Pendiente != value))
+			{
+				this._id_Pendiente = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Usuario", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Usuario
+	{
+		get
+		{
+			return this._Usuario;
+		}
+		set
+		{
+			if ((this._Usuario != value))
+			{
+				this._Usuario = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tipo", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Tipo
+	{
+		get
+		{
+			return this._Tipo;
+		}
+		set
+		{
+			if ((this._Tipo != value))
+			{
+				this._Tipo = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_TipoPendiente", DbType="Int NOT NULL")]
+	public int id_TipoPendiente
+	{
+		get
+		{
+			return this._id_TipoPendiente;
+		}
+		set
+		{
+			if ((this._id_TipoPendiente != value))
+			{
+				this._id_TipoPendiente = value;
+			}
+		}
 	}
 }
 
