@@ -133,7 +133,7 @@
                     <div class="uk-card-body uk-overflow-auto">
                         <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
                             OnRowDataBound="GrillaAnime_RowDataBound" OnRowCancelingEdit="GrillaAnime_RowCancelingEdit" OnRowEditing="GrillaAnime_RowEditing"
-                            OnRowDeleting="GrillaAnime_RowDeleting" OnRowUpdating="GrillaAnime_RowUpdating"
+                            OnRowDeleting="GrillaAnime_RowDeleting" OnRowUpdating="GrillaAnime_RowUpdating" OnRowCommand="GrillaAnime_RowCommand"
                             BorderStyle="None" GridLines="None" runat="server">
                             <Columns>
                                 <asp:TemplateField HeaderText="ID Anime" Visible="false">
@@ -148,14 +148,6 @@
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_nombre" CssClass="uk-input uk-form-width-small" Text='<%# Eval("Nombre") %>' runat="server"></asp:TextBox>
                                     </EditItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Sinopsis" ItemStyle-CssClass="uk-text-truncate">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_sinopsis" runat="server" Text='<%# Eval("Sinopsis")%>'></asp:Label>
-                                    </ItemTemplate>
-                                    <%-- <EditItemTemplate>
-                                        <asp:TextBox ID="txt_sinopsis" CssClass="uk-textarea uk-form-width-medium uk-height-medium" Text='<%# Eval("Sinopsis")%>' runat="server" TextMode="MultiLine"></asp:TextBox>
-                                    </EditItemTemplate>--%>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Lanzamiento">
                                     <ItemTemplate>
@@ -207,7 +199,8 @@
                                 </asp:TemplateField>
                                 <asp:CommandField ButtonType="Link" ShowEditButton="true" EditText="<span uk-icon='icon: pencil' uk-tooltip='title: Editar'></span>"
                                     CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"
-                                    ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash' uk-tooltip='title: Eliminar'></span>" />
+                                    ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash' uk-tooltip='title: Eliminar'></span>"
+                                    ShowSelectButton="true" SelectText="<span uk-icon='icon: search' uk-tooltip='title: Ver'></span>" />
                             </Columns>
                         </asp:GridView>
                     </div>

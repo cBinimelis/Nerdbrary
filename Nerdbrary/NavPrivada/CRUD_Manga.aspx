@@ -130,12 +130,12 @@
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
             <div class="uk-container">
-                <h1 class=" uk-heading-primary uk-text-center">Lista de Anime</h1>
+                <h1 class=" uk-heading-primary uk-text-center">Lista de Manga</h1>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
                         <asp:gridview id="GrillaMangas" datakeynames="id_Manga" cssclass="uk-table uk-table-divider uk-table-small" autogeneratecolumns="False"
                             onrowdatabound="GrillaMangas_RowDataBound" onrowediting="GrillaMangas_RowEditing" onrowcancelingedit="GrillaMangas_RowCancelingEdit"
-                            onrowupdating="GrillaMangas_RowUpdating" onrowdeleting ="GrillaMangas_RowDeleting"
+                            onrowupdating="GrillaMangas_RowUpdating" onrowdeleting ="GrillaMangas_RowDeleting" OnRowCommand="GrillaMangas_RowCommand"
                             borderstyle="None" gridlines="None" runat="server">
                             <Columns>
                                 <asp:TemplateField HeaderText="ID Juego" Visible="false">
@@ -150,11 +150,6 @@
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_nombre" CssClass="uk-input uk-form-width-small" Text='<%# Eval("Nombre") %>' runat="server"></asp:TextBox>
                                     </EditItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Sinopsis" ItemStyle-CssClass="uk-text-truncate">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_sinopsis" runat="server" Text='<%# Eval("Sinopsis")%>'></asp:Label>
-                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Tomos">
                                     <ItemTemplate>
@@ -188,9 +183,9 @@
                                         <asp:DropDownList ID="dd_genero" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Genero" DataTextField="Descripcion" DataValueField="id_GeneroManga"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="Otros Generos">
+                                 <asp:TemplateField HeaderText="Otros Generos" ItemStyle-CssClass="uk-text-truncate">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_OGenero" runat="server" Text='<%# Eval("Otros_Generos") %>'></asp:Label>
+                                        <asp:Label ID="lbl_OGenero" runat="server" CssClass="uk-width-small" Text='<%# Eval("Otros_Generos") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_OGeneros" CssClass="uk-input" Text='<%# Eval("Otros_Generos") %>' runat="server"></asp:TextBox>
@@ -198,7 +193,8 @@
                                 </asp:TemplateField>
                                 <asp:CommandField ButtonType="Link" ShowEditButton="true" EditText="<span uk-icon='icon: pencil' uk-tooltip='title: Editar'></span>"
                                     CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"
-                                    ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash' uk-tooltip='title: Eliminar'></span>" />
+                                    ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash' uk-tooltip='title: Eliminar'></span>"
+                                    ShowSelectButton="true" SelectText="<span uk-icon='icon: search' uk-tooltip='title: Ver'></span>" />
                             </Columns>
                         </asp:gridview>
                     </div>

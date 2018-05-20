@@ -148,6 +148,18 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
         }
     }
 
+    protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int rowIndex = Convert.ToInt32(e.CommandArgument);
+        GridViewRow row = GrillaAnime.Rows[rowIndex];
+        string ID = (row.FindControl("lbl_id") as Label).Text;
+        int IdGrilla = Convert.ToInt32(ID);
+        if (e.CommandName == "Select")
+        {
+            Response.Redirect("Detalles_Anime.aspx?Id=" + ID);
+        }
+    }
+
     private void EliminarPendiente()
     {
         if (lbl_hayPendientes.Text.Equals("true"))
@@ -164,7 +176,7 @@ public partial class NavPrivada_AnimeCRUD : System.Web.UI.Page
     {
         if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaAnime.EditIndex)
         {
-            (e.Row.Cells[9].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+            (e.Row.Cells[8].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
         }
     }
 

@@ -103,7 +103,8 @@
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                                         <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
                                                         <li><a href="../NavPrivada/CRUD_Juegos.aspx">Mantenedor</a></li>
-                                                        <li><a href="../NavPrivada/CRUD_Desarrollador.aspx">Desarrollador</a></li>
+                                                        <li class="uk-nav-header">Desarrolladores</li>
+                                                        <li><a href="../NavPrivada/CRUD_Desarrollador.aspx">Mantenedor de Desarrollador</a></li>
                                                     </ul>
                                                 </div>
 

@@ -158,11 +158,23 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
         }
     }
 
+    protected void GrillaMangas_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int rowIndex = Convert.ToInt32(e.CommandArgument);
+        GridViewRow row = GrillaMangas.Rows[rowIndex];
+        string ID = (row.FindControl("lbl_id") as Label).Text;
+        int IdGrilla = Convert.ToInt32(ID);
+        if (e.CommandName == "Select")
+        {
+            Response.Redirect("Detalles_Manga.aspx?Id=" + ID);
+        }
+    }
+
     protected void GrillaMangas_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaMangas.EditIndex)
         {
-            (e.Row.Cells[8].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+            (e.Row.Cells[7].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
         }
     }
 

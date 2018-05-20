@@ -168,11 +168,23 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
         }
     }
 
+    protected void GrillaJuegos_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int rowIndex = Convert.ToInt32(e.CommandArgument);
+        GridViewRow row = GrillaJuegos.Rows[rowIndex];
+        string ID = (row.FindControl("lbl_id") as Label).Text;
+        int IdGrilla = Convert.ToInt32(ID);
+        if (e.CommandName == "Select")
+        {
+            Response.Redirect("Detalles_Juegos.aspx?Id=" + ID);
+        }
+    }
+
     protected void GrillaJuegos_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaJuegos.EditIndex)
         {
-            (e.Row.Cells[8].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+            (e.Row.Cells[7].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
         }
     }
 
