@@ -3,6 +3,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=btn_crearGenero]').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "CRUD_Manga.aspx/CrearEstado",
+                    data: '{Estado: "' + $("#txt_crearGenero").val() + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        swal("Felicidades", "El genero " + response.d + " ha sido creado \n Recargue la página para verlo en la lista", "success");
+                        rellenar();
+                    },
+                    failure: function (response) {
+                        swal(response.responseText);
+                    },
+                    error: function (response) {
+                        swal(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
@@ -39,7 +62,7 @@
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
-                            <p>Genero</p>
+                            <p>Genero <a class="uk-icon-link uk-margin-left-small" uk-icon="plus" href="#modal-genero" uk-tooltip="title: Agregar Genero" uk-toggle></a></p>
                             <div class="uk-inline">
                                 <asp:dropdownlist id="dd_generoN" cssclass="uk-select uk-form-width-large" runat="server" forecolor="#999999"></asp:dropdownlist>
                             </div>
@@ -78,6 +101,25 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <%--MODAL PARA LA CREACION DE ESTADOS--%>
+    <div id="modal-genero" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-margin-auto-vertical">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Crear Nuevo Genero</h2>
+            </div>
+            <div class="uk-modal-body">
+                <input type="tel" id="txt_crearGenero" class="uk-input uk-form-width-large" placeholder="Ingrese el nombre del nuevo genero..." />
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                <button id="btn_crearGenero" class="uk-button uk-button-primary uk-modal-close" type="button">Crear</button>
             </div>
         </div>
     </div>

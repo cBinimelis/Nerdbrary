@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using System.Configuration;
+using System.Web.Services;
+using System.Data;
 
 public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
 {
@@ -23,7 +26,6 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
             llenaEstado();
             llenaGenero();
             llenaDesarrollador();
-            Clean();
         }
     }
 
@@ -240,17 +242,66 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
 
     private void Clean()
     {
+        //Formulario
         txt_nombreN.Text = "";
         txt_sinopsisN.Text = "";
         dd_desarrolladorN.SelectedIndex = 0;
         txt_OGenerosN.Text = "";
         dd_estadoN.SelectedIndex = 0;
         dd_generoN.SelectedIndex = 0;
+
     }
 
+    protected void btn_crearEstado_Click(object sender, EventArgs e)
+    {
+        String Genero = "";
+        if (Genero.Equals(""))
+        {
+            Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
+        }
+        else
+        {
+            SqlDataReader EstadoBD = sql.consulta("SELECT * FROM Genero_Juegos WHERE id_EstadoJuegos = " + Genero);
+            if (EstadoBD.Read())
+            {
+                Mensaje("Nop", "Ya existe este elemento en la base de datos", "error");
+            }
+            else
+            {
+                cdc = new ConexionLQDataContext();
+                Genero_Juegos gj = new Genero_Juegos();
+                gj.Descripcion = Genero;
+                cdc.Genero_Juegos.InsertOnSubmit(gj);
+                cdc.SubmitChanges();
+                Mensaje("Felicidades", "Se ha creado un nuevo Genero", "success");
+                llenaGenero();
+            }
+        }
+    }
+
+    [WebMethod]
+    public static string CrearEstado(String Estado)
+    {
+        string constr = "Data Source=VLADIMIR;Initial Catalog=bd_biblioteca;Persist Security Info=True;User ID=sa;Password=crislyn;MultipleActiveResultSets=True";
+        using (SqlConnection con = new SqlConnection(constr))
+        {
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO Genero_Juegos VALUES(@Descripcion)"))
+            {
+                cmd.Parameters.AddWithValue("@Descripcion", Estado);
+                cmd.Connection = con;
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return Estado;
+            }
+        }
+    }
+    
     private void Mensaje(String Tit, String Msg, String Stat)
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
+
+
 
 }

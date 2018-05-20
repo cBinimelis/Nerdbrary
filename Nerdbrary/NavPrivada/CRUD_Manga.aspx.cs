@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Web.Services;
 
 public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
 {
@@ -236,6 +237,25 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
         txt_OGenerosN.Text = "";
         dd_estadoN.SelectedIndex = 0;
         dd_generoN.SelectedIndex = 0;
+    }
+
+
+    [WebMethod]
+    public static string CrearEstado(String Estado)
+    {
+        string constr = "Data Source=VLADIMIR;Initial Catalog=bd_biblioteca;Persist Security Info=True;User ID=sa;Password=crislyn;MultipleActiveResultSets=True";
+        using (SqlConnection con = new SqlConnection(constr))
+        {
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO Genero_Mangas VALUES(@Descripcion)"))
+            {
+                cmd.Parameters.AddWithValue("@Descripcion", Estado);
+                cmd.Connection = con;
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return Estado;
+            }
+        }
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)
