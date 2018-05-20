@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Web.Services;
 using System.Data;
 
@@ -242,14 +241,12 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
 
     private void Clean()
     {
-        //Formulario
         txt_nombreN.Text = "";
         txt_sinopsisN.Text = "";
         dd_desarrolladorN.SelectedIndex = 0;
         txt_OGenerosN.Text = "";
         dd_estadoN.SelectedIndex = 0;
         dd_generoN.SelectedIndex = 0;
-
     }
 
     protected void btn_crearEstado_Click(object sender, EventArgs e)
@@ -301,7 +298,4 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
-
-
-
 }

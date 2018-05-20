@@ -40,6 +40,7 @@
                                         <ul class="uk-nav-sub">
                                             <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
                                             <li><a href="../NavPrivada/CRUD_Juegos.aspx">Mantenedor</a></li>
+                                            <li><a href="../NavPrivada/CRUD_Desarrollador.aspx">Desarrollador</a></li>
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
@@ -102,6 +103,7 @@
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                                         <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
                                                         <li><a href="../NavPrivada/CRUD_Juegos.aspx">Mantenedor</a></li>
+                                                        <li><a href="../NavPrivada/CRUD_Desarrollador.aspx">Desarrollador</a></li>
                                                     </ul>
                                                 </div>
 
