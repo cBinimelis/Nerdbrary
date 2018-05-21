@@ -41,7 +41,7 @@
                                             <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
                                             <li><a href="../NavPrivada/CRUD_Juegos.aspx">Mantenedor</a></li>
                                             <li class="uk-divider-small"></li>
-                                            <li><a href="#">Desarrolladores</a></li>
+                                            <li><a href="../NavPrivada/Lista_Desarrolladores.aspx">Desarrolladores</a></li>
                                             <li><a href="../NavPrivada/CRUD_Desarrollador.aspx">Mantenedor</a></li>
                                         </ul>
                                     </li>
@@ -105,7 +105,7 @@
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                                         <li><a href="../NavPrivada/MisJuegos.aspx">Mis Juegos</a></li>
                                                         <li><a href="../NavPrivada/CRUD_Juegos.aspx">Mantenedor</a></li>
-                                                        <li class="uk-nav-header uk-active"><a href="#">Desarrolladores</a></li>
+                                                        <li class="uk-nav-header uk-active"><a href="../NavPrivada/Lista_Desarrolladores.aspx">Desarrolladores</a></li>
                                                         <li><a href="../NavPrivada/CRUD_Desarrollador.aspx">Mantenedor</a></li>
                                                     </ul>
                                                 </div>
