@@ -19,6 +19,10 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
         this.Page.Form.Enctype = "multipart/form-data";
         if (!IsPostBack)
         {
+            if (Request.QueryString["Redir"] != null)
+            {
+                Mensaje("¡Felicidades!", "Se ha creado exitosamente el desarrollaor", "success");
+            }
             idPendiente = Convert.ToInt32(Request.QueryString["Id"]);
             ConfirmarPendiente();
             this.llenar();

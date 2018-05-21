@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
-                            <p>Desarrollador <a class="uk-icon-link uk-margin-left-small" uk-icon="plus" href="CRUD_Desarrollador.aspx" uk-tooltip="title: Agregar Desarrollador" uk-toggle></a></p>
+                            <p>Desarrollador <a class="uk-icon-link uk-margin-left-small" uk-icon="plus" href="CRUD_Desarrollador.aspx?Redir=1" uk-tooltip="title: Agregar Desarrollador" uk-toggle></a></p>
                             <div class="uk-inline">
                                 <asp:dropdownlist id="dd_desarrolladorN" cssclass="uk-select uk-form-width-large" runat="server" forecolor="#999999"></asp:dropdownlist>
                             </div>

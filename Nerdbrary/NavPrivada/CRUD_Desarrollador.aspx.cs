@@ -9,10 +9,13 @@ using System.Web.UI.WebControls;
 public partial class NavPrivada_CRUD_Desarrollador : System.Web.UI.Page
 {
     ConexionLQDataContext cdc;
+    int redirect = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!this.IsPostBack)
         {
+            redirect = Convert.ToInt32(Request.QueryString["Redir"]);
+            comprobarOrigen();
             Llenar();
         }
     }
@@ -22,6 +25,26 @@ public partial class NavPrivada_CRUD_Desarrollador : System.Web.UI.Page
         cdc = new ConexionLQDataContext();
         GrillaDev.DataSource = cdc.Desarrollador;
         GrillaDev.DataBind();
+    }
+
+    private void comprobarOrigen()
+    {
+        if (redirect.Equals("") || redirect.Equals(null) || redirect == 0)
+        {
+            lbl_redirect.Text = "false";
+        }
+        else
+        {
+            lbl_redirect.Text = "true";
+        }
+    }
+
+    private void Volver()
+    {
+        if (lbl_redirect.Text.Equals("true"))
+        {
+            Response.Redirect("../NavPrivada/CRUD_Juegos.aspx?Redir=true");
+        }
     }
 
     private void Clean()
@@ -74,6 +97,7 @@ public partial class NavPrivada_CRUD_Desarrollador : System.Web.UI.Page
                             cdc.Desarrollador.InsertOnSubmit(d);
                             cdc.SubmitChanges();
                             Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
+                            Volver();
                             Clean();
                             Llenar();
                         }
@@ -107,29 +131,44 @@ public partial class NavPrivada_CRUD_Desarrollador : System.Web.UI.Page
         }
     }
 
-    protected void GrillaDev_RowDataBound(object sender, GridViewRowEventArgs e)
+    protected void GrillaDev_RowEditing(object sender, GridViewEditEventArgs e)
     {
-
+        GrillaDev.EditIndex = e.NewEditIndex;
+        this.Llenar();
     }
 
     protected void GrillaDev_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
-
-    }
-
-    protected void GrillaDev_RowEditing(object sender, GridViewEditEventArgs e)
-    {
-
-    }
-
-    protected void GrillaDev_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
-
+        GrillaDev.EditIndex = -1;
+        this.Llenar();
     }
 
     protected void GrillaDev_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-
+        try
+        {
+            GridViewRow row = GrillaDev.Rows[e.RowIndex];
+            int idDev = Convert.ToInt32(GrillaDev.DataKeys[e.RowIndex].Values[0]);
+            String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
+            if (Nombre.Equals(""))
+            {
+                Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
+            }
+            else
+            {
+                cdc = new ConexionLQDataContext();
+                Desarrollador d = (from a in cdc.Desarrollador where a.id_Desarrollador == idDev select a).FirstOrDefault();
+                d.Nombre = Nombre;
+                cdc.SubmitChanges();
+                GrillaDev.EditIndex = -1;
+                Mensaje("Completado con exito", "Se han actualizado los datos", "success");
+                this.Llenar();
+            }
+        }
+        catch
+        {
+            Mensaje("¡Sin prisas!", "Debes ingresar datos validos", "error");
+        }
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)

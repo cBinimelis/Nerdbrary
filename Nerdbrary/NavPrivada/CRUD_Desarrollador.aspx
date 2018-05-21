@@ -45,14 +45,15 @@
             </div>
         </div>
     </div>
+    <asp:Label ID="lbl_redirect" runat="server" Text="Label" Visible="false"></asp:Label>
     <div class="uk-section-default">
         <div class="uk-container">
             <h1 class=" uk-heading-primary uk-text-center">Lista de Juegos</h1>
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body uk-overflow-auto">
                     <asp:GridView ID="GrillaDev" DataKeyNames="id_Desarrollador" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                        OnRowDataBound="GrillaDev_RowDataBound" OnRowCancelingEdit="GrillaDev_RowCancelingEdit" OnRowEditing="GrillaDev_RowEditing"
-                        OnRowDeleting="GrillaDev_RowDeleting" OnRowUpdating="GrillaDev_RowUpdating" OnRowCommand="GrillaDev_RowCommand" OnSelectedIndexChanged="GrillaDev_SelectedIndexChanged"
+                        OnRowCancelingEdit="GrillaDev_RowCancelingEdit" OnRowEditing="GrillaDev_RowEditing"
+                        OnRowUpdating="GrillaDev_RowUpdating" OnRowCommand="GrillaDev_RowCommand"
                         BorderStyle="None" GridLines="None" runat="server">
                         <Columns>
                             <asp:TemplateField HeaderText="ID Juego" Visible="false">
