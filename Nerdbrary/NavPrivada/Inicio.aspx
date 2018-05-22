@@ -196,6 +196,152 @@
                     </div>
                 </div>
 
+                
+                <%--SLIDE SHOW PARA SERIES--%>
+                <div>
+                    <h2 class="uk-heading-divider uk-text-bold">Series</h2>
+                    <div class="uk-position-relative uk-visible-toggle uk-light uk-box-shadow-small uk-box-shadow-hover-xlarge"
+                        uk-slideshow="animation: push; autoplay: true; autoplay-interval: 3000; pause-on-hover: true">
+
+                        <ul class="uk-slideshow-items">
+                            <li>
+                                <img id="img1" runat="server" src="../img/AnimeGuestBG.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H1" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A1" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img2" runat="server" src="../img/LoginCover1.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H2" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A2" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img3" runat="server" src="../img/LoginCover2.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H3" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A3" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img4" runat="server" src="../img/LoginCover3.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H4" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A4" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img5" runat="server" src="../img/LoginCover4.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H5" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A5" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                    </div>
+                </div>
+
+                
+                <%--SLIDE SHOW PARA PELICULAS--%>
+                <div>
+                    <h2 class="uk-heading-divider uk-text-bold">Películas</h2>
+                    <div class="uk-position-relative uk-visible-toggle uk-light uk-box-shadow-small uk-box-shadow-hover-xlarge"
+                        uk-slideshow="animation: push; autoplay: true; autoplay-interval: 3000; pause-on-hover: true">
+
+                        <ul class="uk-slideshow-items">
+                            <li>
+                                <img id="img6" runat="server" src="../img/AnimeGuestBG.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H6" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A6" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img7" runat="server" src="../img/LoginCover1.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H7" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A7" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img8" runat="server" src="../img/LoginCover2.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H8" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A8" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img9" runat="server" src="../img/LoginCover3.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H9" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A9" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img10" runat="server" src="../img/LoginCover4.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H10" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A10" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                    </div>
+                </div>
+
+                
+                <%--SLIDE SHOW PARA LIBROS--%>
+                <div>
+                    <h2 class="uk-heading-divider uk-text-bold">Libros</h2>
+                    <div class="uk-position-relative uk-visible-toggle uk-light uk-box-shadow-small uk-box-shadow-hover-xlarge"
+                        uk-slideshow="animation: push; autoplay: true; autoplay-interval: 3000; pause-on-hover: true">
+
+                        <ul class="uk-slideshow-items">
+                            <li>
+                                <img id="img11" runat="server" src="../img/AnimeGuestBG.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H11" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A11" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img12" runat="server" src="../img/LoginCover1.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H12" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A12" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img13" runat="server" src="../img/LoginCover2.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H13" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A13" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img14" runat="server" src="../img/LoginCover3.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H14" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A14" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <img id="img15" runat="server" src="../img/LoginCover4.jpg" alt="" uk-cover>
+                                <div class="uk-position-center uk-position-small uk-text-center">
+                                    <h2 id="H15" runat="server" uk-slideshow-parallax="y: -50,0,0; opacity: 1,1,0">Heading</h2>
+                                    <p uk-slideshow-parallax="x: 200,-200"><a id="A15" runat="server" href="#" class="uk-icon-link" uk-icon="plus"></a></p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
