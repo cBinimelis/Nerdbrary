@@ -7,6 +7,10 @@
     })
 }
 
+    $(window).load(function () {
+        $('#preloader').fadeOut('slow', function () { $(this).remove(); });
+    });
+
 function Redirect(UrlPath) {
     window.location.hef = UrlPath;
 }
