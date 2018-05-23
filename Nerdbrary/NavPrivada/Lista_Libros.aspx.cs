@@ -11,4 +11,14 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
     {
 
     }
+
+    protected void GrillaLibros_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+
+    }
+
+    protected void btn_buscar_Click(object sender, EventArgs e)
+    {
+
+    }
 }
