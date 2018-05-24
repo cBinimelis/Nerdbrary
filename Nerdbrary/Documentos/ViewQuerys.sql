@@ -165,3 +165,74 @@
 --END
 
 --EXEC vMangaUsuario 'geekriszx'
+
+
+
+
+--------------------------------------------------------LIBROS--------------------------------------------------------
+--CREATE VIEW vLibros AS
+--SELECT L.id_Libro, L.Nombre, L.Sinopsis, L.Páginas, A.id_Autor, A.Nombre 'Autor',  CONVERT(varchar, L.Lanzamiento, 103) AS 'Lanzamiento',
+--L.Imagen, GL.Descripcion 'Genero', EL.Descripcion 'Estado'
+--FROM Libros L
+--INNER JOIN Genero_Libro GL ON L.id_GeneroLibro = GL.id_GeneroLibro
+--INNER JOIN Estado_Libro EL ON L.id_EstadoLibro = EL.id_EstadoLibro
+--INNER JOIN Autor A ON L.id_Autor = A.id_Autor
+--WHERE L.Activo = 1
+
+--SELECT * FROM vLibros WHERE id_Libro = 1
+
+
+
+--CREATE PROC vDetalleLibro @User VARCHAR(50), @Libro INT = 0
+--AS
+--BEGIN
+--SELECT L.id_Libro, L.Nombre, L.Sinopsis, L.Páginas, A.id_Autor, A.Nombre 'Autor',  CONVERT(varchar, L.Lanzamiento, 103) AS 'Lanzamiento',
+--L.Imagen, GL.Descripcion 'Genero', EL.Descripcion 'Estado', AL.Descripcion 'Avance', LU.Nota
+--FROM Libro_Usuario LU
+--INNER JOIN Libros L ON LU.id_Libro = L.id_Libro
+--INNER JOIN Usuario U ON LU.id_Usuario = U.id_Usuario
+--INNER JOIN Autor A ON L.id_Autor = A.id_Autor
+--INNER JOIN Genero_Libro GL ON L.id_GeneroLibro = GL.id_GeneroLibro
+--INNER JOIN Estado_Libro EL ON L.id_EstadoLibro = EL.id_EstadoLibro
+--INNER JOIN Avance_Libro AL ON LU.id_AvanceLibro = AL.id_AvanceLibro
+--WHERE LU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND LU.id_Libro = @Libro AND L.Activo =  1
+--ORDER BY L.Nombre ASC
+--END
+
+--EXEC vDetalleLibro 'ivichan', 1
+
+
+--ALTER PROC vJuegoUsuario @User VARCHAR(50)
+--AS
+--BEGIN
+--SELECT J.id_Juego, J.Nombre, J.Sinopsis,D.id_Desarrollador, D.Nombre 'Desarrollador', CONVERT(varchar, J.Lanzamiento, 103) AS 'Lanzamiento',
+--J.Imagen, GJ.Descripcion 'Genero', J.Otros_Generos 'Otros Generos', EJ.Descripcion 'Estado'
+--FROM Juegos_Usuario JU
+--INNER JOIN Juegos J ON JU.id_Juego = J.id_Juego
+--INNER JOIN Usuario U ON JU.id_Usuario = U.id_Usuario
+--INNER JOIN Desarrollador D ON J.id_Desarrollador = D.id_Desarrollador
+--INNER JOIN Genero_Juegos GJ ON J.id_GeneroJuego = GJ.id_GeneroJuego
+--INNER JOIN Estado_Juegos EJ ON J.id_EstadoJuego = EJ.id_EstadoJuegos
+--WHERE JU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND J.Activo =  1
+--ORDER BY J.Nombre ASC
+--END
+
+--EXEC vJuegoUsuario 'geekriszx'
+
+
+--CREATE PROC vLibroUsuario @User VARCHAR(50)
+--AS
+--BEGIN
+--SELECT L.id_Libro, L.Nombre, L.Sinopsis, L.Páginas, A.id_Autor, A.Nombre 'Autor',  CONVERT(varchar, L.Lanzamiento, 103) AS 'Lanzamiento',
+--L.Imagen, GL.Descripcion 'Genero', EL.Descripcion 'Estado'
+--FROM Libro_Usuario LU
+--INNER JOIN Libros L ON LU.id_Libro = L.id_Libro
+--INNER JOIN Usuario U ON LU.id_Usuario = U.id_Usuario
+--INNER JOIN Autor A ON L.id_Autor = A.id_Autor
+--INNER JOIN Genero_Libro GL ON L.id_GeneroLibro = GL.id_GeneroLibro
+--INNER JOIN Estado_Libro EL ON L.id_EstadoLibro = EL.id_EstadoLibro
+--WHERE LU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND L.Activo =  1
+--ORDER BY L.Nombre ASC
+--END
+
+--EXEC vLibroUsuario 'ivichan'
