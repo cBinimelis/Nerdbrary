@@ -10,6 +10,7 @@
       <Association Name="Usuario_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Juegos_Usuario" />
       <Association Name="Usuario_Manga_Usuario" Member="Manga_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Manga_Usuario" />
       <Association Name="Usuario_Pendientes" Member="Pendientes" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Pendientes" />
+      <Association Name="Usuario_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Libro_Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Estado_Serie" Member="Estado_Serie">
@@ -155,6 +156,7 @@
     <Type Name="Estado_Libro">
       <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_Libro_Libros" Member="Libros" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Libros" />
     </Type>
   </Table>
   <Table Name="dbo.Genero_Mangas" Member="Genero_Mangas">
@@ -244,6 +246,81 @@
       <Column Name="Usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Tipo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="id_TipoPendiente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Autor" Member="Autor">
+    <Type Name="Autor">
+      <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Detalles" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Autor_Libros" Member="Libros" ThisKey="id_Autor" OtherKey="id_Autor" Type="Libros" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Avance_Libro" Member="Avance_Libro">
+    <Type Name="Avance_Libro">
+      <Column Name="id_AvanceLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Avance_Libro_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_AvanceLibro" OtherKey="id_AvanceLibro" Type="Libro_Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estado_Libro" Member="Estado_Libro1">
+    <Type Name="Estado_Libro1">
+      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_Libro1_Libros" Member="Libros" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Libros" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Genero_Libro" Member="Genero_Libro">
+    <Type Name="Genero_Libro">
+      <Column Name="id_GeneroLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Genero_Libro_Libros" Member="Libros" ThisKey="id_GeneroLibro" OtherKey="id_EstadoLibro" Type="Libros" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Libro_Usuario" Member="Libro_Usuario">
+    <Type Name="Libro_Usuario">
+      <Column Name="id_LibroUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_AvanceLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Avance_Libro_Libro_Usuario" Member="Avance_Libro" ThisKey="id_AvanceLibro" OtherKey="id_AvanceLibro" Type="Avance_Libro" IsForeignKey="true" />
+      <Association Name="Usuario_Libro_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Libros_Libro_Usuario" Member="Libros" ThisKey="id_Libro" OtherKey="id_Libro" Type="Libros" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Libros" Member="Libros">
+    <Type Name="Libros">
+      <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Páginas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_GeneroLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Libros_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_Libro" OtherKey="id_Libro" Type="Libro_Usuario" />
+      <Association Name="Estado_Libro_Libros" Member="Estado_Libro" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro" IsForeignKey="true" />
+      <Association Name="Estado_Libro1_Libros" Member="Estado_Libro1" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro1" IsForeignKey="true" />
+      <Association Name="Genero_Libro_Libros" Member="Genero_Libro" ThisKey="id_EstadoLibro" OtherKey="id_GeneroLibro" Type="Genero_Libro" IsForeignKey="true" />
+      <Association Name="Autor_Libros" Member="Autor" ThisKey="id_Autor" OtherKey="id_Autor" Type="Autor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vLibros" Member="vLibros">
+    <Type Name="vLibros">
+      <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Paginas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Autor" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">
@@ -340,6 +417,39 @@
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vDetalleLibro" Method="vDetalleLibro">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Libro" Parameter="libro" Type="System.Int32" DbType="Int" />
+    <ElementType Name="vDetalleLibroResult">
+      <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Paginas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Autor" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Avance" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vLibroUsuario" Method="vLibroUsuario">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="vLibroUsuarioResult">
+      <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Paginas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Autor" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

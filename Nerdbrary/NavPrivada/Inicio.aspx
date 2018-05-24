@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     
-    <div id="preloader"></div>
+    <%--<div id="preloader"></div>--%>
 <%--    <div class="uk-overlay-primary uk-height-viewport uk-position-z-index uk-position-absolute uk-position-cover" id="">
         <span class="uk-position-center"  uk-spinner="ratio: 4.5"></span>
     </div>--%>

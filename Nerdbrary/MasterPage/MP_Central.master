@@ -70,6 +70,14 @@
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
+                                    <li class="uk-parent">
+                                        <a href="../NavPrivada/Lista_Libros.aspx">Libros</a>
+                                        <ul class="uk-nav-sub">
+                                            <li><a href="../NavPrivada/MisMangas.aspx">Mis Mangas</a></li>
+                                            <li><a href="../NavPrivada/CRUD_Manga.aspx">Mantenedor</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
                                     <li><a href="https://www.cuantafauna.com/gatos"><span class="uk-margin-small-right" uk-icon="icon: question"></span>Sorpresa</a></li>
                                     <li class="uk-divider-icon"></li>
                                     <li><a href="../Default.aspx"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Salir</a></li>
@@ -140,7 +148,9 @@
                                                         <li class="uk-nav-header uk-active"><a href="../NavPrivada/Lista_Manga.aspx">Manga</a></li>
                                                         <li><a href="MisMangas.aspx">Mis Mangas</a></li>
                                                         <li><a href="CRUD_Manga.aspx">Mantenedor</a></li>
-                                                        <li class="uk-nav-header uk-active"><a href="#">Literatura</a></li>
+                                                        <li class="uk-nav-header uk-active"><a href="../NavPrivada/Lista_Libros.aspx">Literatura</a></li>
+                                                        <li><a href="MisMangas.aspx">Mis Libros</a></li>
+                                                        <li><a href="CRUD_Manga.aspx">Mantenedor</a></li>
                                                     </ul>
                                                 </div>
                                             </li>

@@ -69,7 +69,7 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
     protected void btn_buscar_Click(object sender, EventArgs e)
     {
         cdc = new ConexionLQDataContext();
-        GrillaManga.DataSource = cdc.vManga.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
+        GrillaManga.DataSource = cdc.vManga.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim()));
         GrillaManga.DataBind();
     }
 
