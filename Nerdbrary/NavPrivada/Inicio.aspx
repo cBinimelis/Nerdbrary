@@ -3,12 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    
-    <%--<div id="preloader"></div>--%>
-<%--    <div class="uk-overlay-primary uk-height-viewport uk-position-z-index uk-position-absolute uk-position-cover" id="">
-        <span class="uk-position-center"  uk-spinner="ratio: 4.5"></span>
-    </div>--%>
-
     <div class="uk-section-default">
         <div id="test-filter" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" style="background-image: url(../img/ProfileBG.png); height: 50vh">
             <div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="target: #test-filter; blur: 0,10;">

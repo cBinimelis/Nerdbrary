@@ -20,6 +20,17 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+
+    <%--PRELOADER DE LA PAGINA--%>
+    <div id="loader-wrapper">
+        <div id="loader" class="uk-position-center">
+            <div id="ball-1" class="circle"></div>
+            <div id="ball-2" class="circle"></div>
+            <div id="ball-3" class="circle"></div>
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
     <form id="form1" runat="server">
         <div class="uk-position-top uk-light">
             <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-light; top: 200">
@@ -179,8 +190,5 @@
             </div>
         </div>
     </form>
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/PersonalScript.js"></script>
-    <script src="../js/sweetalert.min.js"></script>
 </body>
 </html>

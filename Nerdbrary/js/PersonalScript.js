@@ -7,9 +7,9 @@
     })
 }
 
-    $(window).load(function () {
-        $('#preloader').fadeOut('slow', function () { $(this).remove(); });
-    });
+$(window).on('load', function () {
+    $('body').toggleClass('loaded');
+});
 
 function Redirect(UrlPath) {
     window.location.hef = UrlPath;
