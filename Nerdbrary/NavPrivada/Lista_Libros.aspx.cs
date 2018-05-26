@@ -37,7 +37,7 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
             {
-                Response.Redirect("Detalles_Manga.aspx?Id=" + ID);
+                Response.Redirect("Detalles_Libros.aspx?Id=" + ID);
             }
             else if (e.CommandName == "Add")
             {

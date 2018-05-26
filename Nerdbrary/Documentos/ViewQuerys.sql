@@ -172,7 +172,7 @@
 --------------------------------------------------------LIBROS--------------------------------------------------------
 --ALTER VIEW vLibros AS
 --SELECT L.id_Libro, L.Nombre, L.Sinopsis, L.Paginas, A.id_Autor, A.Nombre 'Autor',  CONVERT(varchar, L.Lanzamiento, 103) AS 'Lanzamiento',
---L.Imagen, GL.Descripcion 'Genero', EL.Descripcion 'Estado'
+--L.Imagen, GL.Descripcion 'Genero', L.Otros_Generos 'Otros Generos',EL.Descripcion 'Estado'
 --FROM Libros L
 --INNER JOIN Genero_Libro GL ON L.id_GeneroLibro = GL.id_GeneroLibro
 --INNER JOIN Estado_Libro EL ON L.id_EstadoLibro = EL.id_EstadoLibro
@@ -187,7 +187,7 @@
 --AS
 --BEGIN
 --SELECT L.id_Libro, L.Nombre, L.Sinopsis, L.Paginas, A.id_Autor, A.Nombre 'Autor',  CONVERT(varchar, L.Lanzamiento, 103) AS 'Lanzamiento',
---L.Imagen, GL.Descripcion 'Genero', EL.Descripcion 'Estado', AL.Descripcion 'Avance', LU.Nota
+--L.Imagen, GL.Descripcion 'Genero', L.Otros_Generos 'Otros Generos', EL.Descripcion 'Estado', AL.Descripcion 'Avance', LU.Nota
 --FROM Libro_Usuario LU
 --INNER JOIN Libros L ON LU.id_Libro = L.id_Libro
 --INNER JOIN Usuario U ON LU.id_Usuario = U.id_Usuario
@@ -207,7 +207,7 @@
 --AS
 --BEGIN
 --SELECT L.id_Libro, L.Nombre, L.Sinopsis, L.Paginas, A.id_Autor, A.Nombre 'Autor',  CONVERT(varchar, L.Lanzamiento, 103) AS 'Lanzamiento',
---L.Imagen, GL.Descripcion 'Genero', EL.Descripcion 'Estado'
+--L.Imagen, GL.Descripcion 'Genero', L.Otros_Generos 'Otros Generos',EL.Descripcion 'Estado'
 --FROM Libro_Usuario LU
 --INNER JOIN Libros L ON LU.id_Libro = L.id_Libro
 --INNER JOIN Usuario U ON LU.id_Usuario = U.id_Usuario

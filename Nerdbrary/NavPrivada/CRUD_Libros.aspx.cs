@@ -109,7 +109,7 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
     {
         try
         {
-            if (txt_nombreN.Text.Trim().Equals("") || txt_lanzamientoN.Text == null || txt_sinopsisN.Text.Trim().Equals("") || txt_Paginas.Text.Trim().Equals(""))
+            if (txt_nombreN.Text.Trim().Equals("") || txt_lanzamientoN.Text == null || txt_sinopsisN.Text.Trim().Equals("") || txt_Paginas.Text.Trim().Equals("") || txt_ogeneros.Text.Trim().Equals(""))
             {
                 Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
             }
@@ -119,7 +119,7 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
                 {
                     Boolean fileOK = false;
                     String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"\s", "");
-                    String path = Server.MapPath("~/img/games/");
+                    String path = Server.MapPath("~/img/books/");
                     String fileExtension = System.IO.Path.GetExtension(subir_imagen.FileName).ToLower();
                     String[] allowedExtensions = { ".jpeg", ".jpg" };
                     if (subir_imagen.HasFiles)
@@ -148,6 +148,7 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
                             l.Lanzamiento = Convert.ToDateTime(txt_lanzamientoN.Text);
                             l.Imagen = NewFileName + fileExtension;
                             l.id_GeneroLibro = dd_generoN.SelectedIndex + 1;
+                            l.Otros_Generos = txt_ogeneros.Text;
                             l.Paginas = Convert.ToInt32(txt_Paginas.Text);
                             l.id_EstadoLibro = dd_estadoN.SelectedIndex + 1;
                             l.Activo = true;
@@ -211,10 +212,10 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
     protected void GrillaLibros_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         GridViewRow row = GrillaLibros.Rows[e.RowIndex];
-        int idJuego = Convert.ToInt32(GrillaLibros.DataKeys[e.RowIndex].Values[0]);
+        int idLibro = Convert.ToInt32(GrillaLibros.DataKeys[e.RowIndex].Values[0]);
         cdc = new ConexionLQDataContext();
-        Juegos j = (from a in cdc.Juegos where a.id_Juego == idJuego select a).FirstOrDefault();
-        j.Activo = false;
+        Libros l = (from a in cdc.Libros where a.id_Libro == idLibro select a).FirstOrDefault();
+        l.Activo = false;
         cdc.SubmitChanges();
         GrillaLibros.EditIndex = -1;
         Mensaje("Eliminado con exito", "Se han eliminado los datos", "success");
@@ -226,27 +227,29 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
         try
         {
             GridViewRow row = GrillaLibros.Rows[e.RowIndex];
-            int idJuego = Convert.ToInt32(GrillaLibros.DataKeys[e.RowIndex].Values[0]);
+            int idLibro = Convert.ToInt32(GrillaLibros.DataKeys[e.RowIndex].Values[0]);
             String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
             String Lanzamiento = (row.FindControl("txt_lanzamiento") as TextBox).Text.Trim();
-            int Desarrollador = (row.FindControl("dd_dev") as DropDownList).SelectedIndex;
+            String Paginas = (row.FindControl("txt_paginas") as TextBox).Text.Trim();
+            int Autor = (row.FindControl("dd_autor") as DropDownList).SelectedIndex;
             int Estado = (row.FindControl("dd_estado") as DropDownList).SelectedIndex;
             int Genero = (row.FindControl("dd_genero") as DropDownList).SelectedIndex;
-            String OG = (row.FindControl("txt_OGeneros") as TextBox).Text.Trim();
-            if (Nombre.Equals("") || Lanzamiento.Equals("") || OG.Equals("") || Lanzamiento == null)
+            String OGeneros = (row.FindControl("txt_ogeneros") as TextBox).Text.Trim();
+            if (Nombre.Equals("") || Lanzamiento.Equals("") || Paginas.Equals("") || Lanzamiento == null)
             {
                 Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
             }
             else
             {
                 cdc = new ConexionLQDataContext();
-                Juegos j = (from a in cdc.Juegos where a.id_Juego == idJuego select a).FirstOrDefault();
-                j.Nombre = Nombre;
-                j.Lanzamiento = Convert.ToDateTime(Lanzamiento);
-                j.id_Desarrollador = (Desarrollador + 1);
-                j.id_EstadoJuego = (Estado + 1);
-                j.id_GeneroJuego = (Genero + 1);
-                j.Otros_Generos = OG;
+                Libros l = (from a in cdc.Libros where a.id_Libro == idLibro select a).FirstOrDefault();
+                l.Nombre = Nombre;
+                l.Lanzamiento = Convert.ToDateTime(Lanzamiento);
+                l.Paginas = Convert.ToInt32(Paginas);
+                l.id_Autor = (Autor + 1);
+                l.id_EstadoLibro = (Estado + 1);
+                l.id_GeneroLibro = (Genero + 1);
+                l.Otros_Generos = OGeneros;
                 cdc.SubmitChanges();
                 GrillaLibros.EditIndex = -1;
                 Mensaje("Completado con exito", "Se han actualizado los datos", "success");
@@ -277,6 +280,7 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
         txt_sinopsisN.Text = "";
         dd_autorN.SelectedIndex = 0;
         txt_Paginas.Text = "";
+        txt_ogeneros.Text = "";
         dd_estadoN.SelectedIndex = 0;
         dd_generoN.SelectedIndex = 0;
     }

@@ -65,10 +65,17 @@
                                 <asp:dropdownlist id="dd_generoN" cssclass="uk-select uk-form-width-large" runat="server" forecolor="#999999"></asp:dropdownlist>
                             </div>
                         </div>
-                        <div class="uk-width-1-2@m">
-                            <p>Paginas Totales</p>
+                        <div class="uk-width-1-3@m">
+                            <p>Otros Generos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tag"></span>
+                                <asp:textbox id="txt_ogeneros" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
+                            </div>
+                        </div>
+                        <div class="uk-width-expand@m">
+                            <p>Paginas Totales</p>
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: hashtag"></span>
                                 <asp:textbox id="txt_Paginas" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
@@ -149,18 +156,18 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Paginas">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_OGenero" runat="server" Text='<%# Eval("Paginas") %>'></asp:Label>
+                                    <asp:Label ID="lbl_paginas" runat="server" Text='<%# Eval("Paginas") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="txt_OGeneros" CssClass="uk-input" Text='<%# Eval("Paginas") %>' runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txt_paginas" CssClass="uk-input" Text='<%# Eval("Paginas") %>' runat="server"></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Autor">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_dev" runat="server" Text='<%# Eval("Autor") %>'></asp:Label>
+                                    <asp:Label ID="lbl_autor" runat="server" Text='<%# Eval("Autor") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:DropDownList ID="dd_dev" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Autor" DataTextField="Nombre" DataValueField="id_Autor"></asp:DropDownList>
+                                    <asp:DropDownList ID="dd_autor" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Autor" DataTextField="Nombre" DataValueField="id_Autor"></asp:DropDownList>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Estado">
@@ -177,6 +184,14 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <asp:DropDownList ID="dd_genero" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Genero" DataTextField="Descripcion" DataValueField="id_GeneroLibro"></asp:DropDownList>
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Paginas">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_OGeneros" runat="server" Text='<%# Eval("Otros Generos") %>'></asp:Label>
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_ogeneros" CssClass="uk-input" Text='<%# Eval("Otros Generos") %>' runat="server"></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:CommandField ButtonType="Link" ShowEditButton="true" EditText="<span uk-icon='icon: pencil' uk-tooltip='title: Editar'></span>"

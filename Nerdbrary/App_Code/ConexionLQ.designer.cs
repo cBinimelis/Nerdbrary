@@ -98,12 +98,12 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
   partial void InsertLibro_Usuario(Libro_Usuario instance);
   partial void UpdateLibro_Usuario(Libro_Usuario instance);
   partial void DeleteLibro_Usuario(Libro_Usuario instance);
-  partial void InsertLibros(Libros instance);
-  partial void UpdateLibros(Libros instance);
-  partial void DeleteLibros(Libros instance);
   partial void InsertEstado_Libro(Estado_Libro instance);
   partial void UpdateEstado_Libro(Estado_Libro instance);
   partial void DeleteEstado_Libro(Estado_Libro instance);
+  partial void InsertLibros(Libros instance);
+  partial void UpdateLibros(Libros instance);
+  partial void DeleteLibros(Libros instance);
   #endregion
 	
 	public ConexionLQDataContext() : 
@@ -352,6 +352,14 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<Estado_Libro> Estado_Libro
+	{
+		get
+		{
+			return this.GetTable<Estado_Libro>();
+		}
+	}
+	
 	public System.Data.Linq.Table<vLibros> vLibros
 	{
 		get
@@ -365,14 +373,6 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<Libros>();
-		}
-	}
-	
-	public System.Data.Linq.Table<Estado_Libro> Estado_Libro
-	{
-		get
-		{
-			return this.GetTable<Estado_Libro>();
 		}
 	}
 	
@@ -5616,6 +5616,120 @@ public partial class Libro_Usuario : INotifyPropertyChanging, INotifyPropertyCha
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Estado_Libro")]
+public partial class Estado_Libro : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id_EstadoLibro;
+	
+	private string _Descripcion;
+	
+	private EntitySet<Libros> _Libros;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_EstadoLibroChanging(int value);
+    partial void Onid_EstadoLibroChanged();
+    partial void OnDescripcionChanging(string value);
+    partial void OnDescripcionChanged();
+    #endregion
+	
+	public Estado_Libro()
+	{
+		this._Libros = new EntitySet<Libros>(new Action<Libros>(this.attach_Libros), new Action<Libros>(this.detach_Libros));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_EstadoLibro", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id_EstadoLibro
+	{
+		get
+		{
+			return this._id_EstadoLibro;
+		}
+		set
+		{
+			if ((this._id_EstadoLibro != value))
+			{
+				this.Onid_EstadoLibroChanging(value);
+				this.SendPropertyChanging();
+				this._id_EstadoLibro = value;
+				this.SendPropertyChanged("id_EstadoLibro");
+				this.Onid_EstadoLibroChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Descripcion
+	{
+		get
+		{
+			return this._Descripcion;
+		}
+		set
+		{
+			if ((this._Descripcion != value))
+			{
+				this.OnDescripcionChanging(value);
+				this.SendPropertyChanging();
+				this._Descripcion = value;
+				this.SendPropertyChanged("Descripcion");
+				this.OnDescripcionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Libro_Libros", Storage="_Libros", ThisKey="id_EstadoLibro", OtherKey="id_EstadoLibro")]
+	public EntitySet<Libros> Libros
+	{
+		get
+		{
+			return this._Libros;
+		}
+		set
+		{
+			this._Libros.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Libros(Libros entity)
+	{
+		this.SendPropertyChanging();
+		entity.Estado_Libro = this;
+	}
+	
+	private void detach_Libros(Libros entity)
+	{
+		this.SendPropertyChanging();
+		entity.Estado_Libro = null;
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vLibros")]
 public partial class vLibros
 {
@@ -5637,6 +5751,8 @@ public partial class vLibros
 	private string _Imagen;
 	
 	private string _Genero;
+	
+	private string _Otros_Generos;
 	
 	private string _Estado;
 	
@@ -5788,6 +5904,22 @@ public partial class vLibros
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="VarChar(MAX)")]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string Estado
 	{
@@ -5827,6 +5959,8 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private int _id_GeneroLibro;
 	
+	private string _Otros_Generos;
+	
 	private int _id_EstadoLibro;
 	
 	private bool _Activo;
@@ -5835,9 +5969,9 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private EntityRef<Autor> _Autor;
 	
-	private EntityRef<Genero_Libro> _Genero_Libro;
-	
 	private EntityRef<Estado_Libro> _Estado_Libro;
+	
+	private EntityRef<Genero_Libro> _Genero_Libro;
 	
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -5859,6 +5993,8 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Onid_AutorChanged();
     partial void Onid_GeneroLibroChanging(int value);
     partial void Onid_GeneroLibroChanged();
+    partial void OnOtros_GenerosChanging(string value);
+    partial void OnOtros_GenerosChanged();
     partial void Onid_EstadoLibroChanging(int value);
     partial void Onid_EstadoLibroChanged();
     partial void OnActivoChanging(bool value);
@@ -5869,8 +6005,8 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this._Libro_Usuario = new EntitySet<Libro_Usuario>(new Action<Libro_Usuario>(this.attach_Libro_Usuario), new Action<Libro_Usuario>(this.detach_Libro_Usuario));
 		this._Autor = default(EntityRef<Autor>);
-		this._Genero_Libro = default(EntityRef<Genero_Libro>);
 		this._Estado_Libro = default(EntityRef<Estado_Libro>);
+		this._Genero_Libro = default(EntityRef<Genero_Libro>);
 		OnCreated();
 	}
 	
@@ -6038,6 +6174,26 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Otros_Generos", DbType="VarChar(MAX)")]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this.OnOtros_GenerosChanging(value);
+				this.SendPropertyChanging();
+				this._Otros_Generos = value;
+				this.SendPropertyChanged("Otros_Generos");
+				this.OnOtros_GenerosChanged();
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_EstadoLibro", DbType="Int NOT NULL")]
 	public int id_EstadoLibro
 	{
@@ -6049,7 +6205,7 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			if ((this._id_EstadoLibro != value))
 			{
-				if ((this._Genero_Libro.HasLoadedOrAssignedValue || this._Estado_Libro.HasLoadedOrAssignedValue))
+				if ((this._Estado_Libro.HasLoadedOrAssignedValue || this._Genero_Libro.HasLoadedOrAssignedValue))
 				{
 					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 				}
@@ -6129,40 +6285,6 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genero_Libro_Libros", Storage="_Genero_Libro", ThisKey="id_EstadoLibro", OtherKey="id_GeneroLibro", IsForeignKey=true)]
-	public Genero_Libro Genero_Libro
-	{
-		get
-		{
-			return this._Genero_Libro.Entity;
-		}
-		set
-		{
-			Genero_Libro previousValue = this._Genero_Libro.Entity;
-			if (((previousValue != value) 
-						|| (this._Genero_Libro.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._Genero_Libro.Entity = null;
-					previousValue.Libros.Remove(this);
-				}
-				this._Genero_Libro.Entity = value;
-				if ((value != null))
-				{
-					value.Libros.Add(this);
-					this._id_EstadoLibro = value.id_GeneroLibro;
-				}
-				else
-				{
-					this._id_EstadoLibro = default(int);
-				}
-				this.SendPropertyChanged("Genero_Libro");
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Libro_Libros", Storage="_Estado_Libro", ThisKey="id_EstadoLibro", OtherKey="id_EstadoLibro", IsForeignKey=true)]
 	public Estado_Libro Estado_Libro
 	{
@@ -6197,6 +6319,40 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Genero_Libro_Libros", Storage="_Genero_Libro", ThisKey="id_EstadoLibro", OtherKey="id_GeneroLibro", IsForeignKey=true)]
+	public Genero_Libro Genero_Libro
+	{
+		get
+		{
+			return this._Genero_Libro.Entity;
+		}
+		set
+		{
+			Genero_Libro previousValue = this._Genero_Libro.Entity;
+			if (((previousValue != value) 
+						|| (this._Genero_Libro.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Genero_Libro.Entity = null;
+					previousValue.Libros.Remove(this);
+				}
+				this._Genero_Libro.Entity = value;
+				if ((value != null))
+				{
+					value.Libros.Add(this);
+					this._id_EstadoLibro = value.id_GeneroLibro;
+				}
+				else
+				{
+					this._id_EstadoLibro = default(int);
+				}
+				this.SendPropertyChanged("Genero_Libro");
+			}
+		}
+	}
+	
 	public event PropertyChangingEventHandler PropertyChanging;
 	
 	public event PropertyChangedEventHandler PropertyChanged;
@@ -6227,120 +6383,6 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.Libros = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Estado_Libro")]
-public partial class Estado_Libro : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _id_EstadoLibro;
-	
-	private string _Descripcion;
-	
-	private EntitySet<Libros> _Libros;
-	
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_EstadoLibroChanging(int value);
-    partial void Onid_EstadoLibroChanged();
-    partial void OnDescripcionChanging(string value);
-    partial void OnDescripcionChanged();
-    #endregion
-	
-	public Estado_Libro()
-	{
-		this._Libros = new EntitySet<Libros>(new Action<Libros>(this.attach_Libros), new Action<Libros>(this.detach_Libros));
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_EstadoLibro", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int id_EstadoLibro
-	{
-		get
-		{
-			return this._id_EstadoLibro;
-		}
-		set
-		{
-			if ((this._id_EstadoLibro != value))
-			{
-				this.Onid_EstadoLibroChanging(value);
-				this.SendPropertyChanging();
-				this._id_EstadoLibro = value;
-				this.SendPropertyChanged("id_EstadoLibro");
-				this.Onid_EstadoLibroChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Descripcion
-	{
-		get
-		{
-			return this._Descripcion;
-		}
-		set
-		{
-			if ((this._Descripcion != value))
-			{
-				this.OnDescripcionChanging(value);
-				this.SendPropertyChanging();
-				this._Descripcion = value;
-				this.SendPropertyChanged("Descripcion");
-				this.OnDescripcionChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_Libro_Libros", Storage="_Libros", ThisKey="id_EstadoLibro", OtherKey="id_EstadoLibro")]
-	public EntitySet<Libros> Libros
-	{
-		get
-		{
-			return this._Libros;
-		}
-		set
-		{
-			this._Libros.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_Libros(Libros entity)
-	{
-		this.SendPropertyChanging();
-		entity.Estado_Libro = this;
-	}
-	
-	private void detach_Libros(Libros entity)
-	{
-		this.SendPropertyChanging();
-		entity.Estado_Libro = null;
 	}
 }
 
@@ -7547,6 +7589,8 @@ public partial class vDetalleLibroResult
 	
 	private string _Genero;
 	
+	private string _Otros_Generos;
+	
 	private string _Estado;
 	
 	private string _Avance;
@@ -7701,6 +7745,22 @@ public partial class vDetalleLibroResult
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="VarChar(MAX)")]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string Estado
 	{
@@ -7770,6 +7830,8 @@ public partial class vLibroUsuarioResult
 	private string _Imagen;
 	
 	private string _Genero;
+	
+	private string _Otros_Generos;
 	
 	private string _Estado;
 	
@@ -7917,6 +7979,22 @@ public partial class vLibroUsuarioResult
 			if ((this._Genero != value))
 			{
 				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="VarChar(MAX)")]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
 			}
 		}
 	}

@@ -276,6 +276,13 @@
       <Association Name="Libros_Libro_Usuario" Member="Libros" ThisKey="id_Libro" OtherKey="id_Libro" Type="Libros" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Estado_Libro" Member="Estado_Libro">
+    <Type Name="Estado_Libro">
+      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_Libro_Libros" Member="Libros" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Libros" />
+    </Type>
+  </Table>
   <Table Name="dbo.vLibros" Member="vLibros">
     <Type Name="vLibros">
       <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -287,6 +294,7 @@
       <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
@@ -300,19 +308,13 @@
       <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_GeneroLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Otros_Generos" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Libros_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_Libro" OtherKey="id_Libro" Type="Libro_Usuario" />
       <Association Name="Autor_Libros" Member="Autor" ThisKey="id_Autor" OtherKey="id_Autor" Type="Autor" IsForeignKey="true" />
-      <Association Name="Genero_Libro_Libros" Member="Genero_Libro" ThisKey="id_EstadoLibro" OtherKey="id_GeneroLibro" Type="Genero_Libro" IsForeignKey="true" />
       <Association Name="Estado_Libro_Libros" Member="Estado_Libro" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Estado_Libro" Member="Estado_Libro">
-    <Type Name="Estado_Libro">
-      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Estado_Libro_Libros" Member="Libros" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Libros" />
+      <Association Name="Genero_Libro_Libros" Member="Genero_Libro" ThisKey="id_EstadoLibro" OtherKey="id_GeneroLibro" Type="Genero_Libro" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">
@@ -424,6 +426,7 @@
       <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Avance" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
@@ -441,6 +444,7 @@
       <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
