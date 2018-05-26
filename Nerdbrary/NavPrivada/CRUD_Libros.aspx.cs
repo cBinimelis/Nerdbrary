@@ -190,27 +190,73 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
     }
     protected void GrillaLibros_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-
+        if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaLibros.EditIndex)
+        {
+            (e.Row.Cells[7].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+        }
     }
 
     protected void GrillaLibros_RowEditing(object sender, GridViewEditEventArgs e)
     {
-
+        GrillaLibros.EditIndex = e.NewEditIndex;
+        this.llenar();
     }
 
     protected void GrillaLibros_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
-
+        GrillaLibros.EditIndex = -1;
+        this.llenar();
     }
 
     protected void GrillaLibros_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-
+        GridViewRow row = GrillaLibros.Rows[e.RowIndex];
+        int idJuego = Convert.ToInt32(GrillaLibros.DataKeys[e.RowIndex].Values[0]);
+        cdc = new ConexionLQDataContext();
+        Juegos j = (from a in cdc.Juegos where a.id_Juego == idJuego select a).FirstOrDefault();
+        j.Activo = false;
+        cdc.SubmitChanges();
+        GrillaLibros.EditIndex = -1;
+        Mensaje("Eliminado con exito", "Se han eliminado los datos", "success");
+        this.llenar();
     }
 
     protected void GrillaLibros_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-
+        try
+        {
+            GridViewRow row = GrillaLibros.Rows[e.RowIndex];
+            int idJuego = Convert.ToInt32(GrillaLibros.DataKeys[e.RowIndex].Values[0]);
+            String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
+            String Lanzamiento = (row.FindControl("txt_lanzamiento") as TextBox).Text.Trim();
+            int Desarrollador = (row.FindControl("dd_dev") as DropDownList).SelectedIndex;
+            int Estado = (row.FindControl("dd_estado") as DropDownList).SelectedIndex;
+            int Genero = (row.FindControl("dd_genero") as DropDownList).SelectedIndex;
+            String OG = (row.FindControl("txt_OGeneros") as TextBox).Text.Trim();
+            if (Nombre.Equals("") || Lanzamiento.Equals("") || OG.Equals("") || Lanzamiento == null)
+            {
+                Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
+            }
+            else
+            {
+                cdc = new ConexionLQDataContext();
+                Juegos j = (from a in cdc.Juegos where a.id_Juego == idJuego select a).FirstOrDefault();
+                j.Nombre = Nombre;
+                j.Lanzamiento = Convert.ToDateTime(Lanzamiento);
+                j.id_Desarrollador = (Desarrollador + 1);
+                j.id_EstadoJuego = (Estado + 1);
+                j.id_GeneroJuego = (Genero + 1);
+                j.Otros_Generos = OG;
+                cdc.SubmitChanges();
+                GrillaLibros.EditIndex = -1;
+                Mensaje("Completado con exito", "Se han actualizado los datos", "success");
+                this.llenar();
+            }
+        }
+        catch
+        {
+            Mensaje("¡Sin prisas!", "Debes ingresar datos validos", "error");
+        }
     }
 
     protected void GrillaLibros_RowCommand(object sender, GridViewCommandEventArgs e)
