@@ -127,7 +127,7 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
                             Juegos j = new Juegos();
                             j.Nombre = txt_nombreN.Text;
                             j.Sinopsis = txt_sinopsisN.Text;
-                            j.id_Desarrollador = dd_desarrolladorN.SelectedIndex + 1;
+                            j.id_Desarrollador = (dd_desarrolladorN.SelectedIndex + 1);
                             j.Lanzamiento = Convert.ToDateTime(txt_lanzamientoN.Text);
                             j.Imagen = NewFileName + fileExtension;
                             j.id_GeneroJuego = (dd_generoN.SelectedIndex + 1);
@@ -239,9 +239,9 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
                 Juegos j = (from a in cdc.Juegos where a.id_Juego == idJuego select a).FirstOrDefault();
                 j.Nombre = Nombre;
                 j.Lanzamiento = Convert.ToDateTime(Lanzamiento);
-                j.id_Desarrollador = Desarrollador + 1;
-                j.id_EstadoJuego = Estado + 1;
-                j.id_GeneroJuego = Genero + 1;
+                j.id_Desarrollador = (Desarrollador + 1);
+                j.id_EstadoJuego = (Estado + 1);
+                j.id_GeneroJuego = (Genero + 1);
                 j.Otros_Generos = OG;
                 cdc.SubmitChanges();
                 GrillaJuegos.EditIndex = -1;
@@ -254,44 +254,7 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
             Mensaje("¡Sin prisas!", "Debes ingresar datos validos", "error");
         }
     }
-
-    private void Clean()
-    {
-        txt_nombreN.Text = "";
-        txt_sinopsisN.Text = "";
-        dd_desarrolladorN.SelectedIndex = 0;
-        txt_OGenerosN.Text = "";
-        dd_estadoN.SelectedIndex = 0;
-        dd_generoN.SelectedIndex = 0;
-    }
-
-    protected void btn_crearEstado_Click(object sender, EventArgs e)
-    {
-        String Genero = "";
-        if (Genero.Equals(""))
-        {
-            Mensaje("¡No tan rápido!", "No puedes dejar campos vacíos", "warning");
-        }
-        else
-        {
-            SqlDataReader EstadoBD = sql.consulta("SELECT * FROM Genero_Juegos WHERE id_EstadoJuegos = " + Genero);
-            if (EstadoBD.Read())
-            {
-                Mensaje("Nop", "Ya existe este elemento en la base de datos", "error");
-            }
-            else
-            {
-                cdc = new ConexionLQDataContext();
-                Genero_Juegos gj = new Genero_Juegos();
-                gj.Descripcion = Genero;
-                cdc.Genero_Juegos.InsertOnSubmit(gj);
-                cdc.SubmitChanges();
-                Mensaje("Felicidades", "Se ha creado un nuevo Genero", "success");
-                llenaGenero();
-            }
-        }
-    }
-
+    
     [WebMethod]
     public static string CrearEstado(String Estado)
     {
@@ -309,7 +272,17 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
             }
         }
     }
-    
+
+    private void Clean()
+    {
+        txt_nombreN.Text = "";
+        txt_sinopsisN.Text = "";
+        dd_desarrolladorN.SelectedIndex = 0;
+        txt_OGenerosN.Text = "";
+        dd_estadoN.SelectedIndex = 0;
+        dd_generoN.SelectedIndex = 0;
+    }
+
     private void Mensaje(String Tit, String Msg, String Stat)
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);

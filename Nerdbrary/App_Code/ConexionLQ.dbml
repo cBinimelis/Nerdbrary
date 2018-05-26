@@ -152,13 +152,6 @@
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Estado_Libro" Member="Estado_Libro">
-    <Type Name="Estado_Libro">
-      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Estado_Libro_Libros" Member="Libros" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Libros" />
-    </Type>
-  </Table>
   <Table Name="dbo.Genero_Mangas" Member="Genero_Mangas">
     <Type Name="Genero_Mangas">
       <Column Name="id_GeneroManga" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -264,13 +257,6 @@
       <Association Name="Avance_Libro_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_AvanceLibro" OtherKey="id_AvanceLibro" Type="Libro_Usuario" />
     </Type>
   </Table>
-  <Table Name="dbo.Estado_Libro" Member="Estado_Libro1">
-    <Type Name="Estado_Libro1">
-      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Estado_Libro1_Libros" Member="Libros" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Libros" />
-    </Type>
-  </Table>
   <Table Name="dbo.Genero_Libro" Member="Genero_Libro">
     <Type Name="Genero_Libro">
       <Column Name="id_GeneroLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -290,25 +276,6 @@
       <Association Name="Libros_Libro_Usuario" Member="Libros" ThisKey="id_Libro" OtherKey="id_Libro" Type="Libros" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Libros" Member="Libros">
-    <Type Name="Libros">
-      <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Páginas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Lanzamiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_GeneroLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="Libros_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_Libro" OtherKey="id_Libro" Type="Libro_Usuario" />
-      <Association Name="Estado_Libro_Libros" Member="Estado_Libro" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro" IsForeignKey="true" />
-      <Association Name="Estado_Libro1_Libros" Member="Estado_Libro1" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro1" IsForeignKey="true" />
-      <Association Name="Genero_Libro_Libros" Member="Genero_Libro" ThisKey="id_EstadoLibro" OtherKey="id_GeneroLibro" Type="Genero_Libro" IsForeignKey="true" />
-      <Association Name="Autor_Libros" Member="Autor" ThisKey="id_Autor" OtherKey="id_Autor" Type="Autor" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.vLibros" Member="vLibros">
     <Type Name="vLibros">
       <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -321,6 +288,31 @@
       <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Libros" Member="Libros">
+    <Type Name="Libros">
+      <Column Name="id_Libro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Paginas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_GeneroLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Libros_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_Libro" OtherKey="id_Libro" Type="Libro_Usuario" />
+      <Association Name="Autor_Libros" Member="Autor" ThisKey="id_Autor" OtherKey="id_Autor" Type="Autor" IsForeignKey="true" />
+      <Association Name="Genero_Libro_Libros" Member="Genero_Libro" ThisKey="id_EstadoLibro" OtherKey="id_GeneroLibro" Type="Genero_Libro" IsForeignKey="true" />
+      <Association Name="Estado_Libro_Libros" Member="Estado_Libro" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Estado_Libro" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estado_Libro" Member="Estado_Libro">
+    <Type Name="Estado_Libro">
+      <Column Name="id_EstadoLibro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_Libro_Libros" Member="Libros" ThisKey="id_EstadoLibro" OtherKey="id_EstadoLibro" Type="Libros" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">

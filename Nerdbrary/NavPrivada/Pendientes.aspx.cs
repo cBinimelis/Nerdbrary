@@ -19,7 +19,7 @@ public partial class NavPrivada_Pendientes : System.Web.UI.Page
     private void llenar()
     {
         cdc = new ConexionLQDataContext();
-        GrillaPendiente.DataSource = cdc.vPendientes.OrderBy(x => x.Tipo);
+        GrillaPendiente.DataSource = cdc.vPendientes.OrderBy(x => x.Nombre);
         GrillaPendiente.DataBind();
     }
 
@@ -57,7 +57,7 @@ public partial class NavPrivada_Pendientes : System.Web.UI.Page
     protected void btn_buscar_Click(object sender, EventArgs e)
     {
         cdc = new ConexionLQDataContext();
-        GrillaPendiente.DataSource = cdc.vPendientes.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
+        GrillaPendiente.DataSource = cdc.vPendientes.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim()) || x.Usuario.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
         GrillaPendiente.DataBind();
     }
 }
