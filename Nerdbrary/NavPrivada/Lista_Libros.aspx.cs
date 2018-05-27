@@ -41,7 +41,7 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
             }
             else if (e.CommandName == "Add")
             {
-                SqlDataReader MangaUser = sql.consulta("EXEC vDetalleLibros '" + Nick + "'," + ID);
+                SqlDataReader MangaUser = sql.consulta("EXEC vDetalleLibro '" + Nick + "'," + ID);
                 if (MangaUser.Read())
                 {
                     Mensaje("Sin duplicados", "Este libro ya está en tu lista", "info");

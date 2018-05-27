@@ -162,14 +162,14 @@ public partial class NavPrivada_Detalles_Libros : System.Web.UI.Page
         try
         {
             GridViewRow row = GrillaLibrosUsuario.Rows[e.RowIndex];
-            int idJuegoUsuario = Convert.ToInt32(GrillaLibrosUsuario.DataKeys[e.RowIndex].Values[0]);
-            int Avance = (row.FindControl("dd_AJuego") as DropDownList).SelectedIndex;
+            int idLibroUsuario = Convert.ToInt32(GrillaLibrosUsuario.DataKeys[e.RowIndex].Values[0]);
+            int Avance = (row.FindControl("dd_ALibro") as DropDownList).SelectedIndex;
             String Nota = (row.FindControl("txt_nota") as TextBox).Text.Trim();
 
             cdc = new ConexionLQDataContext();
-            Juegos_Usuario ju = (from a in cdc.Juegos_Usuario where a.id_JuegoUsuario == idJuegoUsuario select a).FirstOrDefault();
-            ju.id_AvanceJuego = Avance + 1;
-            ju.Nota = Nota;
+            Libro_Usuario lu = (from a in cdc.Libro_Usuario where a.id_LibroUsuario == idLibroUsuario select a).FirstOrDefault();
+            lu.id_AvanceLibro = Avance + 1;
+            lu.Nota = Nota;
             cdc.SubmitChanges();
             GrillaLibrosUsuario.EditIndex = -1;
             Mensaje("Completado con exito", "Se han actualizado los datos", "success");
@@ -179,18 +179,18 @@ public partial class NavPrivada_Detalles_Libros : System.Web.UI.Page
         }
         catch
         {
-            Mensaje("Sin juegos", "Debes ingresar datos validos", "error");
+            Mensaje("Sin jugueteos", "Debes ingresar datos validos", "error");
         }
     }
 
     protected void GrillaLibrosUsuario_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        int idJuegoUsuario = Convert.ToInt32(GrillaLibrosUsuario.DataKeys[e.RowIndex].Values[0]);
+        int idLibroUsuario = Convert.ToInt32(GrillaLibrosUsuario.DataKeys[e.RowIndex].Values[0]);
         cdc = new ConexionLQDataContext();
-        Juegos_Usuario ju = (from a in cdc.Juegos_Usuario where a.id_JuegoUsuario == idJuegoUsuario select a).FirstOrDefault();
-        cdc.Juegos_Usuario.DeleteOnSubmit(ju);
+        Libro_Usuario lu = (from a in cdc.Libro_Usuario where a.id_LibroUsuario == idLibroUsuario select a).FirstOrDefault();
+        cdc.Libro_Usuario.DeleteOnSubmit(lu);
         cdc.SubmitChanges();
-        Mensaje("Bye bye!", "Se ha eliminado el juego de tu lista", "success");
+        Mensaje("Bye bye!", "Se ha eliminado el libro de tu lista", "success");
         this.LlenaDetalles();
     }
 

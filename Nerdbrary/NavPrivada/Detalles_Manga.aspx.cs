@@ -173,7 +173,7 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
         }
         catch
         {
-            Mensaje("Sin juegos", "Debes ingresar datos validos", "error");
+            Mensaje("Sin jugueteos", "Debes ingresar datos validos", "error");
         }
     }
 

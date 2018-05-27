@@ -47,6 +47,7 @@ public partial class NavPrivada_Desarrollador : System.Web.UI.Page
 
             if (datosok)
             {
+                Page.Title = "Detalles de " + Desarrollador;
                 Titulo.Text = Desarrollador;
                 DetallesDev.Text = Detalles;
                 MainCover.Attributes["Style"] = "background-image: url(../img/games/developer/" + RutaImagen + "); height: 70vh";

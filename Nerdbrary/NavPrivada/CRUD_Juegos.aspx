@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Juegos.aspx.cs" Inherits="NavPrivada_JuegosCRUD" %>
+﻿<%@ Page Title="Gestión de Juegos" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Juegos.aspx.cs" Inherits="NavPrivada_JuegosCRUD" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
