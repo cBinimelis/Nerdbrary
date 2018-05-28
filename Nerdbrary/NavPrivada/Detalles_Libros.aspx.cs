@@ -133,7 +133,7 @@ public partial class NavPrivada_Detalles_Libros : System.Web.UI.Page
     private void llenarGrilla()
     {
         cdc = new ConexionLQDataContext();
-        GrillaLibrosUsuario.DataSource = cdc.vDetalleJuego(Nick, Convert.ToInt32(idLibro));
+        GrillaLibrosUsuario.DataSource = cdc.vDetalleLibro(Nick, Convert.ToInt32(idLibro));
         GrillaLibrosUsuario.DataBind();
     }
 

@@ -1,8 +1,8 @@
-﻿<%@ Page Title="Gestión de Desarrolladores" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Desarrollador.aspx.cs" Inherits="NavPrivada_CRUD_Desarrollador" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Autores.aspx.cs" Inherits="NavPrivada_CRUD_Autores" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="uk-section-default uk-padding">
         <div class="uk-section">
             <div class="uk-container">
@@ -48,17 +48,17 @@
     <asp:Label ID="lbl_redirect" runat="server" Text="Label" Visible="false"></asp:Label>
     <div class="uk-section-default">
         <div class="uk-container">
-            <h1 class=" uk-heading-primary uk-text-center">Lista de Desarrolladores</h1>
+            <h1 class=" uk-heading-primary uk-text-center">Lista de Autores</h1>
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body uk-overflow-auto">
-                    <asp:GridView ID="GrillaDev" DataKeyNames="id_Desarrollador" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                        OnRowCancelingEdit="GrillaDev_RowCancelingEdit" OnRowEditing="GrillaDev_RowEditing"
-                        OnRowUpdating="GrillaDev_RowUpdating" OnRowCommand="GrillaDev_RowCommand"
+                    <asp:GridView ID="GrillaAut" DataKeyNames="id_Desarrollador" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
+                        OnRowCancelingEdit OnRowEditing
+                        OnRowUpdating OnRowCommand
                         BorderStyle="None" GridLines="None" runat="server">
                         <Columns>
                             <asp:TemplateField HeaderText="ID Juego" Visible="false">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Desarrollador") %>'></asp:Label>
+                                    <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Autor") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Nombre" ItemStyle-CssClass="uk-form-width-large">
