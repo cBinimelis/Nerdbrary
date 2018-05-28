@@ -20,7 +20,7 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
         {
             if (Request.QueryString["Redir"] != null)
             {
-                Mensaje("¡Felicidades!", "Se ha creado exitosamente el desarrollaor", "success");
+                Mensaje("¡Felicidades!", "Se ha creado exitosamente el autor", "success");
             }
             idPendiente = Convert.ToInt32(Request.QueryString["Id"]);
             ConfirmarPendiente();
@@ -193,7 +193,7 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
     {
         if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GrillaLibros.EditIndex)
         {
-            (e.Row.Cells[7].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
+            (e.Row.Cells[8].Controls[2] as LinkButton).Attributes["onclick"] = "return Delete(this, event);";
         }
     }
 

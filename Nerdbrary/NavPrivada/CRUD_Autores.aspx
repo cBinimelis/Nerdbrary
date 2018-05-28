@@ -7,7 +7,7 @@
         <div class="uk-section">
             <div class="uk-container">
                 <div class="uk-card uk-card-secondary">
-                    <h1 class="uk-heading-line uk-text-center uk-padding">Mantenedor de Desarrolladores</h1>
+                    <h1 class="uk-heading-line uk-text-center uk-padding">Mantenedor de Autores</h1>
                     <div class="uk-card-body">
                         <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
                         <div>
@@ -37,7 +37,7 @@
                         <div class="uk-width-1-1">
                             <div class="uk-inline uk-position-bottom-center uk-margin-bottom uk-position-relative">
                                 <span class="uk-form-icon" uk-icon="icon: plus"></span>
-                                <asp:Button ID="btn_crear" CssClass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" Text="Crear Desarrollador" OnClick="btn_crear_Click" />
+                                <asp:Button ID="btn_crear" CssClass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" Text="Crear Autor" OnClick="btn_crear_Click" />
                             </div>
                         </div>
                     </div>
@@ -51,9 +51,9 @@
             <h1 class=" uk-heading-primary uk-text-center">Lista de Autores</h1>
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body uk-overflow-auto">
-                    <asp:GridView ID="GrillaAut" DataKeyNames="id_Desarrollador" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                        OnRowCancelingEdit OnRowEditing
-                        OnRowUpdating OnRowCommand
+                    <asp:GridView ID="GrillaAut" DataKeyNames="id_Autor" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
+                        OnRowCancelingEdit="GrillaAut_RowCancelingEdit" OnRowEditing="GrillaAut_RowEditing"
+                        OnRowUpdating="GrillaAut_RowUpdating" OnRowCommand="GrillaAut_RowCommand"
                         BorderStyle="None" GridLines="None" runat="server">
                         <Columns>
                             <asp:TemplateField HeaderText="ID Juego" Visible="false">

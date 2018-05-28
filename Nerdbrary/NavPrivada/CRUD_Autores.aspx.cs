@@ -127,7 +127,7 @@ public partial class NavPrivada_CRUD_Autores : System.Web.UI.Page
         int IdGrilla = Convert.ToInt32(ID);
         if (e.CommandName == "Select")
         {
-            Response.Redirect("Desarrollador.aspx?Id=" + ID);
+            Response.Redirect("Autor.aspx?Id=" + ID);
         }
     }
 
@@ -148,7 +148,7 @@ public partial class NavPrivada_CRUD_Autores : System.Web.UI.Page
         try
         {
             GridViewRow row = GrillaAut.Rows[e.RowIndex];
-            int idDev = Convert.ToInt32(GrillaAut.DataKeys[e.RowIndex].Values[0]);
+            int idAut = Convert.ToInt32(GrillaAut.DataKeys[e.RowIndex].Values[0]);
             String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
             if (Nombre.Equals(""))
             {
@@ -157,8 +157,8 @@ public partial class NavPrivada_CRUD_Autores : System.Web.UI.Page
             else
             {
                 cdc = new ConexionLQDataContext();
-                Desarrollador d = (from a in cdc.Desarrollador where a.id_Desarrollador == idDev select a).FirstOrDefault();
-                d.Nombre = Nombre;
+                Autor au = (from a in cdc.Autor where a.id_Autor == idAut select a).FirstOrDefault();
+                au.Nombre = Nombre;
                 cdc.SubmitChanges();
                 GrillaAut.EditIndex = -1;
                 Mensaje("Completado con exito", "Se han actualizado los datos", "success");

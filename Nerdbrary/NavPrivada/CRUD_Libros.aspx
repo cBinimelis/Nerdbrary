@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
-                            <p>Autor <a class="uk-icon-link uk-margin-left-small" uk-icon="plus" href="CRUD_Autor.aspx?Redir=1" uk-tooltip="title: Agregar Autor" uk-toggle></a></p>
+                            <p>Autor <a class="uk-icon-link uk-margin-left-small" uk-icon="plus" href="CRUD_Autores.aspx?Redir=1" uk-tooltip="title: Agregar Autor" uk-toggle></a></p>
                             <div class="uk-inline">
                                 <asp:dropdownlist id="dd_autorN" cssclass="uk-select uk-form-width-large" runat="server" forecolor="#999999"></asp:dropdownlist>
                             </div>
@@ -186,12 +186,12 @@
                                     <asp:DropDownList ID="dd_genero" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Genero" DataTextField="Descripcion" DataValueField="id_GeneroLibro"></asp:DropDownList>
                                 </EditItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Paginas">
+                            <asp:TemplateField HeaderText="Otros Generos">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_OGeneros" runat="server" Text='<%# Eval("Otros Generos") %>'></asp:Label>
+                                    <asp:Label ID="lbl_OGeneros" runat="server" Text='<%# Eval("Otros_Generos") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="txt_ogeneros" CssClass="uk-input" Text='<%# Eval("Otros Generos") %>' runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txt_ogeneros" CssClass="uk-input" Text='<%# Eval("Otros_Generos") %>' runat="server"></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:CommandField ButtonType="Link" ShowEditButton="true" EditText="<span uk-icon='icon: pencil' uk-tooltip='title: Editar'></span>"

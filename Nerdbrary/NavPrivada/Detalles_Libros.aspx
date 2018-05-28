@@ -16,7 +16,7 @@
                         <p>
                             <b>Autor: </b>
                             <asp:Label ID="AutorL" runat="server" Text="Beelzebooz"></asp:Label>
-                            <a href="#" id="lnk_autor" runat="server" class="uk-icon-button" uk-tooltip='title: Ver más de este desarrollador' uk-icon="search"></a>
+                            <a href="#" id="lnk_autor" runat="server" class="uk-icon-button" uk-tooltip='title: Ver más de este autor' uk-icon="search"></a>
                         </p>
                         <p>
                             <b>Lanzamiento: </b>

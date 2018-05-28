@@ -156,12 +156,14 @@
                                                 <a class="uk-text-bold">Libros</a>
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                        <li class="uk-nav-header uk-active"><a href="../NavPrivada/Lista_Manga.aspx">Manga</a></li>
+                                                        <li class="uk-nav-header uk-active"><a href="Lista_Manga.aspx">Manga</a></li>
                                                         <li><a href="MisMangas.aspx">Mis Mangas</a></li>
                                                         <li><a href="CRUD_Manga.aspx">Mantenedor</a></li>
-                                                        <li class="uk-nav-header uk-active"><a href="../NavPrivada/Lista_Libros.aspx">Literatura</a></li>
-                                                        <li><a href="MisMangas.aspx">Mis Libros</a></li>
+                                                        <li class="uk-nav-header uk-active"><a href="Lista_Libros.aspx">Literatura</a></li>
+                                                        <li><a href="MisLibros.aspx">Mis Libros</a></li>
                                                         <li><a href="CRUD_Libros.aspx">Mantenedor</a></li>
+                                                        <li class="uk-nav-header uk-active"><a href="Lista_Autores.aspx">Autores</a></li>
+                                                        <li><a href="CRUD_Autores.aspx">Mantenedor</a></li>
                                                     </ul>
                                                 </div>
                                             </li>

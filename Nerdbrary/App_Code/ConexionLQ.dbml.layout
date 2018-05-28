@@ -33,7 +33,7 @@
         <classShapeMoniker Id="d111d3fe-3324-49af-9f99-b57f337f0a15" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 4.375); (8.5 : 1.97199625651042); (6.27083333333333 : 1.97199625651042 : JumpStart); (6.10416666666667 : 1.97199625651042 : JumpEnd); (4.125 : 1.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.5 : 4.375); (8.5 : 1.97199625651042); (6.27083333333333 : 1.97199625651042 : JumpStart); (6.10416666666667 : 1.97199625651042 : JumpEnd); (4.125 : 1.97199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Genero_Anime/Genero_Anime_Anime" />
       <nodes>
         <classShapeMoniker Id="51f4e07b-c47e-4d10-aa2e-ec3ecb535610" />
@@ -290,7 +290,7 @@
         <elementListCompartment Id="11b0e11c-bedf-4fe5-9cea-ac26d1ed245f" absoluteBounds="16.14, 9.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(15.375 : 10.2219962565104); (15.6666641666667 : 10.2219962565104 : JumpStart); (15.8333308333333 : 10.2219962565104 : JumpEnd); (16.125 : 10.2219962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(15.375 : 10.2219962565104); (16.125 : 10.2219962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Avance_Libro/Avance_Libro_Libro_Usuario" />
       <nodes>
         <classShapeMoniker Id="8cbd2bfa-9249-45a6-bc32-df7113db8e8d" />
@@ -310,45 +310,45 @@
         <elementListCompartment Id="8ad267d3-0489-4ca8-835e-97ca4efaf321" absoluteBounds="10.265, 13.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="9229169f-49fd-46c0-8a2f-ee8113614ff7" absoluteBounds="19, 0.5, 2, 2.9247054036458331">
-      <DataClassMoniker Name="/ConexionLQDataContext/vLibros" />
-      <nestedChildShapes>
-        <elementListCompartment Id="f853ebc0-d6e5-44e7-8965-f5c978001732" absoluteBounds="19.015, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="a4e91e50-de0d-4203-9b7f-108c43768b27" absoluteBounds="14.5, 13.625, 2, 2.9247054036458331">
       <DataClassMoniker Name="/ConexionLQDataContext/Libros" />
       <nestedChildShapes>
         <elementListCompartment Id="b08006ad-cafc-46cd-b13a-eabce80bafce" absoluteBounds="14.515, 14.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(15.7499975 : 13.625); (15.7499975 : 9.40625); (16.125 : 9.40625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(15.7499975 : 13.625); (15.7499975 : 9.40625); (16.125 : 9.40625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Libros/Libros_Libro_Usuario" />
       <nodes>
         <classShapeMoniker Id="a4e91e50-de0d-4203-9b7f-108c43768b27" />
         <classShapeMoniker Id="67a98ef5-3eda-4312-be3f-f512b12127a5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(12.625 : 23.2892976888021); (15.5 : 23.2892976888021); (15.5 : 16.5497054036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(12.625 : 23.2892976888021); (15.5 : 23.2892976888021); (15.5 : 16.5497054036458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Autor/Autor_Libros" />
       <nodes>
         <classShapeMoniker Id="935009ce-5b0f-4b24-a732-7b8c90f601eb" />
         <classShapeMoniker Id="a4e91e50-de0d-4203-9b7f-108c43768b27" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(12.25 : 13.9094962565104); (14.5 : 13.9094962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(12.25 : 13.9094962565104); (14.5 : 13.9094962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Estado_Libro/Estado_Libro_Libros" />
       <nodes>
         <classShapeMoniker Id="cd85e83f-79f1-4294-be9e-f8246142f45b" />
         <classShapeMoniker Id="a4e91e50-de0d-4203-9b7f-108c43768b27" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(12.46875 : 20.625); (12.46875 : 15.4030989583333); (14.5 : 15.4030989583333)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(12.46875 : 20.625); (12.46875 : 15.4030989583333); (14.5 : 15.4030989583333)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConexionLQDataContext/Genero_Libro/Genero_Libro_Libros" />
       <nodes>
         <classShapeMoniker Id="53d5f411-b117-453c-9b37-d476ac7f164e" />
         <classShapeMoniker Id="a4e91e50-de0d-4203-9b7f-108c43768b27" />
       </nodes>
     </associationConnector>
+    <classShape Id="0baa8d0a-be9f-49d4-896e-56c8e1fdee40" absoluteBounds="19, 0.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/ConexionLQDataContext/vLibros" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f02e39e2-e3bf-4de2-abbe-c12236d7e60b" absoluteBounds="19.015, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

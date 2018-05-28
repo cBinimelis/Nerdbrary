@@ -360,19 +360,19 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<vLibros> vLibros
-	{
-		get
-		{
-			return this.GetTable<vLibros>();
-		}
-	}
-	
 	public System.Data.Linq.Table<Libros> Libros
 	{
 		get
 		{
 			return this.GetTable<Libros>();
+		}
+	}
+	
+	public System.Data.Linq.Table<vLibros> vLibros
+	{
+		get
+		{
+			return this.GetTable<vLibros>();
 		}
 	}
 	
@@ -418,18 +418,18 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		return ((ISingleResult<vMangaUsuarioResult>)(result.ReturnValue));
 	}
 	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vDetalleLibro")]
-	public ISingleResult<vDetalleLibroResult> vDetalleLibro([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Libro", DbType="Int")] System.Nullable<int> libro)
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, libro);
-		return ((ISingleResult<vDetalleLibroResult>)(result.ReturnValue));
-	}
-	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vLibroUsuario")]
 	public ISingleResult<vLibroUsuarioResult> vLibroUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
 	{
 		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user);
 		return ((ISingleResult<vLibroUsuarioResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vDetalleLibro")]
+	public ISingleResult<vDetalleLibroResult> vDetalleLibro([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Libro", DbType="Int")] System.Nullable<int> libro)
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, libro);
+		return ((ISingleResult<vDetalleLibroResult>)(result.ReturnValue));
 	}
 }
 
@@ -5730,213 +5730,6 @@ public partial class Estado_Libro : INotifyPropertyChanging, INotifyPropertyChan
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vLibros")]
-public partial class vLibros
-{
-	
-	private int _id_Libro;
-	
-	private string _Nombre;
-	
-	private string _Sinopsis;
-	
-	private int _Paginas;
-	
-	private int _id_Autor;
-	
-	private string _Autor;
-	
-	private string _Lanzamiento;
-	
-	private string _Imagen;
-	
-	private string _Genero;
-	
-	private string _Otros_Generos;
-	
-	private string _Estado;
-	
-	public vLibros()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Libro", DbType="Int NOT NULL")]
-	public int id_Libro
-	{
-		get
-		{
-			return this._id_Libro;
-		}
-		set
-		{
-			if ((this._id_Libro != value))
-			{
-				this._id_Libro = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string Nombre
-	{
-		get
-		{
-			return this._Nombre;
-		}
-		set
-		{
-			if ((this._Nombre != value))
-			{
-				this._Nombre = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-	public string Sinopsis
-	{
-		get
-		{
-			return this._Sinopsis;
-		}
-		set
-		{
-			if ((this._Sinopsis != value))
-			{
-				this._Sinopsis = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paginas", DbType="Int NOT NULL")]
-	public int Paginas
-	{
-		get
-		{
-			return this._Paginas;
-		}
-		set
-		{
-			if ((this._Paginas != value))
-			{
-				this._Paginas = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Autor", DbType="Int NOT NULL")]
-	public int id_Autor
-	{
-		get
-		{
-			return this._id_Autor;
-		}
-		set
-		{
-			if ((this._id_Autor != value))
-			{
-				this._id_Autor = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-	public string Autor
-	{
-		get
-		{
-			return this._Autor;
-		}
-		set
-		{
-			if ((this._Autor != value))
-			{
-				this._Autor = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
-	public string Lanzamiento
-	{
-		get
-		{
-			return this._Lanzamiento;
-		}
-		set
-		{
-			if ((this._Lanzamiento != value))
-			{
-				this._Lanzamiento = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-	public string Imagen
-	{
-		get
-		{
-			return this._Imagen;
-		}
-		set
-		{
-			if ((this._Imagen != value))
-			{
-				this._Imagen = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Genero
-	{
-		get
-		{
-			return this._Genero;
-		}
-		set
-		{
-			if ((this._Genero != value))
-			{
-				this._Genero = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="VarChar(MAX)")]
-	public string Otros_Generos
-	{
-		get
-		{
-			return this._Otros_Generos;
-		}
-		set
-		{
-			if ((this._Otros_Generos != value))
-			{
-				this._Otros_Generos = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Estado
-	{
-		get
-		{
-			return this._Estado;
-		}
-		set
-		{
-			if ((this._Estado != value))
-			{
-				this._Estado = value;
-			}
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Libros")]
 public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -6383,6 +6176,213 @@ public partial class Libros : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.Libros = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vLibros")]
+public partial class vLibros
+{
+	
+	private int _id_Libro;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private int _Paginas;
+	
+	private int _id_Autor;
+	
+	private string _Autor;
+	
+	private string _Lanzamiento;
+	
+	private string _Imagen;
+	
+	private string _Genero;
+	
+	private string _Otros_Generos;
+	
+	private string _Estado;
+	
+	public vLibros()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Libro", DbType="Int NOT NULL")]
+	public int id_Libro
+	{
+		get
+		{
+			return this._id_Libro;
+		}
+		set
+		{
+			if ((this._id_Libro != value))
+			{
+				this._id_Libro = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this._Sinopsis = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paginas", DbType="Int NOT NULL")]
+	public int Paginas
+	{
+		get
+		{
+			return this._Paginas;
+		}
+		set
+		{
+			if ((this._Paginas != value))
+			{
+				this._Paginas = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Autor", DbType="Int NOT NULL")]
+	public int id_Autor
+	{
+		get
+		{
+			return this._id_Autor;
+		}
+		set
+		{
+			if ((this._id_Autor != value))
+			{
+				this._id_Autor = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+	public string Autor
+	{
+		get
+		{
+			return this._Autor;
+		}
+		set
+		{
+			if ((this._Autor != value))
+			{
+				this._Autor = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
+	public string Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this._Lanzamiento = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Genero
+	{
+		get
+		{
+			return this._Genero;
+		}
+		set
+		{
+			if ((this._Genero != value))
+			{
+				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Otros_Generos", DbType="VarChar(MAX)")]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Estado
+	{
+		get
+		{
+			return this._Estado;
+		}
+		set
+		{
+			if ((this._Estado != value))
+			{
+				this._Estado = value;
+			}
+		}
 	}
 }
 
@@ -7568,248 +7568,6 @@ public partial class vMangaUsuarioResult
 	}
 }
 
-public partial class vDetalleLibroResult
-{
-	
-	private int _id_Libro;
-	
-	private string _Nombre;
-	
-	private string _Sinopsis;
-	
-	private int _Paginas;
-	
-	private int _id_Autor;
-	
-	private string _Autor;
-	
-	private string _Lanzamiento;
-	
-	private string _Imagen;
-	
-	private string _Genero;
-	
-	private string _Otros_Generos;
-	
-	private string _Estado;
-	
-	private string _Avance;
-	
-	private string _Nota;
-	
-	public vDetalleLibroResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Libro", DbType="Int NOT NULL")]
-	public int id_Libro
-	{
-		get
-		{
-			return this._id_Libro;
-		}
-		set
-		{
-			if ((this._id_Libro != value))
-			{
-				this._id_Libro = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string Nombre
-	{
-		get
-		{
-			return this._Nombre;
-		}
-		set
-		{
-			if ((this._Nombre != value))
-			{
-				this._Nombre = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-	public string Sinopsis
-	{
-		get
-		{
-			return this._Sinopsis;
-		}
-		set
-		{
-			if ((this._Sinopsis != value))
-			{
-				this._Sinopsis = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paginas", DbType="Int NOT NULL")]
-	public int Paginas
-	{
-		get
-		{
-			return this._Paginas;
-		}
-		set
-		{
-			if ((this._Paginas != value))
-			{
-				this._Paginas = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Autor", DbType="Int NOT NULL")]
-	public int id_Autor
-	{
-		get
-		{
-			return this._id_Autor;
-		}
-		set
-		{
-			if ((this._id_Autor != value))
-			{
-				this._id_Autor = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-	public string Autor
-	{
-		get
-		{
-			return this._Autor;
-		}
-		set
-		{
-			if ((this._Autor != value))
-			{
-				this._Autor = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
-	public string Lanzamiento
-	{
-		get
-		{
-			return this._Lanzamiento;
-		}
-		set
-		{
-			if ((this._Lanzamiento != value))
-			{
-				this._Lanzamiento = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-	public string Imagen
-	{
-		get
-		{
-			return this._Imagen;
-		}
-		set
-		{
-			if ((this._Imagen != value))
-			{
-				this._Imagen = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Genero
-	{
-		get
-		{
-			return this._Genero;
-		}
-		set
-		{
-			if ((this._Genero != value))
-			{
-				this._Genero = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="VarChar(MAX)")]
-	public string Otros_Generos
-	{
-		get
-		{
-			return this._Otros_Generos;
-		}
-		set
-		{
-			if ((this._Otros_Generos != value))
-			{
-				this._Otros_Generos = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Estado
-	{
-		get
-		{
-			return this._Estado;
-		}
-		set
-		{
-			if ((this._Estado != value))
-			{
-				this._Estado = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Avance", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string Avance
-	{
-		get
-		{
-			return this._Avance;
-		}
-		set
-		{
-			if ((this._Avance != value))
-			{
-				this._Avance = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string Nota
-	{
-		get
-		{
-			return this._Nota;
-		}
-		set
-		{
-			if ((this._Nota != value))
-			{
-				this._Nota = value;
-			}
-		}
-	}
-}
-
 public partial class vLibroUsuarioResult
 {
 	
@@ -8011,6 +7769,248 @@ public partial class vLibroUsuarioResult
 			if ((this._Estado != value))
 			{
 				this._Estado = value;
+			}
+		}
+	}
+}
+
+public partial class vDetalleLibroResult
+{
+	
+	private int _id_LibroUsuario;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private int _Paginas;
+	
+	private int _id_Autor;
+	
+	private string _Autor;
+	
+	private string _Lanzamiento;
+	
+	private string _Imagen;
+	
+	private string _Genero;
+	
+	private string _Otros_Generos;
+	
+	private string _Estado;
+	
+	private string _Avance;
+	
+	private string _Nota;
+	
+	public vDetalleLibroResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_LibroUsuario", DbType="Int NOT NULL")]
+	public int id_LibroUsuario
+	{
+		get
+		{
+			return this._id_LibroUsuario;
+		}
+		set
+		{
+			if ((this._id_LibroUsuario != value))
+			{
+				this._id_LibroUsuario = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this._Sinopsis = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Paginas", DbType="Int NOT NULL")]
+	public int Paginas
+	{
+		get
+		{
+			return this._Paginas;
+		}
+		set
+		{
+			if ((this._Paginas != value))
+			{
+				this._Paginas = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Autor", DbType="Int NOT NULL")]
+	public int id_Autor
+	{
+		get
+		{
+			return this._id_Autor;
+		}
+		set
+		{
+			if ((this._id_Autor != value))
+			{
+				this._id_Autor = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+	public string Autor
+	{
+		get
+		{
+			return this._Autor;
+		}
+		set
+		{
+			if ((this._Autor != value))
+			{
+				this._Autor = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
+	public string Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this._Lanzamiento = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Genero
+	{
+		get
+		{
+			return this._Genero;
+		}
+		set
+		{
+			if ((this._Genero != value))
+			{
+				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="VarChar(MAX)")]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Estado
+	{
+		get
+		{
+			return this._Estado;
+		}
+		set
+		{
+			if ((this._Estado != value))
+			{
+				this._Estado = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Avance", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Avance
+	{
+		get
+		{
+			return this._Avance;
+		}
+		set
+		{
+			if ((this._Avance != value))
+			{
+				this._Avance = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Nota
+	{
+		get
+		{
+			return this._Nota;
+		}
+		set
+		{
+			if ((this._Nota != value))
+			{
+				this._Nota = value;
 			}
 		}
 	}
