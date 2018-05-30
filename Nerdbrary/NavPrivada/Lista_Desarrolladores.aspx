@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="Lista_Desarrolladores.aspx.cs" Inherits="NavPrivada_Lista_Desarrolladores" %>
+﻿<%@ Page Title="Desarrolladores" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="Lista_Desarrolladores.aspx.cs" Inherits="NavPrivada_Lista_Desarrolladores" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
