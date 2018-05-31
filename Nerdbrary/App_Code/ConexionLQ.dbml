@@ -11,6 +11,7 @@
       <Association Name="Usuario_Manga_Usuario" Member="Manga_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Manga_Usuario" />
       <Association Name="Usuario_Pendientes" Member="Pendientes" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Pendientes" />
       <Association Name="Usuario_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Libro_Usuario" />
+      <Association Name="Usuario_Serie_Usuario" Member="Serie_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Serie_Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Estado_Serie" Member="Estado_Serie">
@@ -18,6 +19,7 @@
       <Column Name="id_EstadoSerie" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Estado_Serie_Anime" Member="Anime" ThisKey="id_EstadoSerie" OtherKey="id_EstadoSerie" Type="Anime" />
+      <Association Name="Estado_Serie_Series" Member="Series" ThisKey="id_EstadoSerie" OtherKey="id_EstadoSerie" Type="Series" />
     </Type>
   </Table>
   <Table Name="dbo.Genero_Anime" Member="Genero_Anime">
@@ -317,6 +319,65 @@
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.Series" Member="Series">
+    <Type Name="Series">
+      <Column Name="id_Serie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Lanzamiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Temporadas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CapitulosTotales" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="id_GeneroSerie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_EstadoSerie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Series_Serie_Usuario" Member="Serie_Usuario" ThisKey="id_Serie" OtherKey="id_Serie" Type="Serie_Usuario" />
+      <Association Name="Estado_Serie_Series" Member="Estado_Serie" ThisKey="id_EstadoSerie" OtherKey="id_EstadoSerie" Type="Estado_Serie" IsForeignKey="true" />
+      <Association Name="Genero_Serie_Series" Member="Genero_Serie" ThisKey="id_GeneroSerie" OtherKey="id_GeneroSerie" Type="Genero_Serie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Serie_Usuario" Member="Serie_Usuario">
+    <Type Name="Serie_Usuario">
+      <Column Name="id_SerieUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Serie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_AvanceSerie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Series_Serie_Usuario" Member="Series" ThisKey="id_Serie" OtherKey="id_Serie" Type="Series" IsForeignKey="true" />
+      <Association Name="Usuario_Serie_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Avance_Serie_Serie_Usuario" Member="Avance_Serie" ThisKey="id_AvanceSerie" OtherKey="id_AvanceSerie" Type="Avance_Serie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Genero_Serie" Member="Genero_Serie">
+    <Type Name="Genero_Serie">
+      <Column Name="id_GeneroSerie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="Genero_Serie_Series" Member="Series" ThisKey="id_GeneroSerie" OtherKey="id_GeneroSerie" Type="Series" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Avance_Serie" Member="Avance_Serie">
+    <Type Name="Avance_Serie">
+      <Column Name="id_AvanceSerie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Avance_Serie_Serie_Usuario" Member="Serie_Usuario" ThisKey="id_AvanceSerie" OtherKey="id_AvanceSerie" Type="Serie_Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vSeries" Member="vSeries">
+    <Type Name="vSeries">
+      <Column Name="id_Serie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Temporadas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Capitulos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">
     <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="vAnimeUsuarioResult">
@@ -445,6 +506,38 @@
       <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Avance" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vSerieUsuario" Method="vSerieUsuario">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="vSerieUsuarioResult">
+      <Column Name="id_Serie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Temporadas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Capitulos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vDetalleSerie" Method="vDetalleSerie">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Serie" Parameter="serie" Type="System.Int32" DbType="Int" />
+    <ElementType Name="vDetalleSerieResult">
+      <Column Name="id_SerieUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Temporadas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Capitulos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Avance" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Nota" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>

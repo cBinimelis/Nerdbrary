@@ -51,7 +51,7 @@
 --INNER JOIN Usuario U ON AU.id_Usuario = U.id_Usuario
 --INNER JOIN Genero_Anime GA ON A.id_GeneroAnime = ga.id_GeneroAnime
 --INNER JOIN Estado_Serie ES ON A.id_EstadoSerie = ES.id_EstadoSerie
---WHERE U.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND A.Activo =  1
+--WHERE AU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND A.Activo =  1
 --ORDER BY A.Nombre ASC
 --END
 
@@ -219,3 +219,54 @@
 --END
 
 --EXEC vLibroUsuario 'ivichan'
+
+
+
+
+--------------------------------------------------------SERIES--------------------------------------------------------
+--CREATE VIEW vSeries as
+--SELECT S.id_Serie, S.Nombre, S.Sinopsis, CONVERT(varchar, S.Lanzamiento, 103) AS 'Lanzamiento' , S.Temporadas, 
+--S.CapitulosTotales 'Capitulos',S.Imagen, GS.Descripcion 'Genero', S.Otros_Generos 'Otros Generos', ES.Descripcion 'Estado'
+--FROM Series S
+--INNER JOIN Genero_Serie GS ON S.id_GeneroSerie = GS.id_GeneroSerie
+--INNER JOIN Estado_Serie ES ON S.id_EstadoSerie = ES.id_EstadoSerie
+--WHERE S.Activo =  1
+
+--SELECT * from vSeries where id_Serie = 1
+
+
+
+--CREATE PROC vDetalleSerie @User VARCHAR(50), @Serie INT = 0
+--AS
+--BEGIN
+--SELECT SU.id_SerieUsuario , S.Nombre, S.Sinopsis, CONVERT(varchar, S.Lanzamiento, 103) AS 'Lanzamiento' , S.Temporadas, S.CapitulosTotales 'Capitulos',
+-- S.Imagen, GS.Descripcion 'Genero', S.Otros_Generos 'Otros Generos', ES.Descripcion 'Estado', SS.Descripcion 'Avance', SU.Nota
+--FROM Serie_Usuario SU
+--INNER JOIN Series S ON SU.id_Serie = S.id_Serie
+--INNER JOIN Usuario U ON SU.id_Usuario = U.id_Usuario
+--INNER JOIN Genero_Serie GS ON S.id_GeneroSerie = GS.id_GeneroSerie
+--INNER JOIN Estado_Serie ES ON S.id_EstadoSerie = ES.id_EstadoSerie
+--INNER JOIN Avance_Serie SS ON SU.id_AvanceSerie = SS.id_AvanceSerie
+--WHERE SU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND SU.id_Serie = @Serie AND S.Activo =  1
+--ORDER BY S.Nombre ASC
+--END
+
+--EXEC vDetalleSerie 'ivichan', 4
+
+
+
+--CREATE PROC vSerieUsuario @User VARCHAR(50)
+--AS
+--BEGIN
+--SELECT S.id_Serie, S.Nombre, S.Sinopsis, CONVERT(varchar, S.Lanzamiento, 103) AS 'Lanzamiento' , S.Temporadas, 
+--S.CapitulosTotales 'Capitulos',S.Imagen, GS.Descripcion 'Genero', ES.Descripcion 'Estado'
+--FROM Serie_Usuario SU
+--INNER JOIN Series S ON SU.id_Serie = S.id_Serie
+--INNER JOIN Usuario U ON SU.id_Usuario = U.id_Usuario
+--INNER JOIN Genero_Serie GS ON S.id_GeneroSerie = GS.id_GeneroSerie
+--INNER JOIN Estado_Serie ES ON S.id_EstadoSerie = ES.id_EstadoSerie
+--WHERE SU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND S.Activo =  1
+--ORDER BY S.Nombre ASC
+--END
+
+----EXEC vSerieUsuario 'ivichan'

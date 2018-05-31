@@ -22,46 +22,46 @@ public partial class NavPrivada_Series_Lista_Series : System.Web.UI.Page
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
-        GrillaAnime.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);
-        GrillaAnime.DataBind();
+        GrillaSeries.DataSource = cdc.vSeries.OrderBy(x => x.Nombre);
+        GrillaSeries.DataBind();
     }
 
     protected void btn_buscar_Click(object sender, EventArgs e)
     {
         cdc = new ConexionLQDataContext();
-        GrillaAnime.DataSource = cdc.vAnime.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
-        GrillaAnime.DataBind();
+        GrillaSeries.DataSource = cdc.vSeries.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
+        GrillaSeries.DataBind();
     }
 
-    protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)
+    protected void GrillaSeries_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         try
         {
             String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = GrillaAnime.Rows[rowIndex];
+            GridViewRow row = GrillaSeries.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
             {
-                Response.Redirect("Detalles_Anime.aspx?Id=" + ID);
+                Response.Redirect("Detalles_Serie.aspx?Id=" + ID);
             }
             else if (e.CommandName == "Add")
             {
-                SqlDataReader AnimeUser = sql.consulta("EXEC vDetalleAnime '" + Nick + "'," + ID);
+                SqlDataReader AnimeUser = sql.consulta("EXEC vDetalleSerie '" + Nick + "'," + ID);
                 if (AnimeUser.Read())
                 {
-                    Mensaje("Sin duplicados", "Este anime ya está en tu lista", "info");
+                    Mensaje("Sin duplicados", "Esta serie ya está en tu lista", "info");
                 }
                 else
                 {
                     cdc = new ConexionLQDataContext();
-                    Anime_Usuario au = new Anime_Usuario();
-                    au.id_Anime = Convert.ToInt32(ID);
-                    au.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
-                    au.id_AvanceAnime = 1;
-                    au.Nota = "Sin notas adjuntas";
-                    cdc.Anime_Usuario.InsertOnSubmit(au);
+                    Serie_Usuario su = new Serie_Usuario();
+                    su.id_Serie = Convert.ToInt32(ID);
+                    su.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
+                    su.id_AvanceSerie = 1;
+                    su.Nota = "Sin notas adjuntas";
+                    cdc.Serie_Usuario.InsertOnSubmit(su);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
                 }

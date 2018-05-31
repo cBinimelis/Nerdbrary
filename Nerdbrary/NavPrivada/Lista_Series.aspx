@@ -26,7 +26,7 @@
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
                         <asp:GridView ID="GrillaSeries" DataKeyNames="id_Serie" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand">
+                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaSeries_RowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="ID Serie" Visible="false">
                                     <ItemTemplate>
