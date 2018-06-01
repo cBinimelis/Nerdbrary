@@ -101,7 +101,7 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
                 if (IsPostBack)
                 {
                     Boolean fileOK = false;
-                    String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"\s", "");
+                    String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"[^0-9a-zA-Z_]+", "");
                     String path = Server.MapPath("~/img/games/");
                     String fileExtension = System.IO.Path.GetExtension(subir_imagen.FileName).ToLower();
                     String[] allowedExtensions = { ".jpeg", ".jpg" };
