@@ -26,7 +26,9 @@
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
                         <asp:GridView ID="GrillaPendiente" DataKeyNames="id_Pendiente" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaPendiente_RowCommand">
+                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaPendiente_RowCommand" OnRowDataBound="GrillaPendiente_RowDataBound"
+                            OnRowEditing="GrillaPendiente_RowEditing" OnRowCancelingEdit="GrillaPendiente_RowCancelingEdit" OnRowUpdating="GrillaPendiente_RowUpdating"
+                            OnRowDeleting="GrillaPendiente_RowDeleting">
                             <Columns>
                                 <asp:TemplateField HeaderText="ID Pendiente" Visible="false">
                                     <ItemTemplate>
@@ -42,6 +44,9 @@
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Tipo") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:DropDownList ID="dd_TPendiente" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_TipoP" DataTextField="Descripcion" DataValueField="id_TipoPendiente"></asp:DropDownList>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Agregado Por">
                                     <ItemTemplate>
@@ -53,11 +58,10 @@
                                         <asp:Label ID="lbl_idTP" runat="server" Text='<%# Eval("id_TipoPendiente") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:Button ID="btn_Crear" CssClass="uk-button boton-ver uk-button-primary uk-button-small" runat="server" Text="Crear Elemento" CommandName="Select" CommandArgument='<%# Eval("id_Pendiente") %>' />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                <asp:CommandField ButtonType="Link" ShowSelectButton="true" SelectText="<span uk-icon='icon: plus' uk-tooltip='title: Crear Elemento'></span>" 
+                                    ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash' uk-tooltip='title: Eliminar'></span>"
+                                    ShowEditButton="true" EditText="<span uk-icon='icon: pencil' uk-tooltip='title: Editar'></span>"
+                                    CancelText="<span uk-icon='icon: close'></span>" UpdateText="<span uk-icon='icon: check'></span>"/>
                             </Columns>
                         </asp:GridView>
                     </div>
@@ -65,5 +69,7 @@
             </div>
         </div>
     </div>
+    
+    <asp:LinqDataSource ID="DS_TipoP" runat="server" ContextTypeName="ConexionLQDataContext" EntityTypeName="" TableName="Tipo_Pendiente"></asp:LinqDataSource>
 </asp:Content>
 

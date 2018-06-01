@@ -276,7 +276,6 @@ public partial class NavPrivada_CRUD_Series : System.Web.UI.Page
         }
     }
 
-
     private void Mensaje(String Tit, String Msg, String Stat)
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
