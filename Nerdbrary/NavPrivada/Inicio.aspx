@@ -4,16 +4,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="uk-section-default">
-        <div id="test-filter" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" style="background-image: url(../img/ProfileBG.png); height: 50vh">
+        <div id="FondoPrincipal" class="uk-section uk-light uk-background-cover uk-overflow-hidden uk-flex uk-flex-top" runat="server" style="background-image: url(../img/ProfileBG.png); height: 50vh">
             <div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="target: #test-filter; blur: 0,10;">
                 <div class="uk-overlay uk-overlay-primary uk-width-large">
                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
-                            <img class="uk-border-circle uk-height-small" runat="server" src="../img/DefaultPP.png">
+                            <img id="PPicture"  width="200" height="200" class="uk-border-rounded" runat="server" src="../img/DefaultPP.png" />
                         </div>
                         <div class="uk-width-expand">
-                            <h3 id="Username" class="uk-card-title uk-margin-remove-bottom">Tukulito Sakayama</h3>
-                            <p id="Description" class="uk-text-meta uk-margin-remove-top">Zoy Muy kul xddddd</p>
+                            <asp:Label ID="Username" runat="server" CssClass="uk-card-title uk-margin-remove-bottom" Text="Tukulito Sakayama"></asp:Label><br />
+                            <asp:Label ID="Descripcion" CssClass="uk-text-meta uk-margin-remove-top" runat="server" Text="Zoy Muy kul xddddd"></asp:Label>
                         </div>
                     </div>
                 </div>
@@ -29,14 +29,14 @@
                     <div class="uk-width-1-2@m">
                         <div class="uk-inline">
                             <a class="uk-form-icon" href="Pendientes.aspx" uk-icon="icon: search" uk-tooltip="title: Ver pendientes"></a>
-                            <asp:textbox id="txt_pendiente" cssclass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:textbox>
+                            <asp:TextBox ID="txt_pendiente" CssClass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:TextBox>
                         </div>
                     </div>
-                    <asp:dropdownlist id="dd_tipoP" cssclass="uk-form-width-medium@m uk-select" runat="server" forecolor="#999999"></asp:dropdownlist>
+                    <asp:DropDownList ID="dd_tipoP" CssClass="uk-form-width-medium uk-select" runat="server" ForeColor="#999999"></asp:DropDownList>
                     <div class="uk-width-auto@m ">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: plus"></span>
-                            <asp:button id="btn_crear" cssclass="uk-button uk-button-primary" runat="server" text="Crear Pendiente" onclick="btn_crear_Click" />
+                            <asp:Button ID="btn_crear" CssClass="uk-button uk-button-primary" runat="server" Text="Crear Pendiente" OnClick="btn_crear_Click" />
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="uk-section-muted uk-padding" style="background-color: #ba55d3;">
+    <div class="uk-section-muted uk-padding" style="background-color: #f19bff;">
         <div class="uk-container">
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-light uk-flex-center" uk-grid>
 
@@ -193,8 +193,14 @@
                         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                
+    <div class="uk-section-muted uk-padding" style="background-color: #ba55d3;">
+        <div class="uk-container">
+            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-light uk-flex-center" uk-grid>
+
                 <%--SLIDE SHOW PARA SERIES--%>
                 <div>
                     <h2 class="uk-heading-divider uk-text-bold">Series</h2>
@@ -243,7 +249,7 @@
                     </div>
                 </div>
 
-                
+
                 <%--SLIDE SHOW PARA PELICULAS--%>
                 <div>
                     <h2 class="uk-heading-divider uk-text-bold">Películas</h2>
@@ -292,7 +298,7 @@
                     </div>
                 </div>
 
-                
+
                 <%--SLIDE SHOW PARA LIBROS--%>
                 <div>
                     <h2 class="uk-heading-divider uk-text-bold">Libros</h2>
@@ -343,6 +349,7 @@
             </div>
         </div>
     </div>
+
     <div class="uk-section-muted uk-padding">
         <div class="uk-container">
 

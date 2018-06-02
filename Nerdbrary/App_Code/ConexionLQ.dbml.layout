@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 36" name="ConexionLQ">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 18, 36" name="ConexionLQ">
   <DataContextMoniker Name="/ConexionLQDataContext" />
   <nestedChildShapes>
     <classShape Id="188598ed-5d9d-4d79-ba4f-7711c6242ecd" absoluteBounds="3.5, 0.75, 2, 2.9247054036458326">
@@ -417,5 +417,41 @@
         <classShapeMoniker Id="58cd8966-d79f-41a6-9a8a-c8706724827e" />
       </nodes>
     </associationConnector>
+    <classShape Id="10e13f33-d5ab-4aa6-9bed-288e65afba82" absoluteBounds="12.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ConexionLQDataContext/vAnime" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec78e37f-5125-4971-b72e-11136cc2ca7f" absoluteBounds="12.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aacbc8ff-6301-49c1-8bf0-66f72f04e250" absoluteBounds="12.75, 4.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ConexionLQDataContext/vJuegos" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b3321e7-849d-4661-835a-adac3ddaa67c" absoluteBounds="12.765, 5.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="00f98e84-6aeb-4bd9-becd-a2bcea6718ab" absoluteBounds="12.75, 8.75, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/ConexionLQDataContext/vLibros" />
+      <nestedChildShapes>
+        <elementListCompartment Id="75fad9ee-ed71-4e06-856f-8ce1bdf566c8" absoluteBounds="12.765, 9.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5d7c27ef-3ee7-463b-923c-556e5729160b" absoluteBounds="12.75, 12.75, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/ConexionLQDataContext/vManga" />
+      <nestedChildShapes>
+        <elementListCompartment Id="842f9ae8-b9d7-42e8-925a-701671e52832" absoluteBounds="12.765, 13.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7ed547ab-49d9-419d-b190-21f38a3617b1" absoluteBounds="0.75, 14.75, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/ConexionLQDataContext/vPendientes" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c9a089d2-e67a-4389-a242-076fdb969022" absoluteBounds="0.765, 15.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0ad48af8-a9db-4233-850a-6222fd21d36b" absoluteBounds="15.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ConexionLQDataContext/vSeries" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f695d76f-dfd7-427d-b4eb-2166a45b84fe" absoluteBounds="15.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
