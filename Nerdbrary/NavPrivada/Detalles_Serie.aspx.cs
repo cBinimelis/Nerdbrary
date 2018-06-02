@@ -111,21 +111,21 @@ public partial class NavPrivada_Detalles_Serie : System.Web.UI.Page
                 Page.Title = "Detalles: " + Nombre;
                 TituloA.Text = Nombre;
                 DescripcionA.Text = Sinopsis;
-                LanzamientoA.Text = Lanzamiento;
+                LanzamientoS.Text = Lanzamiento;
                 if (Temporadas == 0)
                 {
-                    TemporadasA.Text = "N/A";
+                    TemporadasS.Text = "N/A";
                 }
                 else
                 {
-                    TemporadasA.Text = Temporadas.ToString();
+                    TemporadasS.Text = Temporadas.ToString();
                 }
-                CapitulosA.Text = Capitulos.ToString();
+                CapitulosS.Text = Capitulos.ToString();
                 imagen.Src = "../img/series/" + RutaImagen;
-                GeneroA.Text = GeneroSerie;
-                OGenerosA.Text = OtrosGeneros;
+                GeneroS.Text = GeneroSerie;
+                OGenerosS.Text = OtrosGeneros;
                 EstadoA.Text = Estado;
-                APersonalA.Text = Avance;
+                APersonalS.Text = Avance;
                 Cover.Attributes["Style"] = "background-image: url(../img/series/" + RutaImagen + ")";
             }
             else
@@ -196,8 +196,9 @@ public partial class NavPrivada_Detalles_Serie : System.Web.UI.Page
         Serie_Usuario au = (from a in cdc.Serie_Usuario where a.id_SerieUsuario == IdSerieU select a).FirstOrDefault();
         cdc.Serie_Usuario.DeleteOnSubmit(au);
         cdc.SubmitChanges();
-        Mensaje("Bye bye!", "Se ha eliminado el Serie de tu lista", "success");
-        this.LlenaDetalles();
+        Mensaje("Bye bye!", "Se ha eliminado la serie de tu lista", "success");
+        GrillaSerieUsuario.Visible = false;
+        APersonalS.Visible = false;
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)

@@ -6,12 +6,12 @@
       <Column Name="Nick" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="id_EstadoUsuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Usuario_Anime_Usuario" Member="Anime_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Anime_Usuario" />
       <Association Name="Usuario_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Juegos_Usuario" />
       <Association Name="Usuario_Manga_Usuario" Member="Manga_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Manga_Usuario" />
       <Association Name="Usuario_Pendientes" Member="Pendientes" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Pendientes" />
       <Association Name="Usuario_Libro_Usuario" Member="Libro_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Libro_Usuario" />
       <Association Name="Usuario_Serie_Usuario" Member="Serie_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Serie_Usuario" />
+      <Association Name="Usuario_Anime_Usuario" Member="Anime_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Anime_Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Estado_Serie" Member="Estado_Serie">
@@ -68,18 +68,6 @@
       <Association Name="Avance_Anime_Anime_Usuario" Member="Anime_Usuario" ThisKey="id_AvanceAnime" OtherKey="id_AvanceAnime" Type="Anime_Usuario" />
     </Type>
   </Table>
-  <Table Name="dbo.Anime_Usuario" Member="Anime_Usuario">
-    <Type Name="Anime_Usuario">
-      <Column Name="id_AnimeUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_Anime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_AvanceAnime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Anime_Anime_Usuario" Member="Anime" ThisKey="id_Anime" OtherKey="id_Anime" Type="Anime" IsForeignKey="true" />
-      <Association Name="Avance_Anime_Anime_Usuario" Member="Avance_Anime" ThisKey="id_AvanceAnime" OtherKey="id_AvanceAnime" Type="Avance_Anime" IsForeignKey="true" />
-      <Association Name="Usuario_Anime_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Juegos" Member="Juegos">
     <Type Name="Juegos">
       <Column Name="id_Juego" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -108,13 +96,6 @@
       <Association Name="Juegos_Juegos_Usuario" Member="Juegos" ThisKey="id_Juego" OtherKey="id_Juego" Type="Juegos" IsForeignKey="true" />
       <Association Name="Usuario_Juegos_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
       <Association Name="Avance_Juego_Juegos_Usuario" Member="Avance_Juego" ThisKey="id_AvanceJuego" OtherKey="id_AvanceJuego" Type="Avance_Juego" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Avance_Juego" Member="Avance_Juego">
-    <Type Name="Avance_Juego">
-      <Column Name="id_AvanceJuego" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Descripción" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="Avance_Juego_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_AvanceJuego" OtherKey="id_AvanceJuego" Type="Juegos_Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Genero_Juegos" Member="Genero_Juegos">
@@ -376,6 +357,25 @@
       <Column Name="Genero" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Avance_Juego" Member="Avance_Juego">
+    <Type Name="Avance_Juego">
+      <Column Name="id_AvanceJuego" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Avance_Juego_Juegos_Usuario" Member="Juegos_Usuario" ThisKey="id_AvanceJuego" OtherKey="id_AvanceJuego" Type="Juegos_Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Anime_Usuario" Member="Anime_Usuario">
+    <Type Name="Anime_Usuario">
+      <Column Name="id_AnimeUsuario" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Anime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_AvanceAnime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nota" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Anime_Anime_Usuario" Member="Anime" ThisKey="id_Anime" OtherKey="id_Anime" Type="Anime" IsForeignKey="true" />
+      <Association Name="Avance_Anime_Anime_Usuario" Member="Avance_Anime" ThisKey="id_AvanceAnime" OtherKey="id_AvanceAnime" Type="Avance_Anime" IsForeignKey="true" />
+      <Association Name="Usuario_Anime_Usuario" Member="Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.vAnimeUsuario" Method="vAnimeUsuario">

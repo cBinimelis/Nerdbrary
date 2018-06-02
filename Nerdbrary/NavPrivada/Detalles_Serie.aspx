@@ -14,30 +14,30 @@
                     <div>
                         <p>
                             <b>Temporadas: </b>
-                            <asp:Label ID="TemporadasA" runat="server" Text="Más temporadas que Conan"></asp:Label>
+                            <asp:Label ID="TemporadasS" runat="server" Text="Más temporadas que Conan"></asp:Label>
                         </p>
                         <p>
                             <b>Capitulos: </b>
-                            <asp:Label ID="CapitulosA" runat="server" Text="Chorrocientos mil"></asp:Label>
+                            <asp:Label ID="CapitulosS" runat="server" Text="Chorrocientos mil"></asp:Label>
                         </p>
                         <p>
                             <b>Lanzamiento: </b>
-                            <asp:Label ID="LanzamientoA" runat="server" Text="Año 0"></asp:Label>
+                            <asp:Label ID="LanzamientoS" runat="server" Text="Año 0"></asp:Label>
                         </p>
                         <p>
                             <b>Genero: </b>
-                            <asp:Label ID="GeneroA" runat="server" Text="Hentai"></asp:Label>
+                            <asp:Label ID="GeneroS" runat="server" Text="Hentai"></asp:Label>
                         </p>
                         <p>
                             <b>Otros Generos: </b>
-                            <asp:Label ID="OGenerosA" runat="server" Text="Lolicon, Eroguro, Shonen, Kodomo"></asp:Label>
+                            <asp:Label ID="OGenerosS" runat="server" Text="Lolicon, Eroguro, Shonen, Kodomo"></asp:Label>
                         </p>
                         <p>
                             <b>Estado: </b>
                             <asp:Label ID="EstadoA" runat="server" Text="En Emisión"></asp:Label>
                         </p>
                     </div>
-                    <asp:Label ID="APersonalA" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Detalles"></asp:Label>
+                    <asp:Label ID="APersonalS" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Detalles"></asp:Label>
                     <div>
                         <asp:Label ID="DescripcionA" CssClass="uk-text-justify uk-align-center" runat="server" Text="Descripcion del Serie"></asp:Label>
                     </div>

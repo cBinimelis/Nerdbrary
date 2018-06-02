@@ -186,7 +186,8 @@ public partial class NavPrivada_JuegosDetalles : System.Web.UI.Page
         cdc.Juegos_Usuario.DeleteOnSubmit(ju);
         cdc.SubmitChanges();
         Mensaje("Bye bye!", "Se ha eliminado el juego de tu lista", "success");
-        this.LlenaDetalles();
+        GrillaJuegosUsuario.Visible = false;
+        APersonalJ.Visible = false;
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)

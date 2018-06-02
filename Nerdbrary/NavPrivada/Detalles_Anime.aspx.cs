@@ -197,7 +197,8 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
         cdc.Anime_Usuario.DeleteOnSubmit(au);
         cdc.SubmitChanges();
         Mensaje("Bye bye!", "Se ha eliminado el anime de tu lista", "success");
-        this.LlenaDetalles();
+        GrillaAnimeUsuario.Visible = false;
+        APersonalA.Visible = false;
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)

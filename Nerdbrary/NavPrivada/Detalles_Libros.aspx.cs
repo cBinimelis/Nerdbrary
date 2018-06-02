@@ -191,7 +191,8 @@ public partial class NavPrivada_Detalles_Libros : System.Web.UI.Page
         cdc.Libro_Usuario.DeleteOnSubmit(lu);
         cdc.SubmitChanges();
         Mensaje("Bye bye!", "Se ha eliminado el libro de tu lista", "success");
-        this.LlenaDetalles();
+        GrillaLibrosUsuario.Visible = false;
+        APersonalL.Visible = false;
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)

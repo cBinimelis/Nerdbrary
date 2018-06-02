@@ -79,7 +79,7 @@
 --AS
 --BEGIN
 --SELECT JU.id_JuegoUsuario, J.Nombre, J.Sinopsis,D.id_Desarrollador, D.Nombre 'Desarrollador', CONVERT(varchar, J.Lanzamiento, 103) AS 'Lanzamiento',
---J.Imagen, GJ.Descripcion 'Genero', J.Otros_Generos 'Otros Generos', EJ.Descripcion 'Estado', AJ.Descripción 'Avance', JU.Nota
+--J.Imagen, GJ.Descripcion 'Genero', J.Otros_Generos 'Otros Generos', EJ.Descripcion 'Estado', AJ.Descripcion 'Avance', JU.Nota
 --FROM Juegos_Usuario JU
 --INNER JOIN Juegos J ON JU.id_Juego = J.id_Juego
 --INNER JOIN Usuario U ON JU.id_Usuario = U.id_Usuario

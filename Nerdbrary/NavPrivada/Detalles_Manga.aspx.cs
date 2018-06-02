@@ -185,8 +185,8 @@ public partial class NavPrivada_MangaDetalles : System.Web.UI.Page
         cdc.Manga_Usuario.DeleteOnSubmit(mu);
         cdc.SubmitChanges();
         Mensaje("Bye bye!", "Se ha eliminado el manga de tu lista", "success");
-        this.LlenaDetalles();
-        this.llenarGrilla();
+        GrillaMangaUsuario.Visible = false;
+        APersonalM.Visible = false;
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)
