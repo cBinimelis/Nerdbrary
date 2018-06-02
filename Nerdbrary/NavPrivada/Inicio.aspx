@@ -9,7 +9,7 @@
                 <div class="uk-overlay uk-overlay-primary uk-width-large">
                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
-                            <img class="uk-border-circle uk-height-small" src="../img/DefaultPP.png">
+                            <img class="uk-border-circle uk-height-small" runat="server" src="../img/DefaultPP.png">
                         </div>
                         <div class="uk-width-expand">
                             <h3 id="Username" class="uk-card-title uk-margin-remove-bottom">Tukulito Sakayama</h3>
@@ -26,13 +26,13 @@
             <div class="uk-container">
                 <h2 class="uk-text-center uk-margin-top">Agregar un pendiente</h2>
                 <div class="uk-padding uk-flex-center" uk-grid>
-                    <div class="uk-width-1-2">
+                    <div class="uk-width-1-2@m">
                         <div class="uk-inline">
                             <a class="uk-form-icon" href="Pendientes.aspx" uk-icon="icon: search" uk-tooltip="title: Ver pendientes"></a>
                             <asp:textbox id="txt_pendiente" cssclass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:textbox>
                         </div>
                     </div>
-                    <asp:dropdownlist id="dd_tipoP" cssclass="uk-form-width-medium uk-select" runat="server" forecolor="#999999"></asp:dropdownlist>
+                    <asp:dropdownlist id="dd_tipoP" cssclass="uk-form-width-medium@m uk-select" runat="server" forecolor="#999999"></asp:dropdownlist>
                     <div class="uk-width-auto@m ">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: plus"></span>
