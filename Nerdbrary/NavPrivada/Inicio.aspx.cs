@@ -22,13 +22,20 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
 
     private void llenarPerfil()
     {
-        String UserNick = Session["Admin"].ToString();
-        SqlDataReader Usuario = sql.consulta("SELECT * FROM Usuario Where Nick = '" + UserNick + "'");
-        if (Usuario.Read())
+        try
         {
-            PPicture.Src = "../img/users/" + Usuario[5].ToString();
-            Username.Text = Usuario[1].ToString().ToUpperInvariant();
-            FondoPrincipal.Attributes["Style"] = "background-image: url(../img/users/" + Usuario[6].ToString() + "); height: 50vh";
+            String UserNick = Session["Admin"].ToString();
+            SqlDataReader Usuario = sql.consulta("SELECT * FROM Usuario Where Nick = '" + UserNick + "'");
+            if (Usuario.Read())
+            {
+                PPicture.Src = "../img/users/" + Usuario[5].ToString();
+                Username.Text = Usuario[1].ToString().ToUpperInvariant();
+                FondoPrincipal.Attributes["Style"] = "background-image: url(../img/users/" + Usuario[6].ToString() + "); height: 50vh";
+            }
+        }
+        catch
+        {
+
         }
     }
 
