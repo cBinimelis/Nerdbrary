@@ -17,50 +17,44 @@
                     </div>
                     <div>
                         <p>
-                            <b>Temporadas: </b>
-                            <asp:Label ID="Nombre" runat="server" Text="Más temporadas que Conan"></asp:Label>
+                            <b>Usuario: </b>
+                            <asp:Label ID="User" runat="server" Text="Más temporadas que Conan"></asp:Label>
                         </p>
                         <p>
-                            <b>Capitulos: </b>
-                            <asp:Label ID="CapitulosS" runat="server" Text="Chorrocientos mil"></asp:Label>
-                        </p>
-                        <p>
-                            <b>Lanzamiento: </b>
-                            <asp:Label ID="LanzamientoS" runat="server" Text="Año 0"></asp:Label>
-                        </p>
-                        <p>
-                            <b>Genero: </b>
-                            <asp:Label ID="GeneroS" runat="server" Text="Hentai"></asp:Label>
-                        </p>
-                        <p>
-                            <b>Otros Generos: </b>
-                            <asp:Label ID="OGenerosS" runat="server" Text="Lolicon, Eroguro, Shonen, Kodomo"></asp:Label>
+                            <b>Nombre: </b>
+                            <asp:Label ID="Nombre" runat="server" Text="blabla"></asp:Label>
                         </p>
                         <p>
                             <b>Estado: </b>
-                            <asp:Label ID="EstadoA" runat="server" Text="En Emisión"></asp:Label>
+                            <asp:Label ID="CapitulosS" runat="server" Text="Activo"></asp:Label>
+                        </p>
+                        <p>
+                            <b>Tipo de Usuario: </b>
+                            <asp:Label ID="LanzamientoS" runat="server" Text="Administrador"></asp:Label>
                         </p>
                     </div>
-                    <asp:Label ID="APersonalS" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Detalles"></asp:Label>
+                    <asp:Label ID="Preferido" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Anime"></asp:Label>
                 </div>
                 <div class="uk-section-small">
+                <h1 class="uk-text-center uk-heading-line uk-padding-small">
+                    <asp:Label ID="Label1" runat="server" Text="Contador de Vicios"></asp:Label></h1>
                     <div class="uk-child-width-1-3@s uk-grid-match" uk-grid>
                         <div>
-                            <div class="uk-card uk-card-hover uk-card-body">
-                                <h3 class="uk-card-title">Hover</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                <asp:Label ID="lbl_Anime" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                                <p>Animes</p>
                             </div>
                         </div>
                         <div>
-                            <div class="uk-card uk-card-hover uk-card-body">
-                                <h3 class="uk-card-title">Hover</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                <asp:Label ID="lbl_Juegos" CssClass="count uk-heading-primary" runat="server" Text="2222"></asp:Label>
+                                <p>Juegos</p>
                             </div>
                         </div>
                         <div>
-                            <div class="uk-card uk-card-hover uk-card-body">
-                                <h3 class="uk-card-title">Hover</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                <asp:Label ID="lbl_Mangas" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
+                                <p>Mangas</p>
                             </div>
                         </div>
                     </div>
