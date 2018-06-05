@@ -14,6 +14,7 @@
                         <div class="uk-width-expand">
                             <asp:Label ID="Username" runat="server" CssClass="uk-card-title uk-margin-remove-bottom" Text="Tukulito Sakayama"></asp:Label><br />
                             <asp:Label ID="Descripcion" CssClass="uk-text-meta uk-margin-remove-top" runat="server" Text="Zoy Muy kul xddddd"></asp:Label>
+                            <a href="PerfilUsuario.aspx" class="uk-icon-button uk-margin-small-left" uk-icon="plus" uk-tooltip="title: Ver Perfil"></a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +27,7 @@
             <div class="uk-container">
                 <h2 class="uk-text-center uk-margin-top">Agregar un pendiente</h2>
                 <div class="uk-padding uk-flex-center" uk-grid>
-                    <div class="uk-width-1-2@m">
+                    <div class="uk-width-1-2@m ">
                         <div class="uk-inline">
                             <a class="uk-form-icon" href="Pendientes.aspx" uk-icon="icon: search" uk-tooltip="title: Ver pendientes"></a>
                             <asp:TextBox ID="txt_pendiente" CssClass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:TextBox>

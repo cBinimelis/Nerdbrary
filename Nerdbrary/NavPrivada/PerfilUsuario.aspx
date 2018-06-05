@@ -4,12 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="uk-section-default">
-        <div style="height:50vh"></div>
-        <div id="Cover" runat="server" class="background" style="background-image:url(../img/logincover1.jpg)"></div>
+        <div id="Cover" runat="server" class="background" style="background-image: url(../img/logincover1.jpg)"></div>
         <div class="uk-container uk-card uk-card-default uk-align-center uk-animation-slide-left">
             <div class="uk-card-body uk-card-medium">
                 <h1 class="uk-text-center uk-heading-line uk-padding-small">
-                    <asp:Label ID="TituloA" runat="server" Text="Waifu para rellenar"></asp:Label></h1>
+                    <asp:Label ID="TituloA" runat="server" Text="Mi Perfil"></asp:Label></h1>
+
+
                 <div class="uk-child-width-1-2@m" uk-grid>
                     <div>
                         <img id="imagen" class="uk-align-center uk-height-medium@m uk-margin-remove-adjacent" runat="server" src="../img/anime/default.jpg" alt="Imagen del Serie" />
@@ -17,7 +18,7 @@
                     <div>
                         <p>
                             <b>Temporadas: </b>
-                            <asp:Label ID="TemporadasS" runat="server" Text="Más temporadas que Conan"></asp:Label>
+                            <asp:Label ID="Nombre" runat="server" Text="Más temporadas que Conan"></asp:Label>
                         </p>
                         <p>
                             <b>Capitulos: </b>
@@ -43,6 +44,26 @@
                     <asp:Label ID="APersonalS" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Detalles"></asp:Label>
                 </div>
                 <div class="uk-section-small">
+                    <div class="uk-child-width-1-3@s uk-grid-match" uk-grid>
+                        <div>
+                            <div class="uk-card uk-card-hover uk-card-body">
+                                <h3 class="uk-card-title">Hover</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card uk-card-hover uk-card-body">
+                                <h3 class="uk-card-title">Hover</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="uk-card uk-card-hover uk-card-body">
+                                <h3 class="uk-card-title">Hover</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
