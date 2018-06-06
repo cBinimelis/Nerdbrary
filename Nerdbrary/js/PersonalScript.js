@@ -10,8 +10,10 @@
 
 $(window).on('load', function () {
     $('body').toggleClass('loaded');
+    Contar();
+});
 
-
+function Contar() {
     $('.count').each(function () {
         $(this).prop('Counter', 0).animate({
             Counter: $(this).text()
@@ -23,7 +25,7 @@ $(window).on('load', function () {
                 }
             });
     });
-});
+}
 
 function Redirect(UrlPath) {
     window.location.hef = UrlPath;

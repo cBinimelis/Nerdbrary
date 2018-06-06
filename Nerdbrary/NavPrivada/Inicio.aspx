@@ -9,7 +9,7 @@
                 <div class="uk-overlay uk-overlay-primary uk-width-large">
                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
-                            <img id="PPicture"  width="200" height="200" class="uk-border-rounded" runat="server" src="../img/DefaultPP.png" />
+                            <img id="PPicture" width="200" height="200" class="uk-border-rounded" runat="server" src="../img/DefaultPP.png" />
                         </div>
                         <div class="uk-width-expand">
                             <asp:Label ID="Username" runat="server" CssClass="uk-card-title uk-margin-remove-bottom" Text="Tukulito Sakayama"></asp:Label><br />
@@ -352,62 +352,33 @@
     </div>
 
     <div class="uk-section-muted uk-padding">
-        <div class="uk-container">
+        <div class="uk-container" onfocus="Contar()">
+                <h1 class="uk-text-center uk-heading-line uk-padding-small">Elementos en el sistema</h1>
 
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-flex-center" uk-grid>
                 <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
+                    <asp:Label ID="lbl_Anime" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                    <p>Animes</p>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
+                    <asp:Label ID="lbl_Juegos" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                    <p>Juegos</p>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
+                    <asp:Label ID="lbl_Mangas" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                    <p>Mangas</p>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
+                    <asp:Label ID="lbl_Series" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                    <p>Series</p>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
+                    <asp:Label ID="lbl_Peliculas" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                    <p>Películas</p>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
-                </div>
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-height-large">Item</div>
+                    <asp:Label ID="lbl_Libros" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                    <p>Libros</p>
                 </div>
             </div>
         </div>

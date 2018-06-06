@@ -11,7 +11,7 @@
                     <asp:Label ID="TituloA" runat="server" Text="Mi Perfil"></asp:Label></h1>
 
 
-                <div class="uk-child-width-1-2@m" uk-grid>
+                <div id="DatosPerfil" class="uk-child-width-1-2@m" uk-grid runat="server">
                     <div>
                         <img id="imagen" class="uk-align-center uk-height-medium@m uk-margin-remove-adjacent" runat="server" src="../img/anime/default.jpg" alt="Imagen del Serie" />
                     </div>
@@ -35,6 +35,7 @@
                     </div>
                     <asp:Label ID="Preferido" CssClass="uk-card-badge uk-text-justify uk-label uk-width-auto" runat="server" Text="Anime"></asp:Label>
                 </div>
+
                 <div class="uk-section-small">
                 <h1 class="uk-text-center uk-heading-line uk-padding-small">
                     <asp:Label ID="Label1" runat="server" Text="Contador de Vicios"></asp:Label></h1>

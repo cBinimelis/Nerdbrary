@@ -24,6 +24,7 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
     {
         try
         {
+            cdc = new ConexionLQDataContext();
             String UserNick = Session["Admin"].ToString();
             SqlDataReader Usuario = sql.consulta("SELECT * FROM Usuario Where Nick = '" + UserNick + "'");
             if (Usuario.Read())
@@ -31,6 +32,15 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
                 PPicture.Src = "../img/users/" + Usuario[5].ToString();
                 Username.Text = Usuario[1].ToString().ToUpperInvariant();
                 FondoPrincipal.Attributes["Style"] = "background-image: url(../img/users/" + Usuario[6].ToString() + "); height: 50vh";
+
+                //LLENAR CONTADORES
+                int Animes = (from a in cdc.Anime select a.id_Anime).Count();
+                int Juegos = (from a in cdc.Juegos select a.id_Juego).Count();
+                int Mangas = (from a in cdc.Manga select a.id_Manga).Count();
+
+                lbl_Anime.Text = Animes.ToString();
+                lbl_Juegos.Text = Juegos.ToString();
+                lbl_Mangas.Text = Mangas.ToString();
             }
         }
         catch
