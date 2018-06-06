@@ -173,12 +173,20 @@
                                                 <a href="Lista_Series.aspx" class="uk-text-bold">Series</a>
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                        <li><a href="#">Mis Series</a></li>
+                                                        <li><a href="MisSeries.aspx">Mis Series</a></li>
+                                                        <li><a href="CRUD_Series.aspx">Mantenedor</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="Lista_Peliculas.aspx" class="uk-text-bold">Películas</a>
+                                                <div class="uk-navbar-dropdown">
+                                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                        <li><a href="#">Mis Peliculas</a></li>
                                                         <li><a href="#">Mantenedor</a></li>
                                                     </ul>
                                                 </div>
                                             </li>
-                                            <li><a class="uk-text-bold">Películas</a></li>
                                         </ul>
                                     </div>
                                 </div>

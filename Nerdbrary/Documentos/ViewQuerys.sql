@@ -270,3 +270,54 @@
 --END
 
 ----EXEC vSerieUsuario 'ivichan'
+
+
+
+--------------------------------------------------------PELICULAS--------------------------------------------------------
+
+--ALTER VIEW vPelicula AS
+--SELECT P.id_Pelicula, P.Nombre, P.Sinopsis, P.Duracion, CONVERT(varchar, P.Lanzamiento, 103) AS 'Lanzamiento', 
+--P.Imagen, GP.Descripcion 'Genero', P.Otros_Generos, EP.Descripcion 'Estado'
+--FROM Peliculas P
+--INNER JOIN Genero_Pelicula GP ON P.id_GeneroPelicula = GP.id_GeneroPelicula
+--INNER JOIN Estado_Pelicula EP ON P.id_EstadoPelicula = EP.id_EstadoPelicula
+--WHERE P.Activo = 1
+
+--SELECT * FROM vPelicula WHERE id_Pelicula = 1
+
+
+
+--CREATE PROC vDetallePelicula @User VARCHAR(50), @Pelicula INT = 0
+--AS
+--BEGIN
+--SELECT PU.id_PeliculaUsuario, P.Nombre, P.Sinopsis, P.Duracion, CONVERT(varchar, P.Lanzamiento, 103) AS 'Lanzamiento', P.Imagen,
+-- GP.Descripcion 'Genero', P.Otros_Generos 'Otros Generos', EP.Descripcion 'Estado', AP.Descripcion 'Avance', PU.Nota
+--FROM Pelicula_Usuario PU
+--INNER JOIN Peliculas P ON PU.id_Pelicula = P.id_Pelicula
+--INNER JOIN Usuario U ON PU.id_Usuario = U.id_Usuario
+--INNER JOIN Genero_Pelicula GP ON P.id_GeneroPelicula = GP.id_GeneroPelicula
+--INNER JOIN Estado_Pelicula EP ON P.id_EstadoPelicula = EP.id_EstadoPelicula
+--INNER JOIN Avance_Pelicula AP ON PU.id_AvancePelicula = AP.id_AvancePelicula
+--WHERE PU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND PU.id_Pelicula = @Pelicula AND P.Activo =  1
+--ORDER BY P.Nombre ASC
+--END
+
+--EXEC vDetallePelicula'geekriszx', 2
+
+
+
+--CREATE PROC vPeliculaUsuario @User VARCHAR(50)
+--AS
+--BEGIN
+--SELECT PU.id_PeliculaUsuario, P.Nombre, P.Sinopsis, P.Duracion, CONVERT(varchar, P.Lanzamiento, 103) AS 'Lanzamiento', P.Imagen,
+-- GP.Descripcion 'Genero', P.Otros_Generos 'Otros Generos', EP.Descripcion 'Estado'
+--FROM Pelicula_Usuario PU
+--INNER JOIN Peliculas P ON PU.id_Pelicula = P.id_Pelicula
+--INNER JOIN Usuario U ON PU.id_Usuario = U.id_Usuario
+--INNER JOIN Genero_Pelicula GP ON P.id_GeneroPelicula = GP.id_GeneroPelicula
+--INNER JOIN Estado_Pelicula EP ON P.id_EstadoPelicula = EP.id_EstadoPelicula
+--WHERE PU.id_Usuario = (SELECT id_Usuario FROM Usuario WHERE Nick = @User) AND P.Activo =  1
+--ORDER BY P.Nombre ASC
+--END
+
+--EXEC vPeliculaUsuario'geekriszx'
