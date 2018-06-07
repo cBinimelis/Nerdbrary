@@ -15,7 +15,11 @@ public partial class MasterPage_MP_Central : System.Web.UI.MasterPage
         }
         else
         {
+            String img = Convert.ToString(Session["Img"]);
+            PPIcon.Attributes["Style"] = "background-image: url(../img/users/" + img + ")";
             Session.Timeout = 35;
         }
+
+
     }
 }

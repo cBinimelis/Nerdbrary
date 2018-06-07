@@ -29,6 +29,7 @@ public partial class Login : System.Web.UI.Page
                     {
                         case 1:
                             Session["Admin"] = txt_username.Text;
+                            Session["Img"] = usuario[5].ToString();
                             Response.Redirect("NavPrivada/Inicio.aspx");
                             break;
                         case 2:

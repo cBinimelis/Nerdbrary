@@ -97,21 +97,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="uk-navbar-right uk-hidden@m">
+                        <a href="#" class="uk-navbar-item uk-logo">
+                            <img src="../img/pantsu.ico" style="height: 100%" alt="Logo" />
+                        </a>
+                    </div>
 
                     <%--Menu para navegadores--%>
                     <div class="uk-navbar-left uk-visible@m">
-
-                        <ul class="uk-navbar-nav">
-                            <li>
-                                <a href="#"><span class="uk-margin-small-right" uk-icon="icon: more"></span></a>
-                                <div class="uk-navbar-dropdown">
-                                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li><a href="https://www.cuantafauna.com/gatos"><span class="uk-margin-small-right" uk-icon="icon: question"></span>Sorpresa</a></li>
-                                        <li><a href="../Default.aspx"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Salir</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
                     <div class="uk-container uk-container-expand">
                         <div>
@@ -119,6 +112,18 @@
                                 <div class="uk-navbar-center-left">
                                     <div>
                                         <ul class="uk-navbar-nav">
+
+                                            <li>
+                                                <a href="#"><span class="uk-margin-small-right" uk-icon="icon: more"></span></a>
+                                                <div class="uk-navbar-dropdown">
+                                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                        <li><a href="https://www.cuantafauna.com/gatos"><span class="uk-margin-small-right" uk-icon="icon: question"></span>Sorpresa</a></li>
+                                                        <li><a href="../Default.aspx"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Salir</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                            <%--JUEGOS--%>
                                             <li><a href="../NavPrivada/Lista_Juegos.aspx" class="uk-text-bold">Juegos</a>
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -131,6 +136,7 @@
 
                                             </li>
 
+                                            <%--ANIME--%>
                                             <li>
                                                 <a href="Lista_Anime.aspx" class="uk-text-bold">Anime</a>
                                                 <div class="uk-navbar-dropdown">
@@ -140,6 +146,8 @@
                                                     </ul>
                                                 </div>
                                             </li>
+
+                                            <%--MANGA--%>
                                             <li>
                                                 <a href="Lista_Manga.aspx" class="uk-text-bold">Mangas</a>
                                                 <div class="uk-navbar-dropdown">
@@ -158,6 +166,8 @@
                                 <div class="uk-navbar-center-right">
                                     <div>
                                         <ul class="uk-navbar-nav">
+
+                                            <%--LIBROS--%>
                                             <li>
                                                 <a href="Lista_Libros.aspx" class="uk-text-bold">Libros</a>
                                                 <div class="uk-navbar-dropdown">
@@ -169,6 +179,8 @@
                                                     </ul>
                                                 </div>
                                             </li>
+
+                                            <%--SERIES--%>
                                             <li>
                                                 <a href="Lista_Series.aspx" class="uk-text-bold">Series</a>
                                                 <div class="uk-navbar-dropdown">
@@ -178,6 +190,8 @@
                                                     </ul>
                                                 </div>
                                             </li>
+
+                                            <%--PELICULAS--%>
                                             <li>
                                                 <a href="Lista_Peliculas.aspx" class="uk-text-bold">Películas</a>
                                                 <div class="uk-navbar-dropdown">
@@ -187,16 +201,18 @@
                                                     </ul>
                                                 </div>
                                             </li>
+
+
+                                            <ul class="uk-navbar-nav">
+                                                <li>
+                                                    <a href="PerfilUsuario.aspx"><span id="PPIcon" runat="server" class="uk-icon uk-icon-image uk-border-circle" style="background-image: url(../img/DefaultPP.png);"></span></a>
+                                                </li>
+                                            </ul>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="uk-navbar-right uk-hidden@m">
-                        <a href="" class="uk-navbar-item uk-logo">
-                            <img src="../img/pantsu.ico" style="height: 100%" alt="Logo" />
-                        </a>
                     </div>
                 </nav>
             </div>

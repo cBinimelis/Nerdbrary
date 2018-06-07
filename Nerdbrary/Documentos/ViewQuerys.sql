@@ -302,7 +302,7 @@
 --ORDER BY P.Nombre ASC
 --END
 
---EXEC vDetallePelicula'geekriszx', 2
+--EXEC vDetallePelicula'geekriszx', 1
 
 
 
