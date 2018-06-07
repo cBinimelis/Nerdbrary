@@ -49,11 +49,11 @@ public partial class NavPrivada_Detalles_Pelicula : System.Web.UI.Page
                     Nombre = Pelicula[1].ToString();
                     Sinopsis = Pelicula[2].ToString();
                     Duracion = Pelicula[3].ToString();
-                    Lanzamiento = Pelicula[6].ToString();
-                    RutaImagen = Pelicula[7].ToString();
-                    GeneroPelicula = Pelicula[8].ToString();
-                    OGeneros = Pelicula[9].ToString();
-                    Estado = Pelicula[10].ToString();
+                    Lanzamiento = Pelicula[4].ToString();
+                    RutaImagen = Pelicula[5].ToString();
+                    GeneroPelicula = Pelicula[6].ToString();
+                    OGeneros = Pelicula[7].ToString();
+                    Estado = Pelicula[8].ToString();
                     DatosOK = true;
                 }
                 else
@@ -69,12 +69,12 @@ public partial class NavPrivada_Detalles_Pelicula : System.Web.UI.Page
                     Nombre = PeliculaUsuario[1].ToString();
                     Sinopsis = PeliculaUsuario[2].ToString();
                     Duracion = PeliculaUsuario[3].ToString();
-                    Lanzamiento = PeliculaUsuario[6].ToString();
-                    RutaImagen = PeliculaUsuario[7].ToString();
-                    GeneroPelicula = PeliculaUsuario[8].ToString();
-                    OGeneros = PeliculaUsuario[9].ToString();
-                    Estado = PeliculaUsuario[10].ToString();
-                    Avance = PeliculaUsuario[11].ToString();
+                    Lanzamiento = PeliculaUsuario[4].ToString();
+                    RutaImagen = PeliculaUsuario[5].ToString();
+                    GeneroPelicula = PeliculaUsuario[6].ToString();
+                    OGeneros = PeliculaUsuario[7].ToString();
+                    Estado = PeliculaUsuario[8].ToString();
+                    Avance = PeliculaUsuario[9].ToString();
                     DatosOK = true;
                     llenarGrilla();
                 }
@@ -86,11 +86,11 @@ public partial class NavPrivada_Detalles_Pelicula : System.Web.UI.Page
                         Nombre = Pelicula[1].ToString();
                         Sinopsis = Pelicula[2].ToString();
                         Duracion = Pelicula[3].ToString();
-                        Lanzamiento = Pelicula[6].ToString();
-                        RutaImagen = Pelicula[7].ToString();
-                        GeneroPelicula = Pelicula[8].ToString();
-                        OGeneros = Pelicula[9].ToString();
-                        Estado = Pelicula[10].ToString();
+                        Lanzamiento = Pelicula[4].ToString();
+                        RutaImagen = Pelicula[5].ToString();
+                        GeneroPelicula = Pelicula[6].ToString();
+                        OGeneros = Pelicula[7].ToString();
+                        Estado = Pelicula[8].ToString();
                         DatosOK = true;
                     }
                     else
@@ -183,7 +183,7 @@ public partial class NavPrivada_Detalles_Pelicula : System.Web.UI.Page
         cdc.SubmitChanges();
         Mensaje("Bye bye!", "Se ha eliminado el Pelicula de tu lista", "success");
         GrillaPeliculaUsuario.Visible = false;
-        APersonalL.Visible = false;
+        APersonalP.Visible = false;
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)
