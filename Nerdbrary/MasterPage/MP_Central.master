@@ -201,13 +201,9 @@
                                                     </ul>
                                                 </div>
                                             </li>
-
-
-                                            <ul class="uk-navbar-nav">
-                                                <li>
-                                                    <a href="PerfilUsuario.aspx"><span id="PPIcon" runat="server" class="uk-icon uk-icon-image uk-border-circle" style="background-image: url(../img/DefaultPP.png);"></span></a>
-                                                </li>
-                                            </ul>
+                                            <li id="PPLi" runat="server">
+                                                <a href="PerfilUsuario.aspx"><span id="PPIcon" runat="server" class="uk-icon uk-icon-image uk-border-circle" style="background-image: url(../img/DefaultPP.png);"></span></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

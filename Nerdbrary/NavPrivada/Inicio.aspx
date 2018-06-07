@@ -14,7 +14,6 @@
                         <div class="uk-width-expand">
                             <asp:Label ID="Username" runat="server" CssClass="uk-card-title uk-margin-remove-bottom" Text="Tukulito Sakayama"></asp:Label><br />
                             <asp:Label ID="Descripcion" CssClass="uk-text-meta uk-margin-remove-top" runat="server" Text="Zoy Muy kul xddddd"></asp:Label>
-                            <a href="PerfilUsuario.aspx" class="uk-icon-button uk-margin-small-left" uk-icon="plus" uk-tooltip="title: Ver Perfil"></a>
                         </div>
                     </div>
                 </div>

@@ -62,6 +62,11 @@
     background-color: #87cefa;
 }
 
+.boton-kuki {
+    color:white;
+    background-color: #f19bff;
+}
+
 #loader-wrapper {
     position: fixed;
     top: 0;

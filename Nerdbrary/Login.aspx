@@ -38,19 +38,19 @@
                     <div class="uk-margin">
                         <div class="uk-inline uk-width-1-2">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <asp:TextBox ID="txt_username" CssClass="uk-input" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_username" placeholder="Correo / Nombre de Usuario" CssClass="uk-input" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline uk-width-1-2">
                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                            <asp:TextBox ID="txt_password" CssClass="uk-input" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="txt_password" placeholder="Contraseña" CssClass="uk-input" runat="server" TextMode="Password"></asp:TextBox>
                         </div>
                     </div>
 
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:Button ID="btn_login" runat="server" Text="Ingresar" CssClass="uk-button-secondary uk-button uk-box-shadow-hover" OnClick="btn_login_Click" />
+                            <asp:Button ID="btn_login" runat="server" Text="Ingresar" CssClass="boton-kuki uk-button uk-box-shadow-hover" OnClick="btn_login_Click" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>

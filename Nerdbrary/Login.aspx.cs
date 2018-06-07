@@ -47,7 +47,7 @@ public partial class Login : System.Web.UI.Page
             }
             else
             {
-                Mensaje("No lo encontré", "El correo no se encuentra registrado", "warning");
+                Mensaje("No lo encontré", "El correo o nombre de usuario no se encuentra registrado", "warning");
             }
         }
     }

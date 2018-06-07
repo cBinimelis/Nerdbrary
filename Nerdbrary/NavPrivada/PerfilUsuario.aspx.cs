@@ -14,6 +14,7 @@ public partial class NavPrivada_PerfilUsuario : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Nick = Convert.ToString(Session["Admin"]);
+        Page.Title = Nick.ToUpper();
         llenar();
     }
 

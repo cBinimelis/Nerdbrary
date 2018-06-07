@@ -16,7 +16,9 @@ public partial class MasterPage_MP_Central : System.Web.UI.MasterPage
         else
         {
             String img = Convert.ToString(Session["Img"]);
+            String Nick = Convert.ToString(Session["Admin"]);
             PPIcon.Attributes["Style"] = "background-image: url(../img/users/" + img + ")";
+            PPLi.Attributes["uk-tooltip"] = "title: Ir al perfil de " + Nick + "; pos: bottom";
             Session.Timeout = 35;
         }
 
