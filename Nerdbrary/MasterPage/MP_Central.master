@@ -196,7 +196,7 @@
                                                 <a href="Lista_Peliculas.aspx" class="uk-text-bold">Películas</a>
                                                 <div class="uk-navbar-dropdown">
                                                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                        <li><a href="#">Mis Peliculas</a></li>
+                                                        <li><a href="MisPeliculas.aspx">Mis Peliculas</a></li>
                                                         <li><a href="#">Mantenedor</a></li>
                                                     </ul>
                                                 </div>

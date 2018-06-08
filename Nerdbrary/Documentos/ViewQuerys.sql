@@ -306,10 +306,10 @@
 
 
 
---CREATE PROC vPeliculaUsuario @User VARCHAR(50)
+--ALTER PROC vPeliculaUsuario @User VARCHAR(50)
 --AS
 --BEGIN
---SELECT PU.id_PeliculaUsuario, P.Nombre, P.Sinopsis, P.Duracion, CONVERT(varchar, P.Lanzamiento, 103) AS 'Lanzamiento', P.Imagen,
+--SELECT PU.id_Pelicula, P.Nombre, P.Sinopsis, P.Duracion, CONVERT(varchar, P.Lanzamiento, 103) AS 'Lanzamiento', P.Imagen,
 -- GP.Descripcion 'Genero', P.Otros_Generos 'Otros Generos', EP.Descripcion 'Estado'
 --FROM Pelicula_Usuario PU
 --INNER JOIN Peliculas P ON PU.id_Pelicula = P.id_Pelicula

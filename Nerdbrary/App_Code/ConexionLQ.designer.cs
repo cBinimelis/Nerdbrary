@@ -11566,7 +11566,7 @@ public partial class vDetallePeliculaResult
 public partial class vPeliculaUsuarioResult
 {
 	
-	private int _id_PeliculaUsuario;
+	private int _id_Pelicula;
 	
 	private string _Nombre;
 	
@@ -11588,18 +11588,18 @@ public partial class vPeliculaUsuarioResult
 	{
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_PeliculaUsuario", DbType="Int NOT NULL")]
-	public int id_PeliculaUsuario
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Pelicula", DbType="Int NOT NULL")]
+	public int id_Pelicula
 	{
 		get
 		{
-			return this._id_PeliculaUsuario;
+			return this._id_Pelicula;
 		}
 		set
 		{
-			if ((this._id_PeliculaUsuario != value))
+			if ((this._id_Pelicula != value))
 			{
-				this._id_PeliculaUsuario = value;
+				this._id_Pelicula = value;
 			}
 		}
 	}

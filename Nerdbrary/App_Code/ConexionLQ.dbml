@@ -644,7 +644,7 @@
   <Function Name="dbo.vPeliculaUsuario" Method="vPeliculaUsuario">
     <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="vPeliculaUsuarioResult">
-      <Column Name="id_PeliculaUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Pelicula" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="Duracion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
