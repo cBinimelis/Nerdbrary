@@ -32,9 +32,36 @@ public partial class NavPrivada_PerfilUsuario : System.Web.UI.Page
             int Animes = (from a in cdc.Anime_Usuario where a.id_Usuario == IdUsuario select a).Count();
             int Juegos = (from a in cdc.Juegos_Usuario where a.id_Usuario == IdUsuario select a).Count();
             int Mangas = (from a in cdc.Manga_Usuario where a.id_Usuario == IdUsuario select a).Count();
+            int Series = (from a in cdc.Serie_Usuario where a.id_Usuario == IdUsuario select a).Count();
+            int Peliculas = (from a in cdc.Pelicula_Usuario where a.id_Usuario == IdUsuario select a).Count();
+            int Libros = (from a in cdc.Libro_Usuario where a.id_Usuario == IdUsuario select a).Count();
             lbl_Anime.Text = Animes.ToString();
             lbl_Juegos.Text = Juegos.ToString();
             lbl_Mangas.Text = Mangas.ToString();
+            lbl_Series.Text = Series.ToString();
+            lbl_Peliculas.Text = Peliculas.ToString();
+            lbl_Libros.Text = Libros.ToString();
+
+            var Preferido = new
+            {
+                VarAnimes = Animes,
+                VarJuegos = Juegos,
+                VarMangas = Mangas,
+                VarSeries = Series,
+                VarPeliculas = Peliculas,
+                VarLibros = Libros
+            };
+
+            var Elegir = (new[] {
+                Tuple.Create("Anime", Preferido.VarAnimes),
+                Tuple.Create("Juegos", Preferido.VarJuegos),
+                Tuple.Create("Mangas", Preferido.VarMangas),
+                Tuple.Create("Series", Preferido.VarSeries),
+                Tuple.Create("Peliculas", Preferido.VarPeliculas),
+                Tuple.Create("Libros", Preferido.VarLibros)
+            }).OrderByDescending(t => t.Item2).First().Item1;
+
+            lbl_Preferido.Text = Elegir;
         }
     }
 }
