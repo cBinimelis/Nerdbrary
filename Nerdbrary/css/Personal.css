@@ -44,7 +44,7 @@
     bottom: -15px;
     position: fixed;
     right: -15px;
-    width: 100% ;
+    width: 100%;
     height: 100%;
     transform: scale(1.1);
     -webkit-filter: blur(5px);
@@ -59,13 +59,51 @@
 }
 
 .boton-ver {
-    background-color: #87cefa;
+    background: #87cefa;
+    border: none;
+    color: #f2f2f2;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 250ms ease;
 }
 
+
+
+
 .boton-kuki {
-    color:white;
-    background-color: #f19bff;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    max-width: 250px;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    color: #f19bff;
+    text-decoration: none;
 }
+
+    .boton-kuki:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -50px;
+        bottom: 0;
+        left: 0;
+        border-right: 50px solid transparent;
+        border-bottom: 80px solid #f19bff;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        z-index: -1;
+        transition: 0.5s ease-in-out;
+    }
+
+    .boton-kuki:hover {
+        color: white;
+    }
+
+        .boton-kuki:hover:before {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
 
 #loader-wrapper {
     position: fixed;
@@ -194,5 +232,4 @@
 }
 
 .count {
-
 }
