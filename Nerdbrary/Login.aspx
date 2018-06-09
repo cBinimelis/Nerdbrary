@@ -46,7 +46,7 @@
                         <asp:TextBox ID="txt_password" placeholder="Contraseña" CssClass="uk-input" runat="server" TextMode="Password"></asp:TextBox>
                     </div>
                 </div>
-                <a id="fakebtn" class="boton-kuki uk-button" runat="server" onserverclick="btn_login_Click">Ingresar</a>
+                <a class="boton-kuki uk-button" runat="server" onserverclick="btn_login_Click">Ingresar</a>
             </div>
         </div>
     </div>

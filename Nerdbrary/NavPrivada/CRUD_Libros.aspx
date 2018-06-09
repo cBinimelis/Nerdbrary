@@ -9,7 +9,7 @@
                 $.ajax({
                     type: "POST",
                     url: "CRUD_Libros.aspx/CrearGenero",
-                    data: '{Estado: "' + $("#txt_crearGenero").val() + '"}',
+                    data: '{Genero: "' + $("#txt_crearGenero").val() + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
