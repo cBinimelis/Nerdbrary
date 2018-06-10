@@ -142,7 +142,6 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
             lnk_juego5.Attributes["href"] = "Detalles_Juegos.aspx?Id=" + Juego[0].ToString();
             tit_juego5.InnerText = Juego[1].ToString();
             img_Juego5.Attributes["src"] = "../img/games/" + Juego[2].ToString();
-            Juego.Read();
         }
 
 
@@ -168,7 +167,78 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
             lnk_manga5.Attributes["href"] = "Detalles_Manga.aspx?Id=" + Manga[0].ToString();
             tit_manga5.InnerText = Manga[1].ToString();
             img_manga5.Attributes["src"] = "../img/manga/" + Manga[2].ToString();
-            Manga.Read();
+        }
+
+        SqlDataReader Serie = sql.consulta("SELECT TOP 5 id_Serie, Nombre, Imagen FROM Series ORDER BY NEWID()");
+        if (Serie.Read())
+        {
+            lnk_serie1.Attributes["href"] = "Detalles_Serie.aspx?Id=" + Serie[0].ToString();
+            tit_serie1.InnerText = Serie[1].ToString();
+            img_Serie1.Attributes["src"] = "../img/series/" + Serie[2].ToString();
+            Serie.Read();
+            lnk_serie2.Attributes["href"] = "Detalles_Serie.aspx?Id=" + Serie[0].ToString();
+            tit_serie2.InnerText = Serie[1].ToString();
+            img_Serie2.Attributes["src"] = "../img/series/" + Serie[2].ToString();
+            Serie.Read();
+            lnk_serie3.Attributes["href"] = "Detalles_Serie.aspx?Id=" + Serie[0].ToString();
+            tit_serie3.InnerText = Serie[1].ToString();
+            img_Serie3.Attributes["src"] = "../img/series/" + Serie[2].ToString();
+            Serie.Read();
+            lnk_serie4.Attributes["href"] = "Detalles_Serie.aspx?Id=" + Serie[0].ToString();
+            tit_serie4.InnerText = Serie[1].ToString();
+            img_Serie4.Attributes["src"] = "../img/series/" + Serie[2].ToString();
+            Serie.Read();
+            lnk_serie5.Attributes["href"] = "Detalles_Serie.aspx?Id=" + Serie[0].ToString();
+            tit_serie5.InnerText = Serie[1].ToString();
+            img_Serie5.Attributes["src"] = "../img/series/" + Serie[2].ToString();
+        }
+
+        SqlDataReader Pelicula = sql.consulta("SELECT TOP 5 id_Pelicula, Nombre, Imagen FROM Peliculas ORDER BY NEWID()");
+        if (Pelicula.Read())
+        {
+            lnk_Pelicula1.Attributes["href"] = "Detalles_Pelicula.aspx?Id=" + Pelicula[0].ToString();
+            tit_Pelicula1.InnerText = Pelicula[1].ToString();
+            img_Pelicula1.Attributes["src"] = "../img/movies/" + Pelicula[2].ToString();
+            Pelicula.Read();
+            lnk_Pelicula2.Attributes["href"] = "Detalles_Pelicula.aspx?Id=" + Pelicula[0].ToString();
+            tit_Pelicula2.InnerText = Pelicula[1].ToString();
+            img_Pelicula2.Attributes["src"] = "../img/movies/" + Pelicula[2].ToString();
+            Pelicula.Read();
+            lnk_Pelicula3.Attributes["href"] = "Detalles_Pelicula.aspx?Id=" + Pelicula[0].ToString();
+            tit_Pelicula3.InnerText = Pelicula[1].ToString();
+            img_Pelicula3.Attributes["src"] = "../img/movies/" + Pelicula[2].ToString();
+            Pelicula.Read();
+            lnk_Pelicula4.Attributes["href"] = "Detalles_Pelicula.aspx?Id=" + Pelicula[0].ToString();
+            tit_Pelicula4.InnerText = Pelicula[1].ToString();
+            img_Pelicula4.Attributes["src"] = "../img/movies/" + Pelicula[2].ToString();
+            Pelicula.Read();
+            lnk_Pelicula5.Attributes["href"] = "Detalles_Pelicula.aspx?Id=" + Pelicula[0].ToString();
+            tit_Pelicula5.InnerText = Pelicula[1].ToString();
+            img_Pelicula5.Attributes["src"] = "../img/movies/" + Pelicula[2].ToString();
+        }
+
+        SqlDataReader Libro = sql.consulta("SELECT TOP 5 id_Libro, Nombre, Imagen FROM Libros ORDER BY NEWID()");
+        if (Libro.Read())
+        {
+            lnk_Libro1.Attributes["href"] = "Detalles_Libros.aspx?Id=" + Libro[0].ToString();
+            tit_Libro1.InnerText = Libro[1].ToString();
+            img_Libro1.Attributes["src"] = "../img/books/" + Libro[2].ToString();
+            Libro.Read();
+            lnk_Libro2.Attributes["href"] = "Detalles_Libros.aspx?Id=" + Libro[0].ToString();
+            tit_Libro2.InnerText = Libro[1].ToString();
+            img_Libro2.Attributes["src"] = "../img/books/" + Libro[2].ToString();
+            Libro.Read();
+            lnk_Libro3.Attributes["href"] = "Detalles_Libros.aspx?Id=" + Libro[0].ToString();
+            tit_Libro3.InnerText = Libro[1].ToString();
+            img_Libro3.Attributes["src"] = "../img/books/" + Libro[2].ToString();
+            Libro.Read();
+            lnk_Libro4.Attributes["href"] = "Detalles_Libros.aspx?Id=" + Libro[0].ToString();
+            tit_Libro4.InnerText = Libro[1].ToString();
+            img_Libro4.Attributes["src"] = "../img/books/" + Libro[2].ToString();
+            Libro.Read();
+            lnk_Libro5.Attributes["href"] = "Detalles_Libros.aspx?Id=" + Libro[0].ToString();
+            tit_Libro5.InnerText = Libro[1].ToString();
+            img_Libro5.Attributes["src"] = "../img/books/" + Libro[2].ToString();
         }
     }
 
