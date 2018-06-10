@@ -44,7 +44,13 @@
         </div>
     </div>
 
-    <div class="uk-section-muted uk-padding" style="background-color: #f19bff;">
+<%--
+    <div class="uk-section diagonal" style="background-color: #f19bff">
+        <div class="header__bg" style="background-color:#222;"></div>
+    </div>--%>
+
+
+    <div class="uk-section-default uk-padding bg" style="background-color:#f19bff">
         <div class="uk-container">
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-light uk-flex-center" uk-grid>
 
@@ -197,7 +203,12 @@
         </div>
     </div>
 
-    <div class="uk-section-muted uk-padding" style="background-color: #ba55d3;">
+    
+<%--    <div class="uk-section diagonal" style="background-color: #ba55d3">
+        <div class="header__bg" style="background-color:#f19bff;"></div>
+    </div>--%>
+
+    <div class="uk-section-default uk-padding" style="background-color:#ba55d3;">
         <div class="uk-container">
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-light uk-flex-center" uk-grid>
 
@@ -350,9 +361,14 @@
         </div>
     </div>
 
+    
+<%--    <div class="uk-section diagonal" style="background-color: #ba55d3">
+        <div class="header__bg" style="background-color:#f8f8f8; transform:skewY(3deg)"></div>
+    </div>--%>
+
     <div class="uk-section-muted uk-padding">
-        <div class="uk-container" onfocus="Contar()">
-                <h1 class="uk-text-center uk-heading-line uk-padding-small">Elementos en el sistema</h1>
+        <div class="uk-container">
+            <h1 class="uk-text-center uk-heading-line uk-padding-small">Elementos en el sistema</h1>
 
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-flex-center" uk-grid>
                 <div>
