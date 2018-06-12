@@ -27,10 +27,8 @@
                         </GroupTemplate>
                         <ItemTemplate>
                             <div class="uk-card uk-card-default uk-width-medium uk-height-medium uk-box-shadow-xlarge uk-box-shadow-hover-small">
-                                <div class="uk-card-media-top uk-width-medium">
-                                    <div>
-                                        <img src="../img/movies/<%# Eval("Imagen") %>" alt="">
-                                    </div>
+                                <div class="uk-card-media-top image-wrapper">
+                                    <img class="card-img" src="../img/movies/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
                                     <asp:Label ID="lbl_nombre" runat="server" CssClass="uk-card-title uk-align-center uk-text-truncate" Text='<%# Eval("Nombre") %>'></asp:Label>

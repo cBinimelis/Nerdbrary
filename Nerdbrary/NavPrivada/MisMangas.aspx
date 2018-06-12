@@ -18,7 +18,7 @@
             <div class=" uk-container-expand">
                 <h1 class="uk-article-title uk-text-center uk-heading-bullet">Mi Manga</h1>
                 <div class="uk-flex uk-flex-center" uk-grid>
-                    <asp:listview id="MangaList" datakeynames="id_Manga" runat="server" onitemcommand="MangaList_ItemCommand">
+                    <asp:ListView ID="MangaList" DataKeyNames="id_Manga" runat="server" OnItemCommand="MangaList_ItemCommand">
                         <GroupTemplate>
                             <div id="itemPlaceholderContainer" class="uk-child-width-1-4@m" runat="server">
                                 <div id="itemPlaceholder" runat="server">
@@ -27,18 +27,18 @@
                         </GroupTemplate>
                         <ItemTemplate>
                             <div class="uk-card uk-card-default uk-width-medium uk-height-medium uk-box-shadow-xlarge uk-box-shadow-hover-small">
-                                <div class="uk-card-media-top uk-position-relative">
-                                    <img class="uk-height-auto" src="../img/manga/<%# Eval("Imagen") %>" alt="">
+                                <div class="uk-card-media-top image-wrapper">
+                                    <img class="card-img" src="../img/manga/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
                                     <h3 class="uk-card-title">
-                                    <asp:Label ID="lbl_nombre" runat="server" CssClass="uk-card-title uk-align-center uk-text-truncate" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                        <asp:Label ID="lbl_nombre" runat="server" CssClass="uk-card-title uk-align-center uk-text-truncate" Text='<%# Eval("Nombre") %>'></asp:Label>
                                     </h3>
                                     <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary boton-ver uk-light uk-position-bottom uk-width-1-1 uk-margin-medium" runat="server" Text="Ver" CommandName="Select" CommandArgument='<%# Eval("id_manga") %>' />
                                 </div>
                             </div>
                         </ItemTemplate>
-                    </asp:listview>
+                    </asp:ListView>
                 </div>
 
             </div>

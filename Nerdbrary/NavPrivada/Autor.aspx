@@ -31,8 +31,8 @@
                         </GroupTemplate>
                         <ItemTemplate>
                             <div class="uk-card uk-card-default uk-width-medium" >
-                                <div class="uk-card-media-top uk-width-medium uk-overflow-hidden">
-                                    <img src="../img/books/<%# Eval("Imagen") %>" alt="">
+                                <div class="uk-card-media-top image-wrapper">
+                                    <img class="card-img" src="../img/books/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
                                         <asp:Label ID="lbl_nombre" CssClass="uk-card-title uk-align-center uk-text-truncate" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
