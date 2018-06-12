@@ -39,7 +39,7 @@
                 <div class="uk-section-small">
                     <h1 class="uk-text-center uk-heading-line uk-padding-small">
                         <asp:Label ID="Label1" runat="server" Text="Contador de Vicios"></asp:Label></h1>
-                    <div class="uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-match" uk-grid>
+                    <div class="uk-child-width-1-3@m uk-child-width-1-2 uk-grid-match" uk-grid>
                         <div>
                             <a href="MiAnime.aspx" class="uk-link-reset">
                                 <div class="uk-card uk-card-hover uk-card-body uk-text-center">

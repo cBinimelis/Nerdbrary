@@ -370,31 +370,55 @@
         <div class="uk-container">
             <h1 class="uk-text-center uk-heading-line uk-padding-small">Elementos en el sistema</h1>
 
-            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center uk-flex-center" uk-grid>
-                <div>
-                    <asp:Label ID="lbl_Anime" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
-                    <p>Animes</p>
-                </div>
-                <div>
-                    <asp:Label ID="lbl_Juegos" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
-                    <p>Juegos</p>
-                </div>
-                <div>
-                    <asp:Label ID="lbl_Mangas" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
-                    <p>Mangas</p>
-                </div>
-                <div>
-                    <asp:Label ID="lbl_Series" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
-                    <p>Series</p>
-                </div>
-                <div>
-                    <asp:Label ID="lbl_Peliculas" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
-                    <p>Películas</p>
-                </div>
-                <div>
-                    <asp:Label ID="lbl_Libros" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
-                    <p>Libros</p>
-                </div>
+            <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-text-center uk-flex-center" uk-grid>
+                        <div>
+                            <a href="Lista_Anime.aspx" class="uk-link-reset">
+                                <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                    <asp:Label ID="lbl_Anime" CssClass="count uk-heading-primary" runat="server" Text="1111"></asp:Label>
+                                    <p>Animes</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="Lista_Juegos.aspx" class="uk-link-reset">
+                                <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                    <asp:Label ID="lbl_Juegos" CssClass="count uk-heading-primary" runat="server" Text="2222"></asp:Label>
+                                    <p>Juegos</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="Lista_Manga.aspx" class="uk-link-reset">
+                                <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                    <asp:Label ID="lbl_Mangas" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
+                                    <p>Mangas</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="Lista_Series.aspx" class="uk-link-reset">
+                                <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                    <asp:Label ID="lbl_Series" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
+                                    <p>Series</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="Lista_Peliculas.aspx" class="uk-link-reset">
+                                <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                    <asp:Label ID="lbl_Peliculas" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
+                                    <p>Peliculas</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="Lista_Libros.aspx" class="uk-link-reset">
+                                <div class="uk-card uk-card-hover uk-card-body uk-text-center">
+                                    <asp:Label ID="lbl_Libros" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
+                                    <p>Libros</p>
+                                </div>
+                            </a>
+                        </div>
             </div>
         </div>
     </div>

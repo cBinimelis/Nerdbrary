@@ -43,9 +43,12 @@
                             <div class="uk-offcanvas-bar uk-flex uk-flex-column" style="background: #ba55d3; opacity: 5">
                                 <button class="uk-offcanvas-close" type="button" uk-close></button>
                                 <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-                                    <li class="uk-active"><a href="../Default.aspx">
-                                        <img src="../img/cat.ico" style="height: 100%" alt="Logo" />
-                                    </a></li>
+                                    <li class="uk-active">
+                                        <a href="PerfilUsuario.aspx">
+                                            <img runat="server" id="PPNavMovil" src="../img/cat.ico" style="height: 100%" alt="Logo" />
+                                        </a>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
                                     <li class="uk-parent">
                                         <a href="../NavPrivada/Lista_Juegos.aspx">Juegos</a>
                                         <ul class="uk-nav-sub">
@@ -61,15 +64,15 @@
                                         <a href="../NavPrivada/Lista_Anime.aspx">Anime</a>
                                         <ul class="uk-nav-sub">
                                             <li><a href="../NavPrivada/MiAnime.aspx">Mi Anime</a></li>
-                                            <li><a href="../NavPrivada/CRUD_Anime.aspx">Sub item</a></li>
+                                            <li><a href="../NavPrivada/CRUD_Anime.aspx">Mantenedor</a></li>
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
                                     <li class="uk-parent">
-                                        <a href="#">Series IRL</a>
+                                        <a href="Lista_Series.aspx">Series IRL</a>
                                         <ul class="uk-nav-sub">
-                                            <li><a href="#">Sub item</a></li>
-                                            <li><a href="#">Sub item</a></li>
+                                            <li><a href="MisSeries.aspx">Mis Series</a></li>
+                                            <li><a href="CRUD_Series.aspx">Mantenedor</a></li>
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
@@ -84,8 +87,19 @@
                                     <li class="uk-parent">
                                         <a href="../NavPrivada/Lista_Libros.aspx">Libros</a>
                                         <ul class="uk-nav-sub">
-                                            <li><a href="../NavPrivada/MisMangas.aspx">Mis Mangas</a></li>
-                                            <li><a href="../NavPrivada/CRUD_Manga.aspx">Mantenedor</a></li>
+                                            <li><a href="../NavPrivada/MisLibros.aspx">Mis Libros</a></li>
+                                            <li><a href="../NavPrivada/CRUD_Libros.aspx">Mantenedor</a></li>
+                                            <li class="uk-divider-small"></li>
+                                            <li><a href="../NavPrivada/Autores.aspx">Autores</a></li>
+                                            <li><a href="../NavPrivada/CRUD_Autores.aspx">Mantenedor</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-divider-icon"></li>
+                                    <li class="uk-parent">
+                                        <a href="../NavPrivada/Lista_Peliculas.aspx">Manga</a>
+                                        <ul class="uk-nav-sub">
+                                            <li><a href="../NavPrivada/MisPeliculas.aspx">Mis Peliculas</a></li>
+                                            <li><a href="../NavPrivada/CRUD_Peliculas.aspx">Mantenedor</a></li>
                                         </ul>
                                     </li>
                                     <li class="uk-divider-icon"></li>
@@ -98,7 +112,7 @@
                         </div>
                     </div>
                     <div class="uk-navbar-right uk-hidden@m">
-                        <a href="#" class="uk-navbar-item uk-logo">
+                        <a href="Inicio.aspx" class="uk-navbar-item uk-logo">
                             <img src="../img/pantsu.ico" style="height: 100%" alt="Logo" />
                         </a>
                     </div>
@@ -218,7 +232,12 @@
             </asp:ContentPlaceHolder>
             <div class="uk-section-secondary uk-section-xsmall">
                 <div class="uk-container">
-                    <p class=" uk-text-center">Cristofer Binimelis | <b>2018</b></p>
+                    <p class=" uk-text-center">
+                        Cristofer Binimelis | <b>2018</b> | 
+                        <a href="https://github.com/cBinimelis" class="uk-icon-button" uk-icon="github"></a>
+
+                    </p>
+
                 </div>
             </div>
         </div>
