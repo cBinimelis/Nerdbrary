@@ -153,10 +153,10 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Tomos">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_dev" runat="server" Text='<%# Eval("Tomos") %>'></asp:Label>
+                                        <asp:Label ID="lbl_tomos" runat="server" Text='<%# Eval("Tomos") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txt_nombre" CssClass="uk-input uk-form-width-small" Text='<%# Eval("Tomos") %>' runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txt_tomos" CssClass="uk-input uk-form-width-small" Text='<%# Eval("Tomos") %>' runat="server"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Lanzamiento" >

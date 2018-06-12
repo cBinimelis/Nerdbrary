@@ -211,7 +211,7 @@ public partial class NavPrivada_MangaCRUD : System.Web.UI.Page
             int idManga = Convert.ToInt32(GrillaMangas.DataKeys[e.RowIndex].Values[0]);
             String Nombre = (row.FindControl("txt_nombre") as TextBox).Text.Trim();
             String Lanzamiento = (row.FindControl("txt_lanzamiento") as TextBox).Text.Trim();
-            String Tomos = (row.FindControl("dd_dev") as TextBox).Text.Trim();
+            String Tomos = (row.FindControl("txt_tomos") as TextBox).Text.Trim();
             int Estado = (row.FindControl("dd_estado") as DropDownList).SelectedIndex;
             int Genero = (row.FindControl("dd_genero") as DropDownList).SelectedIndex;
             String OG = (row.FindControl("txt_OGeneros") as TextBox).Text.Trim();
