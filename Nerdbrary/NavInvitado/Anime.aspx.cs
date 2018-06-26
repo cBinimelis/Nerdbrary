@@ -36,7 +36,7 @@ public partial class NavVisitas_AnimeVisitas : System.Web.UI.Page
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
             {
-                Response.Redirect("AnimeInvitadoDetalles.aspx?Id=" + ID);
+                Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
             }
         }
         catch

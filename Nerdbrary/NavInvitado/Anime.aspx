@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Lista de Anime" Language="C#" MasterPageFile="~/MasterPage/MP_Inicial.master" AutoEventWireup="true" CodeFile="AnimeInvitado.aspx.cs" Inherits="NavVisitas_AnimeVisitas" %>
+﻿<%@ Page Title="Lista de Anime" Language="C#" MasterPageFile="~/MasterPage/MP_Inicial.master" AutoEventWireup="true" CodeFile="Anime.aspx.cs" Inherits="NavVisitas_AnimeVisitas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

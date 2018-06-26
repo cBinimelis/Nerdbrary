@@ -38,7 +38,7 @@
                                 <li class="uk-parent">
                                     <a href="#">Ñoñopedia</a>
                                     <ul class="uk-nav-sub">
-                                        <li><a href="../NavInvitado/AnimeInvitado.aspx">Anime</a></li>
+                                        <li><a href="../NavInvitado/Anime.aspx">Anime</a></li>
                                         <li><a href="#">Sub item</a></li>
                                         <li><a href="#">Sub item</a></li>
                                     </ul>
@@ -59,7 +59,7 @@
                             <a class="uk-text-bold">Series</a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li><a href="../NavInvitado/AnimeInvitado.aspx">Anime</a></li>
+                                    <li><a href="../NavInvitado/Anime.aspx">Anime</a></li>
                                     <li class="uk-nav-header">Series IRL</li>
                                     <li><a href="#">Lista Series</a></li>
                                     <li><a href="#">Mis Series</a></li>

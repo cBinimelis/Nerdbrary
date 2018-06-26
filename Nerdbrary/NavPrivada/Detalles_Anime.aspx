@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="uk-section-default">
+    <div class="uk-section uk-section-default">
         <div id="Cover" runat="server" class="background"></div>
         <div class="uk-container uk-card uk-card-default uk-align-center uk-animation-slide-left">
             <div class="uk-card-body uk-card-medium">
