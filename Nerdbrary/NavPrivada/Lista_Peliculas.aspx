@@ -18,7 +18,7 @@
                 <h1 class=" uk-heading-primary uk-text-center">Lista de Peliculas</h1>
                 <div class="uk-margin">
                     <div class="uk-inline">
-                        <asp:TextBox ID="txt_buscar" CssClass="uk-input uk-width-large" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txt_buscar" autocomplete="off" CssClass="uk-input uk-width-large" runat="server"></asp:TextBox>
                         <asp:Button ID="btn_buscar" CssClass="uk-button uk-position-right uk-button-default" runat="server" Text="Buscar" OnClick="btn_buscar_Click" />
                     </div>
                 </div>

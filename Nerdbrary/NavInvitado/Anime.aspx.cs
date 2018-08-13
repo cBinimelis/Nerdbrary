@@ -21,27 +21,19 @@ public partial class NavVisitas_AnimeVisitas : System.Web.UI.Page
 
     private void llenado()
     {
+
+        String Nick = Convert.ToString(Session["Admin"]);
         cdc = new ConexionLQDataContext();
-        GrillaAnime.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);
-        GrillaAnime.DataBind();
+        AnimeList.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);
+        AnimeList.DataBind();
     }
 
-    protected void GrillaAnime_RowCommand(object sender, GridViewCommandEventArgs e)
+    protected void AnimeList_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        try
+        if (e.CommandName == "Select")
         {
-            int rowIndex = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = GrillaAnime.Rows[rowIndex];
-            string ID = (row.FindControl("lbl_id") as Label).Text;
-            IdGrilla = Convert.ToInt32(ID);
-            if (e.CommandName == "Select")
-            {
-                Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
-            }
-        }
-        catch
-        {
-            Mensaje("Surgió un problema", "No se ha podido agregar el anime a tu lista", "error");
+            int ID = Convert.ToInt32(e.CommandArgument);
+            Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
         }
     }
 

@@ -29,7 +29,7 @@
                     <div class="uk-width-1-2@m ">
                         <div class="uk-inline">
                             <a class="uk-form-icon" href="Pendientes.aspx" uk-icon="icon: search" uk-tooltip="title: Ver pendientes"></a>
-                            <asp:TextBox ID="txt_pendiente" CssClass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_pendiente" autocomplete="off" CssClass="uk-input uk-form-width-large" placeholder="Ingresa el nombre... " runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <asp:DropDownList ID="dd_tipoP" CssClass="uk-form-width-medium uk-select" runat="server" ForeColor="#999999"></asp:DropDownList>

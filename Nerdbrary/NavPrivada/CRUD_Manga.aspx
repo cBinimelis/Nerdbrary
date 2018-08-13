@@ -39,7 +39,7 @@
                             <p>Nombre</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: bookmark"></span>
-                                <asp:textbox id="txt_nombreN" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
+                                <asp:textbox id="txt_nombreN" autocomplete="off" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
@@ -52,7 +52,7 @@
                         <div class="uk-width-1-4@m">
                             <p>Tomos</p>
                             <div class="uk-inline">
-                                <asp:textbox id="txt_Tomos" cssclass="uk-input uk-form-width-large" runat="server"></asp:textbox>
+                                <asp:textbox id="txt_Tomos" autocomplete="off" cssclass="uk-input uk-form-width-large" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
@@ -71,7 +71,7 @@
                             <p>Otros Generos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                                <asp:textbox id="txt_OGenerosN" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
+                                <asp:textbox id="txt_OGenerosN" autocomplete="off" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-2@m">

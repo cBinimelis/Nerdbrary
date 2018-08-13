@@ -18,7 +18,7 @@
                 <h1 class="uk-article-title uk-text-center uk-heading-bullet">Lista de desarrolladores</h1>
                 <div class="uk-margin">
                     <div class="uk-inline">
-                        <asp:TextBox ID="txt_buscar" CssClass="uk-input uk-width-large" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txt_buscar" autocomplete="off" CssClass="uk-input uk-width-large" runat="server"></asp:TextBox>
                         <asp:Button ID="Button1" CssClass="uk-button uk-position-right uk-button-default" runat="server" Text="Buscar" OnClick="Button1_Click" />
                     </div>
                 </div>

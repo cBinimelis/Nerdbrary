@@ -13,57 +13,36 @@
         </div>
     </div>
 
+    
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
-            <div class="uk-container">
-                <h1 class=" uk-heading-primary uk-text-center">Lista de Anime</h1>
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-body uk-overflow-auto">
-                        <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand">
-                            <Columns>
-                                <asp:TemplateField HeaderText="ID Anime" Visible="false">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Anime") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Nombre">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Lanzamiento">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Total Capítulos">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Genero">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Estado">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <%--<asp:CommandField ButtonType="Link" ShowDeleteButton="true" DeleteText="<span uk-icon='icon: trash'></span>" />--%>
-                            </Columns>
-                        </asp:GridView>
-                    </div>
+            <div class=" uk-container-expand">
+                <h1 class="uk-article-title uk-text-center uk-heading">Lista de Anime</h1>
+                <br />
+                <div class="uk-flex uk-flex-center" uk-grid>
+                    <asp:listview id="AnimeList" datakeynames="id_Anime" runat="server" onitemcommand="AnimeList_ItemCommand">
+                        <GroupTemplate>
+                            <div id="itemPlaceholderContainer" class="uk-child-width-1-4@m" runat="server">
+                                <div id="itemPlaceholder" runat="server">
+                                </div>
+                            </div>
+                        </GroupTemplate>
+                        <ItemTemplate>
+                            <div class="uk-card uk-card-default uk-width-medium uk-height-medium uk-box-shadow-xlarge uk-box-shadow-hover-small">
+                                <div class="uk-card-media-top image-wrapper">
+                                    <img class="card-img" src="../img/anime/<%# Eval("Imagen") %>" alt="">
+                                </div>
+                                <div class="uk-card-body uk-padding-small">
+                                    <asp:Label ID="Label1" runat="server" CssClass="uk-card-title uk-align-center uk-text-truncate" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                    <asp:Button ID="Button1" CssClass="uk-button uk-button-primary boton-ver uk-light uk-position-bottom uk-width-1-1 uk-margin-medium" runat="server" Text="Ver" CommandName="Select" CommandArgument='<%# Eval("id_Anime") %>' />
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:listview>
                 </div>
             </div>
         </div>
     </div>
+
 </asp:Content>
 

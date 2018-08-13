@@ -37,7 +37,7 @@
                             <p>Nombre</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: bookmark"></span>
-                                <asp:textbox id="txt_nombreN" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
+                                <asp:textbox id="txt_nombreN" autocomplete="off" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
@@ -69,14 +69,14 @@
                             <p>Otros Generos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                                <asp:textbox id="txt_ogeneros" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
+                                <asp:textbox id="txt_ogeneros" autocomplete="off" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-expand@m">
                             <p>Paginas Totales</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: hashtag"></span>
-                                <asp:textbox id="txt_Paginas" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
+                                <asp:textbox id="txt_Paginas" autocomplete="off" cssclass="uk-input uk-width-xlarge" runat="server"></asp:textbox>
                             </div>
                         </div>
                         <div class="uk-width-1-2@m">

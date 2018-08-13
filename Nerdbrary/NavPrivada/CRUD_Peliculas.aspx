@@ -155,7 +155,7 @@
                                         <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Duracion") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txt_capitulos" CssClass="uk-input uk-form-width-auto" Text='<%# Eval("Duracion") %>' runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txt_duracion" CssClass="uk-input uk-form-width-auto" Text='<%# Eval("Duracion") %>' runat="server"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Estado">
@@ -163,7 +163,7 @@
                                         <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:DropDownList ID="dd_estado" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Estado" DataTextField="Descripcion" DataValueField="id_EstadoSerie"></asp:DropDownList>
+                                        <asp:DropDownList ID="dd_estado" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Estado" DataTextField="Descripcion" DataValueField="id_EstadoPelicula"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Genero">

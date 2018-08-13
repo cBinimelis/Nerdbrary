@@ -15,7 +15,7 @@
                                 <p>Nombre</p>
                                 <div class="uk-inline">
                                     <span class="uk-form-icon" uk-icon="icon: bookmark"></span>
-                                    <asp:TextBox ID="txt_nombreN" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txt_nombreN" autocomplete="off" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="uk-width-1-1">

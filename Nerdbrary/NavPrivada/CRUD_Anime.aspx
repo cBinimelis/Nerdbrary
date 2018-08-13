@@ -39,7 +39,7 @@
                             <p>Nombre</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: bookmark"></span>
-                                <asp:TextBox ID="txt_nombreN" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_nombreN" autocomplete="off" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="uk-width-1-6@m">
@@ -53,14 +53,14 @@
                             <p>Capitulos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tv"></span>
-                                <asp:TextBox ID="txt_capitulosN" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_capitulosN" autocomplete="off" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="uk-width-1-6@m">
                             <p>Temporadas</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: world"></span>
-                                <asp:TextBox ID="txt_temporadasN" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_temporadasN" autocomplete="off" CssClass="uk-input uk-form-width-large" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
@@ -79,7 +79,7 @@
                             <p>Otros Generos</p>
                             <div class="uk-inline">
                                 <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                                <asp:TextBox ID="txt_OGenerosN" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_OGenerosN" autocomplete="off" CssClass="uk-input uk-width-xlarge" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="uk-width-1-2@m">
