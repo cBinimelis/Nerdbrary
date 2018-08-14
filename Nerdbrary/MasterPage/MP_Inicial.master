@@ -56,13 +56,12 @@
                 <div class="uk-navbar-left uk-visible@m">
                     <ul class="uk-navbar-nav">
                         <li>
-                            <a class="uk-text-bold">Series</a>
+                            <a class="uk-text-bold">Contenido</a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li><a href="../NavInvitado/Anime.aspx">Anime</a></li>
-                                    <li class="uk-nav-header">Series IRL</li>
-                                    <li><a href="#">Lista Series</a></li>
-                                    <li><a href="#">Mis Series</a></li>
+                                    <li><a href="../NavInvitado/Manga.aspx">Manga</a></li>
+                                    <li><a href="../NavInvitado/Juegos.aspx">Juegos</a></li>
                                 </ul>
                             </div>
                         </li>

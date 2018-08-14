@@ -14,41 +14,48 @@ public partial class Login : System.Web.UI.Page
 
     protected void btn_login_Click(object sender, EventArgs e)
     {
-        if (txt_username.Text.Trim().Equals("") || txt_password.Text.Trim().Equals(""))
+        try
         {
-            Mensaje("Sin prisas", "No puedes dejar campos vacios.", "warning");
-        }
-        else
-        {
-            SqlDataReader usuario = sql.consulta("SELECT * FROM Usuario where Nick ='" + txt_username.Text + "'");
-            if (usuario.Read())
+            if (txt_username.Text.Trim().Equals("") || txt_password.Text.Trim().Equals(""))
             {
-                if (usuario[2].ToString().Equals(txt_password.Text))
+                Mensaje("Sin prisas", "No puedes dejar campos vacios.", "warning");
+            }
+            else
+            {
+                SqlDataReader usuario = sql.consulta("SELECT * FROM Usuario where Nick ='" + txt_username.Text + "'");
+                if (usuario.Read())
                 {
-                    switch (Convert.ToInt32(usuario[3].ToString()))
+                    if (usuario[2].ToString().Equals(txt_password.Text))
                     {
-                        case 1:
-                            Session["Admin"] = txt_username.Text;
-                            Session["Img"] = usuario[5].ToString();
-                            Response.Redirect("NavPrivada/Inicio.aspx");
-                            break;
-                        case 2:
-                            Mensaje("Hay un detalle", "Tu cuenta esta temporalmente inactiva", "info");
-                            break;
-                        case 3:
-                            Mensaje("Ouch", "Tu cuenta ha sido eliminada", "error");
-                            break;
+                        switch (Convert.ToInt32(usuario[3].ToString()))
+                        {
+                            case 1:
+                                Session["Admin"] = txt_username.Text;
+                                Session["Img"] = usuario[5].ToString();
+                                Response.Redirect("NavPrivada/Inicio.aspx");
+                                break;
+                            case 2:
+                                Mensaje("Hay un detalle", "Tu cuenta esta temporalmente inactiva", "info");
+                                break;
+                            case 3:
+                                Mensaje("Ouch", "Tu cuenta ha sido eliminada", "error");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Mensaje("Un Momento", "Contraseña incorrecta", "error");
                     }
                 }
                 else
                 {
-                    Mensaje("Un Momento", "Contraseña incorrecta", "error");
+                    Mensaje("No lo encontré", "El correo o nombre de usuario no se encuentra registrado", "warning");
                 }
             }
-            else
-            {
-                Mensaje("No lo encontré", "El correo o nombre de usuario no se encuentra registrado", "warning");
-            }
+        }
+        catch
+        {
+            Mensaje("¡Ups!", "Algo ha salido horriblemente mal", "error");
         }
     }
 

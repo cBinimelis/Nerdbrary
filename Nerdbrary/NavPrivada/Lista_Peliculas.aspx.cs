@@ -22,7 +22,7 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
-        GrillaPelicula.DataSource = cdc.vPelicula;
+        GrillaPelicula.DataSource = cdc.vPelicula.OrderBy(x => x.Nombre);
         GrillaPelicula.DataBind();
     }
 

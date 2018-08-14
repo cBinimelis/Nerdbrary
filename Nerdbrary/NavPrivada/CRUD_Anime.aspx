@@ -141,12 +141,12 @@
                                         <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Anime") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Nombre">
+                                <asp:TemplateField HeaderText="Nombre" ItemStyle-CssClass="uk-form-width-medium">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txt_nombre" CssClass="uk-input uk-form-width-small" Text='<%# Eval("Nombre") %>' runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txt_nombre" CssClass="uk-input" Text='<%# Eval("Nombre") %>' runat="server"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Lanzamiento">
@@ -189,7 +189,7 @@
                                         <asp:DropDownList ID="dd_genero" CssClass="uk-select uk-form-width-small" runat="server" DataSourceID="DS_Genero" DataTextField="Descripcion" DataValueField="id_GeneroAnime"></asp:DropDownList>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Otros Generos">
+                                <asp:TemplateField HeaderText="Otros Generos" ItemStyle-CssClass="uk-text-truncate">
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_OGenero" runat="server" Text='<%# Eval("Otros_Generos") %>'></asp:Label>
                                     </ItemTemplate>
