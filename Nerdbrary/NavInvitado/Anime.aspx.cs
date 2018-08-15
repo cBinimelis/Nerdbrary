@@ -21,7 +21,6 @@ public partial class NavVisitas_AnimeVisitas : System.Web.UI.Page
 
     private void llenado()
     {
-
         String Nick = Convert.ToString(Session["Admin"]);
         cdc = new ConexionLQDataContext();
         AnimeList.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);

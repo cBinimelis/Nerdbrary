@@ -68,7 +68,6 @@
                                         <asp:TemplateField>
                                             <ItemTemplate>
                                                 <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                                <asp:Button ID="btn_agregar" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Agregar" CommandName="Add" CommandArgument="<%# Container.DataItemIndex %>" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
