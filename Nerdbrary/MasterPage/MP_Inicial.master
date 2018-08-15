@@ -80,6 +80,14 @@
         <div class="uk-offcanvas-content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
+            <div class="uk-section-secondary uk-section-xsmall">
+                <div class="uk-container">
+                    <p class=" uk-text-center">
+                        Cristofer Binimelis | <b>2018</b> | 
+                        <a href="https://github.com/cBinimelis" class="uk-icon-button" uk-icon="github"></a>
+                    </p>
+                </div>
+            </div>
         </div>
     </form>
     <script src="../js/jquery-3.3.1.min.js"></script>

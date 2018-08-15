@@ -25,6 +25,10 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
         cdc = new ConexionLQDataContext();
         GrillaAnime.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);
         GrillaAnime.DataBind();
+
+        String Nick = Convert.ToString(Session["Admin"]);
+        GrillaAnimeNA.DataSource = cdc.vAnimeUsuarioNA(Nick).OrderBy(x => x.Nombre);
+        GrillaAnimeNA.DataBind();
     }
 
     protected void btn_buscar_Click(object sender, EventArgs e)
