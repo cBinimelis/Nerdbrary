@@ -655,6 +655,35 @@
       <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.vJuegoUsuarioNA" Method="vJuegoUsuarioNA">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="vJuegoUsuarioNAResult">
+      <Column Name="id_Juego" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id_Desarrollador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Desarrollador" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vMangaUsuarioNA" Method="vMangaUsuarioNA">
+    <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="vMangaUsuarioNAResult">
+      <Column Name="id_Manga" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Sinopsis" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Tomos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lanzamiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Imagen" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Otros Generos]" Member="Otros_Generos" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.vAnimeUsuarioNA" Method="vAnimeUsuarioNA">
     <Parameter Name="User" Parameter="user" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="vAnimeUsuarioNAResult">

@@ -597,6 +597,20 @@ public partial class ConexionLQDataContext : System.Data.Linq.DataContext
 		return ((ISingleResult<vPeliculaUsuarioResult>)(result.ReturnValue));
 	}
 	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vJuegoUsuarioNA")]
+	public ISingleResult<vJuegoUsuarioNAResult> vJuegoUsuarioNA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user);
+		return ((ISingleResult<vJuegoUsuarioNAResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vMangaUsuarioNA")]
+	public ISingleResult<vMangaUsuarioNAResult> vMangaUsuarioNA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user);
+		return ((ISingleResult<vMangaUsuarioNAResult>)(result.ReturnValue));
+	}
+	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.vAnimeUsuarioNA")]
 	public ISingleResult<vAnimeUsuarioNAResult> vAnimeUsuarioNA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="User", DbType="VarChar(50)")] string user)
 	{
@@ -11724,6 +11738,364 @@ public partial class vPeliculaUsuarioResult
 	}
 	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Estado
+	{
+		get
+		{
+			return this._Estado;
+		}
+		set
+		{
+			if ((this._Estado != value))
+			{
+				this._Estado = value;
+			}
+		}
+	}
+}
+
+public partial class vJuegoUsuarioNAResult
+{
+	
+	private int _id_Juego;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private int _id_Desarrollador;
+	
+	private string _Desarrollador;
+	
+	private string _Lanzamiento;
+	
+	private string _Imagen;
+	
+	private string _Genero;
+	
+	private string _Otros_Generos;
+	
+	private string _Estado;
+	
+	public vJuegoUsuarioNAResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Juego", DbType="Int NOT NULL")]
+	public int id_Juego
+	{
+		get
+		{
+			return this._id_Juego;
+		}
+		set
+		{
+			if ((this._id_Juego != value))
+			{
+				this._id_Juego = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this._Sinopsis = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Desarrollador", DbType="Int NOT NULL")]
+	public int id_Desarrollador
+	{
+		get
+		{
+			return this._id_Desarrollador;
+		}
+		set
+		{
+			if ((this._id_Desarrollador != value))
+			{
+				this._id_Desarrollador = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Desarrollador", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+	public string Desarrollador
+	{
+		get
+		{
+			return this._Desarrollador;
+		}
+		set
+		{
+			if ((this._Desarrollador != value))
+			{
+				this._Desarrollador = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
+	public string Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this._Lanzamiento = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Genero
+	{
+		get
+		{
+			return this._Genero;
+		}
+		set
+		{
+			if ((this._Genero != value))
+			{
+				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Estado
+	{
+		get
+		{
+			return this._Estado;
+		}
+		set
+		{
+			if ((this._Estado != value))
+			{
+				this._Estado = value;
+			}
+		}
+	}
+}
+
+public partial class vMangaUsuarioNAResult
+{
+	
+	private int _id_Manga;
+	
+	private string _Nombre;
+	
+	private string _Sinopsis;
+	
+	private int _Tomos;
+	
+	private string _Lanzamiento;
+	
+	private string _Imagen;
+	
+	private string _Genero;
+	
+	private string _Otros_Generos;
+	
+	private string _Estado;
+	
+	public vMangaUsuarioNAResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Manga", DbType="Int NOT NULL")]
+	public int id_Manga
+	{
+		get
+		{
+			return this._id_Manga;
+		}
+		set
+		{
+			if ((this._id_Manga != value))
+			{
+				this._id_Manga = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+	public string Nombre
+	{
+		get
+		{
+			return this._Nombre;
+		}
+		set
+		{
+			if ((this._Nombre != value))
+			{
+				this._Nombre = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sinopsis", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Sinopsis
+	{
+		get
+		{
+			return this._Sinopsis;
+		}
+		set
+		{
+			if ((this._Sinopsis != value))
+			{
+				this._Sinopsis = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tomos", DbType="Int NOT NULL")]
+	public int Tomos
+	{
+		get
+		{
+			return this._Tomos;
+		}
+		set
+		{
+			if ((this._Tomos != value))
+			{
+				this._Tomos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lanzamiento", DbType="VarChar(30)")]
+	public string Lanzamiento
+	{
+		get
+		{
+			return this._Lanzamiento;
+		}
+		set
+		{
+			if ((this._Lanzamiento != value))
+			{
+				this._Lanzamiento = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagen", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Imagen
+	{
+		get
+		{
+			return this._Imagen;
+		}
+		set
+		{
+			if ((this._Imagen != value))
+			{
+				this._Imagen = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string Genero
+	{
+		get
+		{
+			return this._Genero;
+		}
+		set
+		{
+			if ((this._Genero != value))
+			{
+				this._Genero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Otros Generos]", Storage="_Otros_Generos", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string Otros_Generos
+	{
+		get
+		{
+			return this._Otros_Generos;
+		}
+		set
+		{
+			if ((this._Otros_Generos != value))
+			{
+				this._Otros_Generos = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 	public string Estado
 	{
 		get

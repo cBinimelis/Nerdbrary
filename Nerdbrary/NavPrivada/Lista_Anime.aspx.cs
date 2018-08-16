@@ -69,6 +69,7 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
                     cdc.Anime_Usuario.InsertOnSubmit(au);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
+                    this.llenado();
                 }
             }
         }

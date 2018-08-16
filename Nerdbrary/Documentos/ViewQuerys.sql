@@ -130,7 +130,24 @@
 
 
 
+--ALTER PROC vJuegoUsuarioNA @User VARCHAR(50)
+--AS
+--BEGIN
 
+--	DECLARE @USERID AS INT
+--	SET @USERID = (SELECT id_Usuario FROM [Usuario] WHERE Nick = @User)
+
+--SELECT J.id_Juego, J.Nombre, J.Sinopsis,D.id_Desarrollador, D.Nombre 'Desarrollador', CONVERT(varchar, J.Lanzamiento, 103) AS 'Lanzamiento',
+--J.Imagen, GJ.Descripcion 'Genero', J.Otros_Generos 'Otros Generos', EJ.Descripcion 'Estado'
+--FROM Juegos J
+--INNER JOIN Desarrollador D ON J.id_Desarrollador = D.id_Desarrollador
+--INNER JOIN Genero_Juegos GJ ON J.id_GeneroJuego = GJ.id_GeneroJuego
+--INNER JOIN Estado_Juegos EJ ON J.id_EstadoJuego = EJ.id_EstadoJuegos
+--WHERE J.id_Juego NOT IN (SELECT id_Juego FROM Juegos_Usuario WHERE id_Usuario = @USERID ) AND J.Activo =  1
+--ORDER BY J.Nombre ASC
+--END
+
+--EXEC vJuegoUsuarioNA 'geekriszx'
 
 
 --------------------------------------------------------Manga--------------------------------------------------------
@@ -183,6 +200,24 @@
 --EXEC vMangaUsuario 'geekriszx'
 
 
+
+--ALTER PROC vMangaUsuarioNA @User VARCHAR(50)
+--AS
+--BEGIN
+
+--	DECLARE @USERID AS INT
+--	SET @USERID = (SELECT id_Usuario FROM [Usuario] WHERE Nick = @User)
+
+--SELECT M.id_Manga, M.Nombre, M.Sinopsis, M.Tomos , CONVERT(varchar, M.Lanzamiento, 103) AS 'Lanzamiento',
+--M.Imagen, GM.Descripcion 'Genero', M.Otros_Generos 'Otros Generos', EM.Descripcion 'Estado'
+--FROM Manga M
+--INNER JOIN Genero_Mangas GM ON M.id_GeneroManga = GM.id_GeneroManga
+--INNER JOIN Estado_Manga EM ON M.id_EstadoManga = EM.id_EstadoManga
+--WHERE M.id_Manga NOT IN (SELECT id_Manga FROM Manga_Usuario WHERE id_Usuario = @USERID ) AND M.Activo = 1
+--ORDER BY M.Nombre ASC
+--END
+
+--EXEC vMangaUsuarioNA 'geekriszx'
 
 
 --------------------------------------------------------LIBROS--------------------------------------------------------
