@@ -10,7 +10,10 @@ public partial class NavInvitado_MangaInvitado : System.Web.UI.Page
     ConexionLQDataContext cdc;
     protected void Page_Load(object sender, EventArgs e)
     {
-        llenado();
+        if (!IsPostBack)
+        {
+            llenado();
+        }
     }
 
     private void llenado()
@@ -26,7 +29,7 @@ public partial class NavInvitado_MangaInvitado : System.Web.UI.Page
         if (e.CommandName == "Select")
         {
             int ID = Convert.ToInt32(e.CommandArgument);
-            Response.Redirect("Mangaetalles.aspx?Id=" + ID);
+            Response.Redirect("MangaDetalles.aspx?Id=" + ID);
         }
     }
 }
