@@ -22,17 +22,40 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
+        String Nick = Convert.ToString(Session["Admin"]);
         GrillaManga.DataSource = cdc.vManga.OrderBy(x => x.Nombre);
         GrillaManga.DataBind();
+
+        GrillaMangaNA.DataSource = cdc.vMangaUsuarioNA(Nick).OrderBy(x => x.Nombre);
+        GrillaMangaNA.DataBind();
     }
 
     protected void GrillaManga_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         try
         {
-            String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GrillaManga.Rows[rowIndex];
+            string ID = (row.FindControl("lbl_id") as Label).Text;
+            IdGrilla = Convert.ToInt32(ID);
+            if (e.CommandName == "Select")
+            {
+                Response.Redirect("Detalles_Manga.aspx?Id=" + ID);
+            }
+        }
+        catch
+        {
+            Mensaje("Surgió un problema", "No se ha podido agregar el manga a tu lista", "error");
+        }
+    }
+
+    protected void GrillaMangaNA_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            String Nick = Convert.ToString(Session["Admin"]);
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = GrillaMangaNA.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
@@ -57,6 +80,7 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
                     cdc.Manga_Usuario.InsertOnSubmit(m);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
+                    this.llenado();
                 }
             }
         }

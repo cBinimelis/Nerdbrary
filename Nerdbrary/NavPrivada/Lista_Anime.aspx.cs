@@ -42,9 +42,28 @@ public partial class NavPrivada_Anime : System.Web.UI.Page
     {
         try
         {
-            String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GrillaAnime.Rows[rowIndex];
+            string ID = (row.FindControl("lbl_id") as Label).Text;
+            IdGrilla = Convert.ToInt32(ID);
+            if (e.CommandName == "Select")
+            {
+                Response.Redirect("Detalles_Anime.aspx?Id=" + ID);
+            }
+        }
+        catch
+        {
+            Mensaje("Surgió un problema", "No se ha podido agregar el anime a tu lista", "error");
+        }
+    }
+
+    protected void GrillaAnimeNA_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            String Nick = Convert.ToString(Session["Admin"]);
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = GrillaAnimeNA.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")

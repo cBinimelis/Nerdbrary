@@ -19,11 +19,11 @@
                 <h1 class=" uk-heading-primary uk-text-center">Lista de Anime</h1>
                 <div class="uk-margin">
                     <div class="uk-inline">
-                        <asp:TextBox ID="txt_buscar" autocomplete="off" CssClass="uk-input uk-width-large" runat="server"></asp:TextBox>
-                        <asp:Button ID="btn_buscar" CssClass="uk-button uk-position-right uk-button-default" runat="server" Text="Buscar" OnClick="btn_buscar_Click" />
+                        <asp:textbox id="txt_buscar" autocomplete="off" cssclass="uk-input uk-width-large" runat="server"></asp:textbox>
+                        <asp:button id="btn_buscar" cssclass="uk-button uk-position-right uk-button-default" runat="server" text="Buscar" onclick="btn_buscar_Click" />
                     </div>
                 </div>
-                <ul  uk-switcher="animation: uk-animation-fade" uk-tab>
+                <ul uk-switcher="animation: uk-animation-fade" uk-tab>
                     <li><a href="#">Todos</a></li>
                     <li><a href="#">No agregados</a></li>
                 </ul>
@@ -32,8 +32,8 @@
                     <li>
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-body uk-overflow-auto">
-                                <asp:GridView ID="GrillaAnime" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                                    BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand">
+                                <asp:gridview id="GrillaAnime" datakeynames="id_Anime" cssclass="uk-table uk-table-divider uk-table-small" autogeneratecolumns="False"
+                                    borderstyle="None" gridlines="None" runat="server" onrowcommand="GrillaAnime_RowCommand">
                                     <Columns>
                                         <asp:TemplateField HeaderText="ID Anime" Visible="false">
                                             <ItemTemplate>
@@ -71,15 +71,15 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
-                                </asp:GridView>
+                                </asp:gridview>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-body uk-overflow-auto">
-                                <asp:GridView ID="GrillaAnimeNA" DataKeyNames="id_Anime" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
-                                    BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaAnime_RowCommand">
+                                <asp:gridview id="GrillaAnimeNA" datakeynames="id_Anime" cssclass="uk-table uk-table-divider uk-table-small" autogeneratecolumns="False"
+                                    borderstyle="None" gridlines="None" runat="server" onrowcommand="GrillaAnimeNA_RowCommand">
                                     <Columns>
                                         <asp:TemplateField HeaderText="ID Anime" Visible="false">
                                             <ItemTemplate>
@@ -118,10 +118,10 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
-                                </asp:GridView>
+                                </asp:gridview>
                             </div>
-                        </div></li>
-                    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, sed do eiusmod.</li>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
