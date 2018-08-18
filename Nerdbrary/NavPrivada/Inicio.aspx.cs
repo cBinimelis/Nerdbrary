@@ -20,6 +20,8 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
         }
     }
 
+    bool Exist = false;
+
     private void llenarPerfil()
     {
         try
@@ -75,21 +77,69 @@ public partial class NavPrivada_Inicio : System.Web.UI.Page
             }
             else
             {
-                String UserNick = Session["Admin"].ToString();
-                cdc = new ConexionLQDataContext();
-                Pendientes p = new Pendientes();
-                p.id_Usuario = (from a in cdc.Usuario where a.Nick == UserNick select a.id_Usuario).FirstOrDefault();
-                p.Nombre = txt_pendiente.Text;
-                p.id_TipoPendiente = (dd_tipoP.SelectedIndex + 1);
-                cdc.Pendientes.InsertOnSubmit(p);
-                cdc.SubmitChanges();
-                Mensaje("Felicidades", "Se ha creado el regristro", "success");
-                Clean();
+                Comprobar();
+                if (Exist)
+                {
+                    Mensaje("Tenemos un problema", "Este elemento ya existe en el sistema", "error");
+                }
+                else
+                {
+                    String UserNick = Session["Admin"].ToString();
+                    cdc = new ConexionLQDataContext();
+                    Pendientes p = new Pendientes();
+                    p.id_Usuario = (from a in cdc.Usuario where a.Nick == UserNick select a.id_Usuario).FirstOrDefault();
+                    p.Nombre = txt_pendiente.Text;
+                    p.id_TipoPendiente = (dd_tipoP.SelectedIndex + 1);
+                    cdc.Pendientes.InsertOnSubmit(p);
+                    cdc.SubmitChanges();
+                    Mensaje("Felicidades", "Se ha creado el regristro", "success");
+                    Clean();
+                }
             }
         }
         catch
         {
 
+        }
+    }
+
+    private void Comprobar()
+    {
+        String Tipo = "";
+        switch (dd_tipoP.SelectedIndex +1)
+        {
+            case 1:
+                Tipo = "Anime";
+                break;
+            case 2:
+                Tipo = "Juegos";
+                break;
+            case 3:
+                Tipo = "Manga";
+                break;
+            case 4:
+                Tipo = "Libros";
+                break;
+            case 5:
+                Tipo = "Peliculas";
+                break;
+            case 6:
+                Tipo = "Series";
+                break;
+            default:
+                Tipo = "Pendientes";
+                break;
+        }
+
+        SqlDataReader Pendientes = sql.consulta("SELECT * FROM Pendientes WHERE Nombre = '" + txt_pendiente.Text + "'");
+        SqlDataReader Otros = sql.consulta("SELECT * FROM " + Tipo + " WHERE Nombre = '" + txt_pendiente.Text + "'");
+        if (Pendientes.Read())
+        {
+            Exist = true;
+        }
+        else if (Otros.Read())
+        {
+            Exist = true;
         }
     }
 

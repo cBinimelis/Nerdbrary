@@ -13,6 +13,7 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
     Conexion sql = new Conexion();
     ConexionLQDataContext cdc;
     int idPendiente = 0;
+    bool Exist = false;
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Page.Form.Enctype = "multipart/form-data";
@@ -115,59 +116,67 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
             }
             else
             {
-                if (IsPostBack)
+                Comprobar();
+                if (Exist)
                 {
-                    Boolean fileOK = false;
-                    String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"[^0-9a-zA-Z_]+", "");
-                    String path = Server.MapPath("~/img/books/");
-                    String fileExtension = System.IO.Path.GetExtension(subir_imagen.FileName).ToLower();
-                    String[] allowedExtensions = { ".jpeg", ".jpg" };
-                    if (subir_imagen.HasFiles)
+                    Mensaje("Tenemos un problema", "Este Libro ya existe en el sistema", "error");
+                }
+                else
+                {
+                    if (IsPostBack)
                     {
-                        for (int i = 0; i < allowedExtensions.Length; i++)
+                        Boolean fileOK = false;
+                        String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"[^0-9a-zA-Z_]+", "");
+                        String path = Server.MapPath("~/img/books/");
+                        String fileExtension = System.IO.Path.GetExtension(subir_imagen.FileName).ToLower();
+                        String[] allowedExtensions = { ".jpeg", ".jpg" };
+                        if (subir_imagen.HasFiles)
                         {
-                            if (fileExtension == allowedExtensions[i])
+                            for (int i = 0; i < allowedExtensions.Length; i++)
                             {
-                                fileOK = true;
+                                if (fileExtension == allowedExtensions[i])
+                                {
+                                    fileOK = true;
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        Mensaje("¡Alto ahí!", "Debes seleccionar una imagen", "warning");
-                    }
-                    if (fileOK)
-                    {
-                        try
+                        else
                         {
-                            cdc = new ConexionLQDataContext();
-                            Libros l = new Libros();
-                            l.Nombre = txt_nombreN.Text;
-                            l.Sinopsis = txt_sinopsisN.Text;
-                            l.id_Autor = dd_autorN.SelectedIndex + 1;
-                            l.Lanzamiento = Convert.ToDateTime(txt_lanzamientoN.Text);
-                            l.Imagen = NewFileName + fileExtension;
-                            l.id_GeneroLibro = dd_generoN.SelectedIndex + 1;
-                            l.Otros_Generos = txt_ogeneros.Text;
-                            l.Paginas = Convert.ToInt32(txt_Paginas.Text);
-                            l.id_EstadoLibro = dd_estadoN.SelectedIndex + 1;
-                            l.Activo = true;
-                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
-                            cdc.Libros.InsertOnSubmit(l);
-                            cdc.SubmitChanges();
-                            Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
-                            Clean();
-                            llenar();
-                            EliminarPendiente();
+                            Mensaje("¡Alto ahí!", "Debes seleccionar una imagen", "warning");
                         }
-                        catch (Exception ex)
+                        if (fileOK)
                         {
-                            Mensaje("Archivo no pudo ser subido", ex.Message, "Error");
+                            try
+                            {
+                                cdc = new ConexionLQDataContext();
+                                Libros l = new Libros();
+                                l.Nombre = txt_nombreN.Text;
+                                l.Sinopsis = txt_sinopsisN.Text;
+                                l.id_Autor = dd_autorN.SelectedIndex + 1;
+                                l.Lanzamiento = Convert.ToDateTime(txt_lanzamientoN.Text);
+                                l.Imagen = NewFileName + fileExtension;
+                                l.id_GeneroLibro = dd_generoN.SelectedIndex + 1;
+                                l.Otros_Generos = txt_ogeneros.Text;
+                                l.Paginas = Convert.ToInt32(txt_Paginas.Text);
+                                l.id_EstadoLibro = dd_estadoN.SelectedIndex + 1;
+                                l.Activo = true;
+                                subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
+                                cdc.Libros.InsertOnSubmit(l);
+                                cdc.SubmitChanges();
+                                Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
+                                Clean();
+                                llenar();
+                                EliminarPendiente();
+                            }
+                            catch (Exception ex)
+                            {
+                                Mensaje("Archivo no pudo ser subido", ex.Message, "Error");
+                            }
                         }
-                    }
-                    else
-                    {
-                        Mensaje("Ups", "No se aceptan archivos de este tipo", "warning");
+                        else
+                        {
+                            Mensaje("Ups", "No se aceptan archivos de este tipo", "warning");
+                        }
                     }
                 }
             }
@@ -178,6 +187,19 @@ public partial class NavPrivada_CRUD_Libros : System.Web.UI.Page
         }
     }
 
+    private void Comprobar()
+    {
+        SqlDataReader Pendientes = sql.consulta("SELECT * FROM Pendientes WHERE Nombre = '" + txt_nombreN.Text + "'");
+        SqlDataReader Otros = sql.consulta("SELECT * FROM Libros WHERE Nombre = '" + txt_nombreN.Text + "'");
+        if (Pendientes.Read())
+        {
+            Exist = true;
+        }
+        else if (Otros.Read())
+        {
+            Exist = true;
+        }
+    }
     private void EliminarPendiente()
     {
         if (lbl_hayPendientes.Text.Equals("true"))

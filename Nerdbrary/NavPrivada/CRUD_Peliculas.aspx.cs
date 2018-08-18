@@ -13,6 +13,7 @@ public partial class NavPrivada_CRUD_Peliculas : System.Web.UI.Page
     Conexion sql = new Conexion();
     ConexionLQDataContext cdc;
     static int idPendiente = 0;
+    bool Exist = false;
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Page.Form.Enctype = "multipart/form-data";
@@ -85,58 +86,66 @@ public partial class NavPrivada_CRUD_Peliculas : System.Web.UI.Page
             }
             else
             {
-                if (IsPostBack)
+                Comprobar();
+                if (Exist)
                 {
-                    Boolean fileOK = false;
-                    String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"[^0-9a-zA-Z_]+", "");
-                    String path = Server.MapPath("~/img/movies/");
-                    String fileExtension = System.IO.Path.GetExtension(subir_imagen.FileName).ToLower();
-                    String[] allowedExtensions = { ".jpeg", ".jpg" };
-                    if (subir_imagen.HasFiles)
+                    Mensaje("Tenemos un problema", "Esta Película ya existe en el sistema", "error");
+                }
+                else
+                {
+                    if (IsPostBack)
                     {
-                        for (int i = 0; i < allowedExtensions.Length; i++)
+                        Boolean fileOK = false;
+                        String NewFileName = Regex.Replace(txt_nombreN.Text.ToLower(), @"[^0-9a-zA-Z_]+", "");
+                        String path = Server.MapPath("~/img/movies/");
+                        String fileExtension = System.IO.Path.GetExtension(subir_imagen.FileName).ToLower();
+                        String[] allowedExtensions = { ".jpeg", ".jpg" };
+                        if (subir_imagen.HasFiles)
                         {
-                            if (fileExtension == allowedExtensions[i])
+                            for (int i = 0; i < allowedExtensions.Length; i++)
                             {
-                                fileOK = true;
+                                if (fileExtension == allowedExtensions[i])
+                                {
+                                    fileOK = true;
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        Mensaje("¡Alto ahí!", "Debes seleccionar una imagen", "warning");
-                    }
-                    if (fileOK)
-                    {
-                        try
+                        else
                         {
-                            cdc = new ConexionLQDataContext();
-                            Peliculas p = new Peliculas();
-                            p.Nombre = txt_nombreN.Text;
-                            p.Sinopsis = txt_sinopsisN.Text;
-                            p.Lanzamiento = Convert.ToDateTime(txt_lanzamientoN.Text);
-                            p.Duracion = txt_duracionN.Text;
-                            p.Imagen = NewFileName + fileExtension;
-                            p.id_GeneroPelicula = (dd_generoN.SelectedIndex + 1);
-                            p.Otros_Generos = txt_OGenerosN.Text;
-                            p.id_EstadoPelicula = (dd_estadoN.SelectedIndex + 1);
-                            p.Activo = true;
-                            EliminarPendiente();
-                            subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
-                            cdc.Peliculas.InsertOnSubmit(p);
-                            cdc.SubmitChanges();
-                            Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
-                            Clean();
-                            llenar();
+                            Mensaje("¡Alto ahí!", "Debes seleccionar una imagen", "warning");
                         }
-                        catch (Exception ex)
+                        if (fileOK)
                         {
-                            Mensaje("Archivo no pudo ser subido", ex.Message, "Error");
+                            try
+                            {
+                                cdc = new ConexionLQDataContext();
+                                Peliculas p = new Peliculas();
+                                p.Nombre = txt_nombreN.Text;
+                                p.Sinopsis = txt_sinopsisN.Text;
+                                p.Lanzamiento = Convert.ToDateTime(txt_lanzamientoN.Text);
+                                p.Duracion = txt_duracionN.Text;
+                                p.Imagen = NewFileName + fileExtension;
+                                p.id_GeneroPelicula = (dd_generoN.SelectedIndex + 1);
+                                p.Otros_Generos = txt_OGenerosN.Text;
+                                p.id_EstadoPelicula = (dd_estadoN.SelectedIndex + 1);
+                                p.Activo = true;
+                                EliminarPendiente();
+                                subir_imagen.PostedFile.SaveAs(path + NewFileName + fileExtension);
+                                cdc.Peliculas.InsertOnSubmit(p);
+                                cdc.SubmitChanges();
+                                Mensaje("¡Felicidades!", "Se ha creado exitosamente el registro", "success");
+                                Clean();
+                                llenar();
+                            }
+                            catch (Exception ex)
+                            {
+                                Mensaje("Archivo no pudo ser subido", ex.Message, "Error");
+                            }
                         }
-                    }
-                    else
-                    {
-                        Mensaje("Ups", "No se aceptan archivos de este tipo", "warning");
+                        else
+                        {
+                            Mensaje("Ups", "No se aceptan archivos de este tipo", "warning");
+                        }
                     }
                 }
             }
@@ -144,6 +153,20 @@ public partial class NavPrivada_CRUD_Peliculas : System.Web.UI.Page
         catch
         {
             Mensaje("Ups", "Algo ha salido mal", "warning");
+        }
+    }
+
+    private void Comprobar()
+    {
+        SqlDataReader Pendientes = sql.consulta("SELECT * FROM Pendientes WHERE Nombre = '" + txt_nombreN.Text + "'");
+        SqlDataReader Otros = sql.consulta("SELECT * FROM Peliculas WHERE Nombre = '" + txt_nombreN.Text + "'");
+        if (Pendientes.Read())
+        {
+            Exist = true;
+        }
+        else if (Otros.Read())
+        {
+            Exist = true;
         }
     }
 
