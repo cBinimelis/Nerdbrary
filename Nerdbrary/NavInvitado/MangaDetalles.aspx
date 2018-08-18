@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="uk-section-default">
-        <div id="Cover" runat="server" class="background"></div>
+        <div id="Cover" runat="server" class="background" style="background-image:url(../img/anime/defaultbg.jpg)"></div>
         <div class="uk-container uk-card uk-card-default uk-align-center uk-animation-slide-left">
             <div class="uk-card-body uk-card-medium">
                 <h1 class="uk-text-center uk-heading-line uk-padding-small">

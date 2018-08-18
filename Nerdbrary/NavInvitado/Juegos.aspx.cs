@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class NavVisitas_AnimeVisitas : System.Web.UI.Page
+public partial class NavInvitado_Juegos : System.Web.UI.Page
 {
     ConexionLQDataContext cdc;
     Conexion sql = new Conexion();
@@ -16,27 +16,22 @@ public partial class NavVisitas_AnimeVisitas : System.Web.UI.Page
             llenado();
         }
     }
-    
+
     int IdGrilla = 0;
 
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
-        AnimeList.DataSource = cdc.vAnime.OrderBy(x => x.Nombre);
-        AnimeList.DataBind();
+        GameList.DataSource = cdc.vJuegos.OrderBy(x => x.Nombre);
+        GameList.DataBind();
     }
 
-    protected void AnimeList_ItemCommand(object sender, ListViewCommandEventArgs e)
+    protected void GameList_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
         if (e.CommandName == "Select")
         {
             int ID = Convert.ToInt32(e.CommandArgument);
-            Response.Redirect("AnimeDetalles.aspx?Id=" + ID);
+            Response.Redirect("JuegosDetalles.aspx?Id=" + ID);
         }
-    }
-
-    private void Mensaje(String Tit, String Msg, String Stat)
-    {
-        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
 }
