@@ -21,18 +21,47 @@ public partial class NavPrivada_Juegos : System.Web.UI.Page
 
     private void Llenado()
     {
+        String Nick = Convert.ToString(Session["Admin"]);
         cdc = new ConexionLQDataContext();
         GrillaJuegos.DataSource = cdc.vJuegos.OrderBy(x => x.Nombre);
         GrillaJuegos.DataBind();
+
+        GrillaJuegosNA.DataSource = cdc.vJuegoUsuarioNA(Nick);
+        GrillaJuegosNA.DataBind();
     }
 
     protected void GrillaJuegos_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         try
         {
-            String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GrillaJuegos.Rows[rowIndex];
+            string ID = (row.FindControl("lbl_id") as Label).Text;
+            IdGrilla = Convert.ToInt32(ID);
+            if (e.CommandName == "Select")
+            {
+                Response.Redirect("Detalles_Juegos.aspx?Id=" + ID);
+            }
+        }
+        catch
+        {
+            Mensaje("Surgió un problema", "No se ha podido agregar el juego a tu lista", "error");
+        }
+    }
+    protected void btn_buscar_Click(object sender, EventArgs e)
+    {
+        cdc = new ConexionLQDataContext();
+        GrillaJuegos.DataSource = cdc.vJuegos.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
+        GrillaJuegos.DataBind();
+    }
+
+    protected void GrillaJuegosNA_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            String Nick = Convert.ToString(Session["Admin"]);
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = GrillaJuegosNA.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
@@ -57,6 +86,7 @@ public partial class NavPrivada_Juegos : System.Web.UI.Page
                     cdc.Juegos_Usuario.InsertOnSubmit(ju);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
+                    Llenado();
                 }
             }
         }
@@ -71,10 +101,4 @@ public partial class NavPrivada_Juegos : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
 
-    protected void btn_buscar_Click(object sender, EventArgs e)
-    {
-        cdc = new ConexionLQDataContext();
-        GrillaJuegos.DataSource = cdc.vJuegos.Where(x => x.Nombre.Contains(txt_buscar.Text.Trim())).OrderBy(x => x.Nombre);
-        GrillaJuegos.DataBind();
-    }
 }

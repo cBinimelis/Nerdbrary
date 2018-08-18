@@ -25,7 +25,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="Lista_Juegos.aspx" class="uk-link-reset">
+                    <a href="NavInvitado/Juegos.aspx" class="uk-link-reset">
                         <div class="uk-card uk-card-hover uk-card-body uk-text-center">
                             <asp:Label ID="lbl_Juegos" CssClass="count uk-heading-primary" runat="server" Text="2222"></asp:Label>
                             <p>Juegos</p>
@@ -33,7 +33,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="Lista_Manga.aspx" class="uk-link-reset">
+                    <a href="NavInvitado/Manga.aspx" class="uk-link-reset">
                         <div class="uk-card uk-card-hover uk-card-body uk-text-center">
                             <asp:Label ID="lbl_Mangas" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
                             <p>Mangas</p>
