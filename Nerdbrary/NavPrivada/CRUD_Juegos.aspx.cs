@@ -171,13 +171,8 @@ public partial class NavPrivada_JuegosCRUD : System.Web.UI.Page
 
     private void Comprobar()
     {
-        SqlDataReader Pendientes = sql.consulta("SELECT * FROM Pendientes WHERE Nombre = '" + txt_nombreN.Text + "'");
-        SqlDataReader Otros = sql.consulta("SELECT * FROM Juegos WHERE Nombre = '" + txt_nombreN.Text + "'");
-        if (Pendientes.Read())
-        {
-            Exist = true;
-        }
-        else if (Otros.Read())
+        SqlDataReader Comp = sql.consulta("SELECT * FROM Juegos WHERE Nombre = '" + txt_nombreN.Text + "'");
+        if (Comp.Read())
         {
             Exist = true;
         }

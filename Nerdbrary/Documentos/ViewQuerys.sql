@@ -58,21 +58,21 @@
 --EXEC vAnimeUsuario 'ivichan'
 
 
-ALTER PROC vAnimeUsuarioNA @User VARCHAR(50)
-AS
-BEGIN
+--ALTER PROC vAnimeUsuarioNA @User VARCHAR(50)
+--AS
+--BEGIN
 
-	DECLARE @USERID AS INT
-	SET @USERID = (SELECT id_Usuario FROM [Usuario] WHERE Nick = @User)
+--	DECLARE @USERID AS INT
+--	SET @USERID = (SELECT id_Usuario FROM [Usuario] WHERE Nick = @User)
 
-SELECT A.id_Anime, A.Nombre, A.Sinopsis, CONVERT(varchar, A.Lanzamiento, 103) AS 'Lanzamiento' , A.Temporadas, 
-A.CapitulosTotales 'Capitulos',A.Imagen, GA.Descripcion 'Genero', ES.Descripcion 'Estado'
-FROM Anime A
-INNER JOIN Genero_Anime GA ON A.id_GeneroAnime = ga.id_GeneroAnime
-INNER JOIN Estado_Serie ES ON A.id_EstadoSerie = ES.id_EstadoSerie
-WHERE A.id_Anime NOT IN (SELECT id_Anime FROM Anime_Usuario WHERE id_Usuario = @USERID) AND A.Activo =  1
-ORDER BY A.Nombre ASC
-END
+--SELECT A.id_Anime, A.Nombre, A.Sinopsis, CONVERT(varchar, A.Lanzamiento, 103) AS 'Lanzamiento' , A.Temporadas, 
+--A.CapitulosTotales 'Capitulos',A.Imagen, GA.Descripcion 'Genero', ES.Descripcion 'Estado'
+--FROM Anime A
+--INNER JOIN Genero_Anime GA ON A.id_GeneroAnime = ga.id_GeneroAnime
+--INNER JOIN Estado_Serie ES ON A.id_EstadoSerie = ES.id_EstadoSerie
+--WHERE A.id_Anime NOT IN (SELECT id_Anime FROM Anime_Usuario WHERE id_Usuario = @USERID) AND A.Activo =  1
+--ORDER BY A.Nombre ASC
+--END
 
 
 --EXEC vAnimeUsuarioNA 'iviitan'
