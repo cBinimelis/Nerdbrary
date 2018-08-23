@@ -19,7 +19,7 @@
             <div class=" uk-container-expand">
                 <h1 class="uk-article-title uk-text-center uk-heading">Lista de Mangas</h1>
                 <br />
-                <div class="uk-flex uk-flex-center" uk-grid>
+                <div class="uk-flex uk-flex-center" uk-scrollspy="target: > div; cls:uk-animation-fade; delay: 500" uk-grid>
                     <asp:listview id="MangaList" datakeynames="id_Manga" runat="server" onitemcommand="MangaList_ItemCommand">
                         <GroupTemplate>
                             <div id="itemPlaceholderContainer" class="uk-child-width-1-4@m" runat="server">

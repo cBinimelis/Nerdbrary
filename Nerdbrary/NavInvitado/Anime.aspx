@@ -19,7 +19,7 @@
             <div class=" uk-container-expand">
                 <h1 class="uk-article-title uk-text-center uk-heading">Lista de Anime</h1>
                 <br />
-                <div class="uk-flex uk-flex-center" uk-grid>
+                <div class="uk-flex uk-flex-center" uk-scrollspy="target: > div; cls:uk-animation-fade; delay: 500" uk-grid>
                     <asp:listview id="AnimeList" datakeynames="id_Anime" runat="server" onitemcommand="AnimeList_ItemCommand">
                         <GroupTemplate>
                             <div id="itemPlaceholderContainer" class="uk-child-width-1-4@m" runat="server">
@@ -30,7 +30,7 @@
                         <ItemTemplate>
                             <div class="uk-card uk-card-default uk-width-medium uk-height-medium uk-box-shadow-xlarge uk-box-shadow-hover-small">
                                 <div class="uk-card-media-top image-wrapper">
-                                    <img class="card-img" src="../img/anime/<%# Eval("Imagen") %>" alt="">
+                                    <img class="card-img uk-animation-scale-up uk-animation-toggle" src="../img/anime/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
                                     <asp:Label ID="Label1" runat="server" CssClass="uk-card-title uk-align-center uk-text-truncate" Text='<%# Eval("Nombre") %>'></asp:Label>
