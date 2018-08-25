@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestion de Series" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Series.aspx.cs" Inherits="NavPrivada_CRUD_Series" %>
+﻿<%@ Page Title="Gestion de Series" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Series.aspx.cs" Inherits="NavPrivada_CRUD_Series" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

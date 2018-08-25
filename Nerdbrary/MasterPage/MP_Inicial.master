@@ -39,8 +39,8 @@
                                     <a href="#">Ñoñopedia</a>
                                     <ul class="uk-nav-sub">
                                         <li><a href="../NavInvitado/Anime.aspx">Anime</a></li>
-                                        <li><a href="#">Sub item</a></li>
-                                        <li><a href="#">Sub item</a></li>
+                                        <li><a href="../NavInvitado/Manga.aspx">Manga</a></li>
+                                        <li><a href="../NavInvitado/Juegos.aspx">Juegos</a></li>
                                     </ul>
                                 </li>
                                 <li class="uk-nav-divider"></li>

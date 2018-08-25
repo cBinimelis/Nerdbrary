@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Desarrolladores" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Desarrollador.aspx.cs" Inherits="NavPrivada_CRUD_Desarrollador" %>
+﻿<%@ Page Title="Gestión de Desarrolladores" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Desarrollador.aspx.cs" Inherits="NavPrivada_CRUD_Desarrollador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>

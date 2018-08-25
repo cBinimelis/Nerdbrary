@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Libros" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Libros.aspx.cs" Inherits="NavPrivada_CRUD_Libros" %>
+﻿<%@ Page Title="Gestión de Libros" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Libros.aspx.cs" Inherits="NavPrivada_CRUD_Libros" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

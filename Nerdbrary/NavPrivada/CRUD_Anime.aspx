@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Anime" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Anime.aspx.cs" Inherits="NavPrivada_AnimeCRUD" %>
+﻿<%@ Page Title="Gestión de Anime" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Anime.aspx.cs" Inherits="NavPrivada_AnimeCRUD" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>

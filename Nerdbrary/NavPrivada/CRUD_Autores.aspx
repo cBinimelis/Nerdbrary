@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Autores" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Autores.aspx.cs" Inherits="NavPrivada_CRUD_Autores" %>
+﻿<%@ Page Title="Gestión de Autores" MaintainScrollPositionOnPostback="true" Language="C#" MasterPageFile="~/MasterPage/MP_Central.master" AutoEventWireup="true" CodeFile="CRUD_Autores.aspx.cs" Inherits="NavPrivada_CRUD_Autores" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
