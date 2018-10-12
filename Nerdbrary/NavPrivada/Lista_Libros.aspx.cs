@@ -22,17 +22,40 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
-        GrillaLibros.DataSource = cdc.vLibros;
+        String Nick = Convert.ToString(Session["Admin"]);
+        GrillaLibros.DataSource = cdc.vLibros.OrderBy(x => x.Nombre);
         GrillaLibros.DataBind();
+
+        GrillaLibrosNA.DataSource = cdc.vLibroUsuarioNA(Nick);
+        GrillaLibrosNA.DataBind();
     }
 
     protected void GrillaLibros_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         try
         {
-            String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GrillaLibros.Rows[rowIndex];
+            string ID = (row.FindControl("lbl_id") as Label).Text;
+            IdGrilla = Convert.ToInt32(ID);
+            if (e.CommandName == "Select")
+            {
+                Response.Redirect("Detalles_Libros.aspx?Id=" + ID);
+            }
+        }
+        catch
+        {
+            Mensaje("Surgió un problema", "No se ha podido mostrar el libro de tu lista", "error");
+        }
+    }
+
+    protected void GrillaLibrosNA_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            String Nick = Convert.ToString(Session["Admin"]);
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = GrillaLibrosNA.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
@@ -57,6 +80,7 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
                     cdc.Libro_Usuario.InsertOnSubmit(l);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
+                    this.llenado();
                 }
             }
         }

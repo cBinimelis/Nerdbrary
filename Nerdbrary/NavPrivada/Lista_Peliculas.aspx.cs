@@ -22,8 +22,12 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
+        String Nick = Convert.ToString(Session["Admin"]);
         GrillaPelicula.DataSource = cdc.vPelicula.OrderBy(x => x.Nombre);
         GrillaPelicula.DataBind();
+
+        GrillaPeliculaNA.DataSource = cdc.vPeliculaUsuarioNA(Nick).OrderBy(x => x.Nombre);
+        GrillaPeliculaNA.DataBind();
     }
 
     protected void GrillaPelicula_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -33,6 +37,26 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
             String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GrillaPelicula.Rows[rowIndex];
+            string ID = (row.FindControl("lbl_id") as Label).Text;
+            IdGrilla = Convert.ToInt32(ID);
+            if (e.CommandName == "Select")
+            {
+                Response.Redirect("Detalles_Pelicula.aspx?Id=" + ID);
+            }
+        }
+        catch
+        {
+            Mensaje("Surgió un problema", "No se ha podido mostrar la Pelicula de tu lista", "error");
+        }
+    }
+
+    protected void GrillaPeliculaNA_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            String Nick = Convert.ToString(Session["Admin"]);
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = GrillaPeliculaNA.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
@@ -57,13 +81,15 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
                     cdc.Pelicula_Usuario.InsertOnSubmit(m);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
+                    this.llenado();
                 }
             }
         }
         catch
         {
-            Mensaje("Surgió un problema", "No se ha podido agregar el Pelicula a tu lista", "error");
+            Mensaje("Surgió un problema", "No se ha podido mostrar la Pelicula de tu lista", "error");
         }
+
     }
 
     protected void btn_buscar_Click(object sender, EventArgs e)

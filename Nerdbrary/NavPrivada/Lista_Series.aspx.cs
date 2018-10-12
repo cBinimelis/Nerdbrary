@@ -52,7 +52,7 @@ public partial class NavPrivada_Series_Lista_Series : System.Web.UI.Page
         }
         catch
         {
-            Mensaje("Surgió un problema", "No se ha podido agregar la serie a tu lista", "error");
+            Mensaje("Surgió un problema", "No se ha podido mostrar la Serie de tu lista", "error");
         }
     }
     protected void GrillaSeriesNA_RowCommand(object sender, GridViewCommandEventArgs e)

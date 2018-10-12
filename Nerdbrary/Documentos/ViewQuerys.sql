@@ -271,10 +271,29 @@
 --ORDER BY L.Nombre ASC
 --END
 
---EXEC vLibroUsuario 'ivichan'
+--EXEC vLibroUsuario 'iviitan'
 
 
 
+
+--ALTER PROC vLibroUsuarioNA @User VARCHAR(50)
+--AS
+--BEGIN
+
+--	DECLARE @USERID AS INT
+--	SET @USERID = (SELECT id_Usuario FROM [Usuario] WHERE Nick = @User)
+
+--SELECT L.id_Libro, L.Nombre, L.Sinopsis, L.Paginas, A.id_Autor, A.Nombre 'Autor',  CONVERT(varchar, L.Lanzamiento, 103) AS 'Lanzamiento',
+--L.Imagen, GL.Descripcion 'Genero', L.Otros_Generos 'Otros Generos',EL.Descripcion 'Estado'
+--FROM Libros L 
+--INNER JOIN Autor A ON L.id_Autor = A.id_Autor
+--INNER JOIN Genero_Libro GL ON L.id_GeneroLibro = GL.id_GeneroLibro
+--INNER JOIN Estado_Libro EL ON L.id_EstadoLibro = EL.id_EstadoLibro
+--WHERE L.id_Libro NOT IN (SELECT id_Libro FROM Libro_Usuario WHERE id_Usuario = @USERID) AND L.Activo =  1
+--ORDER BY L.Nombre ASC
+--END
+
+--EXEC vLibroUsuarioNA 'iviitan'
 
 --------------------------------------------------------SERIES--------------------------------------------------------
 --CREATE VIEW vSeries as
@@ -322,8 +341,7 @@
 --ORDER BY S.Nombre ASC
 --END
 
-----EXEC vSerieUsuario 'ivichan'
-
+----EXEC vSerieUsuario 'iviTan'
 
 
 
@@ -393,3 +411,25 @@
 --END
 
 --EXEC vPeliculaUsuario'geekriszx'
+
+
+
+
+--ALTER PROC vPeliculaUsuarioNA @User VARCHAR(50)
+--AS
+--BEGIN
+
+--	DECLARE @USERID AS INT
+--	SET @USERID = (SELECT id_Usuario FROM [Usuario] WHERE Nick = @User)
+
+
+--SELECT P.id_Pelicula, P.Nombre, P.Sinopsis, P.Duracion, CONVERT(varchar, P.Lanzamiento, 103) AS 'Lanzamiento', P.Imagen,
+--GP.Descripcion 'Genero', P.Otros_Generos 'Otros Generos', EP.Descripcion 'Estado'
+--FROM Peliculas P
+--INNER JOIN Genero_Pelicula GP ON P.id_GeneroPelicula = GP.id_GeneroPelicula
+--INNER JOIN Estado_Pelicula EP ON P.id_EstadoPelicula = EP.id_EstadoPelicula
+--WHERE P.id_Pelicula NOT IN (SELECT id_Pelicula FROM Pelicula_Usuario WHERE id_Usuario = @USERID) AND P.Activo =  1
+--ORDER BY P.Nombre ASC
+--END
+
+--EXEC vPeliculaUsuarioNA 'iviitan'
