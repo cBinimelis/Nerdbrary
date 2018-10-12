@@ -326,6 +326,25 @@
 
 
 
+
+--CREATE PROC vSerieUsuarioNA @User VARCHAR(50)
+--AS
+--BEGIN
+
+--	DECLARE @USERID AS INT
+--	SET @USERID = (SELECT id_Usuario FROM [Usuario] WHERE Nick = @User)
+
+--SELECT S.id_Serie, S.Nombre, S.Sinopsis, CONVERT(varchar, S.Lanzamiento, 103) AS 'Lanzamiento' , S.Temporadas, 
+--S.CapitulosTotales 'Capitulos',S.Imagen, GS.Descripcion 'Genero', ES.Descripcion 'Estado'
+--FROM Series S
+--INNER JOIN Genero_Serie GS ON S.id_GeneroSerie = GS.id_GeneroSerie
+--INNER JOIN Estado_Serie ES ON S.id_EstadoSerie = ES.id_EstadoSerie
+--WHERE S.id_Serie NOT IN (SELECT id_Serie FROM Serie_Usuario WHERE id_Usuario = @USERID ) AND S.Activo = 1
+--ORDER BY S.Nombre ASC
+--END
+
+--EXEC vSerieUsuarioNA 'geekriszx'
+
 --------------------------------------------------------PELICULAS--------------------------------------------------------
 
 --ALTER VIEW vPelicula AS

@@ -23,10 +23,63 @@
                         <asp:Button ID="btn_buscar" CssClass="uk-button uk-position-right uk-button-default" runat="server" Text="Buscar" OnClick="btn_buscar_Click" />
                     </div>
                 </div>
+                <ul uk-switcher="animation: uk-animation-fade" uk-tab>
+                    <li><a href="#">Todos</a></li>
+                    <li><a href="#">No agregados</a></li>
+                </ul>
+                
+                <ul class="uk-switcher uk-margin">
+                    <li>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body uk-overflow-auto">
                         <asp:GridView ID="GrillaSeries" DataKeyNames="id_Serie" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
                             BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaSeries_RowCommand">
+                            <Columns>
+                                <asp:TemplateField HeaderText="ID Serie" Visible="false">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_Serie") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Nombre">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Lanzamiento">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_lanzamiento" runat="server" Text='<%# Eval("Lanzamiento") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Total Capítulos">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_capitulos" runat="server" Text='<%# Eval("Capitulos") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Genero">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_genero" runat="server" Text='<%# Eval("Genero") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Estado">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Estado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary uk-button-small" runat="server" Text="Ver" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+                        </li>
+                    <li>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-body uk-overflow-auto">
+                        <asp:GridView ID="GrillaSeriesNA" DataKeyNames="id_Serie" CssClass="uk-table uk-table-divider uk-table-small" AutoGenerateColumns="False"
+                            BorderStyle="None" GridLines="None" runat="server" OnRowCommand="GrillaSeriesNA_RowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="ID Serie" Visible="false">
                                     <ItemTemplate>
@@ -68,6 +121,8 @@
                         </asp:GridView>
                     </div>
                 </div>
+                    </li>
+                    </ul>
             </div>
         </div>
     </div>

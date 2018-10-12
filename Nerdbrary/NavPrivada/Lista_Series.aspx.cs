@@ -22,8 +22,12 @@ public partial class NavPrivada_Series_Lista_Series : System.Web.UI.Page
     private void llenado()
     {
         cdc = new ConexionLQDataContext();
+        String Nick = Convert.ToString(Session["Admin"]);
         GrillaSeries.DataSource = cdc.vSeries.OrderBy(x => x.Nombre);
         GrillaSeries.DataBind();
+
+        GrillaSeriesNA.DataSource = cdc.vSerieUsuarioNA(Nick).OrderBy(x => x.Nombre);
+        GrillaSeriesNA.DataBind();
     }
 
     protected void btn_buscar_Click(object sender, EventArgs e)
@@ -37,9 +41,27 @@ public partial class NavPrivada_Series_Lista_Series : System.Web.UI.Page
     {
         try
         {
-            String Nick = Convert.ToString(Session["Admin"]);
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = GrillaSeries.Rows[rowIndex];
+            string ID = (row.FindControl("lbl_id") as Label).Text;
+            IdGrilla = Convert.ToInt32(ID);
+            if (e.CommandName == "Select")
+            {
+                Response.Redirect("Detalles_Serie.aspx?Id=" + ID);
+            }
+        }
+        catch
+        {
+            Mensaje("Surgió un problema", "No se ha podido agregar la serie a tu lista", "error");
+        }
+    }
+    protected void GrillaSeriesNA_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            String Nick = Convert.ToString(Session["Admin"]);
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = GrillaSeriesNA.Rows[rowIndex];
             string ID = (row.FindControl("lbl_id") as Label).Text;
             IdGrilla = Convert.ToInt32(ID);
             if (e.CommandName == "Select")
@@ -64,6 +86,7 @@ public partial class NavPrivada_Series_Lista_Series : System.Web.UI.Page
                     cdc.Serie_Usuario.InsertOnSubmit(su);
                     cdc.SubmitChanges();
                     Mensaje("¡Felicidades!", "Agregado a tu lista exitosamente", "success");
+                    this.llenado();
                 }
             }
         }
