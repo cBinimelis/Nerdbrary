@@ -20,9 +20,8 @@
                             <asp:label id="DetallesAut" cssclass="uk-text-justify" runat="server" text="Label"></asp:label>
                         </p>
                     </article>
-                </div>
-                <div class="uk-flex uk-flex-center" uk-grid>
-                    <asp:listview id="BookList" datakeynames="id_Libro" runat="server" onitemcommand="BookList_ItemCommand">
+                    <div class="uk-flex uk-flex-center" uk-grid>
+                        <asp:listview id="BookList" datakeynames="id_Libro" runat="server" onitemcommand="BookList_ItemCommand">
                         <GroupTemplate>
                             <div id="itemPlaceholderContainer" class="uk-child-width-1-4@m" runat="server">
                                 <div id="itemPlaceholder" runat="server">
@@ -30,19 +29,19 @@
                             </div>
                         </GroupTemplate>
                         <ItemTemplate>
-                            <div class="uk-card uk-card-default uk-width-medium" >
+                            <div class="uk-card uk-card-default uk-width-medium uk-height-medium">
                                 <div class="uk-card-media-top image-wrapper">
                                     <img class="card-img" src="../img/books/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
-                                        <asp:Label ID="lbl_nombre" CssClass="uk-card-title uk-align-center uk-text-truncate" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
+                                    <asp:Label ID="lbl_nombre" CssClass="uk-card-title uk-align-center uk-text-truncate" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
                                     <asp:Button ID="btn_ver" CssClass="uk-button uk-button-primary boton-ver uk-light uk-position-bottom uk-width-1-1 uk-margin-medium" runat="server" Text="Ver" CommandName="Select" CommandArgument='<%# Eval("id_Libro") %>' />
                                 </div>
                             </div>
                         </ItemTemplate>
                     </asp:listview>
+                    </div>
                 </div>
-
             </div>
 
         </div>

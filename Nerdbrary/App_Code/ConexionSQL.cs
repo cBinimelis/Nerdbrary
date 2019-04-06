@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 public class Conexion
 {
     //Conexion Local
-    String conexion = "Data Source=VLADIMIR;Initial Catalog=bd_biblioteca;Persist Security Info=True;User ID=sa;Password=crislyn;MultipleActiveResultSets=True";
+    String conexion = "Data Source=localhost;Initial Catalog=bd_biblioteca;Persist Security Info=True;User ID=sa;Password=crislyn;MultipleActiveResultSets=True";
 
     SqlConnection con;
 
@@ -27,6 +27,7 @@ public class Conexion
     {
         try
         {
+
             con.Open();
         }
         catch (Exception e)

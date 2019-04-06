@@ -32,8 +32,8 @@
                         </GroupTemplate>
                         <ItemTemplate>
                             <div class="uk-card uk-card-default uk-width-medium uk-height-medium uk-box-shadow-xlarge uk-box-shadow-hover-small">
-                                <div class="uk-card-media-top uk-width-medium">
-                                    <img src="../img/games/developer/<%# Eval("Imagen") %>" alt="">
+                                <div class="uk-card-media-top image-wrapper">
+                                    <img class="card-img" src="../img/games/developer/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
                                     <h3 class="uk-card-title">

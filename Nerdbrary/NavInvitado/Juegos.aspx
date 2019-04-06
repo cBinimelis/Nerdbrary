@@ -16,7 +16,7 @@
     <div class="uk-section-default uk-margin">
         <div class="uk-section">
             <div class=" uk-container-expand">
-                <h1 class="uk-article-title uk-text-center uk-heading">Lista de Anime</h1>
+                <h1 class="uk-article-title uk-text-center uk-heading">Lista de Juegos</h1>
                 <br />
                 <div class="uk-flex uk-flex-center" uk-grid>
                     <asp:listview id="GameList" datakeynames="id_Juego" runat="server" onitemcommand="GameList_ItemCommand">
