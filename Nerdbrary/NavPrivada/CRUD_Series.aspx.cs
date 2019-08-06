@@ -52,7 +52,7 @@ public partial class NavPrivada_CRUD_Series : System.Web.UI.Page
     private void llenar()
     {
         cdc = new ConexionLQDataContext();
-        GrillaSerie.DataSource = cdc.vSeries;
+        GrillaSerie.DataSource = cdc.vSeries.OrderBy(X => X.Nombre);
         GrillaSerie.DataBind();
 
     }

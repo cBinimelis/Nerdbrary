@@ -96,7 +96,7 @@
                                     </li>
                                     <li class="uk-divider-icon"></li>
                                     <li class="uk-parent">
-                                        <a href="../NavPrivada/Lista_Peliculas.aspx">Manga</a>
+                                        <a href="../NavPrivada/Lista_Peliculas.aspx">Peliculas</a>
                                         <ul class="uk-nav-sub">
                                             <li><a href="../NavPrivada/MisPeliculas.aspx">Mis Peliculas</a></li>
                                             <li><a href="../NavPrivada/CRUD_Peliculas.aspx">Mantenedor</a></li>

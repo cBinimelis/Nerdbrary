@@ -13,7 +13,8 @@ public class Conexion
 {
     //Conexion Local
     String conexion = "Data Source=localhost;Initial Catalog=bd_biblioteca;Persist Security Info=True;User ID=sa;Password=crislyn;MultipleActiveResultSets=True";
-
+    //Conexion Host
+    //String conexion = "Data Source=173.248.151.67,1533;Initial Catalog=bd_biblioteca;Persist Security Info=True;User ID=binimeli;Password=210394Freeza;MultipleActiveResultSets=True";
     SqlConnection con;
 
     public Conexion()

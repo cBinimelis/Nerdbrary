@@ -20,10 +20,21 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
         {
             LlenaDetalles();
             llenarGrilla();
+            llenaEstado();
         }
     }
 
+    private void llenaEstado()
+    {
+        cdc = new ConexionLQDataContext();
+        dd_estadoN.DataSource = cdc.Estado_Serie;
+        dd_estadoN.DataTextField = "Descripcion";
+        dd_estadoN.DataValueField = "id_EstadoSerie";
+        dd_estadoN.DataBind();
+    }
 
+
+    //Llenar elementos de la pagina
     private void LlenaDetalles()
     {
         if (idAnime == null || idAnime.Equals(0))
@@ -127,6 +138,8 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
                 EstadoA.Text = Estado;
                 APersonalA.Text = Avance;
                 Cover.Attributes["Style"] = "background-image: url(../img/anime/" + RutaImagen + ")";
+
+                LlenarEditables(Capitulos.ToString(), Temporadas.ToString(), Sinopsis);
             }
             else
             {
@@ -135,6 +148,7 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
         }
     }
 
+    
     private void llenarGrilla()
     {
         cdc = new ConexionLQDataContext();
@@ -201,8 +215,21 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
         APersonalA.Visible = false;
     }
 
+    private void LlenarEditables(String Caps, String Temps, String Sin)
+    {
+        txt_capitulosN.Text = Caps;
+        txt_temporadasN.Text = Temps;
+        txt_sinopsisN.Text = Sin;
+    }
+
+    protected void btn_editar_Click(object sender, EventArgs e)
+    {
+
+    }
+
     private void Mensaje(String Tit, String Msg, String Stat)
     {
         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Alerta('" + Tit + "','" + Msg + "','" + Stat + "');", true);
     }
+
 }

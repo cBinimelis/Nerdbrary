@@ -6,24 +6,24 @@
     <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
         <div class="uk-position-relative uk-background-cover uk-height-viewport uk-visible-toggle uk-light"
             uk-slideshow="animation: push; autoplay: true; autoplay-interval: 2000; pause-on-hover: true">
-            <ul class="uk-slideshow-items" uk-height-viewport="min-height: 300">
+            <ul class="uk-slideshow-items"  uk-height-viewport="min-height: 300" >
                 <li>
-                    <img src="../img/LoginCover1.jpg" alt="" uk-cover>
+                    <img src="img/LoginCover1.jpg" alt="" uk-cover>
                 </li>
                 <li>
-                    <img src="../img/LoginCover2.jpg" alt="" uk-cover>
+                    <img src="img/LoginCover2.jpg" alt="" uk-cover>
                 </li>
                 <li>
-                    <img src="../img/LoginCover3.jpg" alt="" uk-cover>
+                    <img src="img/LoginCover3.jpg" alt="" uk-cover>
                 </li>
                 <li>
-                    <img src="../img/LoginCover4.jpg" alt="" uk-cover>
+                    <img src="img/LoginCover4.jpg" alt="" uk-cover>
                 </li>
                 <li>
-                    <img src="../img/LoginCover5.jpg" alt="" uk-cover>
+                    <img src="img/LoginCover5.jpg" alt="" uk-cover>
                 </li>
                 <li>
-                    <img src="../img/LoginCover6.jpg" alt="" uk-cover>
+                    <img src="img/LoginCover6.jpg" alt="" uk-cover>
                 </li>
             </ul>
 

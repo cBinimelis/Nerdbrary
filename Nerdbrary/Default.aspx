@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <div class="uk-overflow-hidden">
-        <div class="uk-background-cover uk-height-viewport" style="background-image: url(img/ÑoñoBG.png);">
+        <div class="uk-background-cover uk-height-viewport" style="background-image: url(img/ÑoñoBG.jpg);">
         </div>
     </div>
     <div class="uk-section-muted uk-padding">
