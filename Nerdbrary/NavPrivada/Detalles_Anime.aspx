@@ -66,20 +66,19 @@
                                 <asp:DropDownList ID="dd_estadoN" CssClass="uk-select uk-form-width-large" runat="server" ForeColor="#999999"></asp:DropDownList>
                             </div>
                         </div>
+
                         <div class="uk-width-1-1">
-                            <p>Sinopsis</p>
-                            <div class="uk-inline">
-                                <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                <asp:TextBox ID="txt_sinopsisN" CssClass="uk-textarea uk-height-medium uk-width-1-1" runat="server" TextMode="MultiLine"></asp:TextBox>
+                            <div class="uk-container">
+                                <p>Sinopsis</p>
+                                <div class="uk-inline">
+                                    <span class="uk-form-icon" uk-icon="icon: info"></span>
+                                    <asp:TextBox ID="txt_sinopsisN" CssClass="uk-textarea uk-height-medium uk-width-xxlarge" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="uk-width-1-1">
-                            <div class="uk-inline uk-position-bottom-center uk-position-relative">
-                                <span class="uk-form-icon" uk-icon="icon: edit"></span>
-                                <asp:Button ID="btn_editar" CssClass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" Text="Editar Anime" OnClick="btn_editar_Click" />
-                            </div>
-                        </div>
+                        <span class="uk-form-icon" uk-icon="icon: edit"></span>
+                        <asp:Button ID="btn_editar" CssClass="uk-button uk-button-secondary uk-button-large uk-width-1-1" runat="server" Text="Editar Anime" OnClick="btn_editar_Click" />
                     </div>
                 </div>
 
@@ -93,14 +92,14 @@
                                     <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id_AnimeUsuario") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField ControlStyle-CssClass="uk-form-width-small">
+                            <asp:TemplateField ControlStyle-CssClass="uk-form-width-medium uk-select">
                                 <EditItemTemplate>
-                                    <asp:DropDownList ID="dd_AAnime" CssClass="uk-select  uk-form-width-large" runat="server" DataSourceID="AAnime_DS" DataTextField="Descripcion" DataValueField="id_AvanceAnime"></asp:DropDownList>
+                                    <asp:DropDownList ID="dd_AAnime" CssClass="uk-select uk-form-width-large" runat="server" DataSourceID="AAnime_DS" DataTextField="Descripcion" DataValueField="id_AvanceAnime"></asp:DropDownList>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Nota">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_Nota" CssClass="uk-form-width-large" Text='<%# Eval("Nota") %>' runat="server"></asp:Label>
+                                    <asp:Label ID="lbl_Nota" CssClass="uk-form-width-medium" Text='<%# Eval("Nota") %>' runat="server"></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <asp:TextBox ID="txt_nota" Text='<%# Eval("Nota") %>' CssClass="uk-input" runat="server"></asp:TextBox>

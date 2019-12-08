@@ -75,7 +75,7 @@ public partial class NavPrivada_Manga : System.Web.UI.Page
                     Manga_Usuario m = new Manga_Usuario();
                     m.id_Manga = Convert.ToInt32(ID);
                     m.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
-                    m.id_AvanceManga = 1;
+                    m.id_AvanceManga = 2;
                     m.Nota = "Sin notas adjuntas";
                     cdc.Manga_Usuario.InsertOnSubmit(m);
                     cdc.SubmitChanges();

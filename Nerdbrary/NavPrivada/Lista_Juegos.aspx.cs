@@ -81,7 +81,7 @@ public partial class NavPrivada_Juegos : System.Web.UI.Page
                     Juegos_Usuario ju = new Juegos_Usuario();
                     ju.id_Juego = Convert.ToInt32(ID);
                     ju.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
-                    ju.id_AvanceJuego = 1;
+                    ju.id_AvanceJuego = 3;
                     ju.Nota = "Sin notas adjuntas";
                     cdc.Juegos_Usuario.InsertOnSubmit(ju);
                     cdc.SubmitChanges();

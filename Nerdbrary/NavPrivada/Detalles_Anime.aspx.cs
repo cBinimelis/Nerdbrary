@@ -224,7 +224,33 @@ public partial class NavPrivada_AnimeDetalles : System.Web.UI.Page
 
     protected void btn_editar_Click(object sender, EventArgs e)
     {
+        try
+        {
+            int ID_Anime = Convert.ToInt32(idAnime);
+            int Capitulos = Convert.ToInt32(txt_capitulosN.Text.Trim());
+            int Temporadas = Convert.ToInt32(txt_temporadasN.Text.Trim());
+            int Estado = (dd_estadoN.SelectedIndex + 1);
+            if(Capitulos.Equals("") || Temporadas.Equals(""))
+            {
+                Mensaje("No tan Rapido", "No pueden querdar campos vacios", "warning");
+            }
+            else
+            {
+                cdc = new ConexionLQDataContext();
+                Anime AniUp = (from a in cdc.Anime where a.id_Anime == ID_Anime select a).FirstOrDefault();
+                AniUp.CapitulosTotales =Capitulos;
+                AniUp.Temporadas = Temporadas;
+                AniUp.id_EstadoSerie = Estado;
+                cdc.SubmitChanges();
+                Mensaje("Felicidades", "Cambios guardados con éxito", "success");
+                LlenaDetalles();
+            }
 
+
+        }
+        catch {
+            Mensaje("¡Ups!", "Algo no salio como esperabamos", "error");
+        }
     }
 
     private void Mensaje(String Tit, String Msg, String Stat)

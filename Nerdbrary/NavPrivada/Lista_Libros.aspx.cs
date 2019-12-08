@@ -75,7 +75,7 @@ public partial class NavPrivada_Lista_Peliculas : System.Web.UI.Page
                     Libro_Usuario l = new Libro_Usuario();
                     l.id_Libro = Convert.ToInt32(ID);
                     l.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
-                    l.id_AvanceLibro = 1;
+                    l.id_AvanceLibro = 3;
                     l.Nota = "Sin notas adjuntas";
                     cdc.Libro_Usuario.InsertOnSubmit(l);
                     cdc.SubmitChanges();

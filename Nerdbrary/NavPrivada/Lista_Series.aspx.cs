@@ -81,7 +81,7 @@ public partial class NavPrivada_Series_Lista_Series : System.Web.UI.Page
                     Serie_Usuario su = new Serie_Usuario();
                     su.id_Serie = Convert.ToInt32(ID);
                     su.id_Usuario = (from u in cdc.Usuario where u.Nick == Nick select u.id_Usuario).FirstOrDefault();
-                    su.id_AvanceSerie = 1;
+                    su.id_AvanceSerie = 3;
                     su.Nota = "Sin notas adjuntas";
                     cdc.Serie_Usuario.InsertOnSubmit(su);
                     cdc.SubmitChanges();

@@ -4,8 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div class="uk-overflow-hidden">
-        <div class="uk-background-cover uk-height-viewport" style="background-image: url(img/ÑoñoBG.jpg);">
+    <div class="uk-overflow-hidden uk-visible@m">
+        <div class="uk-background-cover uk-height-viewport" style="background-image: url(img/ÑoñoBGV2.png);">
+        </div>
+    </div>
+    <div class="uk-overflow-hidden uk-hidden@m">
+        <div class="uk-background-cover uk-height-viewport" style="background-image: url(img/ÑoñoBG-Movil.png);">
         </div>
     </div>
     <div class="uk-section-muted uk-padding">
@@ -41,7 +45,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="Lista_Series.aspx" class="uk-link-reset">
+                    <a href="NavInvitado/Series.aspx" class="uk-link-reset">
                         <div class="uk-card uk-card-hover uk-card-body uk-text-center">
                             <asp:Label ID="lbl_Series" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
                             <p>Series</p>
@@ -49,7 +53,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="Lista_Peliculas.aspx" class="uk-link-reset">
+                    <a href="NavInvitado/Peliculas.aspx" class="uk-link-reset">
                         <div class="uk-card uk-card-hover uk-card-body uk-text-center">
                             <asp:Label ID="lbl_Peliculas" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
                             <p>Peliculas</p>
@@ -57,7 +61,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="Lista_Libros.aspx" class="uk-link-reset">
+                    <a href="NavInvitado/Libros.aspx" class="uk-link-reset">
                         <div class="uk-card uk-card-hover uk-card-body uk-text-center">
                             <asp:Label ID="lbl_Libros" CssClass="count uk-heading-primary" runat="server" Text="3333"></asp:Label>
                             <p>Libros</p>

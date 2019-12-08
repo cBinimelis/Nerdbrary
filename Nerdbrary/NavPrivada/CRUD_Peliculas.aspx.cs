@@ -244,7 +244,7 @@ public partial class NavPrivada_CRUD_Peliculas : System.Web.UI.Page
                 cdc = new ConexionLQDataContext();
                 Peliculas pup = (from a in cdc.Peliculas where a.id_Pelicula == idPelicula select a).FirstOrDefault();
                 pup.Nombre = Nombre;
-                pup.Duracion = "";
+                pup.Duracion = Duracion;
                 pup.Lanzamiento = Convert.ToDateTime(Lanzamiento);
                 pup.id_EstadoPelicula = Estado + 1;
                 pup.id_GeneroPelicula = Genero + 1;

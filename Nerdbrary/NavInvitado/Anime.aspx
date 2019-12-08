@@ -30,7 +30,7 @@
                         <ItemTemplate>
                             <div class="uk-card uk-card-default uk-width-medium uk-height-medium uk-box-shadow-xlarge uk-box-shadow-hover-small">
                                 <div class="uk-card-media-top image-wrapper">
-                                    <img class="card-img uk-animation-scale-up uk-animation-toggle" src="../img/anime/<%# Eval("Imagen") %>" alt="">
+                                    <img class="card-img" src="../img/anime/<%# Eval("Imagen") %>" alt="">
                                 </div>
                                 <div class="uk-card-body uk-padding-small">
                                     <asp:Label ID="Label1" runat="server" CssClass="uk-card-title uk-align-center uk-text-truncate" Text='<%# Eval("Nombre") %>'></asp:Label>
