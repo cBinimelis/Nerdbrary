@@ -68,6 +68,9 @@
                                     <li><a href="../NavInvitado/Anime.aspx">Anime</a></li>
                                     <li><a href="../NavInvitado/Manga.aspx">Manga</a></li>
                                     <li><a href="../NavInvitado/Juegos.aspx">Juegos</a></li>
+                                        <li><a href="../NavInvitado/Series.aspx">Series</a></li>
+                                        <li><a href="../NavInvitado/Peliculas.aspx">Peliculas</a></li>
+                                        <li><a href="../NavInvitado/Libros.aspx">Libros</a></li>
                                 </ul>
                             </div>
                         </li>
